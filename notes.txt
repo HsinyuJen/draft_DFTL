@@ -1,0 +1,8 @@
+2017/05/27
+
+前景背景互斥性不明显，所以决定修改。
+
+就是开始使用hompgraphy_multi的代码。
+
+这个文件就保存了detection_superpixel
+的结果

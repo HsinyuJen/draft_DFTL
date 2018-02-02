@@ -1,0 +1,113 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: draft.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: ref.bib
+I was expecting an "="---line 522 of file ref.bib
+ : // 
+ :    address="Cham",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 737 of file ref.bib
+ : // 
+ :    url={http://dx.doi.org/10.1007/978-3-642-15702-8_33},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 795 of file ref.bib
+ : // 
+ :    url="http://dx.doi.org/10.1007/978-3-642-15555-0_21"
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 807 of file ref.bib
+ : // 
+ :    url={http://dx.doi.org/10.1007/s11042-009-0348-y},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 891 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S0031320311004420",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 953 of file ref.bib
+ : // 
+ :    doi={10.1007/978-3-642-37410-4_25},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1098 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S1077314214001349",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1158 of file ref.bib
+ : // 
+ :    url={http://dx.doi.org/10.1007/s00138-013-0551-8},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1193 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S1574013714000033",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1214 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S0165168415002029",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1312 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S0031320311004420",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1412 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S1574013714000033",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1432 of file ref.bib
+ : // 
+ :    url = "http://www.sciencedirect.com/science/article/pii/S1077314214000113",
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 2107 of file ref.bib
+ : // 
+ :    publisher="Springer Berlin Heidelberg",
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 3 entries,
+            4024 wiz_defined-function locations,
+            829 strings with 7600 characters,
+and the built_in function-call counts, 2721 in all, are:
+= -- 212
+> -- 53
+< -- 28
++ -- 31
+- -- 7
+* -- 141
+:= -- 398
+add.period$ -- 6
+call.type$ -- 3
+change.case$ -- 3
+chr.to.int$ -- 69
+cite$ -- 3
+duplicate$ -- 180
+empty$ -- 220
+format.name$ -- 9
+if$ -- 619
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 28
+newline$ -- 32
+num.names$ -- 3
+pop$ -- 63
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 208
+stack$ -- 0
+substring$ -- 163
+swap$ -- 153
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 3
+warning$ -- 0
+while$ -- 15
+width$ -- 4
+write$ -- 51
+(There were 14 error messages)

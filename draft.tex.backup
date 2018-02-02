@@ -1,0 +1,2268 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage[unicode,pdftex]{hyperref}
+
+\usepackage{xcolor}
+
+
+\ifCLASSINFOpdf
+\usepackage[pdftex]{graphicx}
+\else
+\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\newcommand{\reffig}[1]{Fig. \ref{#1}}
+\newcommand{\refsec}[1]{Section \ref{#1}}
+\newcommand{\refeq}[1]{Eq. \ref{#1}}
+\newcommand{\reftab}[1]{Table \ref{#1}}
+
+
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+
+\definecolor{level2}{RGB}{255,255,255}
+\definecolor{level3}{RGB}{10,10,10}
+\definecolor{revised}{RGB}{100,101,140}
+\definecolor{continue}{RGB}{255,0,0}
+\definecolor{filltext}{RGB}{0,255,255}
+
+\begin{document}
+\title{Background Subtraction for Freely Moving Camera via Integration of Foreground and Background Cues}
+
+\author{Chenqiu Zhao,
+        Tat-jen Cham,
+        Ying Qu,
+		Yongxin Ge,
+        Haibo Hu}
+
+
+\maketitle
+
+
+\begin{abstract}
+Previous approaches to background subtraction in freely moving camera focus on improving the accuracy of motion estimation.
+%
+In this paper,
+we assume that the accurate estimation of motion is not necessary,
+%and that background subtraction can be achieved by the integration of rough cues.
+%because the labels of pixels as foreground or background are alternative.
+and a novel background subtraction framework called the \textbf{I}ntegration of \textbf{F}oreground and \textbf{B}ackground(IFB) cues is proposed.
+% we consider this problem as a segmentation of moving objects based on the spatio-temporal information,
+% and a novel framework named \textbf{I}ntegration of \textbf{F}oreground and \textbf{B}ackground(IFB) cues is proposed.
+%
+Unlike previous work,
+the IFB model focus on integrating the foreground and background cues.
+%
+Due to the alternative between the labels of foreground and background,
+these two cues are compensated for their corresponding defects,
+and moving objects can be segmented accurately from rough cues without an accurate motion estimation.
+%
+In particular,
+the foreground cues are captured by statistic model extended by geometric constraints,
+and the background cues are obtained from the spatio-temporal features filtered by homography transformation.
+%
+Then,
+a hierarchical strategy based on the super-pixels under multi-level is proposed to integrate these cues into the accurate foreground.
+%
+Comprehensive evaluations using standard benchmarks demonstrate the superiority of our work compared with the state-of-the-art.
+%     
+%     segmenting moving objects, a hierarchical strategy for segmentation is proposed.
+% %
+% Several masks of moving objects are captured under different levels,
+% the means of these masks is 
+% 
+% 
+% The moving objects is captured in different levels, and the summary of the results is used as the final mask of moving objects.
+% 
+% Next, these cues are used to label whether the super-pixels, which is captured from current frame, belong to moving objects or not.
+% 
+% 
+% Next, the image are segmented into several super-pixels, and these cues are used to label whether a super-pixel belong to moving objects or not.
+% %
+%
+% 
+%     foreground or background.
+% %    
+%     these cues are used to label 
+% 
+% 
+% The integration procedure is in fact a statistic of these cues, which are located in an area represented by super-pixel.
+% A super-pixel is labeled as foreground or background according to the integration result.
+% These labeled super-pixels segmented under multiple levels constitute the foreground of our IFB model.
+% Comprehensive evaluations using several standard benchmarks demonstrate the superiority of our work compared with the state-of-the-art.
+% 
+% 
+% 
+% %
+% we assume that the accurate estimation of motion is not necessary and that background subtraction can be achieved by the integration of rough cues, 
+% because the labels of pixels as foreground or background are alternative.
+% A novel background subtraction method called the \textbf{I}ntegration of \textbf{F}oreground and \textbf{B}ackground(IFB) cues is thus proposed.
+% In the IFB model, the foreground and background cues are captured by geometric constraints and spatio-temporal features, respectively.
+% The integration procedure is in fact a statistic of these cues, which are located in an area represented by super-pixel.
+% A super-pixel is labeled as foreground or background according to the integration result.
+% These labeled super-pixels segmented under multiple levels constitute the foreground of our IFB model.
+% Comprehensive evaluations using several standard benchmarks demonstrate the superiority of our work compared with the state-of-the-art.
+% 
+% 
+% 
+%     
+%     
+%     instead of the improvement of motion estimation.
+% %
+% 
+% 
+% 
+% 
+% 
+%     
+%     foreground and background cues,
+% and proposed the 
+% %
+% 
+%     
+%     The issue of background subtraction for a freely moving camera is a considerable challenge.
+% %
+% Previous approaches address the problem by improving the accuracy of motion estimation,
+% since the challenge comes from the camera motion.
+% 
+% 
+% 
+% 
+% 
+% the main problem being the mixture of different motions from the camera and any moving objects.
+% Previous approaches have used estimates of camera motion to segment moving objects.
+% However, it is difficult to establish a procedure for accurately estimating the motion involved,
+% due to the complexity of natural scenes and the unpredictability of camera motion.
+% In this paper,
+% we assume that the accurate estimation of motion is not necessary and that background subtraction can be achieved by the integration of rough cues, 
+% because the labels of pixels as foreground or background are alternative.
+% A novel background subtraction method called the \textbf{I}ntegration of \textbf{F}oreground and \textbf{B}ackground(IFB) cues is thus proposed.
+% In the IFB model, the foreground and background cues are captured by geometric constraints and spatio-temporal features, respectively.
+% The integration procedure is in fact a statistic of these cues, which are located in an area represented by super-pixel.
+% A super-pixel is labeled as foreground or background according to the integration result.
+% These labeled super-pixels segmented under multiple levels constitute the foreground of our IFB model.
+% Comprehensive evaluations using several standard benchmarks demonstrate the superiority of our work compared with the state-of-the-art.
+\end{abstract}
+
+\begin{IEEEkeywords} 
+    Background Subtraction, Freely Moving Camera, Foreground and Background Cues, Super-pixels.
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+
+\section{Introduction}
+Background subtraction is a fundamental task in computer vision, and has a wide range of applications such as in
+video monitoring \cite{Bouwmans2014}, optical motion capture \cite{Chen2014} , and multimedia applications \cite{Han2012}.
+It is traditionally assumed that the video sequences are captured from a stationary camera \cite{Bouwmans201431}.
+Under this assumption, 
+the moving object is the unique source of motion and contributes to the variation in the intensity of the pixels.
+In previous approaches the background was subtracted by analysing variations using a statistical model, 
+such as the Gaussian Mixture Model (GMM) \cite{Zivkovic2004}.
+However, in view of the continuous growth in videos obtained via moving cameras in recent years,
+the matter of background subtraction for moving cameras has attracted sustained levels of interest from researchers.
+In  frames captured by a freely moving camera,
+the pixels located in background no longer maintain their position.
+%
+The background becomes another source of production of motion.
+%
+Therefore, the observations are completely irregular in a given pixel.
+%
+It is this irregular variation that invalidates the algorithms proposed for stationary cameras.
+% due to the mixture of motion resulting from moving objects and backgrounds.
+\label{fig1}
+\begin{figure}[!t]	\centering
+\includegraphics[width=\linewidth]{figure/fig1.pdf}
+\DeclareGraphicsExtensions.
+\caption{The illustration of background subtraction via integration of rough foreground and background cues.
+        Although there are several foreground cues captured in region $\text{R}$,
+        the integration of foreground and background cues caused the correct labeling of the $\text{R}$ as the background.}
+\label{fig1}		\end{figure}
+
+In a freely moving camera,
+the motion of moving objects becomes mixed up with the background motion.
+Several algorithms exist to segment the foreground by estimating the motion of the camera.
+In particular, the identification of geometric constraints and spatio-temporal features show clear advantages in the estimation of motion,
+but the limited accuracy of these techniques also limits the efficiency of the algorithms used.
+Under the proposed approach there is no need to estimate the motion accurately because the integration of rough cues is used as a solution for background subtraction in a freely moving camera.
+%
+As shown in \reffig{fig1},
+the foreground cues are shown not only in the moving objects but also in the parts of background like the region $R$ in \reffig{fig1}.
+%
+Commonly, these waving trees are easy detected as moving objects.
+%
+Benefited the contribution of background cues,
+The integration of these cues counteracts these errors, however, and leads to a promising foreground.
+%
+The respective errors of one kind of cue are refined by another due to this counteraction, and the integration of these cues improves the accuracy of the foreground segmentation,
+%
+Inspired by this insight,
+we focus on integrating rough cues rather than improving the accuracy of the estimation of motion.
+% A novel framework based on the integration of foreground and background cues is presented for background subtraction in a freely moving camera.
+
+In the IFB, foreground cues are captured by the extension of GMM \cite{Zivkovic2004},
+which is a classical statistic model.
+%
+Meanwhile, 
+background cues are represented by the spatio-temporal features as filtered by homography transformation.
+%
+In particular,
+the SIFT (the level-Invariant Feature Transform) \cite{lowe2004distinctive}, SURF (Speeded-Up Robust Features) \cite{2006_SURF} and KAZE \cite{2012_KAZE} features are used as the examples of spatio-temporal features
+to show that the IFB framework is work with several kinds of features.
+%
+Both these cues give rough levels of confidence in several key parts instead of whole pixels in the image as foreground or background,
+as shown in the \reffig{fig1}.
+%
+It is possible that there are some pixels without any cues for integration.
+%
+To solve this problem,
+a hierarchical strategy based on super-pixels rather than pixels is proposed for integration.
+%
+The current frame is segmented into several super-pixels.
+%
+Statistics of foreground and background cues in a particular super-pixel are utilized to indicate whether the super-pixel is foreground or background.
+%
+The foreground of our IFB relies on the combination of these labeled super-pixels.
+%
+Hence, the super-pixels are captured under multi-level, where the densities of super-pixels are increased,
+to constitute foregrounds under different levels.
+%
+The means of these foregrounds is used as the final foreground of the proposed approach.
+%
+The contributions of this paper are summarized as follows:
+\begin{enumerate}
+    \item We propose a novel framework called IFB to achieve background subtraction in a freely moving camera.
+                Unlike in previous work,
+        the IFB model focuses on integrating foreground and background cues rather than improving the accuracy of the motion estimation.
+                Foreground and background cues are used to compensate for their respective defects,
+        due to the alternative characteristics of foreground and background cues.
+                The integration of these cues in super-pixels under multiple levels improves the efficiency and accuracy of our IFB model.
+    \item We extend the GMM by the alignment between the background image and the current frame to capture foreground cues.
+                The background image is maintained as the substitute to capture the map of pixels between the GMM and the current frame.
+                The GMM in the previous frame is transformed according to the map to capture the foreground cues of the current frame.
+    \item We propose a spatio-temporal features based method to capture background cues.
+                The motion of the spatio-temporal features is estimated by homography transformation in image sequences.
+                Features for the same camera motion are used as background cues.
+                In particular, the SIFT, SURF and KAZE features are used as the examples.
+\end{enumerate}
+%| 
+%| 
+%| 
+%| Fortunately,
+%| neighborhood information between pixels is utilized to compensate for the lack of cues.
+%| 
+%| 
+%| 
+%| 
+%| 
+%| 
+%| It is well known that a pixel is not independent but is instead related to its neighborhoods, especially similar ones.
+%| %
+%| Similar pixels have a high probability of sharing the same labels of foreground and background.
+%| %
+%| Therefore,
+%| pixels without cues can be labeled according to the cues of their similar neighborhoods.
+%| %
+%| With this motivation,
+%| statistics of foreground and background cues in a particular super-pixel are utilized to indicate whether the super-pixel is foreground or background.
+%| %
+%| 
+%| 
+%| To solve this problem,
+%| we proposed a hierarchical strategy based on super-pixels rather than pixels for the integration of foreground and background.
+%| 
+%| 
+%| 
+%| The foreground of our IFB relies on the combination of these labeled super-pixels.
+%| In addition, 
+%| a multi-level foreground segmentation method is proposed to improve the accuracy of the foreground.
+%| Super-pixels are captured under multiple levels constituting different foregrounds.
+%| Several different foregrounds are made up of super-pixels under the corresponding level.
+%| The summary of these foregrounds under different levels is used as the final foreground under the proposed approach.
+%| The contributions of this paper are summarized as follows:
+%| 
+%| 
+%| super-pixels based integration 
+%| 
+%| 
+%| 
+%| To label the pixels without any cues,
+%| neighborhood information between pixels is utilized to compensate for the lack of cues.
+%| 
+%| 
+%| 
+%| 
+%| 
+%| 
+%| The integration is actually a statistic of these cues enabling pixels to be labeled as foreground or background.
+%| However,
+%| this method only allows foreground and background cues to be extracted for a few key parts of a frame, as shown in the \reffig{fig1}.
+%| It is possible that there are some pixels without any cues for integration.
+%| To solve this problem,
+%| 
+%| 
+%| 
+%| neighborhood information between pixels is utilized to compensate for the lack of cues.
+%| In particular, 
+%| super-pixels, which include neighborhood information, are used as containers of integration.
+%| It is well known that
+%| a pixel is not independent but is instead related to its neighborhoods, especially similar ones.
+%| Similar pixels have a high probability of sharing the same labels of foreground and background.
+%| Pixels without cues can be labeled according to the cues of their similar neighborhoods.
+%| With this motivation,
+%| statistics of foreground and background cues in a particular super-pixel are utilized to indicate whether it is foreground or background.
+%| The foreground of our IFB relies on the combination of these labeled super-pixels.
+%| In addition, 
+%| a multi-level foreground segmentation method is proposed to improve the accuracy of the foreground.
+%| Super-pixels are captured under multiple levels constituting different foregrounds.
+%| Several different foregrounds are made up of super-pixels under the corresponding level.
+%| The summary of these foregrounds under different levels is used as the final foreground under the proposed approach.
+%| The contributions of this paper are summarized as follows:
+%| \begin{enumerate}
+%|     \item We propose a novel method called IFB to achieve background subtraction in a freely moving camera.
+%|                 Unlike in previous work,
+%|         the IFB model focuses on integrating foreground and background cues rather than improving the accuracy of the motion estimation.
+%|                 Foreground and background cues are used to compensate for their respective defects,
+%|         due to the alternative characteristics of foreground and background cues.
+%|                 The integration of these cues in super-pixels at multiple levels improves the efficiency and accuracy of our IFB model.
+%|     \item We extend the GMM by the alignment between the background image and the current frame to capture foreground cues.
+%|                 The background image is maintained as the substitute to capture the map of pixels between the GMM and the current frame.
+%|                 The GMM in the previous frame is transformed according to the map to capture the foreground cues of the current frame.
+%|     \item We propose a SIFT-based method to capture background cues.
+%|                 The motion of the SIFT is estimated by homography transformation in image sequences.
+%|                 SIFT features for the same camera motion are used as background cues.
+%| \end{enumerate}
+%| 
+%| 
+%| 
+%| background cues are represented by the SIFT (the level-Invariant Feature Transform) \cite{lowe2004distinctive} features as filtered by homography transformation.
+%| 
+%| 
+%| Both these cues give rough levels of confidence for pixels as foreground or background.
+%| The integration is actually a statistic of these cues enabling pixels to be labeled as foreground or background.
+%| However,
+%| this method only allows foreground and background cues to be extracted for a few key parts of a frame, as shown in the \reffig{fig1}.
+%| It is possible that there are some pixels without any cues for integration.
+%| To solve this problem,
+%| neighborhood information between pixels is utilized to compensate for the lack of cues.
+%| In particular, 
+%| super-pixels, which include neighborhood information, are used as containers of integration.
+%| It is well known that
+%| a pixel is not independent but is instead related to its neighborhoods, especially similar ones.
+%| Similar pixels have a high probability of sharing the same labels of foreground and background.
+%| Pixels without cues can be labeled according to the cues of their similar neighborhoods.
+%| With this motivation,
+%| statistics of foreground and background cues in a particular super-pixel are utilized to indicate whether it is foreground or background.
+%| The foreground of our IFB relies on the combination of these labeled super-pixels.
+%| In addition, 
+%| a multi-level foreground segmentation method is proposed to improve the accuracy of the foreground.
+%| Super-pixels are captured under multiple levels constituting different foregrounds.
+%| Several different foregrounds are made up of super-pixels under the corresponding level.
+%| The summary of these foregrounds under different levels is used as the final foreground under the proposed approach.
+%| The contributions of this paper are summarized as follows:
+%| \begin{enumerate}
+%|     \item We propose a novel method called IFB to achieve background subtraction in a freely moving camera.
+%|                 Unlike in previous work,
+%|         the IFB model focuses on integrating foreground and background cues rather than improving the accuracy of the motion estimation.
+%|                 Foreground and background cues are used to compensate for their respective defects,
+%|         due to the alternative characteristics of foreground and background cues.
+%|                 The integration of these cues in super-pixels at multiple levels improves the efficiency and accuracy of our IFB model.
+%|     \item We extend the GMM by the alignment between the background image and the current frame to capture foreground cues.
+%|                 The background image is maintained as the substitute to capture the map of pixels between the GMM and the current frame.
+%|                 The GMM in the previous frame is transformed according to the map to capture the foreground cues of the current frame.
+%|     \item We propose a SIFT-based method to capture background cues.
+%|                 The motion of the SIFT is estimated by homography transformation in image sequences.
+%|                 SIFT features for the same camera motion are used as background cues.
+%| \end{enumerate}
+%| 
+% 
+% 
+% Due to the complexity of natural scenes, 
+% 
+% 
+% 
+% Due 
+% 
+% due to the 
+% 
+% 
+% rough cues can indicate the foreground and background of a scene but also produce several errors.
+% The integration of these cues counteracts these errors, however, and leads to a promising foreground.
+% During background subtraction, 
+% pixels are mutually exclusively labeled as foreground or background.
+% The levels of confidence from foreground and background cues are counteracted in a particular pixel.
+% 
+% 
+% as shown in the region $\text{R}$ of \reffig{fig1}.
+% 
+\section{Related Work}
+A number of impressive algorithms have recently been proposed to detect moving objects when using a freely moving camera.
+We herein discuss these algorithms in three sections.
+First, algorithms based on spatio-temporal features are reviewed in \refsec{sec_spa}.
+Algorithms based on geometric constraints are then discussed in \refsec{sec_geo}.
+Finally, because super-pixels are used as containers for integration,
+we discuss algorithms based on super-pixels in \refsec{sec_sup}
+
+\subsection{Algorithms based on Spatio-Temporal Features}
+\label{sec_spa}
+The optical method
+\cite{2015_TIP_OP_6850051}.
+\cite{2015_TIP_OP_6850051},
+\cite{2010_TVLSI_OP_5153096},
+\cite{2012_TIP_OP_6099616},
+\cite{2012_DSP_OP_BOTELLA20121174},
+\cite{2014_TCSVT_OP_6748891},
+
+\cite{2017_REVIEW_7914756},
+\cite{2014_CVIU_SOBRAL20144},
+\cite{2017_JEI_MOTION}
+
+
+
+\textcolor{filltext}{Background subtraction for freely moving cameras is a considerable challenge \cite{7303924_2015_TCSVT}, in which
+the difficulty principally arises from the simultaneous motion of the camera and the moving object.
+A number of previous authors have classified features using motion information in an attempt to address this issue.
+In particular, methods using the trajectory (e.g., \cite{5459334_2009_ICCV}, \cite{7303924_2015_TCSVT},
+\cite{ellis2013online_2012_ACCV} \cite{elqursh2012online_2012_ECCV},
+\cite{6682905_2014_TPAMI}, \cite{Cui2012_2012_ECCV},
+\cite{2010_ECCV_Brox2010}, \cite{2010_ECCV_Sundaram2010},
+\cite{6909562_2014_CVPR}) and the optical flow e.g., \cite{6126494_2011_ICCV},
+\cite{7090719_2014_ROBIO}, \cite{6751306_2013_ICCV},
+\cite{6619161_2013_CVPR}, \cite{zamalieva2014multi_2014_ECCV},
+\cite{Lim2014_2014_ECCV}, \cite{2016_ECCV_Bideau2016})
+are popular approaches for background subtraction in a freely moving camera.
+Sheikh et al.\cite{5459334_2009_ICCV} estimated the motion of the background using the shape of the trajectory of different objects.
+The background is subtracted from the trajectory of the pixels on the basis of information
+estimated from the trajectories of salient features across the video.
+Similarly,
+Cui et al.\cite{Cui2012_2012_ECCV} decomposed a motion trajectory matrix into foreground and background, in which the trajectories of the foreground and background are grouped to build a statistic model for foreground segmentation.
+This approach allowed
+Berger et al. \cite{6909562_2014_CVPR} to model dynamic point trajectories using tracking of a linear subspace describing the background motion.
+The variability of the trajectory durations can be used to deal with instances of subspace estimation for missing data.
+In addition,
+Elqursh et al.\cite{elqursh2012online_2012_ECCV} utilized a Bayesian filtering framework to determine whether trajectories are foreground or not.
+Ellis et al. \cite{ellis2013online_2012_ACCV} then reduced the computational complexity using the trajectory captured from a region instead of from pixels.}
+
+
+
+
+
+
+
+Background subtraction for freely moving cameras is a considerable challenge \cite{7303924_2015_TCSVT}, in which
+the difficulty principally arises from the simultaneous motion of the camera and the moving object.
+A number of previous authors have classified features using motion information in an attempt to address this issue.
+In particular, methods using the trajectory (e.g., \cite{5459334_2009_ICCV}, \cite{7303924_2015_TCSVT},
+\cite{ellis2013online_2012_ACCV} \cite{elqursh2012online_2012_ECCV},
+\cite{6682905_2014_TPAMI}, \cite{Cui2012_2012_ECCV},
+\cite{2010_ECCV_Brox2010}, \cite{2010_ECCV_Sundaram2010},
+\cite{6909562_2014_CVPR}) and the optical flow e.g., \cite{6126494_2011_ICCV},
+\cite{7090719_2014_ROBIO}, \cite{6751306_2013_ICCV},
+\cite{6619161_2013_CVPR}, \cite{zamalieva2014multi_2014_ECCV},
+\cite{Lim2014_2014_ECCV}, \cite{2016_ECCV_Bideau2016})
+are popular approaches for background subtraction in a freely moving camera.
+
+Sheikh et al.\cite{5459334_2009_ICCV} estimated the motion of the background using the shape of the trajectory of different objects.
+The background is subtracted from the trajectory of the pixels on the basis of information
+estimated from the trajectories of salient features across the video.
+Similarly,
+Cui et al.\cite{Cui2012_2012_ECCV} decomposed a motion trajectory matrix into foreground and background, in which the trajectories of the foreground and background are grouped to build a statistic model for foreground segmentation.
+This approach allowed
+Berger et al. \cite{6909562_2014_CVPR} to model dynamic point trajectories using tracking of a linear subspace describing the background motion.
+The variability of the trajectory durations can be used to deal with instances of subspace estimation for missing data.
+In addition,
+Elqursh et al.\cite{elqursh2012online_2012_ECCV} utilized a Bayesian filtering framework to determine whether trajectories are foreground or not.
+Ellis et al. \cite{ellis2013online_2012_ACCV} then reduced the computational complexity using the trajectory captured from a region instead of from pixels.
+
+Besides the trajectory-based approach,
+optical flow has also been utilized for background subtraction in a freely moving camera.
+Kwak et al.\cite{6126494_2011_ICCV} captured the initial motion field using optical flow.
+The noisy and incomplete motions of optical flow are corrected using an inference procedure.
+Background appearance models are propagated and maintained by Bayesian filters, 
+which play the same role in the approach proposed by Lim et al. \cite{Lim2014_2014_ECCV}.
+Moreover,
+Zamalieva et al. \cite{zamalieva2014multi_2014_ECCV} also used Bayesian selection to capture transformation between consecutive frames.
+The propagated models are subjected to an MAP-MRP optimization framework that combines motion information.
+In addition,
+Narayana et al.\cite{6751306_2013_ICCV} used the orientations of optical flow to improve the robustness of the algorithms, 
+enabling greater consistency with scenes from real-world motion.
+Motivated by the same issue,
+Deqing et al. \cite{6619161_2013_CVPR} formulated a fully connected layered model to capture long-range correlations in natural scenes.
+Bideau et al. \cite{2016_ECCV_Bideau2016} combined the angle and magnitude of the optical flow to maximize the differences between the motion of objects.
+
+Both the trajectory and optical flow methods are excellent ways of classifying the motion of the foreground and background.
+However, the lack of clear definition of the background makes it hard to establish which is the motion resulting from the background.
+To address this issue,
+Elqursh et al.\cite{elqursh2012online_2012_ECCV} compared the trajectories with their surroundings.
+In particular, 
+a Bayesian framework is utilized to decide if the trajectories are foreground or background.
+Furthermore, Wu et al.\cite{7303924_2015_TCSVT} specifically
+assumed that the motion of moving objects is stronger than the camera motion or motion parallax.
+The foreground is segmented using the difference between the motion of the camera and that of the moving objects.
+
+Unfortunately, the accuracy of the optical flow and the trajectory limit the efficiency of these approaches.
+It is possible that moving objects produce a motion pattern that is the same as that of the camera,
+due to the unpredictability of the motion of the moving objects.
+Neither the trajectory nor the optical flow approaches can correctly label the foreground for a moving camera.
+These algorithms fail to work in complex scenes or for video obtained from a fast-moving camera.
+In this study,
+features with motion information are only utilized to capture background cues by considering irregular motion in the foreground.
+Rough cues are integrated with foreground cues for background subtraction in a freely moving camera.
+
+\subsection{Algorithms based on Geometric Constraints}
+\label{sec_geo}
+A number of algorithms have been developed to counteract motion using geometric constraints (e.g., \cite{Zamalieva201473_2014_CVIU},
+\cite{Dey2012_2012_ECCV}, \cite{Cui2012_2012_ECCV}, \cite{5482585_2010_TPAMI},
+\cite{5723575_2010_ROBIO}, \cite{4288164_2007_TPAMI}, \cite{2007_ICCV_4408963},
+\cite{1541233_2005_ICCV}, \cite{Lim20121696_2012_PR}, \cite{2016_PR_Chen2016410} and
+\cite{5206857_2009_CVPR}),
+because of the invalidation of traditional algorithms as a result of camera motion.
+
+Lim et al. \cite{Lim20121696_2012_PR} initialized background and foreground labels using a fundamental matrix, 
+in which graph-cut algorithms are used for foreground segmentation.
+However, the degeneracy of the fundamental matrix means that 
+the approach in \cite{Lim20121696_2012_PR} is unsuited to the detection of small moving objects.
+In contrast, 
+Liu et al.\cite{5206857_2009_CVPR} assumed that the background is dominant in a scene; a region is labeled as foreground when its motion does not fit the transformation captured from the global background motion.
+Unfortunately, the effect of parallax of objects in different layers means that the
+efficiency of the approach in \cite{5206857_2009_CVPR} is low in complex scenes,
+and the same limitation also exists in the approach proposed by Mittal et
+al.\cite{2000_CVPR_854767}.
+In an attempt to address this, Chen et al. \cite{2016_PR_Chen2016410} tackled several parts of
+the background at once.
+A global constraint is then utilized to optimize the accuracy of the transformation.
+
+Considering the effect of different layers, regions with the same transformation only show part of the background.
+To solve this problem, Patwardhan et al.\cite{4415272_2008_TPAMI} detected the foreground in multiple pixel layers. 
+Bugeau et al.\cite{4270269_2007_CVPR} utilized the p-value to validate the estimates of optical flows, 
+allowing the MAP-MRF framework to be utilized to label pixels as foreground or background.
+In addition, Yuan et al.\cite{4288164_2007_TPAMI}
+proposed the "Plane+Parallx", which is first mentioned in
+\cite{1541233_2005_ICCV}. 
+The framework in \cite{1541233_2005_ICCV} is used to apply 2D layer homographies and identify
+dominant layers to prevent the estimation of background motion. 
+Moreover, Zamalieva et
+al.\cite{Zamalieva201473_2014_CVIU} proposed a 2.5D background model to
+describe the scene in terms of both its appearance and its geometry. 
+Hence, Zhang et al\cite{5482585_2010_TPAMI} performed a full 3D recovery using a
+combination of structure with motion and bundle adjustment.
+They evolved epipolar planes between the moving camera centre and the 3D scene,
+in a development of their previous work in \cite{2007_ICCV_4408963}.
+
+Moving objects are the unique source of pixel variation following the counteraction provided by geometric constraints.
+In several previous methods the foreground was segmented by the analysis of pixel variation via a statistical model.
+However, the foreground is full of noise because the counteraction is not perfect.
+Fortunately, the rough foreground can be used to generate foreground cues for integration, 
+which is the essence of the difference between our proposed approach and those used in previous studies.
+
+\subsection{Algorithms based on Super-pixels}
+\label{sec_sup}
+Neighboring information is often utilized to improve the robustness of background subtraction (e.g., \cite{Barnich2011_2011_TIP},
+\cite{7303924_2015_TCSVT}, \cite{6909756_2014_CVPR},
+\cite{6205760_2012_TPAMI} and \cite{2015_PR_Varadarajan20153488}).
+Pixels are not independent \cite{Barnich2011_2011_TIP} and should be related to their neighborhoods,
+especially those that are similar to each other.
+Region-based algorithms described in \cite{4288164_2007_TPAMI} and \cite{Heikkila2006} do not account for
+the similarity between pixel intensity, which is usually weaker at the border of an object.
+In the approach outlined in \cite{7303924_2015_TCSVT}
+ a mean-shift is applied to refine the foreground captured by the trajectory, and this improves
+the robustness of foreground detection in freely-moving cameras. 
+However, the accuracy of
+the trajectory also limits the efficiency of the method of Wu et al.
+%
+Hence, Zhu et al.\ \cite{6909756_2014_CVPR} refines the results of saliency detection by using super-pixels\cite{6205760_2012_TPAMI},
+which is similar to the mixing process of background and foreground cues.
+%
+\textcolor{revised}{The main difference between proposed approach and Zhu et al's work \cite{6909756_2014_CVPR} is the procedure of using super-pixels.
+%
+Zhu et al.\ \cite{6909756_2014_CVPR} model the salient object as the optimization of saliency values of super-pixels.
+%
+In our IFB model,
+the super-pixels is used to integrate foreground and background.
+%
+The statistic of these cues are used as the confidence of super-pixels.
+%
+Due to the alternative between foreground and background cues,
+the defects of these cues are compensated,
+which enhances the robustness and efficiency of our IFB background model.}
+% 
+% %
+% 
+% optimizes the background using super-pixels\cite{6205760_2012_TPAMI} for saliency detection, 
+% which is
+% similar to the mixing process of background and foreground cues.
+% %
+% 
+% 
+% 
+% The input of the integration is the main difference between IFB and the work in \cite{6909756_2014_CVPR}.
+% In our IFB model, foreground and background cues are respectively extracted by extended GMM and SIFT-filtered by motion estimation. 
+% The use of these cues enhances the robustness and efficiency of our IFB background model.
+% 
+\section{The IFB Background Model}
+\label{sec3}
+In this section, the details of the IFB model are explained.
+In  \refsec{sec3_fc} and \refsec{sec3_bc}, 
+we respectively introduce the process of capturing foreground and background cues,
+and the integration of these cues under multiple levels is then explained in \refsec{sec3_fg}.
+% 
+% 
+% \begin{figure}[!t]	\centering
+% \includegraphics[width=\linewidth]{figure/extraction.pdf}
+% \DeclareGraphicsExtensions.
+% \caption{Extraction of foreground and background cues .}
+% \label{fig_extraction}		\end{figure}
+
+\subsection{Extraction of Foreground Cues}
+\label{sec3_fc}
+% 不需要精准的这段，放后面
+Camera motion invalidates the traditional background subtraction methods proposed for stationary cameras.
+%
+Conventional background subtraction methods can be extended by compensation using a frame alignment step.
+%
+Although, an alignment step is insufficient to counteract the camera motion perfectly,
+it is enough to produce rough foreground cues for integration.
+%
+In this study,
+the Gaussian Mixing Model (GMM)\ \cite{Zivkovic2004} is used as an example to explain how to extend stationary algorithms.
+
+The GMM is a classical pixel-based statistical method for background subtraction in a stationary camera.
+%
+It approximates the variation in each pixel's intensity by multiple Gaussian functions,
+which are then combined with the weights.
+%
+Let us present the GMM for pixels $(x',y')$ as $\{\omega_k(x',y')|\theta_k(x',y')\}$,
+where the $\omega$ and $\theta$ presents the wights and parameters of each Gaussian function respectively.
+%
+In the video captured by stationary camera,
+the position of pixels keep invariant.
+%
+Therefore,
+the GMM located at the position $(x',y')$ of previous frame can be directly
+used in the pixel located at the position $(x',y')$ of current frame.
+%
+However, in the video obtained from freely moving camera,
+the pixels no longer maintain their positions.
+%
+In order to extend the GMM into freely moving camera,
+each pixel $I(x,y)$ of current frame is mapped to a particular model $G(x',y')$ for the extraction of foreground cues in current frame,
+which is shown as follows:
+\begin{equation}
+    \label{eq_fgcues}
+    C_{fg}(x,y)=\sum_{k=1}^{K}\omega_k(x',y')  \varPhi (I(x,y)|\theta _k(x',y'))
+\end{equation}
+where $\theta=\{\mu,\sigma\}$, $\varPhi$ is the Gaussian function and $K$ is the number of Gaussian function.
+%
+The $C_{fg}(x,y)$ is the foreground cues, which is a proximity image with the same size of current frame.
+
+The transformation between the positions $(x,y)$ and $(x',y')$ is described by a homography matrix \cite{2003_hartley_multiple} $H_{bk} =[\vec{h}_1\ \vec{h}_2\ \vec{h}_3]^T$,
+which is shown as follows:
+\begin{equation}
+	\label{homo_trans}
+       \left[
+        \begin{matrix}
+            \lambda x \\
+            \lambda y \\
+            \lambda  
+        \end{matrix}
+    \right] = 
+ \left[
+        \begin{matrix}
+           \vec{h}_1 \\
+           \vec{h}_2 \\
+           \vec{h}_3
+        \end{matrix}
+    \right]
+ \left[
+        \begin{matrix}
+            x' \\
+            y' \\
+            1
+        \end{matrix}
+    \right].
+\end{equation}
+%
+The procedure of transformation between the $(x,y)$ and $(x',y')$
+can be captured by the decomposition of \refeq{homo_trans},
+which is shown as follows:
+\begin{equation}
+    \label{x_tra}
+    x = tr_x(H_{bk},x', y')=\frac{1}{\lambda }\vec{h}_1[x'\ y'\ 1]^T,
+\end{equation}
+\begin{equation}
+    \label{y_tra}
+    y = tr_y(H_{bk},x', y')=\frac{1}{\lambda }\vec{h}_2[x'\ y'\ 1]^T,
+\end{equation}
+\begin{equation}
+	\label{z_tra}
+	\lambda=\vec{h}_3[x'\ y'\ 1]^T.
+\end{equation}
+In particular, the $tr_x$ and $tr_y$ are denoted as the transformation functions,
+which are used to transform the GMM model located at $(x',y')$ to the corresponding position $(x,y)$ of current frame.
+%
+The homography matrix $H_{bk}$ is captured by \refeq{eq_matrix}.
+%
+The details about the matrix $H_{bk}$ are explained later,
+since it is captured from the procedure of capturing background cues.
+
+By using the \refeq{x_tra} and \refeq{y_tra}, 
+the GMM models located at all pixels of previous frame can be transformed into the corresponding positions of current frame for the extraction of foreground cues.
+%
+In particular, the models transformed into impossible position are discarded,
+and new GMM models are created for these positions without any GMM model.
+%
+For these models successfully translated into new positions of current frame,
+the updating procedure is done to adapt the environmental change,
+which is shown as follows:
+\begin{displaymath}
+    \begin{split}
+        \mu_k(x,y)&=\alpha_{\mu}\cdot\mu_k(x,y)+(1-\alpha_{\mu})\cdot I(x,y), \\
+        \sigma_k(x,y)&=\alpha_{\sigma}\cdot\sigma_k(x,y)+(1-\alpha_{\sigma})\cdot (\mu_k(x,y) -I(x,y))^2, \\
+        \omega_k(x,y)&=\frac{\alpha_{\omega} \omega_k(x,y)  }{\sum\limits_{k=1}^{K} \alpha_\omega \cdot \omega_k(x,y)},
+    \end{split}
+\end{displaymath}
+\begin{displaymath}
+    \alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega} =
+ \begin{cases}
+     \begin{split}
+         \alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega}, \quad if (I(x,y) &-\mu_k(x,y))^2 \\ 
+         & < \sigma_k(x,y))
+         \end{split} \\
+  1,  \quad\quad\quad\quad\quad otherwise  \\
+\end{cases},
+\end{displaymath}
+where the $\alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega}$ are the parameter for updating, and $K$ is the number of Gaussian functions.
+%
+In the experiment, the default parameters were used for GMM models.
+%
+The updating rates of $\{\alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega}\} = \{0.99,0.99,1.05\}$ were used,
+and the number of Gaussian function $K=3$ was used.
+
+\subsection{Extraction of Background Cues}
+\label{sec3_bc}
+Traditionally, the background is assumed to be the static part of a scene.
+%
+However,
+in the frames obtained from a moving camera,
+the locations of objects vary and the static parts do not exist.
+%
+%In this work,
+%Therefore, the traditional definition of a background is invalid in a moving camera.
+%To get round this problem, 
+To handle it,
+we assume the majority of the relatively static part to be the background.
+%
+Under this assumption,
+the spatio-temporal features are used to describe the different parts of the scene.
+%(e.g. SIFT\ \cite{lowe2004distinctive}, SURF\ \cite{2006_SURF}or KAZE\ \cite{2012_KAZE}) 
+%are used to describe the different parts of the scene.
+%
+% :wThe variation in their positions can be used to estimate the motion of these parts.
+%
+Features with the same motion estimation are recognized as relatively static.
+%compared with each other.
+%
+The background is assumed as the part that includes the largest number of relatively static spatio-temporal features,
+and these features in background are used as the background cues.
+
+The background cues are identified and captured based differences between the current frame and background image.
+%
+In particular,
+The background image is an image initialized, 
+transformed and updated using the same process as the statistic model we used for capturing foreground cues.
+%
+For GMM model, the background image can be directly captured by the $\mu$ of Gaussian function with the highest weight from all pixels,
+which is shown as follows:
+\begin{equation}
+    \label{bk_img}
+    I_{bk}(x.y) = \mathop{\argmax}_{\mu_k(x,y)}{(\mu_k(x,y)^0 \cdot \omega_k(x,y))},
+\end{equation}
+where $\mu_k(x,y)$ and $\omega_k(x,y)$ are the means and the weights of Gaussian functions located in (x,y).
+%
+Then, the spatio-temporal features captured in the current frame and background image are denoted as 
+$\{f_{1}, f_{2}, \dots f_{M}\}$ and $\{f_{1}', f_{2}' \dots f_{M'}'\}$ respectively,
+where $M$ and $M'$ is the number of features.
+%
+For each of spatio-temporal features contains at least two components, a descriptor $\vec{h}$ and a key point $\{x,y\}$.
+%
+The descriptor of these features are cross-matched to find the common parts in the current frame and the background image.
+In particular,
+the squared Euclidean distance is used for matching.
+% The spatio-temporal features in a particular common part are utilized to establish a one-to-one map.
+The $G$ is denoted as the set of couples of matched spatio-temporal features and is defined as follows:
+\begin{equation}
+    G=\langle f_i,f_i' \rangle, \quad f=\{(x,y),\vec{h}\} \quad i \in [1, N]
+\end{equation}
+where $i$ is the index of the feature in the common part and $N$ is the number of parts.
+% 
+% %
+% The parts described by matched features are identified as parts that are common to the current frame and the background image.
+% %
+% The motion of these parts can then be captured from the difference between the locations of the features in the current frame and the background image.
+
+As mentioned above, the background consists of most of the relatively static part.
+%
+Hence, the spatio-temporal features are recognized as being relatively static when the variations in their positions satisfy the same transformation matrix.
+%
+Therefore, with the aim of capturing the background cues,
+the transformation matrix that estimates the background motion must be captured first.
+%
+In this work,
+the transformation matrix that satisfies the largest number of couples in $G$ is used to describe the background motion.
+%
+We denote the transformation matrix of background motion as $H_{bk}$, which is defined as follows:
+\begin{equation}
+    \label{eq_matrix}
+    H_{bk} = \mathop{\argmax}_{H}{\sum_{i=1}^{N}g(d(H,f_i,f_i'),T_{m}) } 
+\end{equation}
+where $T_m$ is a threshold value, $g(x,y)$ is a piecewise function:
+\begin{equation}
+    \label{piecewise_fun}
+    g(x,y) =
+ \begin{cases}
+  1,  \quad x < y    \\
+  0,  \quad otherwise  \\
+\end{cases},
+\end{equation}
+and the $d()$ is the loss function for the evaluation of errors when we transform $f_i'$ to $f_i$ by homography matrix $H=[\vec{h_1}\ \vec{h_2}\ \vec{h_3}]^T$.
+The definition of $d()$ is shown as follows:
+\begin{equation}
+    \begin{split}
+        &d(H,f_i,f'_i)= d(H,(x_i,y_i),(x_i',y_i')) \\
+        &=||x_i-tr_x(H,x_i', y_i')||+||y_i-tr_y(H,x_i',y_i')|| \\
+        &=||x_i-\frac{1}{\lambda }\vec{h}_1[x_i'\quad y_i'\quad 1] ||+||y_i-\frac{1}{\lambda }\vec{h}_2[x_i'\quad y_i'\quad 1]||
+    \end{split}
+\end{equation}
+where the $tr_x$ and $tr_y$ are the transformation functions which are shown in the \refeq{x_tra} and \refeq{y_tra} respectively,
+and the $\lambda$ is defined in the \refeq{z_tra}.
+
+To capture the $H_{bk}$, the homography transformation and RANSAC is used.
+%
+For the completeness of paper, we briefly introduce how to capture the $H_{bk}$ by homography transformation and RANSAC,
+more details of principle are available in \cite{2003_hartley_multiple}.
+%
+Due to the property of homography matrix,
+four couples of features in $G$ is need at least to capture a homography matrix.
+%
+Let us denote the positions of these couples are $\{(x_i,y_i),(x_i',y_i')|i \in [1\ N], N \geq 4\}$.
+%
+Firstly, the Skey-symmetric matrix for each position is captured as follows:
+\begin{equation}
+h(x,y)=\begin{bmatrix}
+0 & -1 & y\\ 
+1 & 0 & -x\\ 
+y & x & 0
+\end{bmatrix}
+\end{equation}
+where $h(x,y)$ return the Skew-symmetric matrix of $(x,y)$.
+%
+Then, the Skey-symmetric matrixes of couples are combined as follows:
+\begin{equation}
+A=[A_1\quad A_2\quad A_3\quad A_4]^T
+\end{equation}
+\begin{equation}
+A_i=h(x^{bk}_i,y^{bk}_i)\otimes  h(x^{t}_i,y^{t}_i)
+\end{equation}
+where $\otimes$ is denoted as the Kronecker product. 
+%
+Finally, the Singular Value Decomposition (SVD) results is the solution of homography matrix between these four posotion,
+which is shown as follows:
+\begin{equation}
+    SVD(A)=USV^T.
+\end{equation}
+The ``right singular vector'' (a column from V ), which corresponds to the smallest singular
+value, is the solution of matrix $H$.
+%
+The RANSAC algorithm is randomly choose four couples of $G$ several times to get several homography matrix $H_i$.
+%
+The one which achieves highest value by \refeq{eq_matrix} is used as the background motion estimation $H_{bk}$.
+%
+The features follows background motion is used as background cues,
+which is shown as follows:
+\begin{equation}
+    \label{eq_bkcues}
+    C_{bk}(x^t_i\pm R,y^t_i\pm R)=\left\{\begin{matrix}
+    K_{bk}\quad d(H_{bk},f^t_i,f^{bk}_i) < T_m, \\ 
+    0\quad\quad\quad\quad\quad\quad otherwise
+    \end{matrix}\right.
+\end{equation}
+where $R$ is a radius of key points, $K_{bk}$ is a constant value to represent the background
+and the $C_{bk}$ is the background cues, which is also save by a image with the size of current frame.
+%
+Since the key points are invisible,
+we simply change the point to a rectangle for visually seeing the background cues,
+the $R$ is the length of side.
+%
+In the experiments, the R is fixed as 5.
+%
+Moreover, the homography transformation assumes that the objects are located in the same image planes,
+so there are not enough background cues captured by IFB in scenes including multiple planes.
+In order to obtain enough background cues,
+the procedure for capturing background cues is achieved using super-pixels segmented from the current frame,
+because pixels belonging to the same super-pixel have a high probability of being in the same image plane.
+Then, the background cues from all the super-pixels are combined as the final results.
+
+\begin{figure*}[!t]	\centering
+\includegraphics[width=\textwidth]{figure/foreground}
+\DeclareGraphicsExtensions.
+\caption{The illustration of accurate foreground segmentation via integrating foreground and background cues by super-pixels under multiple levels.}
+\label{fig_foreground}
+\end{figure*}
+
+\subsection{Foreground Segmentation via Integration of Foreground and Background Cues}
+\label{sec3_fg}
+% XXX 不是为了标记那些没有线索的，你的超像素是为了让前景背景聚合
+% Both the foreground and background cues are sparse cues that do not exist in all the pixels of the frame.
+% In order to label the pixels without cues,
+% neighborhood information is used as compensation.
+% Hence,
+% the integration of these cues is actually a procedure to classify pixels without cues according to their neighborhoods with cues.
+% by the statistic of cues in a particular super-pixel.
+It is known that a pixel is not independent but is related to its neighborhood, 
+especially one that is similar to it.
+%
+Similar pixels have a high probability of sharing the same labels for foreground or background.
+%
+Therefore, the super-pixels, 
+which consist of similar pixels, 
+are used to integrate foreground and background for foreground segmentation.
+
+The procedure of integration is shown in \reffig{fig_foreground}.
+%
+Super-pixels are segmented under multiple levels.
+%
+For each super-pixel at a particular level,
+the statistic of the cues is used to give the confidence of whether the super-pixel belongs to the foreground or the background,
+and a proximity image consist of super-pixels is produced in a particular level.
+%
+%
+% Hence, the pixels are endowed with the same confidence as that captured from the super-pixel to which these pixels belong.
+% %
+% In this condition, the pixels without cues are labeled by their neighborhoods with cues,
+% and a proximity image consist of super-pixels is produced in a particular level.
+% % e super-pixels at the same level are combined to constitute the proximity image at a particular level.
+%
+Then,
+a hierarchical strategy is used to improve the accuracy of foreground segmentation.
+%
+Several proximity images are captured from different levels,
+where the densities of super-pixels are different.
+%
+Finally,
+the mean of these proximity images is compared with the threshold for the segmentation of moving objects.
+
+In the IFB model,
+the foreground and background cues are stored in the images with the same size of current frame,
+which are captured by \refeq{eq_fgcues} and \refeq{eq_bkcues}.
+%
+However, in the videos obtained by freely moving camera,
+the numbers of background cues are varying, since the number of spatio-temporal features captured from frames are different.
+%
+In contrast,
+the number of foreground cues have weak influence from the variation of scenes,
+since the foreground cues are captured from statistic model established for each pixel.
+%
+In order to handle the imbalance between foreground and background cues,
+the intensity of background cues is adjusted according to the foreground cues captured,
+which is shown as follows:
+\begin{equation}
+C_{bk}(x,y) =\frac{\alpha_{\gamma}\cdot |\sum\limits_{(x,y)}^{ }C_{fg}(x,y)|}{\sum\limits_{(x,y)}^{ }g(0,C_{bk}(x,y))},
+\end{equation}
+where $\alpha_{\gamma}$ is the parameter to control the contribution of background cues.
+
+After the adjustment of the background cues, the super-pixels are captured for integration.
+%
+In particular,
+the SLIC \cite{6205760_2012_TPAMI} algorithm is chosen to capture super-pixels,
+because it is based on k-means, which makes the sizes of the super-pixels convenient and controlled by the number of super-pixels.
+%
+A geometric  progression is utilized to control the numbers of super-pixels under multiple levels.
+%
+Let us denote the numbers of super-pixels under multiple levels as: $ \{\alpha_{\beta} \times 2^{n} |n \in [0\ J]\}$,
+and the super-pixels controlled by these numbers are denoted as follows:
+% \{\mathcal{SP}_1,\mathcal{SP}_2, \dots \mathcal{SP}_n \} = \{ Sp_i^j}|i \in [1\ n], j \in [1\ N_i] \},
+\begin{equation}
+    Sp_i^j=\{I(x_i^j,y_i^j)|i \in [\alpha_{\beta}\ 2^n], j \in [0\ J]\}
+\end{equation}
+where $j$ is the index of levels and $i$ is the index of super-pixels under the level $j$.
+The $(x_i^j, y_i^j)$ represent the positions of pixels among a particular super-pixels $Sp_i^j$.
+% $N_i$ is the number of super-pixels in a particular level, which belong to the arithmetic progression: $N_i = a_{1} \times 2^{n}$.
+
+% Although the super-pixels are the desired container for integration,
+The key factor in our IFB model's efficiency is the alternative between
+the foreground and the background cues.
+%
+The benefit of this alternative is that any defects that exist in one kind of cue are counteracted by others.
+Therefore,
+the statistics of the foreground and background cues are used to indicate the confidence about
+whether the super-pixels are foreground or background.
+All the pixels within the same super-pixel share the same level of confidence.
+%
+Let us denoted the $(x,y)$ as positions of the pixels belong to the super-pixel $Sp_i^j$,
+the proximity is captured as follows:
+\begin{equation}
+I_p^{j}(x,y)=\frac{ \sum\limits_{ (x',y')\in Sp_i^j}^{ } (C_{fg}(x',y')+C_{bk}(x',y'))}{||Sp_i^j||},
+\end{equation}
+where the $C_{fg}(x',y')$ and $C_{bk}(x',y')$ are the foreground and the background cues located in the super-pixel $Sp_i^j$,
+and $||Sp_i^j||$ is the number of pixels among to the super-pixel $Sp_i^j$.
+%
+All the pixels belonging to $Sp_{i,j}$ then share the same proximity $I_p^{j}(x,y)$, 
+which is also the proximity of this super-pixel.
+%
+These super-pixels with their proximity constitute different proximity images according to the levels from which they were captured.
+%
+The summary of these proximity images is compared with the threshold $T_{f}$ for foreground segmentation,
+which is shown as follows:
+\begin{equation}
+    M(x,y)=g(T_{f},\frac{1}{J}\sum\limits_{j=1 }^{ J}I_{p}^j(x,y)),
+\end{equation}
+where the $M(x,y)$ is the binary mask of moving objects.
+
+During the transformation of GMM model, 
+the errors of alignment are accumulated.
+%
+To handle it,
+a strong updating strategy is proposed to handle the accumulation of errors,
+which is actually directly replace the mean of GMM model by the pixels' intensity of current frame.
+%
+In the \refeq{bk_img}, we captured the background image from the mean $u_{k}$ with the highest weight.
+%
+Therefore,
+in the strong updating procedure,
+the $u_k$ with the highest weight is replaced by the intensity of corresponding pixel.
+%
+In particular,
+the strong updating is only done in the pixels classified as background to avoid the moving objects is updated into the GMM model,
+which is shown as follows:
+\begin{displaymath}
+    \begin{split}
+        \mu_k(x,y)&=(1 - M(x,y))I(x,y)+M(x,y)\mu_k(x,y), \\
+        k&=\mathop{\argmax}_{k}{w_k}.
+    \end{split}
+\end{displaymath}
+% 
+% where the $\{p_1,p_2,\dots,p_t\}$ are the observations in a particular pixel during $t$ frames.
+% The $p_{bk}$ is actually the peak of the histogram that describes the variation
+% in the intensity of the pixel,
+% and is used to update the pixels belonging to the foreground part.
+% 
+% After the foreground segmentation,
+% there is a stronger update strategy to handle the accuminat
+% the background image $I^{bk}$ should be updated in order to adapt to the environmental variation.
+% The updating procedure occurs in three steps.
+% Firstly,
+% the background image $I^{bk}$ is transformed the same as in the GMM model from frame $t - 1$ to frame $t$.
+% Then,
+% the foreground image captured by our IFB is utilized to classify the pixels of the
+% background image into foreground and background parts.
+% For the pixels among the background cues,
+% they are directly replaced by the corresponding pixels of the current frame.
+% In contrast,
+% the pixels in the foreground part are updated by a background intensity captured from the observations in the corresponding pixels during the time sequence.
+% In particular, a simple histogram analysis can be utilized to find the background intensity, as follows:
+% \begin{equation}
+%     \begin{split}
+%         \mu_k(x,y)&=M(x,y)*I(x,y)+(1-M(x,y))*\mu_k, \\
+%         k&=\mathop{\argmax}_{k}{w_k},
+%     \end{split}
+% \end{equation}
+% where the $\{p_1,p_2,\dots,p_t\}$ are the observations in a particular pixel during $t$ frames.
+% The $p_{bk}$ is actually the peak of the histogram that describes the variation
+% in the intensity of the pixel,
+% and is used to update the pixels belonging to the foreground part.
+% 
+% 
+
+
+
+% 
+% \section{delete}
+% 
+% are the transformation function.
+% 
+% 
+% 
+% %
+% 
+% if the homography matrix $H$ 
+% 
+% 
+% distance function to evaluate that the 
+% 
+% 
+% In particular, homography transformation and the RANSAC method are used to capture $H_{bk}$.
+% For any four couples in $G$, there is a homography transformation matrix,
+% which is used as a candidate to estimate the motion of the background.
+% The RANSAC method provides enough candidates, and the one that satisfies
+% the greatest number of entries in $G$ is used as $H_{bk}$.
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% \begin{equation}
+%     \label{eq_sift}
+%     H_{bk} = \mathop{\argmax}_{H}{  \sum_{<i,j,> \in    G}g(D(H,p_{i}^{t},p_{j}^{bk}),T_{m}) } 
+% \end{equation}
+% where $p_{i}^{t}$ and $p_{j}^{bk}$ are the positions of the SIFT features belonging to the same entry of $G$, 
+% and $g(x,y)$ is a piecewise function, as follows:
+% \begin{equation}
+%     \label{piecewise_fun}
+%     g(x,y) =
+%  \begin{cases}
+%   1,  \quad x < y    \\
+%   0,  \quad otherwise  \\
+% \end{cases},
+% \end{equation}
+% In particular, homography transformation and the RANSAC method are used to capture $H_{bk}$.
+% For any four couples in $G$, there is a homography transformation matrix,
+% which is used as a candidate to estimate the motion of the background.
+% The RANSAC method provides enough candidates, and the one that satisfies
+% the greatest number of entries in $G$ is used as $H_{bk}$.
+% 
+% After obtaining the transformation matrix describing the background motion, the couples of $G$ that are relatively static compared with the background are classified as the background parts of the scene.
+% The SIFT features in the current frame belonging to the background part are used as the
+% background cues $C_{x_{i}^t,y_{i}^t}^{bk}$, shown as follows:
+% \begin{equation}
+%     C_{x_{i}^t,y_{i}^t}^{bk} = l_{i}^{t} \times K_{bk},
+% \end{equation}
+% where $(x_{i}^t,y_{i}^t)$ is the position of the SIFT in the background, and
+% $l_{i}^{t}$ is the level, which is used for the contributions of the different
+% background cues.
+% Moreover, the homography transformation assumes that the objects are located in the same image planes,
+% so there are not enough background cues captured by IFB in scenes including multiple planes.
+% In order to obtain enough background cues,
+% the procedure for capturing background cues is achieved using super-pixels segmented from the current frame,
+% because pixels belonging to the same super-pixel have a high probability of being in the same image plane.
+% Then, the background cues from all the super-pixels are combined in the integration.
+% 
+% 
+% 
+% \begin{equation}
+% \{f^t_1,f^t_2,\cdots f^t_{N_t}\},\{f^{bk}_1,f^{bk}_2,\cdots f^{bk}_{N_{bk}}\},
+% \end{equation}
+% 
+% 
+% \begin{equation}
+%     \label{piecewise_fun}
+%     g(x,y) =
+%  \begin{cases}
+%   1,  \quad x < y    \\
+%   0,  \quad otherwise  \\
+% \end{cases},
+% \end{equation}
+% 
+% 
+% 
+% 
+% 
+% %
+% Each of the SIFT features contains three components, i.e.,
+% a histogram $\vec{h}$, a position $p = (x,y)^T$, and a level $l$.
+% The histograms of these features are cross-matched to find the common parts in the current frame and the background image.
+% In particular,
+% the squared Euclidean distance is used for matching.
+% The SIFT features in a particular common part are utilized to establish a one-to-one map.
+% The $G$ is denoted as the set of couples of SIFT features and is defined as follows:
+% \begin{equation}
+%     G = \langle \{\vec{h}_{i}^{t}, p_{i}^{t}, l_{i}^{t} \}, \{\vec{h}_{j}^{bk}, p_{j}^{bk}, l_{j}^{bk} \} \rangle,
+% \end{equation}
+% where $i$ and $j$ are respectively the indices of the SIFT in the current frame and the background image.
+% The parts described by matched features are identified as parts that are common to the current frame and the background image.
+% The motion of these parts can then be captured from the difference between the locations of the features in the current frame and the background image .
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% The camera motion is usually estimated using two consecutive frames,
+% because the motion is weakest in this situation.
+% Unfortunately, moving objects with weak motion have a high probability of being recognized as static parts, thereby interfering with our extraction of the background cues.
+% To address this,
+% we maintain a background image for capturing background cues.
+% %
+% 
+% 
+% \begin{equation}
+%     p_{bk} = \mathop{\argmax}_{p}{\sum\limits_{i = 1}^{t} p_i \cap p} \quad p = \{p_1,p_2,\dots,p_t\},
+% \end{equation}
+% 
+% %
+% 
+% 
+% 
+% 
+% 
+% %
+% For other kinds of method
+% 
+% 
+% GMM model during the time sequence.
+% Moreover, in the updating procedure, 
+% the motion is eliminated according to the foreground results contained in the background image.
+% Therefore, the distraction resulting from moving objects no longer affects the extraction of background cues.
+% 
+% 
+% 
+% 
+% Background cues are identified and captured based on differences between between the current frame and the background image.
+% We explain the process of capturing background cues in frame $t$, but the procedure is actually identified for each frame.
+% The parts of the scene shown in the current frame and the background image are described by the SIFT features.
+% Let us denote the SIFT features captured in the current frame and background image as $\{Sp_{1}^{t}, Sp_{2}^t, \dots Sp_{N_t}^{t}\}$ and $\{Sp_{1}^{bk}, Sp_{2}^{bk}, \dots Sp_{N_{bk}}^{bk}\}$ respectively.
+% Each of the SIFT features contains three components, i.e.,
+% a histogram $\vec{h}$, a position $p = (x,y)^T$, and a level $l$.
+% The histograms of these features are cross-matched to find the common parts in the current frame and the background image.
+% In particular,
+% the squared Euclidean distance is used for matching.
+% The SIFT features in a particular common part are utilized to establish a one-to-one map.
+% The $G$ is denoted as the set of couples of SIFT features and is defined as follows:
+% \begin{equation}
+%     G = \langle \{\vec{h}_{i}^{t}, p_{i}^{t}, l_{i}^{t} \}, \{\vec{h}_{j}^{bk}, p_{j}^{bk}, l_{j}^{bk} \} \rangle,
+% \end{equation}
+% where $i$ and $j$ are respectively the indices of the SIFT in the current frame and the background image.
+% The parts described by matched features are identified as parts that are common to the current frame and the background image.
+% The motion of these parts can then be captured from the difference between the locations of the features in the current frame and the background image .
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% \begin{equation}
+% \{f^t_1,f^t_2,\cdots f^t_{N_t}\},\{f^{bk}_1,f^{bk}_2,\cdots f^{bk}_{N_{bk}}\},
+% \end{equation}
+% 
+% \begin{equation}
+% G=\langle f^t_i,f^{bk}_i \rangle, \quad f=\{(x,y),\vec{h}\}
+% \end{equation}
+% \begin{equation}
+%     \begin{split}
+%         &d(H,f^t_i,f^{bk}_i)= d(H,(x^t_i,y^t_i),(x^{bk}_i,y^{bk}_i)) \\
+%         &=||x^t_i-tr_x(H,x^{bk}_i, y^{bk}_i)||+||y^t_i-tr_y(H,x^{bk}_i,y^{bk}_i)|| \\
+%         &=||x^t_i-\frac{1}{\lambda }\vec{h}_1[x^{bk}\quad y^{bk}\quad 1]^T ||+||y^t_i-\frac{1}{\lambda }\vec{h}_2[x^{bk}\quad y^{bk}\quad 1]^T||
+%     \end{split}
+% \end{equation}
+% 
+% \begin{equation}
+%     \label{eq_matrix}
+%     H_{bk} = \mathop{\argmax}_{H}{\sum_{i=1}^{N}g(d(H,f^t_i,f^{bk}_i),T_{m}) } 
+% \end{equation}
+% \begin{equation}
+%     \label{piecewise_fun}
+%     g(x,y) =
+%  \begin{cases}
+%   1,  \quad x < y    \\
+%   0,  \quad otherwise  \\
+% \end{cases},
+% \end{equation}
+% 
+% 
+% For the completeness of paper, we briefly XXX:
+% \begin{equation}
+% h(x,y)=\begin{bmatrix}
+% 0 & -1 & y\\ 
+% 1 & 0 & -x\\ 
+% y & x & 0
+% \end{bmatrix}
+% \end{equation}
+% where $h(x,y)$ return the Skew-symmetric matrix of x,y.
+% \begin{equation}
+% A=[A_1\quad A_2\quad A_3\quad A_4]^T
+% \end{equation}
+% \begin{equation}
+% A_i=h(x^{bk}_i,y^{bk}_i)\otimes  h(x^{t}_i,y^{t}_i)
+% \end{equation}
+% where $\otimes$ is denoted as the Kronecker product.
+% 
+% \begin{equation}
+%     SVD(A)=USV^T
+% \end{equation}
+% he last singular vector of $V$ as the solution to $H$.
+% The right 
+% From the SVD we take the ``right singular vector'' (a column from V ) which corresponds to the smallest singular
+% value, $\omega$ 9 . This is the solution, h, which contains the coefficients of the homography matrix that best fits the points.
+% The $A(:,9)$ is reshaped.
+% 
+% \begin{equation}
+% I_{bk}(x^t_i\pm R,y^t_i\pm R)=\left\{\begin{matrix}
+% K_{bk}\quad d(H_{bk},f^t_i,f^{bk}_i) < T_m, \\ 
+% 0\quad\quad\quad\quad\quad\quad otherwise
+% \end{matrix}\right.
+% \end{equation}
+% 
+% 
+% Background cues are identified and captured based on differences between between the current frame and the background image.
+% We explain the process of capturing background cues in frame $t$, but the procedure is actually identified for each frame.
+% The parts of the scene shown in the current frame and the background image are described by the SIFT features.
+% Let us denote the SIFT features captured in the current frame and background image as $\{Sp_{1}^{t}, Sp_{2}^t, \dots Sp_{N_t}^{t}\}$ and $\{Sp_{1}^{bk}, Sp_{2}^{bk}, \dots Sp_{N_{bk}}^{bk}\}$ respectively.
+% Each of the SIFT features contains three components, i.e.,
+% a histogram $\vec{h}$, a position $p = (x,y)^T$, and a level $l$.
+% The histograms of these features are cross-matched to find the common parts in the current frame and the background image.
+% In particular,
+% the squared Euclidean distance is used for matching.
+% The SIFT features in a particular common part are utilized to establish a one-to-one map.
+% The $G$ is denoted as the set of couples of SIFT features and is defined as follows:
+% \begin{equation}
+%     G = \langle \{\vec{h}_{i}^{t}, p_{i}^{t}, l_{i}^{t} \}, \{\vec{h}_{j}^{bk}, p_{j}^{bk}, l_{j}^{bk} \} \rangle,
+% \end{equation}
+% where $i$ and $j$ are respectively the indices of the SIFT in the current frame and the background image.
+% The parts described by matched features are identified as parts that are common to the current frame and the background image.
+% The motion of these parts can then be captured from the difference between the locations of the features in the current frame and the background image .
+% 
+% As mentioned above,
+% the background consists of most of the relatively static part.
+% Hence, 
+% the SIFT features are recognized as being relatively static when the variations in their positions satisfy the same transformation matrix.
+% Therefore,
+% with the aim of capturing the background cues,
+% the transformation matrix that estimates the background motion must be captured first.
+% In this work,
+% the transformation matrix that satisfies the largest number of couples in $G$
+% is used to describe the background motion.
+% We denote the transformation matrix of background motion as $H_{bk}$, which is defined as follows:
+% \begin{equation}
+%     \label{eq_sift}
+%     H_{bk} = \mathop{\argmax}_{H}{  \sum_{<i,j,> \in    G}g(D(H,p_{i}^{t},p_{j}^{bk}),T_{m}) } 
+% \end{equation}
+% where $p_{i}^{t}$ and $p_{j}^{bk}$ are the positions of the SIFT features belonging to the same entry of $G$, 
+% and $g(x,y)$ is a piecewise function, as follows:
+% \begin{equation}
+%     \label{piecewise_fun}
+%     g(x,y) =
+%  \begin{cases}
+%   1,  \quad x < y    \\
+%   0,  \quad otherwise  \\
+% \end{cases},
+% \end{equation}
+% In particular, homography transformation and the RANSAC method are used to capture $H_{bk}$.
+% For any four couples in $G$, there is a homography transformation matrix,
+% which is used as a candidate to estimate the motion of the background.
+% The RANSAC method provides enough candidates, and the one that satisfies
+% the greatest number of entries in $G$ is used as $H_{bk}$.
+% 
+% After obtaining the transformation matrix describing the background motion, the couples of $G$ that are relatively static compared with the background are classified as the background parts of the scene.
+% The SIFT features in the current frame belonging to the background part are used as the
+% background cues $C_{x_{i}^t,y_{i}^t}^{bk}$, shown as follows:
+% \begin{equation}
+%     C_{x_{i}^t,y_{i}^t}^{bk} = l_{i}^{t} \times K_{bk},
+% \end{equation}
+% where $(x_{i}^t,y_{i}^t)$ is the position of the SIFT in the background, and
+% $l_{i}^{t}$ is the level, which is used for the contributions of the different
+% background cues.
+% Moreover, the homography transformation assumes that the objects are located in the same image planes,
+% so there are not enough background cues captured by IFB in scenes including multiple planes.
+% In order to obtain enough background cues,
+% the procedure for capturing background cues is achieved using super-pixels segmented from the current frame,
+% because pixels belonging to the same super-pixel have a high probability of being in the same image plane.
+% Then, the background cues from all the super-pixels are combined in the integration.
+% 
+% 
+% 
+% 
+% According to the \reffig{fig1}
+% 
+% 
+% %
+% After capturing the foreground cues,
+% 
+% 
+% 
+% 
+% 
+% and the details about the 
+% 
+% 
+% will explained later.
+% 
+% 
+% 
+% a particular GMM model is need for each pixel of current frame.
+% 
+% 
+% for each pixel of current frame we need find a particular GMM model 
+% 
+% 
+% which is shown as follows:
+% 
+% \begin{equation}
+% G(I(x,y)) = \sum\limits_{k = 1}^{K} w_{k}(x,y) \varPhi(I(x,y)|\theta_k(x,y))
+% \end{equation}
+% \begin{equation}
+%     G_{x,y}(I_{x,y}|\theta_k) = \sum\limits_{k = 1}^{K} w_{k} \varPhi(I_{x,y}|\theta_k)
+% \end{equation}
+% where  $\theta = \{\mu,\sigma\}$ and $\varPhi$ is the Gaussian function.
+% 
+% 
+% 
+% 
+% 
+% functions, which are then combined with the weights.
+% In particular, the weights are used to measure the contribution of each function.
+% Then, the procedure of capturing the confidence with which a pixel $I_{x,y}$ from
+% a new frame can be assigned to the foreground or background is as follows:
+% 
+% 
+% \begin{equation}
+%     I_{fg}(x^t,y^t)=\sum_{k=1}^{K}\omega_k(x^{bk},y^{bk})  \phi (I_t(x^t,y^t)|\theta _k(x^{bk},y^{bk}))
+% \end{equation}
+% 
+% For the homography matrix $H=[\vec{h}_1 \quad \vec{h}_2 \quad \vec{h}_3]^T$, there is:
+% \begin{equation}
+%        \left[
+%         \begin{matrix}
+%             \lambda x^t \\
+%             \lambda y^t \\
+%             \lambda  
+%         \end{matrix}
+%     \right] = 
+%  \left[
+%         \begin{matrix}
+%            \vec{h}_1 \\
+%            \vec{h}_2 \\
+%            \vec{h}_3
+%         \end{matrix}
+%     \right]
+%  \left[
+%         \begin{matrix}
+%             x^{bk} \\
+%             y^{bk} \\
+%             1
+%         \end{matrix}
+%     \right]
+% \end{equation}
+% 
+% 
+% \begin{equation}
+%     x^t = tr_x(H,x^{bk}, y^{bk})=\frac{1}{\lambda }\vec{h}_1[x^{bk}\quad y^{bk}\quad 1]^T
+% \end{equation}
+% \begin{equation}
+%     y^t = tr_y(H,x^{bk}, y^{bk})=\frac{1}{\lambda }\vec{h}_2[x^{bk}\quad y^{bk}\quad 1]^T
+% \end{equation}
+% \begin{equation}
+%     \lambda=\vec{h}_3[x^{bk}\quad y^{bk}\quad 1]^T
+% \end{equation}
+% 
+% \begin{equation}
+%     I_{fg}(x^{t},y^{t})=K^{fg} \cdot I_{p}(x^t,y^t)
+% \end{equation}
+% Then the parameters of GMM are updated as follows:
+% 
+% \begin{displaymath}
+%     \begin{split}
+%         \mu_k(x,y)&=\alpha_{\mu}\cdot\mu_k(x,y)+(1-\alpha_{\mu})\cdot I^t(x,y) \\
+%         \sigma_k(x,y)&=\alpha_{\sigma}\cdot\sigma_k(x,y)+(1-\alpha_{\sigma})\cdot (\mu_k(x,y) -I^t(x,y))^2 \\
+%         \omega_k(x,y)&=\frac{\alpha_{\omega} \omega_k(x,y)  }{\sum_{k=1}^{K}\omega_k(x,y)\cdot \alpha_\omega}
+%     \end{split}
+% \end{displaymath}
+% 
+% \begin{equation}
+%     \alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega} =
+%  \begin{cases}
+%      \begin{split}
+%          \alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega}, \quad if (I_t(x,y) &-\mu_k(x,y))^2 \\ 
+%          & < \sigma_k(x,y))
+%          \end{split} \\
+%   1,  \quad\quad\quad\quad\quad otherwise  \\
+% \end{cases},
+% \end{equation}
+% 
+% The GMM method assumes that the positions of the pixels remain invariant during
+% the time sequence.
+% However, in the frames obtained from a freely moving camera, 
+% the pixels do not maintain their position even for two consecutive frames.
+% The GMM model $G_{x,y}^{t - 1}$ established for pixel $(x,y)$ at
+% frame $t - 1$ is no longer effective for the same pixel in the subsequent frame.
+% In order to extend the GMM to a moving camera,
+% we capture the corresponding position $(x',y')$ in frame $t$ of $G_{x,y}^{t - 1}$
+% according to the estimation of the camera motion,
+% and the $G_{x,y}^{t - 1}$ is transmitted into $(x',y')$.
+% Moreover,
+% a homography transformation matrix $H$ is utilized to describe the transformation between position $(x,y)$ and $(x',y')$, which is defined as follows:
+% \begin{equation}
+%     D(H,p,p') = 
+%     \left\lVert  \left(
+%         \begin{matrix}
+%             x \\
+%             y \\
+%             1 
+%         \end{matrix}
+%     \right) - H_{i,j} \times \left(
+%         \begin{matrix}
+%             x' \\
+%             y' \\
+%             1
+%         \end{matrix}
+%     \right) \right\rVert_{1} \leq T_{m},
+% \end{equation}
+% where $p = [x\ y]^T$,$p' = [x'\ y']^T$, and $T_{m}$ is the acceptable computation error.
+% The $D(H,p,p')$ function is used to judge whether $H$ satisfies the transformation between two positions.
+% The details of the matrix $H$ are introduced later on, 
+% because $H$ is obtained from the procedure for capturing background cues.
+% 
+% Then, the GMM model established in $(x,y)$ of frame $t - 1$ is transmitted to a new position $(x',y')$ of frame $t$, $G_{x',y'}^{t} = G_{x,y}^{t - 1}$.
+% $G_{x,y}^{t}$ is used to capture the level of confidence for
+% whether the pixel $I_{x,y}^t$ is foreground or background.
+% These confidences are also used as the foreground cues of pixel $(x,y)$, defined as follows:
+% \begin{equation}
+%     C_{x,y}^{fg} = K_{fg} \times G_{x,y}^{t}(I_{x,y}^t), 
+% \end{equation}
+% where $C_{x,y}^{fg}$ denotes the foreground cues in pixel $(x,y)$, and $K_{fg}$ is
+% an argument to describe the contribution of the foreground cues.
+% 
+% \subsection{Extraction of Background Cues}
+% \label{sec3_bc}
+% Traditionally, the background is assumed to be the static part of a scene.
+% However,
+% in the frames obtained from a moving camera,
+% the locations of objects vary and the static parts do not exist.
+% Therefore, the traditional definition of a background is invalid in a moving camera.
+% To get round this problem, 
+% we assume the majority of the relatively static part to be the background.
+% Under this assumption,
+% the SIFT features are used to describe the different parts of the scene.
+% The variation in their positions can be used to estimate the motion of these parts.
+% Features with the same motion estimation are recognized as relatively static compared with each other.
+% The background is assumed as the part that includes the largest number of relatively static SIFT features.
+% 
+% The camera motion is usually estimated using two consecutive frames,
+% because the motion is weakest in this situation.
+% Unfortunately, moving objects with weak motion have a high probability of being recognized as static parts, thereby interfering with our extraction of the background cues.
+% To address this,
+% we maintain a background image for capturing background cues.
+% The background image is an image initialized, transformed and updated using the same process as the GMM model during the time sequence.
+% Moreover, in the updating procedure, 
+% the motion is eliminated according to the foreground results contained in the background image.
+% Therefore, the distraction resulting from moving objects no longer affects the extraction of background cues.
+% 
+% Background cues are identified and captured based on differences between between the current frame and the background image.
+% We explain the process of capturing background cues in frame $t$, but the procedure is actually identified for each frame.
+% The parts of the scene shown in the current frame and the background image are described by the SIFT features.
+% Let us denote the SIFT features captured in the current frame and background image as $\{Sp_{1}^{t}, Sp_{2}^t, \dots Sp_{N_t}^{t}\}$ and $\{Sp_{1}^{bk}, Sp_{2}^{bk}, \dots Sp_{N_{bk}}^{bk}\}$ respectively.
+% Each of the SIFT features contains three components, i.e.,
+% a histogram $\vec{h}$, a position $p = (x,y)^T$, and a level $l$.
+% The histograms of these features are cross-matched to find the common parts in the current frame and the background image.
+% In particular,
+% the squared Euclidean distance is used for matching.
+% The SIFT features in a particular common part are utilized to establish a one-to-one map.
+% The $G$ is denoted as the set of couples of SIFT features and is defined as follows:
+% \begin{equation}
+%     G = \langle \{\vec{h}_{i}^{t}, p_{i}^{t}, l_{i}^{t} \}, \{\vec{h}_{j}^{bk}, p_{j}^{bk}, l_{j}^{bk} \} \rangle,
+% \end{equation}
+% where $i$ and $j$ are respectively the indices of the SIFT in the current frame and the background image.
+% The parts described by matched features are identified as parts that are common to the current frame and the background image.
+% The motion of these parts can then be captured from the difference between the locations of the features in the current frame and the background image .
+% 
+% As mentioned above,
+% the background consists of most of the relatively static part.
+% Hence, 
+% the SIFT features are recognized as being relatively static when the variations in their positions satisfy the same transformation matrix.
+% Therefore,
+% with the aim of capturing the background cues,
+% the transformation matrix that estimates the background motion must be captured first.
+% In this work,
+% the transformation matrix that satisfies the largest number of couples in $G$
+% is used to describe the background motion.
+% We denote the transformation matrix of background motion as $H_{bk}$, which is defined as follows:
+% \begin{equation}
+%     \label{eq_sift}
+%     H_{bk} = \mathop{\argmax}_{H}{  \sum_{<i,j,> \in    G}g(D(H,p_{i}^{t},p_{j}^{bk}),T_{m}) } 
+% \end{equation}
+% where $p_{i}^{t}$ and $p_{j}^{bk}$ are the positions of the SIFT features belonging to the same entry of $G$, 
+% and $g(x,y)$ is a piecewise function, as follows:
+% \begin{equation}
+%     \label{piecewise_fun}
+%     g(x,y) =
+%  \begin{cases}
+%   1,  \quad x < y    \\
+%   0,  \quad otherwise  \\
+% \end{cases},
+% \end{equation}
+% In particular, homography transformation and the RANSAC method are used to capture $H_{bk}$.
+% For any four couples in $G$, there is a homography transformation matrix,
+% which is used as a candidate to estimate the motion of the background.
+% The RANSAC method provides enough candidates, and the one that satisfies
+% the greatest number of entries in $G$ is used as $H_{bk}$.
+% 
+% After obtaining the transformation matrix describing the background motion, the couples of $G$ that are relatively static compared with the background are classified as the background parts of the scene.
+% The SIFT features in the current frame belonging to the background part are used as the
+% background cues $C_{x_{i}^t,y_{i}^t}^{bk}$, shown as follows:
+% \begin{equation}
+%     C_{x_{i}^t,y_{i}^t}^{bk} = l_{i}^{t} \times K_{bk},
+% \end{equation}
+% where $(x_{i}^t,y_{i}^t)$ is the position of the SIFT in the background, and
+% $l_{i}^{t}$ is the level, which is used for the contributions of the different
+% background cues.
+% Moreover, the homography transformation assumes that the objects are located in the same image planes,
+% so there are not enough background cues captured by IFB in scenes including multiple planes.
+% In order to obtain enough background cues,
+% the procedure for capturing background cues is achieved using super-pixels segmented from the current frame,
+% because pixels belonging to the same super-pixel have a high probability of being in the same image plane.
+% Then, the background cues from all the super-pixels are combined in the integration.
+% 
+\section{Experiments}
+In this section, we present the comprehensive experiments for evaluating our IFB model.
+In the \refsec{evalution_metric}, the dataset and the metrics for evaluation are introduced.
+%
+The complementarity between the foreground and background cues is then demonstrated in the \refsec{evaluation_fg_bk_cues}.
+We also devise another IFB model in which the background cues are eliminated,
+and compared this with the completed IFB model.
+Finally, in the \refsec{evaluation_fbms}, we provide a quantitative evaluation of IFB.
+%
+The IFB model is then compared with GBSSP \cite{Lim2014_2014_ECCV}, calMoSeg\cite{2016_ECCV_Bideau2016} and MLayer \cite{2017_ICCV_zhu2017multilayer}
+in the FBMS \cite{6682905_2014_TPAMI} benchmark.
+
+% Videos & GBSSP\cite{Lim2014_2014_ECCV} & calMoSeg\cite{2016_ECCV_Bideau2016}  & MLayer\cite{2017_ICCV_zhu2017multilayer}  & $\text{IFB}_{SU}$ & $\text{IFB}_{KA}$ & $\text{IFB}_{SI}$ & Videos & GBSSP\cite{Lim2014_2014_ECCV} & calMoSeg\cite{2016_ECCV_Bideau2016} & MLayer\cite{2017_ICCV_zhu2017multilayer}  &  $\text{IFB}_{SU}$ &  $\text{IFB}_{KA}$  &  $\text{IFB}_{SI}$  \\
+\subsection{Evaluation Metric and Dataset}
+\label{evalution_metric}
+To the best of our knowledge,
+there is no acknowledged standard benchmark for evaluating background subtraction methods with a freely moving camera.
+A number of datasets for evaluation have been proposed (e.g., \cite{6751306_2013_ICCV},\cite{Lim2014_2014_ECCV}, \cite{6682905_2014_TPAMI}, \cite{7303924_2015_TCSVT} and \cite{2016_ECCV_Bideau2016}), among which the FBMS \cite{6682905_2014_TPAMI} dataset is the largest.
+We therefore chose FMBS \cite{6682905_2014_TPAMI} as the benchmark for evaluating the IFB model.
+%
+The FBMS dataset \cite{6682905_2014_TPAMI} contains 59 video sequences, and is a very challenging dataset.
+The camera motion includes translation, rotation and scaling transformations,
+and the diversity of the scenes also contributes to its complexity.
+Therefore, any comparison using the FMBS dataset is fair and comprehensive.
+% During the evaluation,
+% the results of all the compared algorithms captured from the implementation provided by authors.
+%
+% For our IFB model, 
+% all the results are run under the same arguments as those shown in \reftab{tab_para}.
+%
+% Moreover, we used the SIFT, the SURF and the KAZE as the examples respectively to show that our IFB model
+% is a framework which is effective with the input of different kinds of spatio-temporal features.
+
+During the comparison, the Re(Recall), Pr(Precision) and Fm(F-measure) metrics are used for evaluation.
+Re and Pr are
+measures of completeness and accurateness, respectively. Fm is a
+combination of Re and Pr. The
+definition of these metrics is as follows:
+\begin{displaymath}
+    \begin{aligned}
+        Re = \frac{TP}{TP + FN},
+        Pr = \frac{TP}{TP + FP},
+        Fm = \frac{2 \times Pr \times Re}{Pr + Re}
+    \end{aligned},
+\end{displaymath}
+where TP and FP are True Positive and False Positive. In detail,
+positive represents foreground, and negative represents background. True
+means the result of this detection is right, and Negative means the result of this
+detection is wrong.
+Thus, TP means that the result of the detection is foreground as
+well as being the ground-truth.
+
+\begin{figure*}[!t]	% FIGURE: figure/fig1 
+\centering
+\includegraphics[width=\textwidth]{figure/fig_roc}
+\DeclareGraphicsExtensions.
+	\caption{The ROC curves of IFB and IFB without background cues in cats03, bear01, rabbits01, cars5, tennis and farm01 video sequences.}
+\label{fig_FBMS_ROC}
+\end{figure*}
+
+\subsection{Complementarity between Foreground and Background cues}
+\label{evaluation_fg_bk_cues}
+In this section, we discuss the complementarity between foreground and background cues.
+The efficiency of the IFB is derived from the complementarity between foreground and background cues, without which the IFB cannot segment moving objects accurately.
+In the IFB model, the foreground cues are used to produce a rough foreground.
+Meanwhile, the background cues that show the background parts of scenes can be used as compensation for the errors of foreground cues.
+%
+To demonstrate this,
+we devise another IFB model whose background cues are eliminated ($\text{IFB}_{nobk}$),
+and the $\text{IFB}_{nobk}$ is compared with the IFB model to demonstrate the need for background cues.
+In particular, six videos from the FBMS dataset are chosen to allow comparisons to be made.
+The quantitative and qualitative comparisons are shown in \reffig{fig_FBMS_nobk} and \reftab{tab_FBMS_nobk}, respectively.
+Moreover, the ROC curves of each method are shown in \reffig{fig_FBMS_ROC} to reduce the effect of subjectivity in the comparisons.
+
+As shown in \reftab{tab_FBMS_nobk},
+the IFB model has higher Fm scores than their counterparts without background cues.
+Since the Fm metric is the most important,
+it is fair to say that the foreground produced by the IFB is better than that segmented by $\text{IFB}_{nobk}$.
+In addition, due to the lack of background cues,
+all the foreground cues, whether right or wrong, are used in the foreground segmentation.
+Thus, the foreground segmented by $\text{IFB}_{nobk}$ is more complete, and has a higher Re score.
+However, since the foreground cues are rough cues and include several errors,
+the Pr scores of $\text{IFB}_{nobk}$ are lower than those of IFB.
+In the IFB model, since the background cues are used to compensate for defects in foreground cues,
+the IFB provides an obvious improvement in the Pr metrics but with tiny sacrifice in terms of the Re scores obtained.
+Ultimately, the Fm scores of the IFB model are higher than those of $\text{IFB}_{nobk}$,
+and the importance of the background cues is clear.
+
+Finally, in order to reduce the effect of subjectivity in the comparison between IFB and $\text{IFB}_{nobk}$,
+the ROC curves of each method are shown in the \reffig{fig_FBMS_ROC}.
+As shown in \reffig{fig_FBMS_ROC},
+the ROC curves of IFB are closer to the top-right points than those of $\text{IFB}_{nobk}$.
+This phenomenon means that benefits of the IFB model outweigh the costs in terms of foreground segmentation.
+The foregrounds shown in \reffig{fig_FBMS_nobk} also reflect this phenomenon,
+since the foregrounds of IFB have a higher accuracy with a tiny sacrifice in terms of completeness.
+
+\begin{figure}[!t]	% FIGURE: figure/fig1 
+\centering
+\includegraphics[width=.5\textwidth]{figure/fig_roc_fg}
+\DeclareGraphicsExtensions.
+    \caption{Qualitative comparison between IFB and $\text{IFB}_{nobk}$.}
+\label{fig_FBMS_nobk}
+\end{figure}
+
+% \begin{table}[!t]				% TABLE
+%     \caption{Quantitative comparison between IFB and $\text{IFB}_{nobk}$ using Re,Pr, Fm metrics.}
+% \label{tab_FBMS_nobk}
+% \centering
+% \begin{tabular}{|lcc|}
+% \hline
+%     Videos & $\text{IFB}_{nobk}$(Re,Pr,Fm) & IFB(Re,Pr,Fm) \\
+% \hline
+%     camel01       &  (\textbf{0.9845,} 0.7635, 0.8600)& (0.9754, \textbf{0.8468,} \textbf{0.9066)}	\\
+%     cars7         &  (\textbf{0.9872,} 0.5559, 0.7113)& (0.9723, \textbf{0.7660,} \textbf{0.8569)}	\\
+%     cats03        &  (\textbf{0.9778,} 0.4982, 0.6601)& (0.8672, \textbf{0.7158,} \textbf{0.7843)}	\\
+%     dogs01        &  (\textbf{0.7963,} 0.6774, 0.7320)& (0.7572, \textbf{0.8200,} \textbf{0.7873)}	\\
+%     meerkats01    &  (\textbf{0.9991,} 0.2177, 0.3576)& (0.9923, \textbf{0.4918,} \textbf{0.6577)}	\\
+%     tennis        &  (\textbf{0.9261,} 0.3434, 0.5011)& (0.9164, \textbf{0.4885,} \textbf{0.6373)}	\\
+% \hline                                                                  
+%     Average       &  (\textbf{0.9452,} 0.5094, 0.6370)& (0.9134, \textbf{0.6882,} \textbf{0.7717)}	\\
+% \hline
+% \end{tabular}
+% \end{table}
+
+\begin{table}[!t]				% TABLE
+    \caption{Quantitative comparison between IFB and $\text{IFB}_{nobk}$ using Re,Pr, Fm metrics.}
+\label{tab_FBMS_nobk}
+\centering
+    \begin{tabular}{|l@{  }c@{  }c@{  }cc@{  }c@{  }c@{  }c|}
+\hline
+     \multirow{2}{*}{Videos} & \multicolumn{3}{c}{$\text{IFB}_{nobk}$} &  & \multicolumn{3}{c|}{IFB} \\
+    \cline{2-4} \cline{6-8}
+       & Re &Pr & Fm &  &  Re & Pr & Fm  \\
+\hline
+cats03          &   (\textbf{0.9472} ,\   &  0.5428 ,\  &   0.6901 )   &  &    (0.9063 ,\	 &  \textbf{0.7955} ,\	 &  \textbf{0.8473} )   \\
+bear01          &   (\textbf{0.9854} ,\   &  0.4806 ,\  &   0.6461 )   &  &    (0.8695 ,\	 &  \textbf{0.8673} ,\	 &  \textbf{0.8684} )   \\
+rabbits01       &   (\textbf{0.9530} ,\   &  0.4433 ,\  &   0.6051 )   &  &    (0.9510 ,\	 &  \textbf{0.8730} ,\	 &  \textbf{0.9103} )   \\
+cars5           &   (\textbf{0.9887} ,\   &  0.3693 ,\  &   0.5378 )   &  &    (0.9437 ,\	 &  \textbf{0.7108} ,\	 &  \textbf{0.8109} )   \\
+tennis          &   (\textbf{0.9364} ,\   &  0.4558 ,\  &   0.6132 )   &  &    (0.8808 ,\	 &  \textbf{0.7345} ,\	 &  \textbf{0.8010} )   \\
+farm01          &   (\textbf{0.9887} ,\   &  0.3897 ,\  &   0.5591 )   &  &    (0.8954 ,\	 &  \textbf{0.7462} ,\	 &  \textbf{0.8140} )   \\
+\hline                                                                                                           
+Average         &   (\textbf{0.9666} ,\   &  0.4469 ,\  &   0.6086 )   &  &    (0.9078 ,\    &  \textbf{0.7879} ,\   &  \textbf{0.8420} )   \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Quantitative Evaluation of IFB}
+\label{evaluation_fbms}
+The IFB model is then compared with GBSSP \cite{Lim2014_2014_ECCV}, calMoSeg\cite{2016_ECCV_Bideau2016} and MLayer \cite{2017_ICCV_zhu2017multilayer}
+in the FBMS \cite{6682905_2014_TPAMI} benchmark.
+%
+Both of these compared algorithms are based on optical flow.
+%
+In particular, the MLayer is based the large displacement optical flow (LDOF) proposed in \cite{2011_TPAMI_OPTICALFLOW_TBOX},
+which is a quite popular optical flow extraction algorithm.
+%
+The quantitative and qualitative comparisons are shown in \reftab{tab_FBMS} and \reffig{fig_FBMS} respectively.
+%
+The results of compared algorithms are captured by the implementation provided by authors.
+%
+For our IFB model, 
+all the results are run under the same arguments as those shown in \reftab{tab_para}.
+%
+Moreover, the results of $\text{IFB}_{SU}$, $\text{IFB}_{KA}$, $\text{IFB}_{SI}$ are captured by the IFB model with the input of the
+SURF \cite{2006_SURF}, the KAZE \cite{2012_KAZE} and the SIFT \cite{lowe2004distinctive} features respectively.
+%
+Due to the length of paper, only the results of $\text{IFB}_{SI}$ are shown in the \reffig{fig_FBMS},
+and the video sequences in the same category are discussed together.
+
+
+
+% 
+% The FBMS dataset \cite{6682905_2014_TPAMI} was then utilized for the
+% comparison between the IFB and
+% the GBSSP \cite{Lim2014_2014_ECCV}, and the calMoSeg \cite{2016_ECCV_Bideau2016}.
+% Qualitative and quantitative comparisons are shown in \reffig{fig_FBMS} and
+% \reftab{tab_FBMS} respectively.
+% The FBMS dataset \cite{6682905_2014_TPAMI} contains 59 video sequences, and is a very challenging dataset.
+% The camera motion includes translation, rotation and scaling transformations,
+% and the diversity of the scenes also contributes to its complexity.
+% Therefore, any comparison using the FMBS dataset is fair and comprehensive.
+
+\begin{figure*}[!t]	% FIGURE: figure/fig1 
+\centering
+\includegraphics[width=\textwidth]{figure/fg_FBMS_all}
+\DeclareGraphicsExtensions.
+	\caption{Qualitative comparison of the $\text{IFB}_{SI}$, which is IFB model with the input of the SIFT features \cite{lowe2004distinctive}, 
+	the GBSSP \cite{Lim2014_2014_ECCV}, the calMoSeg \cite{2016_ECCV_Bideau2016} and the MLayer \cite{2017_ICCV_zhu2017multilayer} in FBMS dataset.}
+\label{fig_FBMS}
+\end{figure*}
+
+\begin{table*}[!t]				% TABLE
+	\caption{Quantitative comparison of the $\text{IFB}_{SU}$, the $\text{IFB}_{KA}$ ,the $\text{IFB}_{SI}$, 
+	which is the IFB model with the input of the SURF \cite{2006_SURF}, the KAZE \cite{2012_KAZE} and the SIFT \cite{lowe2004distinctive} features respectively, 
+	and three state-of-the-art algorithms on the FBMS dataset using FM metric.}
+\label{tab_FBMS}					% LABEL: tab1
+\centering
+    \begin{tabular}{|l@{ }c@{ }c@{ }c@{  }c@{  }c@{  }c|l@{}c@{ }c@{ }c@{  }c@{  }c@{  }c|}
+\hline
+        Videos & GBSSP\cite{Lim2014_2014_ECCV} & calMoSeg\cite{2016_ECCV_Bideau2016}  & MLayer\cite{2017_ICCV_zhu2017multilayer}  & $\text{IFB}_{SU}$ & $\text{IFB}_{KA}$ & $\text{IFB}_{SI}$ & Videos & GBSSP\cite{Lim2014_2014_ECCV} & calMoSeg\cite{2016_ECCV_Bideau2016} & MLayer\cite{2017_ICCV_zhu2017multilayer}  &  $\text{IFB}_{SU}$ &  $\text{IFB}_{KA}$  &  $\text{IFB}_{SI}$  \\
+\hline
+dogs01         & 0.36  & \textbf{0.82}  & \textbf{0.82}  & 0.79  & 0.77  & 0.79   &     lion02         & 0.41  & 0.66  & 0.13  & 0.79  & \textbf{0.81}  & 0.80         \\
+dogs02         & 0.59  & 0.62  & 0.82  & 0.91  & \textbf{0.93}  & 0.92   &     ducks01        & 0.21  & 0.31  & 0.43  & 0.64  & 0.59  & \textbf{0.70}         \\
+bear01         & 0.51  & 0.48  & 0.00  & \textbf{0.86}  & \textbf{0.86}  & \textbf{0.86}   &     meerkats01     & 0.20  & \textbf{0.75}  & 0.24  & 0.44  & 0.45  & 0.64         \\
+bear02         & 0.38  & 0.82  & \textbf{0.88}  & 0.80  & 0.80  & 0.85   &     cars1          & \textbf{0.93}  & 0.72  & 0.91  & 0.65  & 0.66  & 0.70         \\
+cats01         & 0.67  & 0.46  & 0.08  & 0.81  & \textbf{0.84}  & 0.81   &     cars2          & 0.54  & 0.59  & \textbf{0.85}  & 0.83  & 0.83  & 0.79         \\
+cats02         & 0.63  & 0.29  & 0.08  & \textbf{0.86}  & 0.85  & 0.82   &     cars3          & 0.85  & 0.37  & \textbf{0.94}  & 0.68  & 0.66  & 0.73         \\
+cats03         & 0.23  & 0.73  & 0.74  & 0.75  & 0.79  & \textbf{0.84}   &     cars4          & 0.81  & 0.55  & \textbf{0.90}  & 0.81  & 0.79  & 0.88         \\
+cats04         & 0.22  & 0.17  & 0.03  & 0.23  & 0.32  & \textbf{0.53}   &     cars5          & 0.47  & 0.85  & \textbf{0.86}  & 0.68  & 0.71  & 0.81         \\
+cats05         & 0.07  & \textbf{0.75}  & 0.05  & 0.64  & 0.64  & 0.64   &     cars6          & 0.85  & 0.76  & \textbf{0.92}  & 0.64  & 0.61  & 0.63         \\
+cats06         & 0.11  & \textbf{0.64}  & 0.02  & 0.55  & 0.62  & 0.60   &     cars7          & 0.77  & 0.67  & \textbf{0.90}  & 0.74  & 0.73  & 0.76         \\
+cats07         & \textbf{0.85}  & 0.53  & 0.31  & 0.82  & 0.81  & 0.82   &     cars8          & \textbf{0.90}  & 0.84  & 0.86  & 0.61  & 0.77  & 0.81         \\
+rabbits01      & 0.37  & 0.14  & 0.00  & 0.67  & 0.89  & \textbf{0.91}   &     cars9          & 0.63  & 0.66  & 0.59  & \textbf{0.68}  & 0.62  & 0.64         \\
+rabbits02      & 0.47  & 0.44  & 0.22  & \textbf{0.87}  & 0.86  & 0.86   &     cars10         & \textbf{0.77}  & 0.66  & 0.52  & 0.63  & 0.63  & 0.64         \\
+rabbits03      & 0.26  & 0.34  & 0.15  & \textbf{0.60}  & 0.58  & 0.52   &     people1        & 0.84  & 0.73  & \textbf{0.85}  & 0.53  & 0.63  & 0.53         \\
+rabbits04      & 0.25  & 0.23  & 0.02  & 0.49  & 0.41  & \textbf{0.51}   &     people2        & 0.67  & 0.83  & \textbf{0.96}  & 0.68  & 0.72  & 0.80         \\
+rabbits05      & 0.39  & 0.29  & 0.10  & 0.69  & \textbf{0.70}  & 0.46   &     tennis         & 0.29  & 0.42  & 0.61  & 0.57  & 0.72  & \textbf{0.80}         \\
+horses01       & 0.33  & 0.53  & 0.87  & 0.68  & 0.79  & \textbf{0.88}   &     marple1        & 0.77  & \textbf{0.80}  & 0.62  & 0.47  & 0.49  & 0.52         \\
+horses02       & 0.44  & 0.25  & 0.00  & 0.84  & \textbf{0.90}  & \textbf{0.90}   &     marple2        & 0.25  & 0.44  & 0.11  & 0.45  & 0.45  & \textbf{0.47}         \\
+horses03       & 0.67  & 0.50  & 0.28  & 0.69  & 0.69  & \textbf{0.73}   &     marple3        & 0.62  & \textbf{0.83}  & 0.58  & 0.47  & 0.60  & 0.69         \\
+horses04       & 0.34  & \textbf{0.50}  & 0.35  & 0.26  & 0.45  & 0.35   &     marple4        & 0.72  & 0.56  & 0.35  & 0.89  & 0.86  & \textbf{0.91}         \\
+horses05       & 0.57  & 0.47  & 0.13  & 0.55  & \textbf{0.65}  & 0.63   &     marple5        & \textbf{0.72}  & 0.56  & 0.62  & 0.58  & 0.66  & 0.61         \\
+horses06       & 0.30  & 0.35  & 0.50  & 0.55  & \textbf{0.57}  & 0.50   &     marple6        & \textbf{0.58}  & 0.51  & 0.12  & 0.25  & 0.12  & 0.09         \\
+people03       & \textbf{0.64}  & 0.65  & 0.00  & 0.51  & 0.50  & 0.59   &     marple7        & 0.59  & \textbf{0.74}  & 0.45  & 0.64  & 0.73  & 0.68         \\
+people04       & 0.51  & 0.36  & \textbf{0.66}  & 0.52  & 0.53  & 0.62   &     marple8        & 0.36  & 0.26  & 0.37  & 0.83  & \textbf{0.87}  & 0.56         \\
+people05       & 0.22  & 0.23  & \textbf{0.76}  & 0.46  & 0.49  & 0.56   &     marple9        & \textbf{0.89}  & 0.59  & 0.20  & 0.21  & 0.28  & 0.14         \\
+camel01        & 0.28  & 0.13  & 0     & \textbf{0.91}  & 0.90  & \textbf{0.91}   &     marple10       & 0.46  & \textbf{0.57}  & 0.40  & 0.36  & 0.53  & 0.48         \\
+farm01         & 0.64  & 0.59  & 0.02  & 0.68  & 0.75  & \textbf{0.81}   &     marple11       & 0.65  & 0.54  & 0.21  & 0.56  & 0.66  & \textbf{0.68}         \\
+giraffes01     & \textbf{0.76}  & 0.43  & 0.20  & 0.70  & 0.64  & 0.69   &     marple12       & 0.67  & \textbf{0.69}  & 0.07  & 0.64  & 0.65  & 0.34         \\
+goats01        & 0.23  & \textbf{0.69}  & 0.42  & 0.46  & 0.56  & 0.64   &     marple13       & \textbf{0.75}  & 0.68  & 0.68  & 0.71  & 0.74  & 0.72         \\
+\cline{8-14}
+lion01         & 0.53  & 0.56  & 0.18  & 0.82  & \textbf{0.83}  & \textbf{0.83}   &     Average        & 0.53  & 0.55  & 0.43  & 0.64  & 0.67  & \textbf{0.68}         \\
+\hline
+\end{tabular}
+\end{table*}
+
+As shown in \reftab{tab_FBMS},
+benefiting from the complementarity foreground and background cues,
+both the $\text{IFB}_{SU}$, $\text{IFB}_{KA}$ and $\text{IFB}_{SI}$ achieves an obvious improvement in terms of the average Fm metric.
+%
+Moreover, the results of IFB with different kinds of features are close,
+which demonstrates that the efficiency of our IFB is not relied on the input,
+any kind of spatio-temporal features can be used as the input of IFB framework.
+%
+% our IFB framework achieves an obvious improvement in terms of the average Fm metric with the input of three different kinds features.
+%
+% Due to the large numbers of video sequences in the FBMS dataset,
+% the video sequences in the same category are discussed together.
+In the dog01-02 videos,
+the dogs are moving across and toward the cameras.
+%
+The challenges of these video sequences derive from the complexity of the camera motion, which includes rotation and scaling transformations.
+%
+For example, in the dog01 video sequence, a dog walks across the scene.
+%
+The motion of camera corresponds to a translation transformation.
+%
+In this condition, the optical flow has sufficient ability to classify the foreground and background.
+Moreover,
+in the dog02 video sequence,
+the camera motion becomes more complex,
+the optical flow cannot handle this situation,
+and both the GBSSP \cite{Lim2014_2014_ECCV} and the calMoSeg \cite{2016_ECCV_Bideau2016} show relatively poor performances.
+%
+However, due to the excellent performances of the LDOP \cite{2011_TPAMI_OPTICALFLOW_TBOX},
+the MLayer \cite{2017_ICCV_zhu2017multilayer} still work well.
+%
+In contrast, 
+the homography transformation utilized in our proposed approach is robust to both these kinds of transformation,
+and our IFB model achieves good performances for both two video sequences.
+
+In the bear01-bear02 video sequences,
+the bears are moving slowly,
+and camera motion is much stronger than the moving objects.
+%
+In the condition,
+the optical flow is not sensitive enough to classify the motion of camera and moving objects.
+%
+Especially, in the bear01 video sequence, the MLayer \cite{2017_ICCV_zhu2017multilayer} is invalided.
+%
+In our IFB model,
+the GMM model is used to capture the foreground cues.
+%
+It is a statistic model and has well ability to handle the slow moving objects.
+%
+Hence,
+the background cues of IFB model are balanced by the foregrounds.
+%
+Therefore,
+the IFB model has well ability for the segmentation of slow moving objects from strong camera motion.
+% %
+% Especially the be
+% 
+% the camera motion is much 
+% 
+% The IFB model only shows promising performances in the bear01-bear02 video sequences.
+% In these kinds of video sequences,
+% the bears are moving slowly and there are obvious shadows around them.
+% Since the GMM is sensitive to the change of illumination,
+% the IFB cannot handle the shaded regions of the scenes very well.
+% Moreover, 
+% the GMM is a statistical model that detects moving objects according to variation in the pixels.
+% If the moving objects are moving slowly, the variation in the pixels is too weak to be classified as foreground.
+% Thus, the GMM fails to detect pixels belonging to slow-moving objects,
+% and this is also the reason why the IFB model only achieves promising results in these video sequences.
+
+In the cats01-07 and rabbits01-05 video sequences,
+the IFB model achieves good performances.
+%The IFB model works well in the cats01-07 and rabbits01-05 video sequences.
+In the cats01-07 video sequences,
+the cats produce a sudden motion, which is the main challenge of these sequences, in which the camera moves quickly in a short time.
+%
+In this condition, it is hard to use optical flow to describe the sudden motion with any accuracy,
+and the GBSSP \cite{Lim2014_2014_ECCV}, calMoSeg \cite{2016_ECCV_Bideau2016} and the MLayer \cite{2017_ICCV_zhu2017multilayer} do not work well in these kinds of videos.
+%
+Hence, the foregrounds shown in \reffig{fig_FBMS} also demonstrate the accuracy problem of the compared algorithms.
+In contrast,
+the background image of the IFB model is updated at each frame.
+Therefore,
+there is no strong camera motion between the current frame and the background
+image.
+Hence, the homography transformation of IFB has a good ability to handle fast
+camera motion, and our IFB model performs well for these video
+sequences.
+Unfortunately, however,
+our IFB model cannot address the camouflage of the cat's coat,
+because the foreground cues are captured from the GMM, which is based on color information.
+This is the reason why our IFB model achieves only limited Fm scores in the cats04
+video sequence.
+
+In the horses01-06 video sequences, the IFB model achieves obvious improvement.
+%for the horse01-06 video sequences.
+In these video sequences, the horses are running fast in the natural scenes.
+Besides the strong camera motion, the complex natural scene is another challenge of these video sequences.
+%
+It is so hard to produce a accurate motion estimation in the complex natural scenes,
+% Accurate optical flow is not well captured in complex natural scenes,
+and compared algorithms show poor performances in these videos.
+%
+Fortunately,
+the rough cues are enough for IFB model to produce the accurate foregrounds.
+%
+The integration of foreground and background cues improve the efficiency of IFB model,
+%
+and our IFB model shows good performance in these video sequences.
+%
+Hence, in the people03-05 and camel01 video sequences,
+the environment of the scenes is more complex.
+Particularly in the camel01 video sequence,
+the GBSSP\cite{Lim2014_2014_ECCV} and the calMoSeg \cite{2016_ECCV_Bideau2016} only achieve Fm scores of 28\% and 13\%, and the MLayer \cite{2017_ICCV_zhu2017multilayer} is completely invalided.
+However, in our IFB model,
+the extended GMM captures rough cues for integration,
+and the alternative between the foreground and background cues improves the
+accuracy of the foreground segmentation.
+Finally, the IFB model achieves Fm scores of 91\%, which is much higher than the other algorithms.
+
+In the farm01, giraffes01, goats01, lion01-02, ducks01, meerkats01 and tennis video sequences,
+All the scenes in these video sequences are natural.
+The motion of these animals is unpredictable and the environment of the scenes is complex.
+In these kinds of scenes, 
+it is very hard to estimate the camera motion exactly.
+However, the focus of
+our IFB model is on integrating the rough cues and accurate estimation of motion is unnecessary.
+The accuracy and efficiency are improved by the super-pixels used for integration.
+Therefore,
+our IFB model shows promising performances in these video sequences.
+
+Unfortunately, in the reset video of FBMS dataset \cite{6682905_2014_TPAMI},
+which contains the cars1-10, people1-2 and marple1-13, the numbers of frames in several videos are limited.
+%
+For example, the cars1 video only contains 19 frames.
+%
+In this condition,
+the statistic model like GMM does not have enough frames to produce the enough foreground cues for integration.
+%
+Most parts of moving objects are recognized as background.
+%
+Hence, without the enough learning frames,
+the background image captured by GMM model includes moving object, which effect the extraction of background cues.
+%
+Both failure of foreground and background contribute the limited performances of IFB model in these video sequences.
+%
+Experimentally, the IFB model work well when the video includes at least 40 frames.
+%
+Especially,
+%the IFB model achieves poor performances 
+In the marple6 and the marple9 video sequences.
+%
+The moving object are contained in the initial frame and are loitering during time sequence.
+%
+Similar to the situation of limited video frames,
+the IFB cannot capture the enough cues for integration,
+which is the main reason that the performances of IFB is quite poor.
+
+
+
+%
+% H
+% 
+% 
+% In particular,
+% 
+% 
+% a background image without moving objects.
+% %
+% Therefore,
+% 
+% 
+% 
+% 
+% produce a background image for 
+% 
+% the GMM does not have enough frames to produce a background image w
+% 
+% 
+% \cite{2014_TPMA_F}
+% 
+% dataset, 
+% 
+% 
+% 
+% 
+% 
+% 
+% In the farm01, lion01, lion02, ducks01 video sequences,
+% our IFB model achieves good performances compared with GBSSP
+% \cite{Lim2014_2014_ECCV} and calMoSeg \cite{2016_ECCV_Bideau2016}.
+% 
+% 
+% Unfortunately, 
+% The proposed approach does not work well in the lion01, giraffes01, goats01, and
+% meerkats01 video sequences.
+% The motion of moving objects is too slow to be recognized as foreground.
+% In particular, the issue of updating the GMM is the main reason of the failure of the IFB in these video sequences.
+% Finally,
+% the FBMS dataset includes cars1-10 and marple1-13, which are the same videos in the comparison between the IFB model and the FOF method.
+% Because the results of IFB in the cars1-10 and marple1-13 video sequences have
+% already been discussed above,
+% we do not discuss them in this section.
+
+% Fortunately, all these video sequences have sufficient frames for training,
+% and the extended GMM of IFB can capture sufficient rough foreground cues for integration.
+% Morever, since the rough cues are enough for the IFB model to produce accurate
+% foregrounds,
+% 
+% and the IFB model achieves obvious improvement in these videos.
+% %
+% 
+% 
+% Neither the GBSSP \cite{Lim2014_2014_ECCV} nor calMoSeg \cite{2016_ECCV_Bideau2016} work well for these video sequences.
+% %
+% However, the MLayer \cite{2017_ICCV_zhu2017multilayer} still achieves promissing results in the horses01,
+% since the LDOP 
+% 
+% 
+% Fortunately, all these video sequences have sufficient frames for training,
+% and the extended GMM of IFB can capture sufficient rough foreground cues for integration.
+% Morever, since the rough cues are enough for the IFB model to produce accurate
+% foregrounds,
+% our IFB model shows good performance in all these video sequences.
+
+% 
+% \begin{table}[!t]			% TABLE
+% \caption{The Parameter value of IFB model.}
+% \label{tab_para}				% LABEL: tab7
+% \centering
+% % \begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+%  \begin{tabular*}{0.35\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+% \hline
+%      $T_{m}$ & $T_{f}$ & $K_{bk}$  & $\alpha_{\lambda}$  &  $\alpha_{1}$ & & $J$    $  \{\alpha_{1} \times 2^{n} |n \in [0\ J]\}$   \\
+% \hline
+%     $16$     & $75$    & $-255$   & $2$  & $   \{ 16 \times 2^{n} |n \in [0\ 7]\}$ \\
+% \hline
+% \end{tabular*}
+% \end{table}
+
+
+% The updating rates of $\{\alpha_{\mu},\alpha_{\sigma}, \alpha_{\omega}\} = \{0.99,0.99,1.05\}$ were used,
+% and the number of Gaussian function $K=3$ was used.
+
+
+% \begin{table}[!t]				% TABLE
+%     \caption{Quantitative comparison between IFB and $\text{IFB}_{nobk}$ using Re,Pr, Fm metrics.}
+% \label{tab_FBMS_nobk}
+% \centering
+%     \begin{tabular}{|l@{  }c@{  }c@{  }cc@{  }c@{  }c@{  }c|}
+% \hline
+%     \begin{tabular}{|l@{  }c@{  }c@{  }cc@{  }c@{  }c@{  }c|}
+% \hline
+%      \multirow{2}{*}{Videos} & \multicolumn{3}{c}{$\text{IFB}_{nobk}$} &  & \multicolumn{3}{c|}{IFB} \\
+%     \cline{2-4} \cline{6-8}
+% 
+
+% \begin{table}[!t]			% TABLE
+% \caption{The Parameter value of IFB model.}
+% \label{tab_para}				% LABEL: tab7
+% \centering
+% % \begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+%  \begin{tabular}{|ccccccccccc|}
+% \hline
+%      \multicolumn{6}{|c}{IFB} & & \multicolumn{4}{c|}{GMM} \\
+%      \cline{1-6}\cline{8-11}
+%      $T_{m}$ & $T_{f}$ & $K_{bk}$  & $\alpha_{\lambda}$  &  $\alpha_{\beta}$ &  $J$ & & $\alpha_{\mu}$ &  $\alpha_{\sigma}$ & $\alpha_{\omega}$  & $K$   \\
+% % \hline
+%      $16$     & $75$    & $-255$   & $2$  &  $16$ & $7$ &  & $0.99$ & $0.99$ & $1.05$ & $3$ \\
+% \hline
+% \end{tabular}
+% \end{table}
+% 
+%     
+%     \begin{table}[!t]			% TABLE
+% \caption{The Parameter value of IFB model.}
+% \label{tab_para}				% LABEL: tab7
+% \centering
+% % \begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+%  \begin{tabular}{|cccccc|c|cccc|}
+% \hline
+%      \multicolumn{6}{|c|}{IFB} & & \multicolumn{4}{|c|}{GMM} \\
+%      \cline{1-6}\cline{8-11}
+%      $T_{m}$ & $T_{f}$ & $K_{bk}$  & $\alpha_{\lambda}$  &  $\alpha_{\beta}$ &  $J$ & & $\alpha_{\mu}$ &  $\alpha_{\sigma}$ & $\alpha_{\omega}$  & $K$   \\
+% \hline
+%      $16$     & $75$    & $-255$   & $2$  &  $16$ & $7$ &  & $0.99$ & $0.99$ & $1.05$ & $3$ \\
+% \hline
+% \end{tabular}
+% \end{table}
+% 
+% 
+% \begin{table}[!t]			% TABLE
+% \caption{The Parameter value of IFB model.}
+% \label{tab_para}				% LABEL: tab7
+% \centering
+% % \begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+%  \begin{tabular}{|cccccc|cccc|}
+% \hline
+%      \multicolumn{6}{|c|}{IFB} &  \multicolumn{4}{|c|}{GMM} \\
+% %     \cline{1-6}\cline{8-11}
+%      \hline
+%      $T_{m}$ & $T_{f}$ & $K_{bk}$  & $\alpha_{\lambda}$  &  $\alpha_{\beta}$ &  $J$ &  $\alpha_{\mu}$ &  $\alpha_{\sigma}$ & $\alpha_{\omega}$  & $K$   \\
+% \hline
+%      $16$     & $75$    & $-255$   & $2$  &  $16$ & $7$ &   $0.99$ & $0.99$ & $1.05$ & $3$ \\
+% \hline
+% \end{tabular}
+% \end{table}
+% 
+% 
+% 
+% \begin{table}[!t]			% TABLE
+% \caption{The Parameter value of the IFB framework and the GMM model.}
+% \label{tab_para}				% LABEL: tab7
+% \centering
+% % \begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+%  \begin{tabular}{|c|ccccc|cccc|}
+% \hline
+%      \multicolumn{6}{|c|}{IFB} &  \multicolumn{4}{|c|}{GMM} \\
+% %     \cline{1-6}\cline{8-11}
+%      \hline
+%      $T_{m}$ & $T_{f}$ & $K_{bk}$  & $\alpha_{\lambda}$  &  $\alpha_{\beta}$ &  $J$ &  $\alpha_{\mu}$ &  $\alpha_{\sigma}$ & $\alpha_{\omega}$  & $K$   \\
+% % \hline
+%      $16$     & $75$    & $-255$   & $2$  &  $16$ & $7$ &   $0.99$ & $0.99$ & $1.05$ & $3$ \\
+% \hline
+% \end{tabular}
+% \end{table}
+
+
+\begin{table}[!t]			% TABLE
+\caption{The Parameter value of the IFB framework and the GMM model.}
+\label{tab_para}				% LABEL: tab7
+\centering
+% \begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |ccccc|}
+ \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+     \multicolumn{6}{|c|}{IFB} &  \multicolumn{4}{|c|}{GMM} \\
+%     \cline{1-6}\cline{8-11}
+     \hline
+     $T_{m}$ & $T_{f}$ & $K_{bk}$  & $\alpha_{\lambda}$  &  $\alpha_{\beta}$ &  $J$ &  $\alpha_{\mu}$ &  $\alpha_{\sigma}$ & $\alpha_{\omega}$  & $K$   \\
+\hline
+     $16$     & $75$    & $-255$   & $2$  &  $16$ & $7$ &   $0.99$ & $0.99$ & $1.05$ & $3$ \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+\subsection{Implementation Details and Time Complexity}
+The complete source code of our IFB framework is available at \url{https://github.com/zhaochenqiu/IntegrationFgBk}.
+%
+The runtime of proposed approach is shown as XXX.
+%
+For implementation part,
+the key part are implemented by C++.
+%
+In particular, the transformation of model,
+the extraction of spatio-temporal features,
+and the integration of features is implemented by C++.
+%
+The other parts are implemented by Matlab.
+%
+Hence,
+for the hierarchical integration part,
+the multi-threads is used.
+%
+The runtime of proposed approach is related to the size of image
+and the parameters of proposed approach.
+%
+As shown in the \reftab{tab_runtime}.
+%
+The image with size XXX achieves 2 fps a seconds with fair performances.
+%
+The main part is the extraction of spatio-temporal features,
+the homography extraction, and the integration part.
+%
+However, if there need good performances,
+the second parameters is recommended,
+but the fps becomes 1 fps by 2 seconds.
+\begin{table}[!t]			% TABLE
+\caption{The Parameter value of IFB model.}
+\label{tab_runtime}				% LABEL: tab7
+\centering
+\begin{tabular*}{0.4\textwidth}{@{\extracolsep{\fill}} |cccc|}
+\hline
+$T_{m}$ & $T_{f}$ & $(K_{b},K_{f})$  & $  \{a_{1} \times 2^{n} |n \in [1,N_s]\}$   \\
+\hline
+$4$     & $75$    & $(-255,255)$     & $   \{ 8 \times 2^{n} |n \in [1,7]\}$ \\
+\hline
+\end{tabular*}
+\end{table}
+
+
+\section{Conclusions}
+In this paper,
+we proposed the IFB model for background subtraction for the case of a freely moving camera.
+Unlike previous work in which attempts were made to improve the accuracy of the estimation of motion,
+our IFB focuses on integrating rough foreground and background cues for foreground segmentation.
+In particular, 
+foreground cues are detected by a GMM model with the estimation of background motion,
+while background cues are captured from the geometric constraints between the SIFT features.
+Then, super-pixels under multiple levels are utilized to integrate these cues.
+The efficiency of IFB results from the complementarity between foreground and background cues.
+The accuracy of the proposed approach is improved though the utilization of super-pixels under multiple levels.
+A comprehensive experiment to compare our results with the state-of-the-art shows the efficiency of our framework and points to its potential for use in practical applications.
+
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+\bibliographystyle{IEEEtran}  
+\bibliography{ref}  
+
+
+\end{document}
