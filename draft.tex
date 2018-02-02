@@ -109,17 +109,49 @@ It remains a challenging problem to proposed a general solution for background s
 % vehicles and humans, thus saving us huge amount of computing resources.
 % Typically, Background subtraction is a binary classification task that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene.
 
-% 第二段介绍你的解决思路
-With a huge number of works, existed algorithms have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
-However, background Subtraction is still unsolved because of the diversity in background scenes and the changes originated from the camera itself.
-Scene variations can be in many forms such as, camera jitter, dynamic background, bad weather, illumination changes, intermittent object motion.
-This is principally because the major methods, in most cases, try to find a universal solution by generating some universal background models for later linear classification; for instance, the earlier Frame Difference Methods, trying to get a fixed image as background to classify each pixels.
-The fundamental problem lies in that linear classifier might not be powerful enough for the job, due to the complexity and the diversity of natural scenes.
 
+% With a huge number of works, existed algorithms have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
+% However, background Subtraction is still unsolved because of the diversity in background scenes and the changes originated from the camera itself.
+% Scene variations can be in many forms such as, camera jitter, dynamic background, bad weather, illumination changes, intermittent object motion.
+% for instance, the earlier Frame Difference Methods, trying to get a fixed image as background to classify each pixels.
+% The fundamental problem lies in that linear classifier might not be powerful enough for the job, due to the complexity and the diversity of natural scenes.
+% 第二段介绍你的解决思路
+
+% 说明问题的本质是什么 
+
+% 以这个本质为基础来评价现存方法
+
+% 现存方法失败的原因是什么
+
+% 我们的方法针对这个原因怎么样了
+
+% XXX 为什么效果会好，同时也是我们方法的创新点, 最重要的还要结合图来说，
+
+% 总结方法的思路
 
 % 第三段介绍具体是怎么做的
+% 首先一句到两句，最多３句话总结你的方法的过程
+
+% 补充方法的细节
+
+% 这些细节带来的好处
+
+% 最后整个ｌｉｓｔ把方法的contribution 列出来
+The contribution of proposed approach are summarized as follows:
+\begin{itemize}
+    \item We proposed the Deep Feature Transformation Learning model for background subtraction in complexly natural scenes.
+        % 以前怎么做的
+        Unlike previous XXX
+        % 我们这么做有什么好处
+
+        % 为什么要reshape 
+    \item The observations in a particular pixel are reshaped into block 
+        % 这么做额目的是什么，好处什么
+\end{itemize}
+
 In order to present a better and universal solution, we proposed the Deep Pixels’ Variation Learning (DPVL) model for Background Subtraction in diversely natural scenes.
 In our method, the main job is to transform the sequence of pixels into another sequence which is easy for classification.
+%XXX introduction 里最好不要出现公式
 \begin{equation}
     sq_1 = \{p_1,p_2,\cdots, p_n\} -> sq_2 = \{f_1, f_2, \cdots, f_n\}
 \end{equation}
@@ -132,6 +164,7 @@ And a random initialized FCN network is trained to learn the historical observat
 We take advantage of the strong learning ability of FCN to learn a new representation of the Pixel’s observation patches in a new space where the pixels can be easily classified to background and foreground.
 
 \section{Related Work}
+%  XXX 我觉的针对方法使用的特征对方法分类比较容易。例如颜色特征，纹理特征，时空间特征,最后引出你的，特征转换
 Over the last few decades, Background subtraction has been well studied. Meanwhile, a huge number of methods were proposed. These methods can be broadly categorized into pixels-based, region-based, frame-based and Deep Learning.
 
 \subsection{A. pixels-based methods}
