@@ -45,17 +45,25 @@
 
 
 \begin{abstract}
-% the background of problems
-    sdf
-
-One of the main challenges of Background Subtraction comes from the diversity and complexity of real-world scenes.
-While most of previous works in this field were proposed by designing an artificial model, we tend to present a self-adaption solution, by combining the fully convolutional networks, which is named as the Deep Pixels’ Variation Learning model (DPVL).
-Our main job is to find a new representation of pixels’ historical observations in a new feature space.
-In this paper, videos are divided into fixed length image blocks, which are later transformed into the pixel’s observation patches as the input of a FCN for learning the variation of pixels.
+% 背景建模是一个复杂的问题
+Background subtraction is a fundamental problem of computer vision.
+% 为什么复杂
+The main challenges of background subtraction comes from the diversity and the complexity of natural scenes.
+% 以前的工作是怎么做的
+Plenty of previous works are proposed to handle this problem by artificial model.
+% 我们是怎么做的
+%Previous works in this field were proposed by designing an artificial model, 
+In this paper,
+we propose a self-adaption solution with the utilization of convolutional neural networks, 
+and a novel background subtraction model named Deep Feature Transformation Learning is proposed.
+% 动机是什么
+With the motivation of finding a new representation of pixels’ historical observations in a new feature space.
+% 怎么做的
+The videos are divided into fixed length image blocks, which are later transformed into the pixel’s observation patches as the input of a FCN for learning the variation of pixels.
 We conduct our training and prediction processes on block level.
 The architecture of the FCN is devised from the semantic segmentation problem.
-Experiment shows that our model has a strong learning ability to the patterns of those permutations of pixels’ variation.
-We compare our method with some of the state-of-art methods… 
+% 效果好
+Comparisons with several state-of-the-art algorithms in well-known benchmark show the superiority of proposed approach.
 \end{abstract}
 
 \begin{IEEEkeywords} 
