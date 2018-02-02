@@ -58,7 +58,7 @@ we propose a self-adaption solution with the utilization of convolutional neural
 and a novel background subtraction model named Deep Feature Transformation Learning is proposed.
 % 动机是什么
 With the motivation of finding a new representation of pixels’ historical observations in a new feature space.
-% 怎么做的
+% 怎么做的 XXX 这两句话介绍方法，但我实在是看不懂，你再改改
 The videos are divided into fixed length image blocks, which are later transformed into the pixel’s observation patches as the input of a FCN for learning the variation of pixels.
 We conduct our training and prediction processes on block level.
 The architecture of the FCN is devised from the semantic segmentation problem.
@@ -67,23 +67,57 @@ Comparisons with several state-of-the-art algorithms in well-known benchmark sho
 \end{abstract}
 
 \begin{IEEEkeywords} 
-    Background Subtraction, Freely Moving Camera, Foreground and Background Cues,
+    Background Subtraction, Feature Transformation, Deep Learning,
 \end{IEEEkeywords}
 
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Background subtraction or foreground object detection, as a fundamental problem in computer vision, has been much discussed with the increasing number of outdoor cameras over the last few decades.
-It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.
-vehicles and humans, thus saving us huge amount of computing resources.
-Typically, Background subtraction is a binary classification task that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene.
+% introduction 的第一段介绍这个问题为什么有做的意义
+% 这个问题的意义
+Background subtraction or foreground object detection is a fundamental problem of computer vision, 
+which has been developed over the last few decades.
+% 难点在哪
+The main challenges of this problem comes from the diversely natural scenes,
+such as the illumination variation \cite{2017_REVIEW_7914756}, wrapping tree \cite{2014_CVIU_SOBRAL20144} and running water \cite{Bouwmans2014}.
+% 现状是什么
+Previous work already achieve well performances in the scenes with low complexity.
+% 现有的方法是怎么做的
+In particular,
+a large numbers of studies are focus designing artificial model according to the characteristic of a particular scenes.
+%　效果如何
+Example, the multiple background model are proposed for dynamic background,
+and the texture are used to handle the shadow of objects.
+%　为什么这个问题还有做下去的意义
+However,
+in view of
+the continuous growth in videos obtained from diversely natural scenes,
+more challenging scenes are proposed for background subtraction.
+%　总结，这个问题很难，还能做
+It remains a challenging problem to proposed a general solution for background subtraction in all exist and potential scenes.
+%
+% 
+% 
+% robust background 
+% 
+% via moving cameras
+% in recent years, the matter of background subtraction for
+% moving cameras has attracted sustained levels of interest from
+% researchers
+% 
+% It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.
+% vehicles and humans, thus saving us huge amount of computing resources.
+% Typically, Background subtraction is a binary classification task that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene.
 
+% 第二段介绍你的解决思路
 With a huge number of works, existed algorithms have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
 However, background Subtraction is still unsolved because of the diversity in background scenes and the changes originated from the camera itself.
 Scene variations can be in many forms such as, camera jitter, dynamic background, bad weather, illumination changes, intermittent object motion.
 This is principally because the major methods, in most cases, try to find a universal solution by generating some universal background models for later linear classification; for instance, the earlier Frame Difference Methods, trying to get a fixed image as background to classify each pixels.
 The fundamental problem lies in that linear classifier might not be powerful enough for the job, due to the complexity and the diversity of natural scenes.
 
+
+% 第三段介绍具体是怎么做的
 In order to present a better and universal solution, we proposed the Deep Pixels’ Variation Learning (DPVL) model for Background Subtraction in diversely natural scenes.
 In our method, the main job is to transform the sequence of pixels into another sequence which is easy for classification.
 \begin{equation}
@@ -102,17 +136,17 @@ Over the last few decades, Background subtraction has been well studied. Meanwhi
 
 \subsection{A. pixels-based methods}
 \label{sec_spa}
+% 把你想引的论文都贴上，太多了，而且你的Zhi Zeng et al. 是ｔｍ的谁啊？？
 The most widely used algorithms in Background subtraction are pixels-based methods.
-And one of the famous method is Gaussian Mixture Model (GMM), in which a GMM is used to model the history over time of pixel’s intensity values.
+And one of the famous method is Gaussian Mixture Model (GMM) \cite{Zivkovic2004}, in which a GMM is used to model the history over time of pixel’s intensity values.
 It is assumed that pixels are independent from their neighbors.
 Incoming pixels are labeled as background if there exists a Gaussian in the GMM, where the distance between its mean and the pixel lies within a certain bound.
 For learning the parameters, that maximize the likelihood, the authors proposed an online method that approximates the Expectation Maximization (EM) algorithm.
 
-In XXX , Mingliang Chen et al.
-propose a background subtraction algorithm using hierarchical superpixels segmentation, spanning trees and optical flow.
-Their Background model combine the GMM with constrains of temporal and spatial from optical flow and superpixels.
+In XXX , Mingliang Chen et al.\ \cite{2017_TPAMI_GANGWANG} propose a background subtraction algorithm using hierarchical super-pixels segmentation, spanning trees and optical flow.
+Their Background model combine the GMM with constrains of temporal and spatial from optical flow and super-pixels \cite{6205760_2012_TPAMI}.
 
-Kim et al used a codebook to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model.
+Kim et al.\ \cite{Kim2004} used a codebook to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model.
 This allows them efficient in memory and speed compared with other background modeling techniques.
 The final foreground is detected by a distance measurement in a cylindrical color model.
 
@@ -188,16 +222,6 @@ We explain the details of the procedures of capturing the observation patches an
 The complete system is illustrated in Figure XXX.
 We use a set of input and ground true images to generalize the Pixels’ Variation Permutations, and reshape them into fixed-size image patches as and fed into a FCN.
 After reassembling the patches into the complete output frame, it is post-processed, yielding the final segmentation of the respective video frame.
-
-
-
-% 
-% 
-% \begin{figure}[!t]	\centering
-% \includegraphics[width=\linewidth]{figure/extraction.pdf}
-% \DeclareGraphicsExtensions.
-% \caption{Extraction of foreground and background cues .}
-% \label{fig_extraction}		\end{figure}
 
 \subsection{A. Image blocks to observation  patches}
 \label{sec3_fc}
