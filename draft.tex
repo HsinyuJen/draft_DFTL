@@ -59,9 +59,12 @@ and a novel background subtraction model named Deep Feature Transformation Learn
 % 动机是什么
 With the motivation of finding a new representation of pixels’ historical observations in a new feature space.
 % 怎么做的 XXX 这两句话介绍方法，但我实在是看不懂，你再改改
-The videos are divided into fixed length image blocks, which are later transformed into the pixel’s observation patches as the input of a FCN for learning the variation of pixels.
-We conduct our training and prediction processes on block level.
-The architecture of the FCN is devised from the semantic segmentation problem.
+% We conduct our training and prediction processes on block level.
+The videos are divided into image blocks, which are later transformed into the pixel’s observation patches.
+Moreover, these patches are taken as the input of a Fully Convolutional Network(FCN). 
+With the strong learning ability of FCN, we can finally get a new representation from raw RGB data, which is easier for the classification.
+
+The architecture of the FCN proposed in this paper is devised from the semantic segmentation problem.
 % 效果好
 Comparisons with several state-of-the-art algorithms in well-known benchmark show the superiority of proposed approach.
 \end{abstract}
@@ -89,9 +92,7 @@ a large numbers of studies are focus designing artificial model according to the
 Example, the multiple background model are proposed for dynamic background,
 and the texture are used to handle the shadow of objects.
 %　为什么这个问题还有做下去的意义
-However,
-in view of
-the continuous growth in videos obtained from diversely natural scenes,
+However, in view of the continuous growth in videos obtained from diversely natural scenes,
 more challenging scenes are proposed for background subtraction.
 %　总结，这个问题很难，还能做
 It remains a challenging problem to proposed a general solution for background subtraction in all exist and potential scenes.
@@ -118,50 +119,77 @@ It remains a challenging problem to proposed a general solution for background s
 % 第二段介绍你的解决思路
 
 % 说明问题的本质是什么 
+Typically, Background subtraction can be viewed as a binary classification, where pixels in video stream are divided into two
+types, either foreground or background.
 
 % 以这个本质为基础来评价现存方法
+With a huge number of works, existed algorithms have already achieved well performances in the scenes of low diversity or complexity,
+such as the indoor scenes. However, those performance on real-world scenes like dynamic background, bad weather, illumination changes,
+intermittent object motion are still not satisffied.
 
 % 现存方法失败的原因是什么
+This is principally because the major methods, in most cases, try to find a universal solution by generating some universal 
+background models for later linear classification; for instance, the earlier Frame Difference Methods, trying to get a fixed 
+image as background to classify each pixels. The fundamental problem lies in that linear classifier might not be powerful enough for the job,
+due to the complexity and the diversity of natural scenes.
 
-% 我们的方法针对这个原因怎么样了
+%我们的方法针对这个原因怎么样了
+In order to present a better and universal solution, we proposed the Deep Feature Transformation Learning model for Background Subtraction 
+in complexly natural scenes.
 
 % XXX 为什么效果会好，同时也是我们方法的创新点, 最重要的还要结合图来说，
+With the strong learning ability of FCN, we can easily get a new representation of pixels' historical observations which are much easier and clearer to distinguish.
 
 % 总结方法的思路
+In our method, the main job is to transform the sequence of pixels into another sequence which is easy for classification.
+
+sq1 = {p_1,p_2,...p_n} -> sq2 = {f_1,f_2,...f_n}                     (1)
+
+For sq1, it is a sequence of pixels' intensity, which is hard to classify which entry is foreground or background.
+But in sq2, it is more easy to classified, since the output of the network is the label of each entry in sequence.
 
 % 第三段介绍具体是怎么做的
+More particularly, videos are divided into image blocks at the beginning. Then, pixel's observation patches are extracted from these blocks and sent to a FCN.
+The FCN will learn and transform these patches into prediction patches where pixels are clearly for classification.
 % 首先一句到两句，最多３句话总结你的方法的过程
 
 % 补充方法的细节
+In this paper, pixel’s observation patches are proposed to describe the historical observation of pixels and also as the input of our network. 
+A random initialized FCN network is trained to learn the historical observation of pixels and generate a new representation in a new feature space.
 
 % 这些细节带来的好处
+We take advantage of the strong learning ability of FCN to learn a new representation of the Pixel’s observation patches in a new space where 
+the pixels can be easily classified to background and foreground. 
 
 % 最后整个ｌｉｓｔ把方法的contribution 列出来
 The contribution of proposed approach are summarized as follows:
+(1) We present the Pixel's observation patches which give us the ability to process the pixel's historical observation with a FCN.
+(2) We present a novel FCN architecture for Background Subtraction.
+ 
 \begin{itemize}
-    \item We proposed the Deep Feature Transformation Learning model for background subtraction in complexly natural scenes.
+    \item    
         % 以前怎么做的
-        Unlike previous XXX
+        Most existed methods are based on Background models. 
+        Unlike previous Background model based algorithms, we focus on the pixels stream itself, trying to find a space where the new representation
+        of pixels are easier to distinguish. 
         % 我们这么做有什么好处
+        The reason why we choose this way for the job is because we can't find a perfect background model which can adapt to all kinds of nature 
+        scenes and various tasks. In this condition, we avoid to build a universal background model. And the experiment shows a good performance 
+        compared with some state-of-art methods.
 
         % 为什么要reshape 
-    \item The observations in a particular pixel are reshaped into block 
+    \item The observations in a particular pixel are reshaped into blocks, that's because our network needs fixed size input, we also tried different 
+        size of input.
         % 这么做额目的是什么，好处什么
 \end{itemize}
-
-In order to present a better and universal solution, we proposed the Deep Pixels’ Variation Learning (DPVL) model for Background Subtraction in diversely natural scenes.
-In our method, the main job is to transform the sequence of pixels into another sequence which is easy for classification.
 %XXX introduction 里最好不要出现公式
 \begin{equation}
     sq_1 = \{p_1,p_2,\cdots, p_n\} -> sq_2 = \{f_1, f_2, \cdots, f_n\}
 \end{equation}
 For $sq_1$, it is a sequence of pixels' intensity, which is hard to classify which entry is foreground or background.
 %
-But in $sq_2$, it is more easy to classified, since the output of
+But in $sq_2$, it is more easy to classified, since the output of the network is the label of each entry in sequence.
 
-In this paper, pixel’s observation patches are proposed to describe the historical observation of pixels.
-And a random initialized FCN network is trained to learn the historical observation of pixels and generate a new representation in a new feature space.
-We take advantage of the strong learning ability of FCN to learn a new representation of the Pixel’s observation patches in a new space where the pixels can be easily classified to background and foreground.
 
 \section{Related Work}
 %  XXX 我觉的针对方法使用的特征对方法分类比较容易。例如颜色特征，纹理特征，时空间特征,最后引出你的，特征转换
