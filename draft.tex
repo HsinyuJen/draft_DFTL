@@ -111,7 +111,7 @@ It remains a challenging problem to proposed a general solution for background s
 % Typically, Background subtraction is a binary classification task that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene.
 \begin{figure}[!t]	% FIGURE: figure/fig1 
 \centering
-\includegraphics[width=.5\textwidth]{figure/figu1}
+\includegraphics[width=.5\textwidth]{figure/fig1}
 \DeclareGraphicsExtensions.
     \caption{The illustration of Proposed approach}
 \label{fig_FBMS_nobk}
@@ -150,7 +150,7 @@ With the strong learning ability of FCN, we can easily get a new representation 
 % 总结方法的思路
 In our method, the main job is to transform the sequence of pixels into another sequence which is easy for classification.
 
-sq1 = {p_1,p_2,...p_n} -> sq2 = {f_1,f_2,...f_n}                     (1)
+% sq1 = {p_1,p_2,...p_n} -> sq2 = {f_1,f_2,...f_n}                     (1)
 
 For sq1, it is a sequence of pixels' intensity, which is hard to classify which entry is foreground or background.
 But in sq2, it is more easy to classified, since the output of the network is the label of each entry in sequence.
