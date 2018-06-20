@@ -1,0 +1,758 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.4.22)  21 JUN 2018 00:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./typeinst.tex
+(./typeinst.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(./llncs.cls
+Document Class: llncs 2014/03/31 v2.19 
+ LaTeX document class for Lecture Notes in Computer Science
+(d:/texlive/2017/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(d:/texlive/2017/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(d:/texlive/2017/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
+\c@tracingmulticols=\count87
+\mult@box=\box26
+\multicol@leftmargin=\dimen103
+\c@unbalance=\count88
+\c@collectmore=\count89
+\doublecol@number=\count90
+\multicoltolerance=\count91
+\multicolpretolerance=\count92
+\full@width=\dimen104
+\page@free=\dimen105
+\premulticols=\dimen106
+\postmulticols=\dimen107
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box27
+\last@line=\box28
+\maxbalancingoverflow=\dimen108
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count93
+\c@finalcolumnbadness=\count94
+\last@try=\dimen109
+\multicolovershoot=\dimen110
+\multicolundershoot=\dimen111
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+\mc@col@check@num=\count95
+) (./aliascnt.sty
+Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
+
+(./remreset.sty))
+\c@chapter=\count96
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 365.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 366.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 367.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 368.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
+\tocchpnum=\dimen112
+\tocsecnum=\dimen113
+\tocsectotal=\dimen114
+\tocsubsecnum=\dimen115
+\tocsubsectotal=\dimen116
+\tocsubsubsecnum=\dimen117
+\tocsubsubsectotal=\dimen118
+\tocparanum=\dimen119
+\tocparatotal=\dimen120
+\tocsubparanum=\dimen121
+\@tempcntc=\count97
+\fnindent=\dimen122
+\c@@inst=\count98
+\c@@auth=\count99
+\c@auco=\count100
+\instindent=\dimen123
+\authrun=\box52
+\authorrunning=\toks14
+\tocauthor=\toks15
+\titrun=\box53
+\titlerunning=\toks16
+\toctitle=\toks17
+\c@theorem=\count101
+\c@case=\count102
+\c@conjecture=\count103
+\c@corollary=\count104
+\c@definition=\count105
+\c@example=\count106
+\c@exercise=\count107
+\c@lemma=\count108
+\c@note=\count109
+\c@problem=\count110
+\c@property=\count111
+\c@proposition=\count112
+\c@question=\count113
+\c@solution=\count114
+\c@remark=\count115
+\headlineindent=\dimen124
+) (d:/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(d:/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(d:/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(d:/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(d:/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(d:/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(d:/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(d:/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen125
+\Gin@req@width=\dimen126
+)
+(d:/texlive/2017/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks20
+\verbatim@line=\toks21
+\verbatim@in@stream=\read1
+)
+(d:/texlive/2017/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+(d:/texlive/2017/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
+
+(d:/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count116
+\calc@Bcount=\count117
+\calc@Adimen=\dimen127
+\calc@Bdimen=\dimen128
+\calc@Askip=\skip45
+\calc@Bskip=\skip46
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count118
+\calc@Cskip=\skip47
+)
+(d:/texlive/2017/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+(d:/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip48
+
+For additional information on amsmath, use the `?' option.
+(d:/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(d:/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen129
+))
+(d:/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen130
+)
+(d:/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count119
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count120
+\leftroot@=\count121
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count122
+\DOTSCASE@=\count123
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+\big@size=\dimen131
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+\macc@depth=\count124
+\c@MaxMatrixCols=\count125
+\dotsspace@=\muskip10
+\c@parentequation=\count126
+\dspbrk@lvl=\count127
+\tag@help=\toks23
+\row@=\count128
+\column@=\count129
+\maxfields@=\count130
+\andhelp@=\toks24
+\eqnshift@=\dimen132
+\alignsep@=\dimen133
+\tagshift@=\dimen134
+\tagwidth@=\dimen135
+\totwidth@=\dimen136
+\lineht@=\dimen137
+\@envbody=\toks25
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count131
+\l_MT_multwidth_dim=\dimen138
+\origjot=\skip51
+\l_MT_shortvdotswithinadjustabove_dim=\dimen139
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen140
+\l_MT_above_intertext_sep=\dimen141
+\l_MT_below_intertext_sep=\dimen142
+\l_MT_above_shortintertext_sep=\dimen143
+\l_MT_below_shortintertext_sep=\dimen144
+) (d:/texlive/2017/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip52
+\multirow@cntb=\count132
+\multirow@dima=\skip53
+\bigstrutjot=\dimen145
+)
+(d:/texlive/2017/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+)
+(d:/texlive/2017/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (./typeinst.aux)
+\openout1 = `typeinst.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+
+(d:/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count133
+\scratchdimen=\dimen146
+\scratchbox=\box56
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count136
+\MPscratchDim=\dimen147
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks28
+) (d:/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(d:/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(d:/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(d:/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(d:/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Try loading font information for U+msa on input line 88.
+
+(d:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+
+(d:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 88.
+
+(d:/texlive/2017/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ô in font cmr9!
+ [1
+
+
+{d:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+ [2] [3]
+<figure/fig1.png, id=19, 578.16pt x 433.62pt>
+File: figure/fig1.png Graphic file (type png)
+<use figure/fig1.png>
+Package pdftex.def Info: figure/fig1.png  used on input line 198.
+(pdftex.def)             Requested size: 347.12354pt x 260.33942pt.
+ [4] [5 <./figure/fig1.png>]
+<figure/fig2.png, id=26, 749.199pt x 508.7808pt>
+File: figure/fig2.png Graphic file (type png)
+<use figure/fig2.png>
+Package pdftex.def Info: figure/fig2.png  used on input line 235.
+(pdftex.def)             Requested size: 347.12354pt x 235.73442pt.
+[6] [7 <./figure/fig2.png>]
+! Missing delimiter (. inserted).
+<to be read again> 
+                   \sum@ 
+l.273 loss_{(H_p,H_gt)}= \left \sum
+                                   _{x\in X,y\in Y} H_{gt}(x,y) \log
+? 
+! Missing delimiter (. inserted).
+<to be read again> 
+                   ,
+l.275 ...}(x,y))\log{(1-Sigmoid(H_p(x,y))}\right ,
+                                                  
+? 
+
+Underfull \vbox (badness 5302) has occurred while \output is active []
+
+ [8]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+
+[9]
+
+LaTeX Warning: Reference `tab1' on page 10 undefined on input line 315.
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+<figure/fig3.png, id=50, 1206.75844pt x 685.8122pt>
+File: figure/fig3.png Graphic file (type png)
+<use figure/fig3.png>
+Package pdftex.def Info: figure/fig3.png  used on input line 318.
+(pdftex.def)             Requested size: 347.12354pt x 197.26889pt.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ò in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+[10]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+ [11 <./figure/fig3.png>]
+
+! LaTeX Error: Unknown float option `a'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.327 \begin{table}[tab1]
+                         
+? 
+
+! LaTeX Error: Unknown float option `1'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.327 \begin{table}[tab1]
+                         
+? 
+
+Overfull \hbox (148.40416pt too wide) in paragraph at lines 331--349
+ [][] 
+ []
+
+
+! LaTeX Error: Unknown float option `a'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.351 \begin{table}[tab2]
+                         
+? 
+
+! LaTeX Error: Unknown float option `2'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.351 \begin{table}[tab2]
+                         
+? 
+
+! LaTeX Error: Unknown float option `a'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.368 \begin{table}[tab3]
+                         
+? 
+
+! LaTeX Error: Unknown float option `3'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.368 \begin{table}[tab3]
+                         
+? 
+! Undefined control sequence.
+l.373 \toprule
+              
+? 
+! Undefined control sequence.
+<recently read> \midrule 
+                         
+l.374 ...FWFC          & Ours          \\ \midrule
+                                                  
+? 
+! Undefined control sequence.
+<recently read> \bottomrule 
+                            
+l.385 ...4          & \textbf{0.97} \\ \bottomrule
+                                                  
+? 
+
+Overfull \hbox (49.35632pt too wide) in paragraph at lines 372--387
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab1' on page 12 undefined on input line 389.
+
+[12]
+
+LaTeX Warning: Reference `tab1' on page 13 undefined on input line 391.
+
+
+LaTeX Warning: Reference `tab2' on page 13 undefined on input line 391.
+
+
+LaTeX Warning: Reference `tab3' on page 13 undefined on input line 392.
+
+
+LaTeX Warning: Reference `tab3' on page 13 undefined on input line 392.
+
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ± in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no à in font cmr10!
+Missing character: There is no ó in font cmr10!
+Missing character: There is no ‚ in font cmr7!
+Missing character: There is no à in font cmr7!
+Missing character: There is no í in font cmr7!
+[13]
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ¬ in font cmr9!
+Missing character: There is no ¥ in font cmr9!
+Missing character: There is no ¬ in font cmr9!
+Missing character: There is no ¥ in font cmr9!
+Missing character: There is no ¬ in font cmr9!
+Missing character: There is no ¥ in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+ [14]
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ú in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ù in font cmr9!
+Missing character: There is no ‚ in font cmr9!
+Missing character: There is no Ä in font cmr9!
+Missing character: There is no ì in font cmr9!
+ [15] (./typeinst.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3629 strings out of 492982
+ 49543 string characters out of 6136225
+ 134435 words of memory out of 5000000
+ 7117 multiletter control sequences out of 15000+600000
+ 11604 words of font info for 47 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,8n,26p,1654b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
+<d:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/tex
+live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2017
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><d:/texlive/2017/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2017/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2017/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi5.pfb><d:/texlive/2017/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb><d:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><d:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/te
+xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/texlive/2017/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2017/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2017/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb><d:/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt9.pfb><d:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msam10.pfb>
+Output written on typeinst.pdf (15 pages, 1272021 bytes).
+PDF statistics:
+ 118 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+

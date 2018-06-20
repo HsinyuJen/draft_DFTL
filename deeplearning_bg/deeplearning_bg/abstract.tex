@@ -1,0 +1,130 @@
+
+%%%%%%%%%%%%%%%%%%%%%%% file typeinst.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is the LaTeX source for the instructions to authors using
+% the LaTeX document class 'llncs.cls' for contributions to
+% the Lecture Notes in Computer Sciences series.
+% http://www.springer.com/lncs       Springer Heidelberg 2006/05/04
+%
+% It may be used as a template for your own input - copy it
+% to a new file with a new name and use it as the basis
+% for your article.
+%
+% NB: the document class 'llncs' has its own and detailed documentation, see
+% ftp://ftp.springer.de/data/pubftp/pub/tex/latex/llncs/latex2e/llncsdoc.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[runningheads,a4paper]{llncs}
+
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{verbatim}%长篇注释宏包
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{url}
+\urldef{\mailsa}\path|{alfred.hofmann, ursula.barth, ingrid.haas, frank.holzwarth,|
+\urldef{\mailsb}\path|anna.kramer, leonie.kunz, christine.reiss, nicole.sator,|
+\urldef{\mailsc}\path|erika.siebert-cole, peter.strasser, lncs}@springer.com|    
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+
+\newcommand{\reffig}[1]{Fig. \ref{#1}}
+\newcommand{\refsec}[1]{Section \ref{#1}}
+% \newcommand{\refeq}[1]{Eq. \ref{#1}}
+\newcommand{\reftab}[1]{Table \ref{#1}}
+
+
+
+
+\begin{document}
+
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{Background Subtraction based on Superpixels under Multi-Scale in
+Complex Scenes}
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{Lecture Notes in Computer Science: Authors' Instructions}
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+\author{Alfred Hofmann
+\thanks{Please note that the LNCS Editorial assumes that all authors have used
+the western naming convention, with given names preceding surnames. This determines
+the structure of the names in the running heads and the author index.}%
+\and Ursula Barth\and Ingrid Haas\and Frank Holzwarth\and\\
+Anna Kramer\and Leonie Kunz\and Christine Rei\ss\and\\
+Nicole Sator\and Erika Siebert-Cole\and Peter Stra\ss er}
+%
+\authorrunning{Lecture Notes in Computer Science: Authors' Instructions}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+% the affiliations are given next; don't give your e-mail address
+% unless you accept that it will be published
+\institute{Springer-Verlag, Computer Science Editorial,\\
+Tiergartenstr. 17, 69121 Heidelberg, Germany\\
+\mailsa\\
+\mailsb\\
+\mailsc\\
+\url{http://www.springer.com/lncs}}
+
+%
+% NB: a more complex sample for affiliations and the mapping to the
+% corresponding authors can be found in the file "llncs.dem"
+% (search for the string "\mainmatter" where a contribution starts).
+% "llncs.dem" accompanies the document class "llncs.cls".
+%
+
+\toctitle{Lecture Notes in Computer Science}
+\tocauthor{Authors' Instructions}
+\maketitle
+
+
+\begin{abstract}
+Background subtraction in complex scenes has been a challenging problem
+in computer vision.
+% Previous work
+Most previous algorithms analyzed the variation of pixels or region for
+background subtraction, which ignored the neighbor information and
+similarity between pixels themselves.
+% our work
+In this paper, a novel background subtraction method based on
+superpixels under multi-scale (SPMS) in complex scenes is proposed.
+% 说明方法新颖的地方,优点
+Since superpixel implied the neighbor information between similar
+pixels, proposed approach achieves encouraging robustness in complex
+scenes including adverse weather and dynamic scenes.
+% 具体的方法
+In our SPMS, pixels are clustered into several superpixels according to
+the similarity between them.
+% 每一个超像素的标记方法
+Each super-pixel is subtracting from the respective zone of background
+image to label as foreground or background.
+% background image 如何得到
+In particular, the background image is learned from the statistic of
+pixels' intensity during video sequence.
+% 多尺度
+Moreover, in order to improve the robustness and efficiency of proposed
+approach, the integration of foregrounds captured in different scales is
+used as the final result of SPMS.
+% 实验结果
+The experiments on standard benchmark demonstrate the encouraging
+performance of proposed approach in comparison with some
+state-of-thee-art approaches.
+\keywords{Background Subtraction, Motion, Superpixels, Multi-Scale}
+\end{abstract}
+
+
+\end{document}
