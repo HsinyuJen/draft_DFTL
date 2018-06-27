@@ -48,15 +48,20 @@
 \maketitle
 
 
+
 \begin{abstract}
-One of the main challenges of foreground detection comes from the diversity and complexity of real-world scenes. 
-While most of previous works in this field were proposed by designing an artificial model, we tend to present a self-adaption solution, by combining the fully convolutional networks (FCNs), which is named as the Deep Pixels Variation Learning model (DPVL). 
-Our main job is to find a new representation of pixels historical observations in a new feature space. 
-In this paper, videos are divided into fixed length image stacks, which are later transformed into the pixel observation matrixes as the input of a FCN for learning the variation of pixels. 
-We conduct our training and prediction processes on stack level. 
-The architecture of the FCN is devised from the semantic segmentation problem. 
-Experiment shows that our model has a strong learning ability to the patterns of those permutations of pixels’ variation. 
-We compare our method with some state-of-the-art methods, and the results show that the proposed approach outperform its
+%什么是背景检测
+Background subtraction can be generally viewed as a binary classification on each pixels in a video stream. 
+%之前方法
+Previous works in this field were generally proposed by designing an artificial model, using lowlevel or hand-crafted features such as color, texture and local binary patterns.
+%我们的改进
+In this paper, we focus on the variation patterns of pixels to take advantage of the temporal information in a video stream. A novel conception of pixel variation transformation is brought up, which can be perceived as a feature mapping to find a new representation of pixels historical observations in a new feature space. 
+We also provide a self-adaption solution, by combining the fully convolutional networks (FCNs), which is named as the Deep Pixels Variation Transformation Learning model (DPVTL). 
+%方法简介
+In the DPVTL model, videos are divided into fixed length image stacks by temporal sampling. Next, image stacks is broken down into pixel observation matrixes as the input of the FCN to learn the patterns of pixel variation. Each of the pixel matrixes contains a piece of temporal information about pixel variation over a period of time.  
+The architecture of our FCN is devised from the semantic segmentation problem. 
+%效果
+Experiment shows that our model has a strong learning ability to the patterns of those permutations of pixels’ observations. Compared with some state-of-the-art methods, both deep learning and traditional methods, the proposed approach outperform its conventional counterparts significantly owing to the utilizing of temporal information.
 \end{abstract}
 
 \begin{IEEEkeywords} 
@@ -66,33 +71,32 @@ We compare our method with some state-of-the-art methods, and the results show t
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Background subtraction or foreground object detection, as a fundamental problem in computer vision, has been much discussed with the increasing number of outdoor cameras over the last few decades. 
-It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.g. 
-vehicles and humans, thus saving us huge amount of computing resources. 
-Typically, Background subtraction can be viewed as a binary classification that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene.
+%背景检测的背景介绍
+Background subtraction or foreground object detection, as a fundamental problem in computer vision, has been much discussed with the increasing number of outdoor cameras over the last few decades.
+It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.g. vehicles and humans, thus saving us huge amount of computing resources.
+Typically, Background subtraction can be viewed as a binary classification that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene. 
 
-With a huge number of works, existed algorithms have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. 
-However, background Subtraction is still unsolved because of the diversity in background scenes and the changes originated from the camera itself. 
-Scene variations can be in many forms such as, camera jitter, dynamic background, bad weather, illumination changes, intermittent object motion. 
-This is principally because the major methods, in most cases, try to find a universal solution by generating some universal background models for later linear classification; for instance, the earlier Frame Difference Methods, trying to get a fixed image as background to classify each pixels. 
-The fundamental problem lies in that linear classifier might not be powerful enough for the job, due to the complexity and the diversity of natural scenes.
+%实际应用中的挑战
+Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. However, background subtraction is still unsolved because of the complexity and the diversity of natural scenes.
+There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
 
-In order to present a better and universal solution, we proposed the Deep Variation Transformation Learning (DVTL) model for background subtraction in diversely natural scenes. 
-In our method, the main job is to transform the sequence of pixels into another sequence which is easy for classification.
+%本文的想法和优势
+The previous methods have already made great progress in generating some sophisticated background models with given videos. Unfortunately, some instructive clues have been long put aside and neglected, since there is no efficient way to deal with them. For instance, the static methods model the pixel-wise distribution of historical observations over time, while having no concerns over the sequential information in a video stream. To solve this problem, we bring up a novel conception of pixel variation transformation, wherein the historical observations of each pixel are conceived as a unity, the pixel variation. Each piece of pixel variation contains the complete temproal information of historical observations, which turns out to be our advantage that not only the distribution of observations, but also the temporal coherence plays an important role in the task.
 
-For \emph{Sq}, it is a sequence of pixel variation, which is hard to classify which entry is foreground or background. 
-But in \emph{Sq'}, it is more easy to classified, since the output of the network is the label of each entry in sequence.
+%具体介绍
+In this paper, we propose a novel Deep Variation Transformation Learning (DVTL) model for background subtraction in diversely natural scenes. In the DPVTL model, a Fully Convolutinal Network(FCN) is applied to learn the patterns of the pixel variation and find a transformation which guarantee the linear separability of transformed pixel variation generated by mapping in a new space. Our contributions can be summarized as follows:
+\begin{itemize}
+\item We proposed the pixel observation matrix to describe the pixel variation, which encode both the intensity distribution and sequential information over time. The observation matrix is obtained by reshaping the vector of a pixel's historical observations, subtracted from the image stacks. Since the pixel sequences are extracted from individual pixels, a large number of pixel matrixes may be extracted from only a single image stack, which promise that sufficient training data can be obtained with limited groundtruth.
+\item We propose a deep neural network for variation transformation. Our FCN network is trained to learn the pixel variation and generate a new representation in a new feature space. We take advantage of the strong learning ability of FCN to learn an end-to-end representation of the pixel observation matrixes in a new space where the pixels can be easily classified to background and foreground.
+\end{itemize}
 
-In this paper, pixel observation matrixes are proposed to describe the historical variation of pixels. 
-And a random initialized FCN network is trained to learn the pixel variation and generate a new representation in a new feature space. 
-We take advantage of the strong learning ability of FCN to learn a new representation of the pixel observation matrixes in a new space where the pixels can be easily classified to background and foreground.
-
+%文章结构
+The outline of this paper is as follows: In Section II, we give a brief discussion about the early and recent relevant works. The details of the variation transformation are presented in Section III. The proposed fully convolutional network is illustrated in Section IV, followed by experiments and result comparison in Section V and conclude the paper in Section VI. 
 \section{Related Work}
 % XXX 引用文章的方式，Bouwmans2014 在ref.bib文件里,不懂去问曲师兄！！！！
 \cite{Bouwmans2014}
-Over the last few decades, Background subtraction has been well studied. 
-Meanwhile, a huge number of methods were proposed. 
-These methods can be broadly categorized into pixels-based, region-based, frame-based and Deep Learning.
+Over the last few decades, Background subtraction has been well studied. Meanwhile, a huge number of methods were proposed. 
+These methods can be broadly categorized into pixels-based, region-based and Deep Learning based methods.
 \subsection{pixels-based methods}
 The most widely used algorithms in Background subtraction are pixels-based methods. 
 And one of the famous method is Gaussian Mixture Model (GMM), in which a GMM is used to model the history over time of pixel’s intensity values. 
@@ -140,7 +144,8 @@ In XXX, ss et al.
 addressed scaling problems by reformulating principal component analysis for 2D images. 
 Meanwhile their method takes much lower memory consumption and computational cost than others. 
 Some online approaches have also been proposed recently, but they are still very computationally expensive.
-\subsection{Deep learning methods}
+
+\subsection{Deep learning based methods}
 novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck. 
 They used a fixed background model, which was generated from a temporal median operation over N video frames.
 In XXX, Yi Wang et al. 
@@ -453,7 +458,8 @@ ours     & \textbf{0.9775}  & \textbf{0.9565} & \textbf{0.9652}      & \textbf{0
 \caption{The performance comparison of the proposed approach and some state-of-the-art algorithms on the video sequences from different categories in CAMO-UOW.}
 \label{tab3}
 \begin{tabular}{lllllllllll}
-Methods  & MOG2 & FCI  & LBA-SOM & PBAS & SuBSENSE & ML-BGS & DECOLOR       & COROLA & FWFC          & Ours          \\ 
+\hline
+Methods  & MOG2 & FCI  & LBA-SOM & PBAS & SuBSENSE & ML-BGS & DECOLOR       & COROLA & FWFC          & Ours          \\ \hline
 Video 1  & 0.79 & 0.88 & 0.8     & 0.9  & 0.89     & 0.89   & 0.92          & 0.8    & \textbf{0.94} & \textbf{0.94} \\
 Video 2  & 0.82 & 0.79 & 0.8     & 0.82 & 0.88     & 0.8    & 0.83          & 0.58   & 0.96          & \textbf{0.98} \\
 Video 3  & 0.88 & 0.86 & 0.85    & 0.91 & 0.9      & 0.8    & 0.9           & 0.82   & \textbf{0.94} & \textbf{0.94} \\
@@ -463,8 +469,8 @@ Video 6  & 0.93 & 0.87 & 0.77    & 0.95 & 0.92     & 0.95   & \textbf{0.97} & 0.
 Video 7  & 0.76 & 0.83 & 0.88    & 0.91 & 0.87     & 0.79   & 0.91          & 0.83   & 0.96          & \textbf{0.99} \\
 Video 8  & 0.83 & 0.87 & 0.85    & 0.87 & 0.93     & 0.86   & 0.86          & 0.68   & 0.96          & \textbf{0.98} \\
 Video 9  & 0.89 & 0.9  & 0.87    & 0.84 & 0.92     & 0.87   & 0.86          & 0.78   & 0.88          & \textbf{0.99} \\
-Video 10 & 0.89 & 0.86 & 0.89    & 0.91 & 0.92     & 0.9    & 0.94          & 0.85   & 0.96          & \textbf{0.97} \\
-average  & 0.85 & 0.86 & 0.83    & 0.89 & 0.88     & 0.85   & 0.90          & 0.77   & 0.94          & \textbf{0.97} \\
+Video 10 & 0.89 & 0.86 & 0.89    & 0.91 & 0.92     & 0.9    & 0.94          & 0.85   & 0.96          & \textbf{0.97} \\ \hline
+average  & 0.85 & 0.86 & 0.83    & 0.89 & 0.88     & 0.85   & 0.90          & 0.77   & 0.94          & \textbf{0.97} \\ \hline
 \end{tabular}
 \end{table*}
 
