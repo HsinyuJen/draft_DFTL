@@ -22,6 +22,8 @@
 \newcommand{\reftab}[1]{Table \ref{#1}}
 
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\stodo}[1]{\todo[size=\tiny]{#1}}
+
 
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
@@ -50,18 +52,41 @@
 
 
 \begin{abstract}
-%什么是背景检测
-Background subtraction can be generally viewed as a binary classification on each pixels in a video stream. 
-%之前方法
-Previous works in this field were generally proposed by designing an artificial model, using lowlevel or hand-crafted features such as color, texture and local binary patterns.
+%什么是背景检测 避免多次使用同一个词 generally
+Background subtraction is fundamentally considered as the binary classification of pixels in a video stream. 
+%之前方法 下一句用的focus on加ing，这就用ed，形成对比
+Previous works generally proposed the artificial model with the utilization of lowlevel or hand-crafted features to analyze the variation of pixels' observation in time sequence.
+% 为什么之前方法会失败
+However, due to the complexity and diversity of nature,
+the variation of observations becomes so hard to classify by hand-crafted features.
+    %in complexly natural scenes.
 %我们的改进
-In this paper, we focus on the variation patterns of pixels to take advantage of the temporal information in a video stream. A novel conception of pixel variation transformation is brought up, which can be perceived as a feature mapping to find a new representation of pixels historical observations in a new feature space. 
-We also provide a self-adaption solution, by combining the fully convolutional networks (FCNs), which is named as the Deep Pixels Variation Transformation Learning model (DPVTL). 
-%方法简介
-In the DPVTL model, videos are divided into fixed length image stacks by temporal sampling. Next, image stacks is broken down into pixel observation matrixes as the input of the FCN to learn the patterns of pixel variation. Each of the pixel matrixes contains a piece of temporal information about pixel variation over a period of time.  
-The architecture of our FCN is devised from the semantic segmentation problem. 
-%效果
-Experiment shows that our model has a strong learning ability to the patterns of those permutations of pixels’ observations. Compared with some state-of-the-art methods, both deep learning and traditional methods, the proposed approach outperform its conventional counterparts significantly owing to the utilizing of temporal information.
+In this paper, we focus on transforming the obserations sequence into another easier classfied space,
+and a novel background subtraction method based on Deep Variation Transformation (DVT) is proposed.
+% XXX 为什么是networks，不是network呢？
+In the DVT model,
+the fully convolutional network (FCN) is untlized to transform the sequence of pixels' observations into a new representation of pixels' observations with more obvious features for classfication.
+%
+In particlar, 
+a the variation of observation represented by pixel sequence is reshaped into a image patch as the input of FCN network.
+%
+Then, the output of network is classfied and reverted to the corresponding sequence for the binary classfication of oberservations' variation.
+%
+Benefied from the ingenious utilization of FCN network leading by our clear congnition of essence about background subtractoin problem,
+proposed approached adaptively generate superior peroformances in diversly complex scenes.
+%
+Comprehensive experiments in standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including 
+% both deep learning and traditional methods.
+% 
+% 
+% 
+% videos are divided into fixed length image stacks by temporal sampling. 
+%     Next, image stacks is broken down into pixel observation matrixes as the input of the FCN to learn the patterns of pixel variation. 
+%     Each of the pixel matrixes contains a piece of temporal information about pixel variation over a period of time.  
+% The architecture of our FCN is devised from the semantic segmentation problem. 
+% %效果
+% Experiment shows that our model has a strong learning ability to the patterns of those permutations of pixels’ observations. 
+%     Compared with some state-of-the-art methods, both deep learning and traditional methods, the proposed approach outperform its conventional counterparts significantly owing to the utilizing of temporal information.
 \end{abstract}
 
 \begin{IEEEkeywords} 
