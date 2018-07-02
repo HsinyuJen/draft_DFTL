@@ -104,6 +104,14 @@ Typically, Background subtraction can be viewed as a binary classification that 
 %实际应用中的挑战
 Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. However, background subtraction is still unsolved because of the complexity and the diversity of natural scenes.
 There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
+\begin{figure}[!t]	% FIGURE: figure/fig1 
+\centering
+    \includegraphics[width=\linewidth]{figure/idea.pdf}
+    % 图例里描述一下。
+    \caption{XXX.}
+    \label{idea}
+\end{figure}
+
 
 %本文的想法和优势
 The previous methods have already made great progress in generating some sophisticated background models with given videos. Unfortunately, some instructive clues have been long put aside and neglected, since there is no efficient way to deal with them. For instance, the static methods model the pixel-wise distribution of historical observations over time, while having no concerns over the sequential information in a video stream. To solve this problem, we bring up a novel conception of pixel variation transformation, wherein the historical observations of each pixel are conceived as a unity, the pixel variation. Each piece of pixel variation contains the complete temproal information of historical observations, which turns out to be our advantage that not only the distribution of observations, but also the temporal coherence plays an important role in the task.
