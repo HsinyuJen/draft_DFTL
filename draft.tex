@@ -129,81 +129,48 @@ The outline of this paper is as follows: In Section II, we give a brief discussi
 % XXX 引用文章的方式，Bouwmans2014 在ref.bib文件里,不懂去问曲师兄！！！！
 \cite{Bouwmans2014}
 Over the last few decades, background subtraction has been well studied. Meanwhile, a huge number of background modeling methods have been proposed. 
-These methods can be broadly categorized into pixels-based, region-based and Deep Learning based methods.
+These methods can be broadly categorized into pixels-based, region-based and Learning-based methods.
 \subsection{pixels-based methods}
-Pixels-based methods are generally based on low-level features, such as color and gradients, these methods are computationally efficient and easy to deploy. However, they demonstrate a poor performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
-The most popular approaches are Gaussian Mixture Model (GMM) and its improved methods, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. 
-Mingliang Chen et al. proposed a Spatiotemporal GMM algorithm, which combines the GMM with constrains of temporal and spatial information from the optical flow and superpixels. 
+Pixel-based techniques assume that the historical observations over time are independent at each pixel. Based on low-level features, such as color and gradients, these methods are computationally efficient and easy to deploy. However, they demonstrate a comparatively poor performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 
-. 
-Each pixels are assumed to be independent from their neighbors. 
-
-
+%GMM
+The most famous pixels-based methods are Gaussian Mixture Model (GMM) methods, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
+%GMM+
+Zoran Zivkovic extend the GMM through the use of recursive equations, where the parameters keep constantly updating and the number of components are adaptable to each pixel. 
+%codebook
+Another popular algorithms in pixel based category are based on Codebook. In [], Kim et al present the codebook method to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. The final foreground is detected by a distance measurement in a cylindrical color model.
+%KDE
+A non-parametric background model is proposed in []. Elgammal et al. assume that each background pixel is drawn from a Probability Distribution Function(PDF). The PDF for each pixel is estimated with Kernel Density Estimation(KDE). 
+%Vibe
+Another non-parametric method is proposed by O. Barnich, called the Visual Background Extractor (ViBe). ViBe is a sample based method, which consists of pixel samples from the video stream. Each pixel in the current frame is compared with N pixel samples from the corresponding background model. A pixel is labeled as the foreground only when there exist at least K samples with a distance to itself within a certain range R. 
+%PBAS
+To adaptively update the parameters, Hofmann et al. [] improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
 %
-low-level features (e.g. color intensities, gradients pixel-based
-
-PBAS [10] and ViBe+ [14], follow this paradigm as they are both based on stochastic intensity sampling.
-Parametric approaches based on Gaussian Mixture Models (GMM) [15] or non-parametric ones based on Kernel Density Estimation (KDE)  
-%
-
-
-
-
-
-Kim et al used a codebook to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. 
-This allows them efficient in memory and speed compared with other background modeling techniques. 
-The final foreground is detected by a distance measurement in a cylindrical color model.
-In XXX, Zhi Zeng et al. 
-proposed an equal-qualification updating strategy to replace the maximum-negative-run-length-based filtering strategy. 
-Their experiments show that, the proposed method outperforms well, despite using only color information.
-Elgammal et al. 
-introduced a probabilistic non-parametric method to model the background. 
-It is assumed that each background pixel is drawn from a PDF. 
-The PDF for each pixel is estimated with Kernel Density Estimation (KDE).
 \subsection{region-based approach}
-region-based approach assumpt that the neighboring pixels have a similar variation as the pixel itself. 
+Region-based approaches assume that the neighboring pixels have a similar variation as the pixel itself. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
 
-In xxx, Sriram Varadarajan et al. 
-propose a region-based MoG to takes in which the updated mixtures represent the scene distribution in a neighborhood region.
-In (PCA), classification is done by comparing a stack in current frame to its reconstruction from PCA coefficients and declaring it as background if the reconstruction is close.
-recently region based method is presented in XXX which used the statistical circular shift moments (SCSM) in image regions for change detection.
-subspace learning method in xxx, is used to compress the background into the eigenbackground. 
-For each video, the mean and the covariance matrix are calculated. 
-After a PCA of the covariance matrix, a projection matrix is set up with M eigenvectors. 
-Then, incoming images are compared with their projection onto the eigenvectors. 
-Foreground labels are assigned to pixels with large distances, after calculating the distances between the image and the projection and comparing them with the corresponding threshold value. 
+%(Regularized region-based)
+A region-based MoG is proposed by Sriram Varadarajan et al. Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
+% Spatiotemporal GMM
+Another GMM based method named Spatiotemporal GMM algorithm was proposed in []. Mingliang Chen et al. combine the GMM with constrains of temporal and spatial information from the optical flow and superpixels.
+%(Bayesian Modeling)
+In [], Yaser Sheikh et al. introduce a MAP-MRF framework, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
+%(Robust Foreground Object ICPR2010 Vikas Reddy )
+In [], given frames are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure, and a temporal correlation check.
+%( Robust Region-Based ICPR)
+Mohammad Izadi et al. present a robust region-based approach, which generates a pair of foreground maps based on gradient and color. Any foreground region that does not exist in map1 could be recovered from map2.
+\subsection{learning-based methods}
+The last category of background subtraction methods apply traditional machine learning or deep learning on different features for the background modeling.
 
-Marghes et al. 
-used a mixed method that combines a reconstructive method (PCA) with a discriminative one (LDA) to robustly model the background.
-single Gaussians are employed for foreground modeling. 
-By computing flux tensors, which depict variations of optical flow within a local 3D spatio-temporal volume, blob motion is detected. 
-With the combination of the different information from blob motion, foreground models and background models, moving and static foreground objects can be spotted. 
-Also, by applying edge matching, static foreground objects can be classified as ghosts or intermittent motions.
-Frame-based background modeling via Principal Component Analysis (PCA) and low-rank/sparse decomposition approaches is a popular alternative to pixel-level modeling xx. 
-These approaches are however not ideal for surveillance applications as most rely on batch or offline processing or suffer from scaling problems. 
+%SVM
+Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods. For example, in [], the authors integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. A pixel wise background model is obtained for each feature in a kernel density framework and a SVM is employed for segmentation.
 
-In XXX, ss et al. 
-addressed scaling problems by reformulating principal component analysis for 2D images. 
-Meanwhile their method takes much lower memory consumption and computational cost than others. 
-Some online approaches have also been proposed recently, but they are still very computationally expensive.
-
-\subsection{Deep learning based methods}
-novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck. 
-They used a fixed background model, which was generated from a temporal median operation over N video frames.
-In XXX, Yi Wang et al. 
-tried a CNN architecture combined with a Cascade model for segmentation in Background subtraction. 
-Given 200 labelled images as training set, their model performed excellently in dataset2014.
-Braham et al. 
-present an Deep learning-based method. 
-with the help of CNN, they generated a fixed background model from a temporal median operation over N video frames. 
-Then, a scene-specific CNN is trained with corresponding image matrixes from the background image.
-In xxx, M. 
-Babaee et al. 
-combine the segmentation mask from SuBSENSE algorithm and the output of Flux Tensor algorithm, which can dynamically change the parameters used in the background model based on the motion changes in the video frames. 
-They also used spatial-median filtering as the post processing of the network outputs.
-
-
-
+%
+Recent years, deep learning start to flourish in many fields, such as face recognition and natural language processing, significantly improving the state-of-the-art. A novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck. They employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth, or alternatively, segmentation results coming from other background subtraction methods. Patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
+%
+In [], Yi Wang et al. tried a CNN architecture combined with a Cascade model for segmentation in Background subtraction. Given 200 labelled images as training set, their model performed excellently in dataset2014.
+%
+In [], M. Babaee et al. present a novel CNN for background subtraction. They also combine the segmentation mask from SuBSENSE algorithm and the output of Flux Tensor algorithm, which is able to adaptively update the parameters used in the background model based on the motion changes in video stream. They also used spatial-median filtering as the post processing of the network outputs.
 \section{VARIATION TRANSFORMATION}
 In this section, we will elaborate on the motivation of the proposed approach and how does the variation transformation works in background subtraction.
 
@@ -578,10 +545,6 @@ The last threshold $R$ is set to 0.6.
 
 
 \section{Conclusion}
-In this paper, we proposed the 
-Moreover, we captured different superpixels under multiple scales and
-integrating these superpixels to improve the accuracy of proposed approach.
-
 
 % \section{Conclusions}
 % In this paper,
