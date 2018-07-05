@@ -65,7 +65,7 @@ In this paper, we focus on transforming the obserations sequence into another ea
 and a novel background subtraction method based on Deep Variation Transformation (DVT) is proposed.
 % XXX 为什么是networks，不是network呢？
 In the DVT model,
-the fully convolutional network (FCN) is untlized to transform the sequence of pixels' observations into a new representation of pixels' observations with more obvious features for classfication.
+the fully convolutional network (FCN)\cite{Shelhamer2017fcn} is untlized to transform the sequence of pixels' observations into a new representation of pixels' observations with more obvious features for classfication.
 %
 In particlar, 
 a the variation of observation represented by pixel sequence is reshaped into a image patch as the input of FCN network.
@@ -97,13 +97,13 @@ Comprehensive experiments in standard benchmarks demonstrate the superiority of 
 
 \section{Introduction}
 %背景检测的背景介绍
-Background subtraction or foreground object detection, as a fundamental problem in computer vision, has been much discussed with the increasing number of outdoor cameras over the last few decades.
+Background subtraction or foreground object detection, as a fundamental problem in computer vision\cite{Bouwmans201431}, has been much discussed with the increasing number of outdoor cameras over the last few decades.
 It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.g. vehicles and humans, thus saving us huge amount of computing resources.
 Typically, Background subtraction can be viewed as a binary classification that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene. 
 
 %实际应用中的挑战
 Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. However, background subtraction is still unsolved because of the complexity and the diversity of natural scenes.
-There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
+There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion\cite{CDN2014}. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
 \begin{figure}[!t]	% FIGURE: figure/fig1 
 \centering
     \includegraphics[width=\linewidth]{figure/idea.pdf}
@@ -114,10 +114,10 @@ There are many forms of natrual scenes, for example, camera jitter, dynamic back
 
 
 %本文的想法和优势
-The previous methods have already made great progress in generating some sophisticated background models with given videos. Unfortunately, some instructive clues have been long put aside and neglected, since there is no efficient way to deal with them. For instance, the statistical methods model the pixel-wise distribution of historical observations over time, while having no concerns over the sequential information in a video stream. To solve this problem, we bring up a novel conception of pixel variation transformation, wherein the historical observations of each pixel are conceived as a unity, the pixel variation. Each piece of pixel variation contains the complete temproal information of historical observations, which turns out to be our advantage that not only the distribution of observations, but also the temporal coherence plays an important role in the task.
+The previous methods have already made great progress in generating some sophisticated background models with given videos. Unfortunately, some instructive clues have been long put aside and neglected, since there is no efficient way to deal with them. For instance, the statistical methods\cite{Stauffer1999} model the pixel-wise distribution of historical observations over time, while having no concerns over the sequential information in a video stream. To solve this problem, we bring up a novel conception of pixel variation transformation, wherein the historical observations of each pixel are conceived as a unity, the pixel variation. Each piece of pixel variation contains the complete temproal information of historical observations, which turns out to be our advantage that not only the distribution of observations, but also the temporal coherence plays an important role in the task.
 
 %具体介绍
-In this paper, we propose a novel Deep Variation Transformation Learning (DVTL) model for background subtraction in diversely natural scenes. In the DPVTL model, a Fully Convolutinal Network(FCN) is applied to learn the patterns of the pixel variation and find a transformation which guarantee the linear separability of transformed pixel variation generated by mapping in a new space. Our contributions can be summarized as follows:
+In this paper, we propose a novel Deep Variation Transformation Learning (DVTL) model for background subtraction in diversely natural scenes. In the DPVTL model, a Fully Convolutinal Network(FCN)\cite{Shelhamer2017fcn} is applied to learn the patterns of the pixel variation and find a transformation which guarantee the linear separability of transformed pixel variation generated by mapping in a new space. Our contributions can be summarized as follows:
 \begin{itemize}
 \item We proposed the pixel observation matrix to describe the pixel variation, which encode both the intensity distribution and sequential information over time. The observation matrix is obtained by reshaping the vector of a pixel's historical observations, subtracted from the image stacks. Since the pixel sequences are extracted from individual pixels, a large number of pixel matrixes may be extracted from only a single image stack, which promise that sufficient training data can be obtained with limited groundtruth.
 \item We propose a deep neural network for variation transformation. Our FCN network is trained to learn the pixel variation and generate a new representation in a new feature space. We take advantage of the strong learning ability of FCN to learn an end-to-end representation of the pixel observation matrixes in a new space where the pixels can be easily classified to background and foreground.
@@ -127,50 +127,50 @@ In this paper, we propose a novel Deep Variation Transformation Learning (DVTL) 
 The outline of this paper is as follows: In Section II, we give a brief discussion about the early and recent relevant works. The details of the variation transformation are presented in Section III. The proposed fully convolutional network is illustrated in Section IV, followed by experiments and result comparison in Section V and conclude the paper in Section VI. 
 \section{Related Work}
 % XXX 引用文章的方式，Bouwmans2014 在ref.bib文件里,不懂去问曲师兄！！！！
-\cite{Bouwmans2014}
+%\cite{Bouwmans2014}
 Over the last few decades, background subtraction has been well studied. Meanwhile, a huge number of background modeling methods have been proposed. 
 These methods can be broadly categorized into pixels-based, region-based and Learning-based methods.
 \subsection{pixels-based methods}
 Pixel-based techniques assume that the historical observations over time are independent at each pixel. Based on low-level features, such as color and gradients, these methods are computationally efficient and easy to deploy. However, they demonstrate a comparatively poor performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 
 %GMM
-The most famous pixels-based methods are Gaussian Mixture Model (GMM) methods, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
+The most famous pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
 %GMM+
-Zoran Zivkovic extend the GMM through the use of recursive equations, where the parameters keep constantly updating and the number of components are adaptable to each pixel. 
+Zoran Zivkovic\cite{Zivkovic2004} extend the GMM through the use of recursive equations, where the parameters keep constantly updating and the number of components are adaptable to each pixel. 
 %codebook
-Another popular algorithms in pixel based category are based on Codebook. In [], Kim et al present the codebook method to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. The final foreground is detected by a distance measurement in a cylindrical color model.
+Another popular algorithms in pixel based category are based on Codebook. In \cite{Kim2005}, Kim et al present the codebook method to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. The final foreground is detected by a distance measurement in a cylindrical color model.
 %KDE
-A non-parametric background model is proposed in []. Elgammal et al. assume that each background pixel is drawn from a Probability Distribution Function(PDF). The PDF for each pixel is estimated with Kernel Density Estimation(KDE). 
+A non-parametric background model is proposed in \cite{Elgammal2000Non}. Elgammal et al. assume that each background pixel is drawn from a Probability Distribution Function(PDF). The PDF for each pixel is estimated with Kernel Density Estimation(KDE). 
 %Vibe
-Another non-parametric method is proposed by O. Barnich, called the Visual Background Extractor (ViBe). ViBe is a sample based method, which consists of pixel samples from the video stream. Each pixel in the current frame is compared with N pixel samples from the corresponding background model. A pixel is labeled as the foreground only when there exist at least K samples with a distance to itself within a certain range R. 
+Another non-parametric method is proposed by O. Barnich, called the Visual Background Extractor (ViBe)\cite{Barnich2011_2011_TIP}. ViBe is a sample based method, which consists of pixel samples from the video stream. Each pixel in the current frame is compared with N pixel samples from the corresponding background model. A pixel is labeled as the foreground only when there exist at least K samples with a distance to itself within a certain range R. 
 %PBAS
-To adaptively update the parameters, Hofmann et al. [] improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
+To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
 %
 \subsection{region-based approach}
 Region-based approaches assume that the neighboring pixels have a similar variation as the pixel itself. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
 
 %(Regularized region-based)
-A region-based MoG is proposed by Sriram Varadarajan et al. Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
+A region-based MoG is proposed by Varadarajan et al.\cite{2015_PR_Varadarajan20153488} Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
 % Spatiotemporal GMM
-Another GMM based method named Spatiotemporal GMM algorithm was proposed in []. Mingliang Chen et al. combine the GMM with constrains of temporal and spatial information from the optical flow and superpixels.
+Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cite{2017_TPAMI_GANGWANG}. the authors combine the GMM with constrains of temporal and spatial information from the optical flow and superpixels.
 %(Bayesian Modeling)
-In [], Yaser Sheikh et al. introduce a MAP-MRF framework, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
+In \cite{Sheikh2005Bayesian}, Sheikh et al. introduce a MAP-MRF framework, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
 %(Robust Foreground Object ICPR2010 Vikas Reddy )
-In [], given frames are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure, and a temporal correlation check.
+In \cite{Reddy2010Robust}, given frames are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure, and a temporal correlation check.
 %( Robust Region-Based ICPR)
-Mohammad Izadi et al. present a robust region-based approach, which generates a pair of foreground maps based on gradient and color. Any foreground region that does not exist in map1 could be recovered from map2.
+Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color. Any foreground region that does not exist in map1 could be recovered from map2.
 \subsection{learning-based methods}
 The last category of background subtraction methods apply traditional machine learning or deep learning on different features for the background modeling.
 
 %SVM
-Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods. For example, in [], the authors integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. A pixel wise background model is obtained for each feature in a kernel density framework and a SVM is employed for segmentation.
+Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods\cite{Zhang2014Statis}. For example, in \cite{Han2012}, the authors integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. A pixel wise background model is obtained for each feature in a kernel density framework and a SVM is employed for segmentation.
 
 %
-Recent years, deep learning start to flourish in many fields, such as face recognition and natural language processing, significantly improving the state-of-the-art. A novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck. They employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth, or alternatively, segmentation results coming from other background subtraction methods. Patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
+Recent years, deep learning start to flourish in many fields, such as face recognition and natural language processing, significantly improving the state-of-the-art. A novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck\cite{Braham2016deep}. They employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth, or alternatively, segmentation results coming from other background subtraction methods. Patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
 %
-In [], Yi Wang et al. tried a CNN architecture combined with a Cascade model for segmentation in Background subtraction. Given 200 labelled images as training set, their model performed excellently in dataset2014.
+In \cite{wang2016PRL}, Wang et al. tried a CNN architecture combined with a Cascade model for segmentation in Background subtraction. Given 200 labelled images as training set, their model performed excellently in dataset2014.
 %
-In [], M. Babaee et al. present a novel CNN for background subtraction. They also combine the segmentation mask from SuBSENSE algorithm and the output of Flux Tensor algorithm, which is able to adaptively update the parameters used in the background model based on the motion changes in video stream. They also used spatial-median filtering as the post processing of the network outputs.
+In \cite{Babaee2017deep}, M. Babaee et al. present a novel CNN for background subtraction. They also combine the segmentation mask from SuBSENSE\cite{St-Charles2015SuBSENSE} algorithm and the output of Flux Tensor algorithm, which is able to adaptively update the parameters used in the background model based on the motion changes in video stream. They also used spatial-median filtering as the post processing of the network outputs.
 \section{VARIATION TRANSFORMATION}
 In this section, we will elaborate on the motivation of the proposed approach and how does the variation transformation works in background subtraction.
 
@@ -359,13 +359,13 @@ We do not use any other tricks in our network training and the experiment result
 
 \section{Experiments}
 
-In this section, we ran comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark and CAMO-UOW. 
+In this section, we ran comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark\cite{CDN2014} and CAMO-UOW. 
 The CDnet is the largest dataset for background subtraction so far as we are aware, containing 11 categories with several complexly challenging scenes, such as Dynamic Background, Camera Jitter, Shadow, Night Videos, PTZ and so on. 
 The CAMO-UOW is another challenging benchmark which contains 10 high resolution videos. 
 For each video, one or two persons appear in the scene with the clothes in the similar color as the background.
 
-The proposed approach is compared with several existing traditional state-of-the-art background subtraction algorithms, including the IUTIS-5, the SuBSENSE, the WeSamBE, sharable GMM, the SharedModel, word-dictionaries-based method and PAWCS, the SemanticBGS, the AAPSA, etc. 
-Moreover, two deep learning based algorithms are also compared with the proposed approach, which include DeepBS, and DBMF. 
+The proposed approach is compared with several existing traditional state-of-the-art background subtraction algorithms, including the IUTIS-5\cite{Bianco2017TEC}, the SuBSENSE\cite{St-Charles2015SuBSENSE}, the WeSamBE\cite{Jiang2017WeSamBE}, sharable GMM the SharedModel\cite{Chen2015SharedModel}, word-dictionaries-based method the PAWCS\cite{Charles2015PAWCS}, the SemanticBGS\cite{Braham2017Semantic}, the AAPSA\cite{RAMIREZALONSO2016990}, etc. 
+Moreover, two deep learning based algorithms are also compared with the proposed approach, which include DeepBS\cite{Babaee2017deep}, and DBMF\cite{Yang2018DBMF}. 
 All the results of compared algorithms are provided by authors.
 
 During the comparison, the F-measure(Fm) has been used for evaluation. 
@@ -427,19 +427,19 @@ Consequently, our DPVL performed much better than compared algorithms, with the 
 \begin{tabular}{lllllllllllll}
 \hline
 Videos      & baseline & dyna.bg & cam.jitter & int.obj.m & shadow & thermal & bad.weat & low f.rate & night vid. & PTZ    & turbul. & overall \\ \hline
-DeepBS      & 0.9580   & 0.8761  & \textbf{0.8990}     & 0.6097    & 0.9304 & 0.7583  & 0.8647   & 0.5900     & 0.6359     & 0.3306 & \textbf{0.8993}  & 0.7458  \\
-IUTIS-5     & 0.9567   & 0.8902  & 0.8332     & 0.7296    & 0.9084 & 0.8303  & 0.8289   & \textbf{0.7911}     & 0.5132     & 0.4703 & 0.8507  & 0.7717  \\
-FTSG        & 0.9330   & 0.8792  & 0.7513     & 0.7891    & 0.8832 & 0.7768  & 0.8228   & 0.6259     & 0.5130     & 0.3241 & 0.7127  & 0.7283  \\
-AAPSA       & 0.9183   & 0.6706  & 0.7207     & 0.5098    & 0.7953 & 0.7030  & 0.7742   & 0.4942     & 0.4161     & 0.3302 & 0.4643  & 0.6179  \\
-CwisarDH    & 0.9145   & 0.8274  & 0.7886     & 0.5753    & 0.8581 & 0.7866  & 0.6837   & 0.6406     & 0.3735     & 0.3218 & 0.7227  & 0.6812  \\
-PAWCS       & 0.9397   & 0.8938  & 0.8137     & 0.7764    & 0.8934 & 0.8324  & 0.8059   & 0.6433     & 0.4171     & 0.4450 & 0.7667  & 0.7403  \\
-SuBSENSE    & 0.9503   & 0.8177  & 0.8152     & 0.6569    & 0.8986 & 0.8171  & 0.8594   & 0.6594     & 0.4918     & 0.3894 & 0.8423  & 0.7408  \\
-SemanticBGS & 0.9604   & \textbf{0.9489}  & 0.8388     & 0.7878    & 0.9244 & 0.8219  & 0.8260   & 0.7888     & 0.5014     & 0.5673 & 0.6921  & 0.7892  \\
-MBS         & 0.9287   & 0.7915  & 0.8367     & 0.7568    & 0.8262 & 0.8194  & 0.7980   & 0.6350     & 0.5158     & 0.5520 & 0.5858  & 0.7288  \\
-WeSamBE     & 0.9413   & 0.7440  & 0.7976     & 0.7392    & 0.8999 & 0.7962  & 0.8608   & 0.6602     & 0.5929     & 0.3844 & 0.7737  & 0.7446  \\
-ShareM      & 0.9522   & 0.8222  & 0.8141     & 0.6727    & 0.8898 & 0.8319  & 0.8480   & 0.7286     & 0.5419     & 0.3860 & 0.7339  & 0.7474  \\
-GMM         & 0.8245   & 0.633   & 0.5969     & 0.5207    & 0.7370 & 0.6621  & 0.7380   & 0.5373     & 0.4097     & 0.1522 & 0.4663  & 0.5707  \\
-RMoG        & 0.7848   & 0.7352  & 0.7010     & 0.5431    & 0.7212 & 0.4788  & 0.6826   & 0.5312     & 0.4265     & 0.2470 & 0.4578  & 0.5735  \\ \hline
+DeepBS\cite{Babaee2017deep}      & 0.9580   & 0.8761  & \textbf{0.8990}     & 0.6097    & 0.9304 & 0.7583  & 0.8647   & 0.5900     & 0.6359     & 0.3306 & \textbf{0.8993}  & 0.7458  \\
+IUTIS-5\cite{Bianco2017TEC}     & 0.9567   & 0.8902  & 0.8332     & 0.7296    & 0.9084 & 0.8303  & 0.8289   & \textbf{0.7911}     & 0.5132     & 0.4703 & 0.8507  & 0.7717  \\
+FTSG\cite{Wang2014FTSG}        & 0.9330   & 0.8792  & 0.7513     & 0.7891    & 0.8832 & 0.7768  & 0.8228   & 0.6259     & 0.5130     & 0.3241 & 0.7127  & 0.7283  \\
+AAPSA\cite{RAMIREZALONSO2016990}       & 0.9183   & 0.6706  & 0.7207     & 0.5098    & 0.7953 & 0.7030  & 0.7742   & 0.4942     & 0.4161     & 0.3302 & 0.4643  & 0.6179  \\
+CwisarDH\cite{Gregorio2014CwisarDH}    & 0.9145   & 0.8274  & 0.7886     & 0.5753    & 0.8581 & 0.7866  & 0.6837   & 0.6406     & 0.3735     & 0.3218 & 0.7227  & 0.6812  \\
+PAWCS\cite{Charles2015PAWCS}       & 0.9397   & 0.8938  & 0.8137     & 0.7764    & 0.8934 & 0.8324  & 0.8059   & 0.6433     & 0.4171     & 0.4450 & 0.7667  & 0.7403  \\
+SuBSENSE\cite{St-Charles2015SuBSENSE}    & 0.9503   & 0.8177  & 0.8152     & 0.6569    & 0.8986 & 0.8171  & 0.8594   & 0.6594     & 0.4918     & 0.3894 & 0.8423  & 0.7408  \\
+SemanticBGS\cite{Braham2017Semantic} & 0.9604   & \textbf{0.9489}  & 0.8388     & 0.7878    & 0.9244 & 0.8219  & 0.8260   & 0.7888     & 0.5014     & 0.5673 & 0.6921  & 0.7892  \\
+MBS\cite{Multimode_Background_Subtraction}         & 0.9287   & 0.7915  & 0.8367     & 0.7568    & 0.8262 & 0.8194  & 0.7980   & 0.6350     & 0.5158     & 0.5520 & 0.5858  & 0.7288  \\
+WeSamBE\cite{2017_TCSVT_BG_7938679}     & 0.9413   & 0.7440  & 0.7976     & 0.7392    & 0.8999 & 0.7962  & 0.8608   & 0.6602     & 0.5929     & 0.3844 & 0.7737  & 0.7446  \\
+ShareM\cite{2015_ICME_ShareModel}      & 0.9522   & 0.8222  & 0.8141     & 0.6727    & 0.8898 & 0.8319  & 0.8480   & 0.7286     & 0.5419     & 0.3860 & 0.7339  & 0.7474  \\
+GMM\cite{Zivkovic2004}         & 0.8245   & 0.633   & 0.5969     & 0.5207    & 0.7370 & 0.6621  & 0.7380   & 0.5373     & 0.4097     & 0.1522 & 0.4663  & 0.5707  \\
+RMoG\cite{Varadarajan2013}        & 0.7848   & 0.7352  & 0.7010     & 0.5431    & 0.7212 & 0.4788  & 0.6826   & 0.5312     & 0.4265     & 0.2470 & 0.4578  & 0.5735  \\ \hline
 Ours        & \textbf{0.9668}   & 0.8639  & 0.8446     & \textbf{0.9181}    & \textbf{0.9390} & \textbf{0.9268}  & \textbf{0.9265}   & 0.7338     & \textbf{0.7306}     & \textbf{0.5845} & 0.8761  & \textbf{0.8504} \\ \hline
 \end{tabular}
 \end{table*}
@@ -451,12 +451,12 @@ Ours        & \textbf{0.9668}   & 0.8639  & 0.8446     & \textbf{0.9181}    & \t
 \begin{tabular}{llllllll}
 \hline
 Methods  & highway & office & Pedestrians & PETS2006 & Fall   & sofa   & overall \\ \hline
-GMM      & 0.5788  & 0.2338 & 0.5202      & 0.6011   & 0.8026 & 0.5225 & 0.5432  \\
-CodeBook & 0.8356  & 0.5939 & 0.7293      & 0.7808   & 0.3921 & 0.8149 & 0.6911  \\
-ViBe     & 0.7535  & 0.6676 & 0.8367      & 0.6668   & 0.6829 & 0.4298 & 0.6729  \\
-PBAS     & 0.8071  & 0.6839 & 0.7902      & 0.7280   & 0.3420 & 0.5768 & 0.6547  \\
-P2M      & 0.9160  & 0.3849 & 0.9121      & 0.7322   & 0.5819 & 0.4352 & 0.6604  \\
-DBMF     & 0.9412  & 0.9236 & 0.8394      & 0.9059   & 0.8203 & 0.8645 & 0.8824  \\ \hline
+GMM\cite{Stauffer1999}      & 0.5788  & 0.2338 & 0.5202      & 0.6011   & 0.8026 & 0.5225 & 0.5432  \\
+CodeBook\cite{WU2010739} & 0.8356  & 0.5939 & 0.7293      & 0.7808   & 0.3921 & 0.8149 & 0.6911  \\
+ViBe\cite{Barnich2011_2011_TIP}     & 0.7535  & 0.6676 & 0.8367      & 0.6668   & 0.6829 & 0.4298 & 0.6729  \\
+PBAS\cite{Hofmann2012Background}     & 0.8071  & 0.6839 & 0.7902      & 0.7280   & 0.3420 & 0.5768 & 0.6547  \\
+P2M\cite{Yang2016P2M}      & 0.9160  & 0.3849 & 0.9121      & 0.7322   & 0.5819 & 0.4352 & 0.6604  \\
+DBMF\cite{Yang2018DBMF}     & 0.9412  & 0.9236 & 0.8394      & 0.9059   & 0.8203 & 0.8645 & 0.8824  \\ \hline
 ours     & \textbf{0.9775}  & \textbf{0.9565} & \textbf{0.9652}      & \textbf{0.9681}   & \textbf{0.9157} & \textbf{0.8943} & \textbf{0.9462}  \\ \hline
 \end{tabular}
 \end{table*}
@@ -468,7 +468,7 @@ ours     & \textbf{0.9775}  & \textbf{0.9565} & \textbf{0.9652}      & \textbf{0
 \label{tab3}
 \begin{tabular}{lllllllllll}
 \hline
-Methods  & MOG2 & FCI  & LBA-SOM & PBAS & SuBSENSE & ML-BGS & DECOLOR       & COROLA & FWFC          & Ours          \\ \hline
+Methods  & MOG2\cite{ZIVKOVIC2006773} & FCI\cite{Baf2008FCI}  & LBA-SOM\cite{LBA-SOM2008} & PBAS & SuBSENSE & ML-BGS\cite{ML-BGS2007} & DECOLOR\cite{DECOLOR2013}       & COROLA\cite{SHAKERI201628} & FWFC\cite{Li2018CAMO}          & Ours          \\ \hline
 Video 1  & 0.79 & 0.88 & 0.8     & 0.9  & 0.89     & 0.89   & 0.92          & 0.8    & \textbf{0.94} & \textbf{0.94} \\
 Video 2  & 0.82 & 0.79 & 0.8     & 0.82 & 0.88     & 0.8    & 0.83          & 0.58   & 0.96          & \textbf{0.98} \\
 Video 3  & 0.88 & 0.86 & 0.85    & 0.91 & 0.9      & 0.8    & 0.9           & 0.82   & \textbf{0.94} & \textbf{0.94} \\
@@ -545,6 +545,9 @@ The last threshold $R$ is set to 0.6.
 
 
 \section{Conclusion}
+
+In this paper, we proposed a noval background subtraction approach based on deep learning and the variation transformation learning. The DPVTL model include a FCN network and a noval variation transformation learing framework, which allows us to efficiently combine the temproal coherence and distribution information of pixels over a long period of time. Comparison with other traditional and deep learning methods shows that the DPVTL has good properties on several challenging scenes.
+The future work will be focused on improving the DPVTL in terms of network architecture updating and integration of local spatial coherence.
 
 % \section{Conclusions}
 % In this paper,

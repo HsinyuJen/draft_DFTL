@@ -64,50 +64,58 @@ I was expecting an "="---line 2107 of file ref.bib
  : // 
  :    publisher="Springer Berlin Heidelberg",
 I'm skipping whatever remains of this entry
+I was expecting an "="---line 2548 of file ref.bib
+ : // 
+ :    publisher="Springer Berlin Heidelberg",
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in Izadi2008Robust
+Warning--empty journal in Braham2016deep
+Warning--empty journal in wang2016PRL
+Warning--empty journal in Babaee2017deep
 
 Done.
-You've used 1 entry,
+You've used 42 entries,
             4024 wiz_defined-function locations,
-            816 strings with 7379 characters,
-and the built_in function-call counts, 877 in all, are:
-= -- 67
-> -- 11
-< -- 9
-+ -- 6
-- -- 1
-* -- 53
-:= -- 149
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 1
-chr.to.int$ -- 21
-cite$ -- 1
-duplicate$ -- 55
-empty$ -- 59
-format.name$ -- 1
-if$ -- 183
+            1095 strings with 15271 characters,
+and the built_in function-call counts, 35030 in all, are:
+= -- 2844
+> -- 787
+< -- 337
++ -- 445
+- -- 122
+* -- 1719
+:= -- 5134
+add.period$ -- 84
+call.type$ -- 42
+change.case$ -- 43
+chr.to.int$ -- 777
+cite$ -- 46
+duplicate$ -- 2489
+empty$ -- 2778
+format.name$ -- 162
+if$ -- 8188
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 7
-newline$ -- 26
-num.names$ -- 1
-pop$ -- 12
+int.to.str$ -- 42
+missing$ -- 409
+newline$ -- 159
+num.names$ -- 42
+pop$ -- 895
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 63
+skip$ -- 2718
 stack$ -- 0
-substring$ -- 50
-swap$ -- 48
-text.length$ -- 2
+substring$ -- 1846
+swap$ -- 2140
+text.length$ -- 78
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 1
-warning$ -- 0
-while$ -- 4
-width$ -- 2
-write$ -- 32
-(There were 14 error messages)
+type$ -- 42
+warning$ -- 4
+while$ -- 158
+width$ -- 44
+write$ -- 448
+(There were 15 error messages)
