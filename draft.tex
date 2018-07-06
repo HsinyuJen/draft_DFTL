@@ -97,7 +97,8 @@ Comprehensive experiments in standard benchmarks demonstrate the superiority of 
 
 \section{Introduction}
 %背景检测的背景介绍
-Background subtraction or foreground object detection, as a fundamental problem in computer vision\cite{Bouwmans201431}, has been much discussed with the increasing number of outdoor cameras over the last few decades.
+Background subtraction or foreground detection, as a fundamental problem in computer vision\ \cite{Bouwmans201431}, has been discussed over decades with the increasing number of outdoor cameras.
+%
 It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.g. vehicles and humans, thus saving us huge amount of computing resources.
 Typically, Background subtraction can be viewed as a binary classification that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene. 
 
@@ -106,9 +107,9 @@ Existed methods have already achieved well performances in the scenes of low div
 There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion\cite{CDN2014}. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
 \begin{figure}[!t]	% FIGURE: figure/fig1 
 \centering
-    \includegraphics[width=\linewidth]{figure/idea.pdf}
+    \includegraphics[width=\linewidth]{figure/demo.pdf}
     % 图例里描述一下。
-    \caption{XXX.}
+    \caption{The demonstration of deep variation transformation. Due to the complexity of natural scenes, the original pixels' variation is hard to classify correctly. After transforming by deep learning network, the pixels in variation become easy to be classified as foreground and background correctly.}
     \label{idea}
 \end{figure}
 
@@ -239,7 +240,7 @@ We explain the details of the procedures of pixel matrixes, which is a specific 
 The complete system is illustrated in Figure 1. 
 Firstly, we temporally sample the input and ground truth images to generalize the pixel variations, and reshape them into fixed-size matrixes and fed them into the network. 
 After reassembling the matrixes into the complete output frame, it is post-processed, yielding the final segmentation of the respective video frame.
-\begin{figure*}[!t]	% FIGURE: figure/fig1 
+\begin{figure*}[!t] % FIGURE: figure/fig1 
 \centering
 \includegraphics[width=\textwidth]{figure/fig2}
 \DeclareGraphicsExtensions.
