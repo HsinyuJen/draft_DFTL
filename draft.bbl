@@ -21,11 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{Shelhamer2017fcn}
-E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
-  semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
-  Machine Intelligence}, vol.~39, no.~4, pp. 640--651, April 2017.
-
 \bibitem{Bouwmans201431}
 B.~T, ``Traditional and recent approaches in background modeling for foreground
   detection: An overview,'' \emph{Comput. Sci. Rev.}, vol. 11–12, pp. 31 --
@@ -36,6 +31,11 @@ Y.~Wang, P.~M. Jodoin, F.~Porikli, J.~Konrad, Y.~Benezeth, and P.~Ishwar,
   ``Cdnet 2014: An expanded change detection benchmark dataset,'' in \emph{2014
   IEEE Conference on Computer Vision and Pattern Recognition Workshops}, June
   2014, pp. 393--400.
+
+\bibitem{Shelhamer2017fcn}
+E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
+  semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}, vol.~39, no.~4, pp. 640--651, April 2017.
 
 \bibitem{Stauffer1999}
 C.~Stauffer and W.~Grimson, ``Adaptive background mixture models for real-time
