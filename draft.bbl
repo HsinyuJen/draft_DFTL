@@ -26,6 +26,11 @@ B.~T, ``Traditional and recent approaches in background modeling for foreground
   detection: An overview,'' \emph{Comput. Sci. Rev.}, vol. 11–12, pp. 31 --
   66, 2014.
 
+\bibitem{Barnich2011_2011_TIP}
+O.~Barnich and M.~Van~Droogenbroeck, ``Vibe: A universal background subtraction
+  algorithm for video sequences,'' \emph{IEEE Trans. on Image. Process.},
+  vol.~20, no.~6, pp. 1709--1724, June 2011.
+
 \bibitem{CDN2014}
 Y.~Wang, P.~M. Jodoin, F.~Porikli, J.~Konrad, Y.~Benezeth, and P.~Ishwar,
   ``Cdnet 2014: An expanded change detection benchmark dataset,'' in \emph{2014
@@ -55,11 +60,6 @@ K.~Kim, T.~H. Chalidabhongse, D.~Harwood, and L.~Davis, ``{Real-time
 \bibitem{Elgammal2000Non}
 A.~Elgammal, D.~Harwood, and L.~Davis, ``Non-parametric model for background
   subtraction,'' \emph{Eccv}, vol. 1843, pp. 751--767, 2000.
-
-\bibitem{Barnich2011_2011_TIP}
-O.~Barnich and M.~Van~Droogenbroeck, ``Vibe: A universal background subtraction
-  algorithm for video sequences,'' \emph{IEEE Trans. on Image. Process.},
-  vol.~20, no.~6, pp. 1709--1724, June 2011.
 
 \bibitem{Hofmann2012Background}
 M.~Hofmann, P.~Tiefenbacher, and G.~Rigoll, ``Background segmentation with
@@ -121,6 +121,11 @@ P.~L. St-Charles, G.~A. Bilodeau, and R.~Bergevin, ``Subsense: A universal
   change detection method with local adaptive sensitivity,'' \emph{IEEE
   Transactions on Image Processing}, vol.~24, no.~1, pp. 359--373, Jan 2015.
 
+\bibitem{Yang2018DBMF}
+L.~Yang, J.~Li, Y.~Luo, Y.~Zhao, H.~Cheng, and J.~Li, ``Deep background
+  modeling using fully convolutional network,'' \emph{IEEE Transactions on
+  Intelligent Transportation Systems}, vol.~19, no.~1, pp. 254--262, Jan 2018.
+
 \bibitem{Bianco2017TEC}
 S.~Bianco, G.~Ciocca, and R.~Schettini, ``Combination of video change detection
   algorithms by genetic programming,'' \emph{IEEE Transactions on Evolutionary
@@ -155,11 +160,6 @@ G.~Ram¨ªrez-Alonso and M.~I. Chac¨®n-Murgu¨ªa, ``Auto-adaptive parallel
   Available:
   \url{http://www.sciencedirect.com/science/article/pii/S0925231215015842}
 \BIBentrySTDinterwordspacing
-
-\bibitem{Yang2018DBMF}
-L.~Yang, J.~Li, Y.~Luo, Y.~Zhao, H.~Cheng, and J.~Li, ``Deep background
-  modeling using fully convolutional network,'' \emph{IEEE Transactions on
-  Intelligent Transportation Systems}, vol.~19, no.~1, pp. 254--262, Jan 2018.
 
 \bibitem{Wang2014FTSG}
 R.~Wang, F.~Bunyak, G.~Seetharaman, and K.~Palaniappan, ``Static and moving
