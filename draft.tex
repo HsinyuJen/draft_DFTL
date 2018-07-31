@@ -51,30 +51,51 @@
 
 
 \begin{abstract}
-%什么是背景检测 避免多次使用同一个词 generally
-Background subtraction is fundamentally considered as the binary classification of pixels in a video stream. 
-%之前方法 下一句用的focus on加ing，这就用ed，形成对比
-Previous works generally proposed the artificial model with the utilization of lowlevel or hand-crafted features to analyze the variation of pixels' observation in time sequence.
-% 为什么之前方法会失败
-However, due to the complexity and diversity of nature,
-the variation of observations becomes so hard to classify by hand-crafted features.
-    %in complexly natural scenes.
-%我们的改进
-In this paper, we focus on transforming the obserations sequence into another easier classfied space,
-and a novel background subtraction method based on Deep Variation Transformation (DVT) is proposed.
-% XXX 为什么是networks，不是network呢？
+%
+Previous work analyzes the variation of pixels for background subtraction which is generally considered as the binary classification of pixels in time sequence.
+%
+In this paper, we focus on transforming the variation into another space where the pixels are easier classified,
+with the consideration that the observations of pixels are usually so hard to analyze due to the unpredictability and complexity of natural scenes,
+and a novel background subtraction method called Deep Variation Transformation (DVT) is proposed.
+%
 In the DVT model,
-the fully convolutional network (FCN) is untlized to transform the sequence of pixels' observations into a new representation of pixels' observations with more obvious features for classfication.
+the variation is represented by the sequence of pixels' observations and used as the input of the fully convolutional network.
 %
-In particlar, 
-a the variation of observation represented by pixel sequence is reshaped into a image patch as the input of FCN network.
-%
-Then, the output of network is classfied and reverted to the corresponding sequence for the binary classfication of oberservations' variation.
-%
-Benefied from the ingenious utilization of FCN network leading by our clear congnition of essence about background subtractoin problem,
+The fully convolutional network is trained to learn the pattern of variation for transformation with the output leaded by grounthtruth data.
+% XXX 这句话还是有点问题
+Benefied from the ingenious utilization of FCN leading by our clear congnition of essence about background subtractoin problem,
 proposed approached adaptively generate superior peroformances in diversly complex scenes.
 %
 Comprehensive experiments in standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
+%
+% We also put
+% forward a novel background subtraction framework called the
+% Integration of Foreground and Background (IFB) cues.
+% % a video stream. 
+% %之前方法 下一句用的focus on加ing，这就用ed，形成对比
+% % Previous works generally proposed the artificial model with the utilization of lowlevel or hand-crafted features to analyze the variation of pixels' observation.
+% Previous work generally analyze the variation of pixels' observation with the u/cygdrive/c/Users/Ray/Downloads/3.iebktilization of hand-crafted features.
+%     %in time sequence.
+% % 为什么之前方法会失败
+% However, due to the complexity and diversity of nature,
+% the variation of observations becomes so hard to classify by hand-crafted features.
+%     %in complexly natural scenes.
+% %我们的改进
+% In this paper, we focus on transforming the obserations sequence into another easier classfied space,
+% and a novel background subtraction method based on Deep Variation Transformation (DVT) is proposed.
+% % XXX 为什么是networks，不是network呢？
+% In the DVT model,
+% the fully convolutional network (FCN) is untlized to transform the sequence of pixels' observations into a new representation of pixels' observations with more obvious features for classfication.
+% %
+% In particlar, 
+% a the variation of observation represented by pixel sequence is reshaped into a image patch as the input of FCN network.
+% %
+% Then, the output of network is classfied and reverted to the corresponding sequence for the binary classfication of oberservations' variation.
+% %
+% Benefied from the ingenious utilization of FCN network leading by our clear congnition of essence about background subtractoin problem,
+% proposed approached adaptively generate superior peroformances in diversly complex scenes.
+% %
+% Comprehensive experiments in standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
 % 
 % 
 % 
@@ -95,27 +116,46 @@ Comprehensive experiments in standard benchmarks demonstrate the superiority of 
 
 \section{Introduction}
 %背景检测的背景介绍
-Background subtraction or foreground detection, as a fundamental problem in computer vision\ \cite{Bouwmans201431}, has been discussed over decades with the increasing number of outdoor cameras.
-%
-It is widely used as the pre-processing step of video processing, which can help us efficiently mark the region of interest, e.g. vehicles and humans, thus saving us huge amount of computing resources\cite{Barnich2011_2011_TIP}.
-\todo{cited an article to support this sentence.}
-%
-Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. 
-However, background subtraction is still unsolved because of the complexity and the diversity of natural scenes.
-%
-Currenrly, plenty of previous work focus on anaylsing the pixels' variation for background subtraction,
-since the background subtraction is typically recognized as a binary classification that assigns each pixel in a video sequence with a label, for either belonging to the background or foreground scene. 
-%
-However, due to the unpredictability and diversity of the pixels' variation in natural scenes,
-it is still a challenging problem to propose a good background subtraction in all complexly natural scenes.
+Background subtraction as a fundamental problem in computer vision\ \cite{Bouwmans201431} has been discussed over decades with the increasing number of cameras,
+which is widely used as the pre-processing step of video processing \cite{Barnich2011_2011_TIP}.
+% which can help us efficiently mark the region of interest,
+% thus saving us huge amount of computing resources\ \cite{Barnich2011_2011_TIP}.
+%\todo{cited an article to support this sentence.}
+% 现有的方法在简单场景中效果很好了
+Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
+However, it still remains a challenging problem in the scenes with high complexity and diversity.
+% 传统的方法是怎么做的，有什么问题
+Traditioanlly, background subtraction algorithms focus on anaylsing the pixels' variation for background subtraction,
+since the background subtraction is typically recognized as a binary classification that assigns each pixel in a video sequence with a label, 
+for either belonging to the background or foreground scene.
+% 总而言之，background subtraction依然有很多问题
+However, due to the unpredictability and complexity of the pixels' variation in natural scenes,
+the variation becomes so unordered which is hard to be analyzed for background subtraction.
 
-
-%实际应用中的挑战
-\todo{the main purpose of the second paragraph is showing our idea. But be careful that you should not mention any details of our method which is the content of third paragraph. Pls re-write this part according to figure 1. The main content should be the description of figure 1, as well as our idea, insight}
-Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. 
-However, background subtraction is still unsolved because of the complexity and the diversity of natural scenes.
-There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion\cite{CDN2014}. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
-To solve this problem, we bring up a novel conception of variation transformation, wherein the historical observations of each pixel are conceived as a unity, the pixel variation. Each piece of pixel variation contains the complete temproal information of historical observations, which turns out to be our advantage that not only the distribution of observations, but also the temporal coherence plays an important role in the task.
+% 第二段重点阐述什么是deep variation learning
+% 在多样的自然场景中，前景可能产生和背景相似，甚至相同的像素，而这种像素很难去分析
+In the diversely natural scenes,
+it is possible that the moving objects produce the similar or even the same observations of pixels to that of background,
+and the variation of observations becomes so hard to analyze when it includes such observations.
+% similar to their counterparts of background but atually belong to foreground .
+% 如图所示，像素观测值C就和背景的值几乎一模一样，
+As shown in the \reffig{idea},
+the observation C is closely related to the observations belong to the background but it is actually produced by moving objects and should be classified as foreground.
+% 大多数情况下，他都会被划分成背景
+However, in most cases, it is highly possible that the observation C will be falsely classified as background by previous work due to the similarity with their counterparts of background.
+% 我们的就是希望把这个variation 转化到更简单的地方去
+In this work, we focus on transforming the variation of pixels' observation into a new variation where the observations are easier to classified,
+as shown in the bottom part of the \reffig{idea},
+with the motivation that the pattern of fragment consist of observations A-D can be learned by the network and transformed into another fragment where these observations are easily and correctly classified as foreground.
+% transformatin 之后，就很容易分类了，然后这就是我们的方法的核心了
+Based on this motivation, the Deep Variation Transformation model for background subtraction is proposed.
+% 
+% %实际应用中的挑战
+% \todo{the main purpose of the second paragraph is showing our idea. But be careful that you should not mention any details of our method which is the content of third paragraph. Pls re-write this part according to figure 1. The main content should be the description of figure 1, as well as our idea, insight}
+% Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes. 
+% However, background subtraction is still unsolved because of the complexity and the diversity of natural scenes.
+% There are many forms of natrual scenes, for example, camera jitter, dynamic background, bad weather, illumination changing, intermittent object motion\cite{CDN2014}. In these situations, the backgrounds are no longer being static, while in fact, the background can be dynamic and complex, which brings some severe challenges to the traditional methods.
+% To solve this problem, we bring up a novel conception of variation transformation, wherein the historical observations of each pixel are conceived as a unity, the pixel variation. Each piece of pixel variation contains the complete temporal information of historical observations, which turns out to be our advantage that not only the distribution of observations, but also the temporal coherence plays an important role in the task.
 \begin{figure}[!t]	% FIGURE: figure/fig1 
 \centering
     \includegraphics[width=\linewidth]{figure/demo.pdf}
@@ -131,23 +171,43 @@ To solve this problem, we bring up a novel conception of variation transformatio
 
 %具体介绍
 % XXX 一句话，换一行！！！
-In this paper, we propose a novel Deep Variation Transformation Learning (DVTL) model for background subtraction in diversely natural scenes. 
-In the DVTL model, a Fully Convolutinal Network(FCN)\cite{Shelhamer2017fcn} is applied to learn the patterns of the pixel variation and find a transformation which guarantee the linear separability of transformed pixel variation generated by mapping in a new space, as shown in \reffig{idea}. The final prediction can be obtained by thresholding of the transformed variation. 
-\todo{provide more details about our method, the details should be enough to summarize proposed approach.}
-%Our contributions can be summarized as follows:
-The contridbutions of proposed approach are shown as follows:
-\begin{itemize}
-\item We proposed the pixel observation matrix to describe the pixel variation, which encode both the intensity distribution and sequential information over time. The observation matrix is obtained by reshaping the vector of a pixel's historical observations, subtracted from the image stacks. Since the pixel sequences are extracted from individual pixels, a large number of pixel matrixes may be extracted from only a single image stack, which promise that sufficient training data can be obtained with limited groundtruth.
-\item We propose a deep neural network for variation transformation. Our FCN network is trained to learn the pixel variation and generate a new representation in a new feature space. We take advantage of the strong learning ability of FCN to learn an end-to-end representation of the pixel observation matrixes in a new space where the pixels can be easily classified to background and foreground.
-\end{itemize}
-
+% In this paper, we propose a novel Deep Variation Transformation Learning (DVTL) model for background subtraction in diversely natural scenes. 
+In the DVTL model, 
+the sequence of pixels' observations is used to represent the variation and input into the network for learning,
+which encode both the intensity distribution and sequential information.
+%
+Then, a Fully Convolutinal Network (FCN)\ \cite{Shelhamer2017fcn} is applied to learn the patterns of the pixel variation and find a transformation which guarantee the linear separability of transformed pixel variation generated by mapping in a new space.
+%
+In particular,
+we take advantage of the strong learning ability of FCN to learn an end-to-end representation of the pixel observation matrixes in a new space where the pixels can be easily classified to background and foreground.
+%
+Benefited from the strong learning ability of FCN,
+proposed approach works well in diversely complex scenes adaptively.
+%
+Moreover,
+since the pixel sequences are extracted from individual pixels, a large number of pixel matrixes may be extracted from only a single image stack, which promises that sufficient training data can be obtained with limited groundtruth.
+% 
+% 
+% 
+% \todo{This paragraph is too short! provide comprehensive details of our work!}
+% % The final prediction can be obtained by thresholding of the transformed variation. 
+% %Our contributions can be summarized as follows:
+% The contridbutions of proposed approach are shown as follows:
+% \begin{itemize}
+% \item We proposed the pixel observation matrix to describe the pixel variation, which encode both the intensity distribution and sequential information over time.
+%     The observation matrix is obtained by reshaping the vector of a pixel's historical observations, subtracted from the image stacks. 
+% \item We propose a deep neural network for variation transformation. 
+%     Our FCN network is trained to learn the pixel variation and generate a new representation in a new feature space. 
+% \end{itemize}
+% 
 %文章结构
+
 %The outline of this paper is as follows: In Section II, we give a brief discussion about the early and recent relevant works. 
 % XXX 不会用引用可以问我或者曲师兄。
 The reset part of this paper is organized as follows: In \refsec{sec2}, we give a brief discussion about the early and recent relevant works. 
 %
 The details of the variation transformation are presented in \refsec{sec3}. The proposed fully convolutional network is illustrated in \refsec{sec4}, followed by experiments and result comparison in \refsec{sec5} and conclude the paper in \refsec{sec6}. 
-\todo{please revise this part by using command refsec}
+% \todo{please revise this part by using command refsec}
 
 \section{Related Work}
 \label{sec2}
@@ -162,19 +222,29 @@ Pixel-based techniques assume that the historical observations over time are ind
 The most famous pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
 %GMM+
 Zoran Zivkovic\cite{Zivkovic2004} extend the GMM through the use of recursive equations, where the parameters keep constantly updating and the number of components are adaptable to each pixel. 
+%你的ICME那篇里面也用过extend through the use of 这句话的啊。 这里的改进就是用了一些回归方程，我也从别的文章里看过的。
 %codebook
-Another popular algorithms in pixel based category are based on Codebook. In \cite{Kim2005}, Kim et al present the codebook method to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. The final foreground is detected by a distance measurement in a cylindrical color model.
+Some other popular algorithms in pixel based category are based on Codebook. 
+In \cite{Kim2005}, Kim et al present the codebook method to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. The final foreground is detected by a distance measurement in a cylindrical color model.
 %KDE
 A non-parametric background model is proposed in \cite{Elgammal2000Non}. Elgammal et al. assume that each background pixel is drawn from a Probability Distribution Function(PDF). The PDF for each pixel is estimated with Kernel Density Estimation(KDE). 
 %Vibe
 Another non-parametric method is proposed by O. Barnich, called the Visual Background Extractor (ViBe)\cite{Barnich2011_2011_TIP}. ViBe is a sample based method, which consists of pixel samples from the video stream. Each pixel in the current frame is compared with N pixel samples from the corresponding background model. A pixel is labeled as the foreground only when there exist at least K samples with a distance to itself within a certain range R. 
 %PBAS
 To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
-%
 
-However, Those assumptions of pixels' independence are incorrect or inapplicable to many real-world scenes. Hence they demonstrate a comparatively poor performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
-There is, in fact, a strong temporal coherence in image sequences that provides abundant hidden messages for the background model. 
-The proposed approach take advantage of the temporal coherence, and that is the reason that we have a relative better performance in challenging scenes.  
+%提出其他方法的问题，指出他们的缺陷
+However, Those assumptions of pixels' independence are incorrect or inapplicable to many real-world scenes. 
+There is, in fact, a strong temporal coherence in image sequences that contains abundant hidden clues for the background model. 
+In most cases, pixels-based methods are only concerned with pixels distribution, and ignore the order information of input frames by default.
+%提出我们的改进,我们认为像素在时序上是互相依赖的
+To address this shortcoming, we introduce a novel framework of variation transformation learing, which assumpt that there is a tight interdependence in pixel's historical observations.
+%所以我们把像素整合到一起
+In this case, pixel's historical observations are embedded in a piece of pixel variation and sorted in chronological order as a whole to enter our DPVTL model.
+%这样的优点在于保留了数据的完整性，保留了数据的时序相关性。
+The benefit of bringing together the observations is to ensure the data integrity and preserve the temporal coherence of our training data. And that guarantee us the ability to take advantage of the temporal coherence. 
+%所以我们方法比基于像素的要好。
+Hence we demonstrate a comparatively better performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 \todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
 \subsection{region-based approach}
 Region-based approaches assume that the neighboring pixels have a similar variation as the pixel itself. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
@@ -190,15 +260,27 @@ In \cite{Reddy2010Robust}, given frames are divided into overlapping blocks. Eac
 %( Robust Region-Based ICPR)
 Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color. Any foreground region that does not exist in map1 could be recovered from map2.
 
+%讲其他方法的缺点，不能利用时序相关性，只是在pixel-based方法上添加了空间约束
 Unfortunately, most region-based methods are not capable to make use of the temporal coherence, since they are merely adding some spatial constrains to the pixels-based methods. 
-We also notice that some methods are involved with optical flow field, which can be viewed as a limited temproal coherence message. 
-However, optical flow methods have some shortcommings like the high computation complexity, moreover they are very sensitive to illumination changing. 
-Compared with them, the proposed approach are more powerful in capturing the structural background variation and more efficient in computation due to the application of deep learning.
+%有的方法结合了光流，也算利用了时序相关性
+But we also notice that some methods are involved with optical flow field, which can be viewed as a limited temporal coherence message. 
+%但是他们也有几个缺点
+However, optical flow methods have some shortcommings like the high computation complexity and the sensitivity to illumination changing. 
+%最重要的是，他们的时序相关性太有限了。所以对与其他方法，并没有明显的优势。
+Moreover, their temporal coherence information is very limited. For each frame, only a few of neighbor frames are taken into account when computing the optical flow.
+This probably explains why they have no significant improvement compared to their competitors.    
+%讲我们方法的不同以及优点
+%我们的输入有足量的时序信息。
+In the proposed approach, by contrast, we present the pixel matrix, which contains the pixel variation over a longer period of time, to ensure that our DPVTL model has sufficient temporal coherence information to feed.
+%此外，我们借助神经网络可以更有效地计算和捕捉这种时序相关性。
+Furthermore, the proposed approach are more powerful in capturing the structural background variation and more efficient in computation due to the application of deep learning.
+
 \todo{disccuss the adavantage of proposed work.}
 
 % \subsection{learning-based methods}
 \subsection{Machine Learning based Methods}
 \todo{Please cite more papers on this paragraph since our work belongs to this category. This paragraph should be the main part of this section.}
+%我也想多引用一些，本来就不多的嘛。。。
 The last category of background subtraction methods apply traditional machine learning or deep learning on different features for the background modeling.
 
 %SVM
@@ -211,12 +293,23 @@ In \cite{wang2016PRL}, Wang et al. tried a CNN architecture combined with a Casc
 %
 M. Babaee et al. \cite{Babaee2017deep} present a novel CNN for background subtraction. They also combine the segmentation mask from SuBSENSE\cite{St-Charles2015SuBSENSE} algorithm and the output of Flux Tensor algorithm, which is able to adaptively update the parameters used in the background model based on the motion changes in video stream. They also used spatial-median filtering as the post processing of the network outputs.
 %DBMF
+%skip结构就是skip结构啊！！就是说前基层的输出在输进下一层的同时，会跳过下一层，输入到更后面去。
 In \cite{Yang2018DBMF}, a FCN with the skip architecture is proposed for background modeling. 
-The authors also proposed a temproal approach to sample training images from the given video, thus providing the background model with limited temporal information. 
+The authors also proposed a temporal approach to sample training images from the given video, thus providing the background model with limited temporal information. 
 
+%以上方法的缺点主要在于，他们都是基于静态的图像特征训练的。抛弃了时序相关性。
 Above mentioned deep methods are based on the static images and static saliency characteristics. 
 As we've discussed earlier, their background models are trained with little or no temporal coherence involved.
-Different with their methods, with a relative simple structure of the network, the proposed approach is based on the time series modeling of each pixel. Hence the reliable performance of DVTL should be owing to the enhanced temporal coherence. 
+%所以他们在处理物体突然运动的时候会存在问题。
+And that cause the problem when target objects are doing sudden movement, for example, starting a car and get it out of the parking lot. 
+%尽管他们用了很好的结构和技巧，但是仍然不能解决这个问题，如何去检测运动，而不是把潜在的运动物体全标记出来。
+Even though they have made a lot of progress with optimized network architechtures and training tricks, it is still an unsolved problem that how to detect the motion rather than mark out all the possible moving objects.
+%我们的不同在与输入
+Different with their methods, the input of our DPVTL model is not the origin images. Instead, we take the pixel variation as the input to preseve the temporal coherence between the pixels.
+%因为我们的方法是基于时序建模的，所以我们的模型可以学习一段时间内的运动。
+Now, since the proposed approach is based on the time series modeling of each pixel, our model can learn the patterns of motion over a period of time.
+%此外，因为我们的网络结构相对比较简单，所以取得的效果应该归功于时序相关性带来的辅助。
+In addition, Our FCN is implemented with a relative simple structure, hence the reliable performance of our DPVTL should be owing to the enhanced temporal coherence. 
 
 
 \section{VARIATION TRANSFORMATION}
@@ -594,7 +687,7 @@ The last threshold $R$ is set to 0.6.
 
 \section{Conclusion}
 \label{sec6}
-In this paper, we proposed a noval background subtraction approach based on deep learning and the variation transformation learning. The DPVTL model include a FCN network and a noval variation transformation learing framework, which allows us to efficiently combine the temproal coherence and distribution information of pixels over a long period of time. Comparison with other traditional and deep learning methods shows that the DPVTL has good properties on several challenging scenes.
+In this paper, we proposed a noval background subtraction approach based on deep learning and the variation transformation learning. The DPVTL model include a FCN network and a noval variation transformation learing framework, which allows us to efficiently combine the temporal coherence and distribution information of pixels over a long period of time. Comparison with other traditional and deep learning methods shows that the DPVTL has good properties on several challenging scenes.
 The future work will be focused on improving the DPVTL in terms of network architecture updating and integration of local spatial coherence.
 
 % \section{Conclusions}

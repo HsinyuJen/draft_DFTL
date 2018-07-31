@@ -31,12 +31,6 @@ O.~Barnich and M.~Van~Droogenbroeck, ``Vibe: A universal background subtraction
   algorithm for video sequences,'' \emph{IEEE Trans. on Image. Process.},
   vol.~20, no.~6, pp. 1709--1724, June 2011.
 
-\bibitem{CDN2014}
-Y.~Wang, P.~M. Jodoin, F.~Porikli, J.~Konrad, Y.~Benezeth, and P.~Ishwar,
-  ``Cdnet 2014: An expanded change detection benchmark dataset,'' in \emph{2014
-  IEEE Conference on Computer Vision and Pattern Recognition Workshops}, June
-  2014, pp. 393--400.
-
 \bibitem{Shelhamer2017fcn}
 E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
   semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
@@ -125,6 +119,12 @@ P.~L. St-Charles, G.~A. Bilodeau, and R.~Bergevin, ``Subsense: A universal
 L.~Yang, J.~Li, Y.~Luo, Y.~Zhao, H.~Cheng, and J.~Li, ``Deep background
   modeling using fully convolutional network,'' \emph{IEEE Transactions on
   Intelligent Transportation Systems}, vol.~19, no.~1, pp. 254--262, Jan 2018.
+
+\bibitem{CDN2014}
+Y.~Wang, P.~M. Jodoin, F.~Porikli, J.~Konrad, Y.~Benezeth, and P.~Ishwar,
+  ``Cdnet 2014: An expanded change detection benchmark dataset,'' in \emph{2014
+  IEEE Conference on Computer Vision and Pattern Recognition Workshops}, June
+  2014, pp. 393--400.
 
 \bibitem{Bianco2017TEC}
 S.~Bianco, G.~Ciocca, and R.~Schettini, ``Combination of video change detection
