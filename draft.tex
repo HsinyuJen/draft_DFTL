@@ -56,9 +56,9 @@ Previous work analyzes the variation of pixels for background subtraction which 
 %
 In this paper, we focus on transforming the variation into another space where the pixels are easier classified,
 with the consideration that the observations of pixels are usually so hard to analyze due to the unpredictability and complexity of natural scenes,
-and a novel background subtraction method called Deep Variation Transformation (DVT) is proposed.
+and a novel background subtraction method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
 %
-In the DVT model,
+In the DPVTL model,
 the variation is represented by the sequence of pixels' observations and used as the input of the fully convolutional network.
 %
 The fully convolutional network is trained to learn the pattern of variation for transformation with the output leaded by grounthtruth data.
@@ -272,6 +272,7 @@ This probably explains why they have no significant improvement compared to thei
 %讲我们方法的不同以及优点
 %我们的输入有足量的时序信息。
 In the proposed approach, by contrast, we present the pixel matrix, which contains the pixel variation over a longer period of time, to ensure that our DPVTL model has sufficient temporal coherence information to feed.
+We also combine the pixel variation with its spatial neighbors to revise our prediction.
 %此外，我们借助神经网络可以更有效地计算和捕捉这种时序相关性。
 Furthermore, the proposed approach are more powerful in capturing the structural background variation and more efficient in computation due to the application of deep learning.
 
@@ -287,7 +288,7 @@ The last category of background subtraction methods apply traditional machine le
 Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods\cite{Zhang2014Statis}. For example, in \cite{Han2012}, the authors integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. A pixel wise background model is obtained for each feature in a kernel density framework and a SVM is employed for segmentation.
 
 %
-Recent years, deep learning start to flourish in many fields, such as face recognition and natural language processing, significantly improving the state-of-the-art. A novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck\cite{Braham2016deep}. They employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth, or alternatively, segmentation results coming from other background subtraction methods. Patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
+Recent years, deep learning starts to flourish in many fields, such as face recognition and natural language processing, significantly improving the state-of-the-art. A novel approach for background subtraction with the use of CNN was proposed by Braham and Droogenbroeck\cite{Braham2016deep}. They employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth, or alternatively, segmentation results from other background subtraction methods. Those patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
 %
 In \cite{wang2016PRL}, Wang et al. tried a CNN architecture combined with a Cascade model for segmentation in Background subtraction. Given 200 labelled images as training set, their model performed excellently in dataset2014.
 %
@@ -305,17 +306,20 @@ And that cause the problem when target objects are doing sudden movement, for ex
 %尽管他们用了很好的结构和技巧，但是仍然不能解决这个问题，如何去检测运动，而不是把潜在的运动物体全标记出来。
 Even though they have made a lot of progress with optimized network architechtures and training tricks, it is still an unsolved problem that how to detect the motion rather than mark out all the possible moving objects.
 %我们的不同在与输入
-Different with their methods, the input of our DPVTL model is not the origin images. Instead, we take the pixel variation as the input to preseve the temporal coherence between the pixels.
+Different with their methods, the input of our DPVTL model is not the origin images or patches. Instead, we regard the pixel variation as a whole for the network training to preseve the temporal coherence between the pixels' historical observations.
 %因为我们的方法是基于时序建模的，所以我们的模型可以学习一段时间内的运动。
 Now, since the proposed approach is based on the time series modeling of each pixel, our model can learn the patterns of motion over a period of time.
-%此外，因为我们的网络结构相对比较简单，所以取得的效果应该归功于时序相关性带来的辅助。
-In addition, Our FCN is implemented with a relative simple structure, hence the reliable performance of our DPVTL should be owing to the enhanced temporal coherence. 
+%此外，我们还将pixel variation 与其空间上的近邻连接起来，从而利用空间上下文信息。
+In addition, we also cascade the pixel variation with its spatial neighbors to take advantage of the spatial context. 
+%因为我们的网络结构相对比较简单，所以取得的效果应该归功于Variation Transformation 框架。
+Our FCN is implemented with a relative simple structure, hence the reliable performance of our DPVTL should be owing to the framework of variation transformation. 
 
 
 \section{VARIATION TRANSFORMATION}
 \label{sec3}
 In this section, we will elaborate on the motivation of the proposed approach and how does the variation transformation works in background subtraction.
 
+%背景检测的难点
 Background subtraction is essentially an binary classification in time sequence, where pixels in a video stream are separated into two categories: foreground (cars, people or animals) and background (roads, trees or other backdrops). 
 In most cases, if we print out the historical observations of a single pixel, it is not hard to see that they usually keep their stability when belonging to the background. 
 However, there are some exceptions: historical observations varies regularly when belonging to some dynamic background scenes(e.g. 
@@ -332,7 +336,7 @@ Generally, pixels from the background are sharing some common patterns of variat
 \end{figure}
 
 
-
+%图例解释困难点
 To give an intuitive understanding of the pixel variations, we plot the historical observations and corresponding groundtruth of a single pixel in  \reffig{variation_chart}, with the X axis showing their range of variation and the Y axis representing the time. 
 As we can see, there are several lines in three colors: blue, red and green. 
 The blue one is called the pixel variation curve, which containing 100 original observations. 
@@ -340,47 +344,52 @@ Accordingly, the red one, the groundtruth curve is made of a piece of groundtrut
 The green one, which we call the transformed variation curve, is made of the outputs of the proposed approach. 
 In practice, background subtraction is to produce a prediction curve, which is as near as possible to the groundtruth carve, by given the pixel variation carve. 
 
-
+%传统方法的问题
 Under ideal conditions like indoor videos, previous methods perform quite effectively, when distributions of background and foreground observations are remarkably different and the backgrounds are normally keeping static. 
 While in fact, backgrounds can be rather turbulent and dynamic due to the complexity and diversity of nature scenes. 
 Especially when illumination and camouflages are involved, background and foreground observations are easily confused and mixed up. 
 
-
+%图例说明可能面临的挑战
 For example, in \reffig{variation_chart}, it is noticeable that some foreground observations in blue line share the similarly value with background ones. 
 In that case, those popular solutions will inevitably yield some sticky moments when separating the pixels in the blue line. 
 Statistical methods, for instance, are no longer valid, because they only focus on establishing a statistical model for the background, while having little or no concern for the temporal coherence of these observations. 
 Unfortunately, most previous methods, as far as we know, are not capable to take advantage of the temporal coherence of pixel variation. 
 In other words, despite knowing that pixels from the background share some common patterns of variation in a temporal sequence, we still let the order information of sequential images all go to waste. 
+%为了解决这些问题，我们必须利用好时序相关性
 To alleviate this, order information of pixels must be taken in consideration. 
 More concretely, we must find an efficient method to model the patterns of background pixels variations.
 
-In this paper, a method of background subtraction based on variation transformation are proposed. 
+
+%variation transformation 介绍。
+In this paper, a novel framework of pixel variation transformation are proposed. %用framework代替method?
 Pixel observations are no longer considered independent of each other but regarded as a whole, which we call the pixel variation. 
 Consequently, the classification of pixels can be viewed as a transformation of pixel variations, from the observation sequences to the prediction sequences. 
 In the specific implementation, we trained a FCN to learn a transformation for the pixel variations by mapping them into a new space where it is close to the groundtruth, just like the green line in \reffig{variation_chart}. 
 After thresholding, we can easily get the labels of each observation. 
+%方法的好处是
 The benefits from variation transformation are evident and clearly seen. 
 It is hard to distinguish a foreground observation when its value are similar to the background ones. 
 However, classification on the transformed variation is much convenient and intuitive, due to the advantage of temporal information. 
 With the aid of deep learning method, the proposed approach can be effectively implemented.
 
 % 公式表达
-And the definition of region searching method $G(x,y)$ is shown as follows:
-\begin{equation}
-    G(x,y) =  \mathop{\argmin}_{}{ \lVert I_t(m,n) - I_b(x,y) \rVert_{1}  } \quad  m,n \in x,y \pm R,
-\end{equation}
-where $x$ and $y$ is the location of pixels. And $I_t$ is the current frame, where $t$ is the
-time index.
+%And the definition of region searching method $G(x,y)$ is shown as follows:
+%\begin{equation}
+%    G(x,y) =  \mathop{\argmin}_{}{ \lVert I_t(m,n) - I_b(x,y) \rVert_{1}  } \quad  m,n \in x,y \pm R,
+%\end{equation}
+
+%where $x$ and $y$ is the location of pixels. And $I_t$ is the current frame, where $t$ is the
+%time index.
 
 %me
 \section{BACKGROUND SUBTRACTION VIA DEEP VARIATION TRANSFORMATION}
 \label{sec4}
 In this section, we introduce the proposed approach that consists of a novel FCN network for background subtraction. 
-We explain the details of the procedures of pixel matrixes, which is a specific form of pixel variation, and the architecture of our network. 
+We explain the details of the procedures of pixel matrixes, which is a specific form of the pixel variation, and the architecture of our network. 
 
 
 The complete system is illustrated in \reffig{flow_chart}. 
-Firstly, we temporally sample the input and ground truth images to generalize the pixel variations, and reshape them into fixed-size matrixes and fed them into the network. 
+Firstly, we temporally sample the input and ground truth images to generalize the pixel variations, and reshape them into fixed-size matrixes and feed them into the network with its spatial neighbors. 
 After reassembling the matrixes into the complete output frame, it is post-processed, yielding the final segmentation of the respective video frame.
 \begin{figure*}[!t] % FIGURE: figure/fig1 
 \centering
@@ -391,7 +400,7 @@ After reassembling the matrixes into the complete output frame, it is post-proce
 \end{figure*}
 
 
-
+% 第一步是对原视频进行采样
 Given different videos, the number of frames are generally different. 
 However, the size of our input is fixed, which means a sampling processing is required to keep the length of pixel variations invariant. 
 Therefore, image stacks are sampled form the given videos before the pixel variations are extracted. 
@@ -399,56 +408,68 @@ The given video and image stacks can be defined as follows:
 \begin{equation}
 	Given \  Video=\{ I_1,I_2,I_3,\dots,I_L\} ,
 \end{equation}
+
 \begin{equation}
 Stack_{(x)}=\{I_x,I_{(x+p)},I_{(x+2p)},\dots,I_L \},\quad p*l=L,\quad 1\leq   x\leq p , 
 \end{equation}
+
+% 解释采样的细节
 Where $I_t$ represent the frame $t$ of the given video. 
 And $p$ is an integer number depended on the video frames length. 
 For each video, we can produce multiple image stacks and choose one of them for the training. 
 In addition, thanks to the temporal sampling, we can get compact pixel historical observations containing more temporal information than the continuous pixel sequences. 
 This works well when it comes to some situation where the moving objects keep stationary for a long time. 
 
-
+% 第二步提取Pixel variation
 In order to make use of the temporal information of pixel historical observations, we regard the sampled observations from a single pixel as a whole, namely the pixel variation. 
 After the temporal sampling, a large number of observation sequences, or pixel variations, are extracted from the chosen stack, which is shown as follows:
 \begin{equation}
 Sq_{(m)}=\{P_1^m,P_2^m,P_3^m,\dots,P_n^m\},
 \end{equation}
+
 Where $P_t^m$ denotes the numerical value of pixel $m$ at frame $t$ in the chosen stack. 
 Each of the pixel variation is a piece of temporal information which containing the changing patterns of background pixels. 
 And each of them is of fixed length $n$. 
 It is notable that the quantity of observation sequences is exactly the resolution of the given video, which means an abundance of training data can be obtained with just one image stack. 
 
-
+% 第三步变成矩阵形式，解释为什么要把variation 变形
 Our intention is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
 However, vectors are not appropriate for the network training and learning. 
-Besides, we hope the pixel observations can be interacted with their further compatriots in temporal sequence. 
+Besides, we also hope the pixel observations can be interacted with their further compatriots in temporal sequence. 
 Thus we reshape the variations into pixel matrixes as the input of our network. 
-A sample of pixel matrix $H$ is like this:
+A sample of pixel matrix $H^m$ is like this:
 \begin{equation}
-H=P_{i+j*d}=\begin{bmatrix}
- P_1& P_2  &\dots  &P_d \\ 
+H^m=P^m_{i+j*d}=\begin{bmatrix}
+ P^m_1& P^m_2  &\dots  &P^m_d \\ 
 \vdots &  &  &\vdots \\ 
- P_{1+(d-1)d}& \dots & \dots & P_D
-\end{bmatrix},\quad d^2=D,
+ P^m_{1+(d-1)d}& \dots & \dots & P^m_n
+\end{bmatrix},\quad d^2=n,
 \end{equation}
-Pixel observations are put into the $d*d$ matrix according to the order of top to bottom and left to right. 
+
+Pixel observations are put into the $d\times d$ matrix according to the order of top to bottom and left to right. 
 The parameter $i$ and $j$ represent the column and row respectively. 
-And the parameter $D$ is the total frame length of a variation. 
+And the parameter $n$ is the total frame length of a variation, as the same as the observation sequences. 
 To put it from another way, pixel matrix is just a specific form of the pixel variation. 
 Although the pixel matrix and the observation sequence belong to different forms of the pixel variation, they are formed of the same components, and share the common temporal information from the pixel variation. 
 Since the pixel sequences are extracted from individual pixels, a large number of pixel matrixes may be extracted from only a single image stack.
 
+%第四步空间近邻随机采样。
+It is generally accepted that, neighboring background pixels share a similar temporal variation. 
+In order to benefit from the spatial context, we cascade the pixel matrix with 3 neighboring pixel matrixes randomly selected in 8 nearest neighbors, as shown in \reffig{flow_chart}. 
+Now, we have the input of our network, which size is $d\times d\times 4$. 	
+
+
 In the previous steps, videos are broken down into pixel matrixes which containing abundant background information. 
-Next, the groundtruth matrixes are obtained in the same way. 
+Next, the groundtruth matrixes are obtained in the same way, except the cascading process. 
 Both of them are put into the network for the training. 
-However, the size of the input will decreased after the network computing. 
-In order to make output the same size as input, we borrowed ideas from Image semantic segmentation, which is doing padding to the input before the training. 
+However, the size of the input will decreased in the forward computation. 
+In order to make output the same size as input, we borrowed ideas from Image Semantic Segmentation \cite{Shelhamer2017fcn}, which is doing padding to the input before the training. 
 After the forward computing, variations are transformed in a new space where they can be easily classified by thresholding. 
 The new representation of input pixel variation is defined as:
 \begin{equation}
 H_p= \mathcal L (E_x (H)),
 \end{equation}
+
 Where, $H_p$ denotes the output of network, which we call the prediction matrix, the forward computation of network is represented by $L$, and $E_x$ denotes the symmetric padding of pixel matrix where we have lost none of the pixel information to make the output $H_p$ the same size as the pixel matrix $H$. 
 Another advantage of symmetric padding is that the order information still remains.
 
@@ -474,11 +495,13 @@ The threshold function is given by
  \begin{cases}
   1,  \quad x < y       \\
   0,  \quad otherwise   \\
-\end{cases}.
+\end{cases},
 \end{equation}
+
 \begin{equation}
 M(x,y)=g(H_p,r) ,
 \end{equation}
+
 After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
 And the major contribution is that we demonstrate the effectiveness of temporal information in background subtraction.
 
@@ -488,8 +511,8 @@ Different with CNNs, fully convolution neural network (FCN) utilize convolutiona
 First and foremost, the size of outputs are adjustable in FCNs, which allows an end-to-end mapping of pixel observation sequences and network outputs on the time sequence. 
 We hope to determine the label of a pixel through the comparison of its compatriot in time sequence. 
 There is one more point I ought to touch on, that since the feature maps are no longer need to be converted into vectors, spatial information can be retained . 
-The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won’t lost to the traditional ones. 
-Meanwhile, it’s also a high efficient computation model. 
+The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won't lost to the traditional ones. 
+Meanwhile, it's also a high efficient computation model. 
 
 
 Based on above-mentioned factors, FCN is designed as the alternative network architecture in this paper. 
@@ -522,18 +545,19 @@ Fm= \frac{2\times precision \times recall}{precision + recall} = \frac{2TP}{2TP+
 %     F=\frac{precision \dot recall}{precision - recall}  = \frac{2TP}{2TP+FN+FP},
 % \end{equation}
 %
+
 Where TP, FP, and FN are true positives, false positives, and false negatives respectively, computed in pixels of all test frames for each video. 
 
 
 The quantitative and qualitative comparisons are shown in \reftab{tab1} and  \reffig{results_chart} respectively. 
 Due to the paper length, several typical videos are selected for the qualitative comparisons as well as the discussion. 
-In the dynamic background scene, the video “canoe” is a typically challenging video which includes a large area of water rippling. 
+In the dynamic background scene, the video "canoe" is a typically challenging video which includes a large area of water rippling. 
 The main challenge comes from the dynamic background, in which it is so hard to describe the background by a single image. 
 In this condition, since the traditional background subtraction method such as the SharedModel and the WeSamBE do not have the enough ability to describe the complex dynamically background, they are fail to detect the people on the boat, as shown in the \reffig{results_chart}. 
 Besides, the detected moving objects of the SharedModel are not accurate in boundary due to the utilization of texture features. 
 In contrast, benefited from the strong learning ability of Deep Learning network, the DeepBS successfully detected the people. 
 Unfortunately, since the DeepBS ignores the fact that a single background is not enough to describe the dynamic background, even the deep learning based algorithm is suffering from the detection of the boat shape. 
-In contrast, the proposed approach performed superior than others in this scene, since the essence of background subtraction is considered as a binary classification of pixels’ observation in time sequence. 
+In contrast, the proposed approach performed superior than others in this scene, since the essence of background subtraction is considered as a binary classification of pixels' observation in time sequence. 
 Based on this insight, the FCN network focuses on learning the patterns of the pixel variation rather than a static background image, and proposed approach achieves promising performance in the canoe video.
 
 \begin{figure*}[!t]	\centering
@@ -542,22 +566,23 @@ Based on this insight, the FCN network focuses on learning the patterns of the p
     \caption{The qualitative evaluation of the proposed method. All the results is followed in the CDnet 2014.}
     \label{results_chart}
 \end{figure*}
-As for the case of shadow scene, ‘peopleInShade’ is a typical example with prevalent hard and soft shadows. 
+
+As for the case of shadow scene, "peopleInShade" is a typical example with prevalent hard and soft shadows. 
 In the traditional approaches, these shadow regions are usually segmented as foreground since it is also moving with the objects. 
 Therefore, traditional methods like the PAWCS, the WeSamBE and the SharedModel falsely segments part of shadows as moving objects. 
-In addition, the foreground provided by the UBSS is incomplete on the part of the pedestrian’s body due to the interference of shades, which can be owing to the severe dependency of texture features. 
+In addition, the foreground provided by the UBSS is incomplete on the part of the pedestrian's body due to the interference of shades, which can be owing to the severe dependency of texture features. 
 Whereas, the DeepBS performs well in this video benefited from the utilization of CNN. 
 However, the shape of pedestrians are slightly deformed as the result of their matrix-wise processing of CNN. 
-In contrast, derived from the fact that our DPVL focus on learning the pattern of pixels’ variation in the shadow regions, proposed approach successfully segments the shadow part as the background and achieves the highest performance in the category of shadow scene.
+In contrast, derived from the fact that our DPVL focus on learning the pattern of pixels' variation in the shadow regions, proposed approach successfully segments the shadow part as the background and achieves the highest performance in the category of shadow scene.
 
-In the video “corridor” among the Thermal scene, there is no color information since the videos are obtained through a Thermal camera. 
+In the video "corridor" among the Thermal scene, there is no color information since the videos are obtained through a Thermal camera. 
 Moreover, the moving objects in these videos are exceedingly fuzzy and indistinct, which is the main challenge of this category. 
 The WeSamBE, the SharedModel and the PAWCS successfully detect the target objects, owing to a stable background in this indoor video. 
 However, they fail to remove the reflections since their modeling ability have already reached a limit under the extreme condition of thermal map. 
 The DeepBS, by contrast, succeeds in eliminating most of the reflections. 
 Meanwhile, the moving objects are also clearly divided from the background thanks to the strong modeling ability of CNN. 
 However, due to the dependency of edge feature, a small object were missed in the detection result. 
-Fortunately, the proposed approach focus on the pattern of pixels’ variation, which should be theoretically effective even in the observation without the color information. 
+Fortunately, the proposed approach focus on the pattern of pixels' variation, which should be theoretically effective even in the observation without the color information. 
 Consequently, our DPVL performed much better than compared algorithms, with the situation that most parts of shadow are removed and the segmentation results are more accurate.
 
 % \begin{table}[tab1]
@@ -568,7 +593,7 @@ Consequently, our DPVL performed much better than compared algorithms, with the 
 \begin{tabular}{lllllllllllll}
 \hline
 Videos      & baseline & dyna.bg & cam.jitter & int.obj.m & shadow & thermal & bad.weat & low f.rate & night vid. & PTZ    & turbul. & overall \\ \hline
-DeepBS\cite{Babaee2017deep}      & 0.9580   & 0.8761  & \textbf{0.8990}     & 0.6097    & 0.9304 & 0.7583  & 0.8647   & 0.5900     & 0.6359     & 0.3306 & \textbf{0.8993}  & 0.7458  \\
+DeepBS\cite{Babaee2017deep}      & 0.9580   & 0.8761  & \textbf{0.8990}     & 0.6097    & \textbf{0.9304} & 0.7583  & 0.8647   & 0.5900     & 0.6359     & 0.3306 & 0.8993  & 0.7458  \\
 IUTIS-5\cite{Bianco2017TEC}     & 0.9567   & 0.8902  & 0.8332     & 0.7296    & 0.9084 & 0.8303  & 0.8289   & \textbf{0.7911}     & 0.5132     & 0.4703 & 0.8507  & 0.7717  \\
 FTSG\cite{Wang2014FTSG}        & 0.9330   & 0.8792  & 0.7513     & 0.7891    & 0.8832 & 0.7768  & 0.8228   & 0.6259     & 0.5130     & 0.3241 & 0.7127  & 0.7283  \\
 AAPSA\cite{RAMIREZALONSO2016990}       & 0.9183   & 0.6706  & 0.7207     & 0.5098    & 0.7953 & 0.7030  & 0.7742   & 0.4942     & 0.4161     & 0.3302 & 0.4643  & 0.6179  \\
@@ -581,7 +606,7 @@ WeSamBE\cite{2017_TCSVT_BG_7938679}     & 0.9413   & 0.7440  & 0.7976     & 0.73
 ShareM\cite{2015_ICME_ShareModel}      & 0.9522   & 0.8222  & 0.8141     & 0.6727    & 0.8898 & 0.8319  & 0.8480   & 0.7286     & 0.5419     & 0.3860 & 0.7339  & 0.7474  \\
 GMM\cite{Zivkovic2004}         & 0.8245   & 0.633   & 0.5969     & 0.5207    & 0.7370 & 0.6621  & 0.7380   & 0.5373     & 0.4097     & 0.1522 & 0.4663  & 0.5707  \\
 RMoG\cite{Varadarajan2013}        & 0.7848   & 0.7352  & 0.7010     & 0.5431    & 0.7212 & 0.4788  & 0.6826   & 0.5312     & 0.4265     & 0.2470 & 0.4578  & 0.5735  \\ \hline
-Ours        & \textbf{0.9668}   & 0.8639  & 0.8446     & \textbf{0.9181}    & \textbf{0.9390} & \textbf{0.9268}  & \textbf{0.9265}   & 0.7338     & \textbf{0.7306}     & \textbf{0.5845} & 0.8761  & \textbf{0.8504} \\ \hline
+DPVTL        & \textbf{0.9757}   & 0.9303  & 0.8850     & \textbf{0.9322}    & 0.9274 & \textbf{0.9348}  & \textbf{0.8659}   & 0.7489     & \textbf{0.7529}     & \textbf{0.5836} & \textbf{0.9005}  & \textbf{0.8636} \\ \hline
 \end{tabular}
 \end{table*}
 
@@ -598,7 +623,7 @@ ViBe\cite{Barnich2011_2011_TIP}     & 0.7535  & 0.6676 & 0.8367      & 0.6668   
 PBAS\cite{Hofmann2012Background}     & 0.8071  & 0.6839 & 0.7902      & 0.7280   & 0.3420 & 0.5768 & 0.6547  \\
 P2M\cite{Yang2016P2M}      & 0.9160  & 0.3849 & 0.9121      & 0.7322   & 0.5819 & 0.4352 & 0.6604  \\
 DBMF\cite{Yang2018DBMF}     & 0.9412  & 0.9236 & 0.8394      & 0.9059   & 0.8203 & 0.8645 & 0.8824  \\ \hline
-ours     & \textbf{0.9775}  & \textbf{0.9565} & \textbf{0.9652}      & \textbf{0.9681}   & \textbf{0.9157} & \textbf{0.8943} & \textbf{0.9462}  \\ \hline
+DPVTL     & \textbf{0.9827}  & \textbf{0.9719} & \textbf{0.9729}      & \textbf{0.9753}   & \textbf{0.9269} & \textbf{0.9103} & \textbf{0.9567}  \\ \hline
 \end{tabular}
 \end{table*}
 
