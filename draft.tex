@@ -430,8 +430,7 @@ Sq_{(m)}=\{P_1^m,P_2^m,P_3^m,\dots,P_n^m\},
 Where $P_t^m$ denotes the numerical value of pixel $m$ at frame $t$ in the chosen stack. 
 Each of the pixel variation is a piece of temporal information which containing the changing patterns of background pixels. 
 And each of them is of fixed length $n$. 
-It is notable that the quantity of observation sequences is exactly the resolution of the given video, which means an abundance of trainiing data can be obtained with just one image stack. 
-since the pixel sequences are extracted from individual pixel positions, a large number of pixel matrixes may be extracted from only a single image stack, which promises that sufficient training data can be obtained with limited groundtruth.
+It is notable that observation sequences are extracted from individual pixel positions, which promises that sufficient training data can be obtained with only one image stack.
 
 % 第三步变成矩阵形式，解释为什么要把variation 变形
 Our intention is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
@@ -447,11 +446,11 @@ H^m=P^m_{i+j*d}=\begin{bmatrix}
 \end{bmatrix},\quad d^2=n,
 \end{equation}
 
-Pixel observations are put into the $d\times d$ matrix according to the order of top to bottom and left to right. 
+Pixel variations are put into the $d\times d$ matrix according to the order of top to bottom and left to right. 
 The parameter $i$ and $j$ represent the column and row respectively. 
 And the parameter $n$ is the total frame length of a variation, as the same as the observation sequences. 
-To put it from another way, pixel matrix is just a specific form of the pixel variation. 
-Although the pixel matrix and the observation sequence belong to different forms of the pixel variation, they are formed of the same components, and share the common temporal information from the pixel variation. 
+To put it from another way, the pixel matrix is just a specific form of the pixel variation. 
+Although the observation matrix and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
 Since the pixel sequences are extracted from individual pixels, a large number of pixel matrixes may be extracted from only a single image stack.
 
 %第四步空间近邻随机采样。
