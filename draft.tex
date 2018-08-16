@@ -52,18 +52,36 @@
 
 \begin{abstract}
 %
-Previous work analyzes the variation of pixels for background subtraction which is generally considered as the binary classification of pixels in time sequence.
+Previous approaches to background subtraction generally analyzes the variation of pixels' observation.
+%for background subtraction.
 %
-In this paper, we focus on transforming the variation into another space where the pixels are easier classified,
-with the consideration that the observations of pixels are usually so hard to analyze due to the unpredictability and complexity of natural scenes,
+%Background subtraction is generally considered as the binary classification of pixels' observations in time sequence,
+%and preivous work 
+%
+%Previous work analyzes the variation of pixels for background subtraction which is generally considered as the binary classification of pixels in time sequence.
+%
+%
+In this paper, we focus on transforming the variation into a new space where that there is an obvious difference between the patterns of variation produced by the moving objects and the background,
 and a novel background subtraction method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
 %
-In the DPVTL model,
+% 
+%     
+%     
+%     another space where the observations of pixels are easier classified,
+% with the motivation to  that there is difference between the patterns of variation produced by the moving objects and the background.
+% %
+% We also put forward a novel background subtraction method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
+% %
+% with the consideration that the observations of pixels are usually so hard to analyze due to the unpredictability and complexity of natural scenes,
+%and a novel background subtraction method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
+%
+In particular,
 the variation is represented by the sequence of pixels' observations and used as the input of the fully convolutional network.
 %
-The fully convolutional network is trained to learn the pattern of variation for transformation with the output leaded by grounthtruth data.
+Then, the fully convolutional network is trained to learn the pattern of variation for the transformation followed by a liner classifier for labeling the pixels as foreground or background.
+%    with the supervision leaded by grounthtruth data.
 % XXX 这句话还是有点问题
-Benefied from the ingenious utilization of FCN leading by our clear congnition of essence about background subtractoin problem,
+Benefied from the ingenious utilization of deep learning network leading by our clear congnition of essence about background subtractoin problem,
 proposed approached adaptively generate superior peroformances in diversly complex scenes.
 %
 Comprehensive experiments in standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
