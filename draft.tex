@@ -248,11 +248,14 @@ Region-based approaches assume that the neighboring pixels have similar intensit
 %(Regularized region-based)
 A region-based MoG is proposed by Varadarajan et al.\cite{2015_PR_Varadarajan20153488}. Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
 % Spatiotemporal GMM
-Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cite{2017_TPAMI_GANGWANG}. the authors combine the GMM with constrains of temporal and spatial information from the optical flow and superpixels.
+%
+% 妈蛋。居然怀疑我没看过，我看过这篇论文啊，用最小生成树组织了层次化的superpixels,用来做spatial constrains我下面不是提了的吗，只是更抽象一点。。。
+Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cite{2017_TPAMI_GANGWANG}. the authors combine the GMM with constrains of temporal and spatial information from the optical flow and hierarchical superpixels.
 %(Bayesian Modeling)
-In \cite{Sheikh2005Bayesian}, Sheikh et al. introduce a MAP-MRF framework, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
+In \cite{Sheikh2005Bayesian}, Sheikh et al. introduce a framework based on the Markov Random Field modeling with Maximum A Posteriori 
+probability (MAP-MRF) estimation, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
 %(Robust Foreground Object ICPR2010 Vikas Reddy )
-In \cite{Reddy2010Robust}, given frames are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure, and a temporal correlation check.
+In \cite{Reddy2010Robust}, origin images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure, and a temporal correlation check.
 %( Robust Region-Based ICPR)
 Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color. Any foreground region that does not exist in map1 could be recovered from map2.
 
