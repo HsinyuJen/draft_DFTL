@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  20 AUG 2018 14:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.15)  22 AUG 2018 14:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -19,7 +19,7 @@ Document Class: IEEEtran 2014/09/17 V1.8a by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 458.
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+(d:/tools/texlive2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -112,29 +112,29 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtmpitemindent=\dimen124
 \c@IEEEbiography=\count93
 \@IEEEtranrubishbin=\box27
-) (d:/Tools/texlive2017/texmf-dist/tex/latex/cite/cite.sty
+) (d:/tools/texlive2017/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/11/05 v2.16a AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-(d:/Tools/texlive2017/texmf-dist/tex/latex/amsmath/amstext.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks15
 \ex@=\dimen125
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen126
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count94
@@ -175,27 +175,27 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/tools/verbatim.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks20
 \verbatim@line=\toks21
 \verbatim@in@stream=\read1
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/multirow/multirow.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip47
 \multirow@cntb=\count106
 \multirow@dima=\skip48
 \bigstrutjot=\dimen134
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/hyperref/hyperref.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -235,34 +235,34 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics/keyval.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/oberdiek/auxhook.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen135
 \Hy@linkcounter=\count107
 \Hy@pagecounter=\count108
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/hyperref/pd1enc.def
+(d:/tools/texlive2017/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count109
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(d:/tools/texlive2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Option `unicode' set `true' on input line 4374.
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/hyperref/puenc.def
+(d:/tools/texlive2017/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2017/03/14 v6.85a Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Hyper figures OFF on input line 4498.
@@ -274,7 +274,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4751.
 \c@Hy@tempcnt=\count110
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/url/url.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -299,27 +299,27 @@ LaTeX Info: Redefining \pageref on input line 6432.
 
 Package hyperref Message: Driver: hpdftex.
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/hyperref/hpdftex.def
+(d:/tools/texlive2017/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
 \Fld@listcount=\count115
 \c@bookmark@seq@number=\count116
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip49
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 \Gread@gobject=\count117
 )
@@ -333,16 +333,16 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics/graphicx.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics/graphics.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics/trig.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(d:/tools/texlive2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
@@ -350,55 +350,55 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/todonotes/todonotes.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2015/07/09 .dtx Todonotes source and documentation.
 Package: todonotes 2012/07/25
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/base/ifthen.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(d:/Tools/texlive2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks23
 \XKV@tempa@toks=\toks24
 )
 \XKV@depth=\count118
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks25
 \pgfutil@tempdima=\dimen141
 \pgfutil@tempdimb=\dimen142
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists
 .tex))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box30
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/ms/everyshi.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
 ))
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks26
 \pgfkeys@temptoks=\toks27
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code
 .tex
 \pgfkeys@tmptoks=\toks28
 ))
@@ -419,35 +419,35 @@ Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 \t@pgf@toka=\toks29
 \t@pgf@tokb=\toks30
 \t@pgf@tokc=\toks31
- (d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+ (d:/tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.
 def
 File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 )))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.cod
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.cod
 e.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 \pgfsyssoftpath@smallbuffer@items=\count123
 \pgfsyssoftpath@bigbuffer@items=\count124
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.cod
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.cod
 e.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen151
 \pgfmath@count=\count125
 \pgfmath@box=\box31
@@ -455,28 +455,28 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 \pgfmath@stack@operand=\toks33
 \pgfmath@stack@operation=\toks34
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.co
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.co
 de.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonom
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonom
 etric.code.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.c
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.c
 ode.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparis
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparis
 on.code.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.cod
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.cod
 e.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.co
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.co
 de.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.cod
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.cod
 e.tex)
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integera
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integera
 rithmetics.code.tex)))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count126
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.
 tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@picminx=\dimen152
@@ -494,19 +494,19 @@ File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@zx=\dimen164
 \pgf@zy=\dimen165
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruc
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruc
 t.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
 \pgf@path@lastx=\dimen166
 \pgf@path@lasty=\dimen167
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.co
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.co
 de.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 \pgf@shorten@end@additional=\dimen168
 \pgf@shorten@start@additional=\dimen169
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.
 tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box32
@@ -514,98 +514,98 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgf@layerbox@main=\box34
 \pgf@picture@serial@count=\count127
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate
 .code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
 \pgflinewidth=\dimen170
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformati
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformati
 ons.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
 \pgf@pt@x=\dimen171
 \pgf@pt@y=\dimen172
 \pgf@pt@temp=\dimen173
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.t
 ex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code
 .tex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessi
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessi
 ng.code.tex
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.
 tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 \pgfarrowsep=\dimen174
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.t
 ex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen175
 \pgf@sys@shading@range@num=\count128
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.t
 ex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.cod
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.cod
 e.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
 \pgfexternal@startupbox=\box35
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.
 tex
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency
 .code.tex
 File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.cod
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.cod
 e.tex
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.t
 ex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
 \pgfnodeparttextbox=\box36
 )
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-
 65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen176
 \pgf@nodesepend=\dimen177
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-
 18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
-)) (d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(d:/Tools/texlive2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+)) (d:/tools/texlive2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(d:/tools/texlive2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen178
 \pgffor@skip=\dimen179
 \pgffor@stack=\toks35
 \pgffor@toks=\toks36
 ))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.t
 ex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandle
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandle
 rs.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \pgf@plot@mark@count=\count129
@@ -626,7 +626,7 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikznumberofcurrentchild=\count132
 \tikz@fig@count=\count133
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.t
 ex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 \pgfmatrixcurrentrow=\count134
@@ -635,15 +635,15 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 )
 \tikz@expandcount=\count137
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/t
 ikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-(d:/Tools/texlive2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/t
+(d:/tools/texlive2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/t
 ikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-(d:/Tools/texlive2017/texmf-dist/tex/latex/tools/calc.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count138
 \calc@Bcount=\count139
@@ -680,10 +680,10 @@ LaTeX Font Info:    ... okay on input line 37.
 -- Lines per column: 58 (exact).
 \AtBeginShipoutBox=\box41
 Package hyperref Info: Link coloring OFF on input line 37.
-(d:/Tools/texlive2017/texmf-dist/tex/latex/hyperref/nameref.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-(d:/Tools/texlive2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+(d:/tools/texlive2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count142
@@ -697,7 +697,7 @@ LaTeX Info: Redefining \nameref on input line 37.
 \openout4 = `draft.out'.
 
 
-(d:/Tools/texlive2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(d:/tools/texlive2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count143
 \scratchdimen=\dimen189
@@ -710,10 +710,10 @@ LaTeX Info: Redefining \nameref on input line 37.
 \MPnumerator=\count147
 \makeMPintoPDFobject=\count148
 \everyMPtoPDFconversion=\toks38
-) (d:/Tools/texlive2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (d:/tools/texlive2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+(d:/tools/texlive2017/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -723,7 +723,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(d:/Tools/texlive2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(d:/tools/texlive2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -734,1417 +734,1411 @@ pdfTeX warning: pdflatex.exe (file ./figure/demo.pdf): PDF inclusion: found PDF
 <figure/demo.pdf, id=51, 693.792pt x 607.67027pt>
 File: figure/demo.pdf Graphic file (type pdf)
  <use figure/demo.pdf>
-Package pdftex.def Info: figure/demo.pdf used on input line 179.
+Package pdftex.def Info: figure/demo.pdf used on input line 133.
 (pdftex.def)             Requested size: 252.0pt x 220.71758pt.
 
 Underfull \vbox (badness 1490) has occurred while \output is active []
 
- [1{d:/Tools/texlive2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{d:/tools/texlive2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./figure/demo.pdf>]
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 266.
+ine 237.
 
-Overfull \hbox (3.2pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.2pt too wide) in paragraph at lines 237--237
 [][][][]\OT1/ptm/m/n/10 you 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (3.19974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.19974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dis- 
  []
 
 
-Overfull \hbox (5.41972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.41972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 cuss 
  []
 
 
-Overfull \hbox (2.6398pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.6398pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dif- 
  []
 
 
-Overfull \hbox (2.42986pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.42986pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 fer- 
  []
 
 
-Overfull \hbox (6.51982pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ence 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (12.07974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (12.07974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tween 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ap- 
  []
 
 
-Overfull \hbox (15.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (15.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 proach 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (11.37978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.37978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pixel- 
  []
 
 
-Overfull \hbox (10.96977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.96977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 based 
  []
 
 
-Overfull \hbox (20.69972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (20.69972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method. 
  []
 
 
-Overfull \hbox (9.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (9.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 What 
  []
 
 
-Overfull \hbox (6.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 your 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ad- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 com- 
  []
 
 
-Overfull \hbox (10.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pared 
  []
 
 
-Overfull \hbox (5.97975pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.97975pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 with 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 these 
  []
 
 
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.29985pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pre- 
  []
 
 
-Overfull \hbox (2.08989pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.08989pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ous 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work? 
  []
 
 
-Overfull \hbox (7.59pt too wide) in paragraph at lines 266--266
+Overfull \hbox (7.59pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 Why 
  []
 
 
-Overfull \hbox (5.26993pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.26993pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 they 
  []
 
 
-Overfull \hbox (10.86963pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.86963pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 failed 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (5.37003pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.37003pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 why 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (18.19972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (18.19972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work?  
  []
 
 
-Overfull \hbox (3.2pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.2pt too wide) in paragraph at lines 237--237
 [][][][]\OT1/ptm/m/n/10 you 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (3.19974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.19974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dis- 
  []
 
 
-Overfull \hbox (5.41972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.41972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 cuss 
  []
 
 
-Overfull \hbox (2.6398pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.6398pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dif- 
  []
 
 
-Overfull \hbox (2.42986pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.42986pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 fer- 
  []
 
 
-Overfull \hbox (6.51982pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ence 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (12.07974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (12.07974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tween 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ap- 
  []
 
 
-Overfull \hbox (15.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (15.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 proach 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (11.37978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.37978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pixel- 
  []
 
 
-Overfull \hbox (10.96977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.96977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 based 
  []
 
 
-Overfull \hbox (20.69972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (20.69972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method. 
  []
 
 
-Overfull \hbox (9.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (9.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 What 
  []
 
 
-Overfull \hbox (6.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 your 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ad- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 com- 
  []
 
 
-Overfull \hbox (10.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pared 
  []
 
 
-Overfull \hbox (5.97975pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.97975pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 with 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 these 
  []
 
 
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.29985pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pre- 
  []
 
 
-Overfull \hbox (2.08989pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.08989pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ous 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work? 
  []
 
 
-Overfull \hbox (7.59pt too wide) in paragraph at lines 266--266
+Overfull \hbox (7.59pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 Why 
  []
 
 
-Overfull \hbox (5.26993pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.26993pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 they 
  []
 
 
-Overfull \hbox (10.86963pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.86963pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 failed 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (5.37003pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.37003pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 why 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (18.19972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (18.19972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work?  
  []
 
 
-Overfull \hbox (3.2pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.2pt too wide) in paragraph at lines 237--237
 [][][][]\OT1/ptm/m/n/10 you 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (3.19974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.19974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dis- 
  []
 
 
-Overfull \hbox (5.41972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.41972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 cuss 
  []
 
 
-Overfull \hbox (2.6398pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.6398pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dif- 
  []
 
 
-Overfull \hbox (2.42986pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.42986pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 fer- 
  []
 
 
-Overfull \hbox (6.51982pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ence 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (12.07974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (12.07974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tween 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ap- 
  []
 
 
-Overfull \hbox (15.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (15.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 proach 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (11.37978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.37978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pixel- 
  []
 
 
-Overfull \hbox (10.96977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.96977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 based 
  []
 
 
-Overfull \hbox (20.69972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (20.69972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method. 
  []
 
 
-Overfull \hbox (9.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (9.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 What 
  []
 
 
-Overfull \hbox (6.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 your 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ad- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 com- 
  []
 
 
-Overfull \hbox (10.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pared 
  []
 
 
-Overfull \hbox (5.97975pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.97975pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 with 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 these 
  []
 
 
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.29985pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pre- 
  []
 
 
-Overfull \hbox (2.08989pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.08989pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ous 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work? 
  []
 
 
-Overfull \hbox (7.59pt too wide) in paragraph at lines 266--266
+Overfull \hbox (7.59pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 Why 
  []
 
 
-Overfull \hbox (5.26993pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.26993pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 they 
  []
 
 
-Overfull \hbox (10.86963pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.86963pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 failed 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (5.37003pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.37003pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 why 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (18.19972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (18.19972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work?  
  []
 
 
-Overfull \hbox (3.2pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.2pt too wide) in paragraph at lines 237--237
 [][][][]\OT1/ptm/m/n/10 you 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (3.19974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (3.19974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dis- 
  []
 
 
-Overfull \hbox (5.41972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.41972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 cuss 
  []
 
 
-Overfull \hbox (2.6398pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.6398pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 dif- 
  []
 
 
-Overfull \hbox (2.42986pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.42986pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 fer- 
  []
 
 
-Overfull \hbox (6.51982pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.51982pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ence 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (12.07974pt too wide) in paragraph at lines 266--266
+Overfull \hbox (12.07974pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tween 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ap- 
  []
 
 
-Overfull \hbox (15.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (15.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 proach 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (11.37978pt too wide) in paragraph at lines 266--266
+Overfull \hbox (11.37978pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pixel- 
  []
 
 
-Overfull \hbox (10.96977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.96977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 based 
  []
 
 
-Overfull \hbox (20.69972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (20.69972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method. 
  []
 
 
-Overfull \hbox (9.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (9.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 What 
  []
 
 
-Overfull \hbox (6.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (6.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 your 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 266--266
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ad- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 com- 
  []
 
 
-Overfull \hbox (10.40984pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.40984pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pared 
  []
 
 
-Overfull \hbox (5.97975pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.97975pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 with 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 266--266
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 these 
  []
 
 
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 266--266
+Overfull \hbox (4.29985pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 pre- 
  []
 
 
-Overfull \hbox (2.08989pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.08989pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 ous 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work? 
  []
 
 
-Overfull \hbox (7.59pt too wide) in paragraph at lines 266--266
+Overfull \hbox (7.59pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 Why 
  []
 
 
-Overfull \hbox (5.26993pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.26993pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 they 
  []
 
 
-Overfull \hbox (10.86963pt too wide) in paragraph at lines 266--266
+Overfull \hbox (10.86963pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 failed 
  []
 
 
-Overfull \hbox (2.63994pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.63994pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 and 
  []
 
 
-Overfull \hbox (5.37003pt too wide) in paragraph at lines 266--266
+Overfull \hbox (5.37003pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 why 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 266--266
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (18.19972pt too wide) in paragraph at lines 266--266
+Overfull \hbox (18.19972pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 method 
  []
 
 
-Overfull \hbox (13.08987pt too wide) in paragraph at lines 266--266
+Overfull \hbox (13.08987pt too wide) in paragraph at lines 237--237
 \OT1/ptm/m/n/10 work?  
  []
 
 
-Overfull \hbox (21.52945pt too wide) in paragraph at lines 297--297
+Overfull \hbox (21.52945pt too wide) in paragraph at lines 279--279
 [][][][]\OT1/ptm/m/n/10 disccuss 
  []
 
 
-Overfull \hbox (5.40984pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.40984pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 ada- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (11.14993pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.14993pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 work.  
  []
 
 
-Overfull \hbox (21.52945pt too wide) in paragraph at lines 297--297
+Overfull \hbox (21.52945pt too wide) in paragraph at lines 279--279
 [][][][]\OT1/ptm/m/n/10 disccuss 
  []
 
 
-Overfull \hbox (5.40984pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.40984pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 ada- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (11.14993pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.14993pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 work.  
  []
 
 
-Overfull \hbox (21.52945pt too wide) in paragraph at lines 297--297
+Overfull \hbox (21.52945pt too wide) in paragraph at lines 279--279
 [][][][]\OT1/ptm/m/n/10 disccuss 
  []
 
 
-Overfull \hbox (5.40984pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.40984pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 ada- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (11.14993pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.14993pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 work.  
  []
 
 
-Overfull \hbox (21.52945pt too wide) in paragraph at lines 297--297
+Overfull \hbox (21.52945pt too wide) in paragraph at lines 279--279
 [][][][]\OT1/ptm/m/n/10 disccuss 
  []
 
 
-Overfull \hbox (5.40984pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.40984pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 ada- 
  []
 
 
-Overfull \hbox (5.7199pt too wide) in paragraph at lines 297--297
+Overfull \hbox (5.7199pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 van- 
  []
 
 
-Overfull \hbox (4.85977pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85977pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 tage 
  []
 
 
-Overfull \hbox (4.85991pt too wide) in paragraph at lines 297--297
+Overfull \hbox (4.85991pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 pro- 
  []
 
 
-Overfull \hbox (11.52983pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.52983pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 posed 
  []
 
 
-Overfull \hbox (11.14993pt too wide) in paragraph at lines 297--297
+Overfull \hbox (11.14993pt too wide) in paragraph at lines 279--279
 \OT1/ptm/m/n/10 work.  
  []
 
 
-Overfull \hbox (13.74954pt too wide) in paragraph at lines 301--301
+Overfull \hbox (13.74954pt too wide) in paragraph at lines 288--288
 [][][][]\OT1/ptm/m/n/10 Please 
  []
 
 
-Overfull \hbox (2.63966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.63966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cite 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 more 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pa- 
  []
 
 
-Overfull \hbox (4.85979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.85979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pers 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 since 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 301--301
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.64993pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 work 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (9.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (9.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 longs 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.18973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cat- 
  []
 
 
-Overfull \hbox (8.38005pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.38005pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 gory. 
  []
 
 
-Overfull \hbox (5.97977pt too wide) in paragraph at lines 301--301
+Overfull \hbox (5.97977pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 This 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (8.19972pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.19972pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 main 
  []
 
 
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 part 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (4.29973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.29973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 sec- 
  []
 
 
-Overfull \hbox (6.25978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (6.25978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 tion.  
  []
 
 
-Overfull \hbox (13.74954pt too wide) in paragraph at lines 301--301
+Overfull \hbox (13.74954pt too wide) in paragraph at lines 288--288
 [][][][]\OT1/ptm/m/n/10 Please 
  []
 
 
-Overfull \hbox (2.63966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.63966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cite 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 more 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pa- 
  []
 
 
-Overfull \hbox (4.85979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.85979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pers 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 since 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 301--301
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.64993pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 work 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (9.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (9.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 longs 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.18973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cat- 
  []
 
 
-Overfull \hbox (8.38005pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.38005pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 gory. 
  []
 
 
-Overfull \hbox (5.97977pt too wide) in paragraph at lines 301--301
+Overfull \hbox (5.97977pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 This 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (8.19972pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.19972pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 main 
  []
 
 
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 part 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (4.29973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.29973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 sec- 
  []
 
 
-Overfull \hbox (6.25978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (6.25978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 tion.  
  []
 
 
-Overfull \hbox (13.74954pt too wide) in paragraph at lines 301--301
+Overfull \hbox (13.74954pt too wide) in paragraph at lines 288--288
 [][][][]\OT1/ptm/m/n/10 Please 
  []
 
 
-Overfull \hbox (2.63966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.63966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cite 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 more 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pa- 
  []
 
 
-Overfull \hbox (4.85979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.85979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pers 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 since 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 301--301
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.64993pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 work 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (9.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (9.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 longs 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.18973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cat- 
  []
 
 
-Overfull \hbox (8.38005pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.38005pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 gory. 
  []
 
 
-Overfull \hbox (5.97977pt too wide) in paragraph at lines 301--301
+Overfull \hbox (5.97977pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 This 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (8.19972pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.19972pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 main 
  []
 
 
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 part 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (4.29973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.29973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 sec- 
  []
 
 
-Overfull \hbox (6.25978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (6.25978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 tion.  
  []
 
 
-Overfull \hbox (13.74954pt too wide) in paragraph at lines 301--301
+Overfull \hbox (13.74954pt too wide) in paragraph at lines 288--288
 [][][][]\OT1/ptm/m/n/10 Please 
  []
 
 
-Overfull \hbox (2.63966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.63966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cite 
  []
 
 
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 more 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pa- 
  []
 
 
-Overfull \hbox (4.85979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.85979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 pers 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (8.74966pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.74966pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 since 
  []
 
 
-Overfull \hbox (1.52995pt too wide) in paragraph at lines 301--301
+Overfull \hbox (1.52995pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 our 
  []
 
 
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.64993pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 work 
  []
 
 
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (0.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 be- 
  []
 
 
-Overfull \hbox (9.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (9.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 longs 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.18973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 cat- 
  []
 
 
-Overfull \hbox (8.38005pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.38005pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 gory. 
  []
 
 
-Overfull \hbox (5.97977pt too wide) in paragraph at lines 301--301
+Overfull \hbox (5.97977pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 This 
  []
 
 
-Overfull \hbox (8.73979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.73979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 para- 
  []
 
 
-Overfull \hbox (10.9699pt too wide) in paragraph at lines 301--301
+Overfull \hbox (10.9699pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 graph 
  []
 
 
-Overfull \hbox (14.86978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (14.86978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 should 
  []
 
 
-Overfull \hbox (8.19972pt too wide) in paragraph at lines 301--301
+Overfull \hbox (8.19972pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 main 
  []
 
 
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 301--301
+Overfull \hbox (3.74979pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 part 
  []
 
 
-Overfull \hbox (2.64967pt too wide) in paragraph at lines 301--301
+Overfull \hbox (2.64967pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 this 
  []
 
 
-Overfull \hbox (4.29973pt too wide) in paragraph at lines 301--301
+Overfull \hbox (4.29973pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 sec- 
  []
 
 
-Overfull \hbox (6.25978pt too wide) in paragraph at lines 301--301
+Overfull \hbox (6.25978pt too wide) in paragraph at lines 288--288
 \OT1/ptm/m/n/10 tion.  
  []
 
-
-LaTeX Warning: Marginpar on page 2 moved.
-
-[2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-<figure/fig1.png, id=118, 578.16pt x 433.62pt>
+[2] <figure/fig1.png, id=117, 578.16pt x 433.62pt>
 File: figure/fig1.png Graphic file (type png)
  <use figure/fig1.png>
-Package pdftex.def Info: figure/fig1.png used on input line 350.
+Package pdftex.def Info: figure/fig1.png used on input line 339.
 (pdftex.def)             Requested size: 252.0pt x 189.00032pt.
- [3 <./figure/fig1.png>] <figure/fig2.png, id=135, 749.199pt x 508.7808pt>
+
+[3 <./figure/fig1.png>] <figure/fig2.png, id=135, 749.199pt x 508.7808pt>
 File: figure/fig2.png Graphic file (type png)
 
 <use figure/fig2.png>
-Package pdftex.def Info: figure/fig2.png used on input line 414.
+Package pdftex.def Info: figure/fig2.png used on input line 403.
 (pdftex.def)             Requested size: 516.0pt x 350.41476pt.
 
-Overfull \hbox (21.98045pt too wide) detected at line 432
+Overfull \hbox (21.98045pt too wide) detected at line 421
 []\OML/cmm/m/it/10 Stack[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10
  I[]; I[]; I[]; [] ; I[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ;  p \OMS/cmsy/m/n/1
 0 ^^C \OML/cmm/m/it/10 l \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 L;  \OT1/cmr/m/n/10
@@ -2159,15 +2153,15 @@ Underfull \vbox (badness 5147) has occurred while \output is active []
 File: figure/fig3.png Graphic file (type png)
 
 <use figure/fig3.png>
-Package pdftex.def Info: figure/fig3.png used on input line 589.
+Package pdftex.def Info: figure/fig3.png used on input line 578.
 (pdftex.def)             Requested size: 516.0pt x 245.4223pt.
  [6]
-Overfull \hbox (18.62918pt too wide) in paragraph at lines 618--636
+Overfull \hbox (18.62918pt too wide) in paragraph at lines 607--625
  [][] 
  []
 
 
-Overfull \hbox (25.46202pt too wide) in paragraph at lines 660--675
+Overfull \hbox (25.46202pt too wide) in paragraph at lines 649--664
  [][] 
  []
 
@@ -2195,36 +2189,36 @@ Missing character: There is no Â in font ptmr7t!
 Missing character: There is no ¨ in font ptmr7t!
 Missing character: There is no Â in font ptmr7t!
 ) [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 766.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 766.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 755.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 755.
  (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 766.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 766.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 755.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 755.
 Package rerunfilecheck Info: File `draft.out' has not changed.
-(rerunfilecheck)             Checksum: 8076BEB0AA8D629F8F2C559E9A5518BF;1540.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 766.
+(rerunfilecheck)             Checksum: BAEC10AC18E49AA300E13A2FA52DD876;1525.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 755.
  ) 
 Here is how much of TeX's memory you used:
  20580 strings out of 492995
  368325 string characters out of 6134077
- 453510 words of memory out of 5000000
+ 450492 words of memory out of 5000000
  23758 multiletter control sequences out of 15000+600000
  40779 words of font info for 77 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 62i,9n,76p,660b,694s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/Tools/texlive2017/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/Tools/texliv
-e2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Tools/texlive201
-7/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Tools/texlive2017/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/Tools/texlive2017/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/Tools/texlive2017/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><d:/Tools/texlive2017/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr7.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy7.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times
-/utmb8a.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
-<d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Tools/tex
+ 62i,9n,76p,613b,694s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/tools/texlive2017/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/tools/texliv
+e2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/tools/texlive201
+7/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/tools/texlive2017/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/tools/texlive2017/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/tools/texlive2017/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr10.pfb><d:/tools/texlive2017/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb><d:/tools/texlive2017/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><d:/tools/texlive2017/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy7.pfb><d:/tools/texlive2017/texmf-dist/fonts/type1/urw/times
+/utmb8a.pfb><d:/tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
+<d:/tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/tools/tex
 live2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on draft.pdf (9 pages, 1357441 bytes).
+Output written on draft.pdf (9 pages, 1357439 bytes).
 PDF statistics:
  327 PDF objects out of 1000 (max. 8388607)
  290 compressed objects within 3 object streams

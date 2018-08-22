@@ -255,19 +255,20 @@ Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cit
 In \cite{Sheikh2005Bayesian}, Sheikh et al. introduce a framework based on the Markov Random Field modeling with Maximum A Posteriori 
 probability (MAP-MRF) estimation, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
 %(Robust Foreground Object ICPR2010 Vikas Reddy )
-In \cite{Reddy2010Robust}, origin images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure, and a temporal correlation check.
+% 这里原文就是用了三层的分类器，不同的方法，一层又一层。
+In \cite{Reddy2010Robust}, origin images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure and a temporal correlation check.
 %( Robust Region-Based ICPR)
-Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color. Any foreground region that does not exist in map1 could be recovered from map2.
+Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color respectively. Any foreground region that does not exist in the first foreground map could be recovered from the other one.
 
 %讲其他方法的缺点，不能利用时序相关性，只是在pixel-based方法上添加了空间约束
 Unfortunately, most region-based methods are not capable to make use of the temporal coherence, since they are merely adding some spatial constrains to the pixels-based methods. 
 %有的方法结合了光流，也算利用了时序相关性
 But we also notice that some methods are involved with optical flow field, which can be viewed as a limited temporal coherence message. 
 %但是他们也有几个缺点
-However, optical flow methods have some shortcommings like the high computation complexity and the sensitivity to illumination changing. 
+However, optical flow methods have shortcommings like the high computation complexity and the sensitivity to illumination changing. 
 %最重要的是，他们的时序相关性太有限了。所以对与其他方法，并没有明显的优势。
 Moreover, their temporal coherence information is very limited. For each frame, only a few of neighbor frames are taken into account when computing the optical flow.
-This probably explains why they have no significant improvement compared to their competitors.    
+This could explain why they have no significant improvement compared to their competitors.    
 %讲我们方法的不同以及优点
 %我们的输入有足量的时序信息。
 In the proposed approach, by contrast, we present the pixel matrix, which contains the pixel variation over a longer period of time, to ensure that our DPVTL model has sufficient temporal coherence information to feed.
@@ -277,33 +278,42 @@ Furthermore, the proposed approach are more powerful in capturing the structural
 
 \todo{disccuss the adavantage of proposed work.}
 
+%
+%
+%
+%
+%
 % \subsection{learning-based methods}
 \subsection{Machine Learning based Methods}
 \todo{Please cite more papers on this paragraph since our work belongs to this category. This paragraph should be the main part of this section.}
-%我也想多引用一些，本来就不多的嘛。。。
-The last category of foreground detection methods apply traditional machine learning or deep learning on different features for the background modeling.
+The last category of foreground detection methods apply traditional machine learning and deep learning on different features for the background modeling.
 
+%
 %SVM
-Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods\cite{Zhang2014Statis}. For example, in \cite{Han2012}, the authors integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. A pixel wise background model is obtained for each feature in a kernel density framework and a SVM is employed for segmentation.
+Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods\cite{Zhang2014Statis}. For example, in \cite{Han2012}, the authors integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. A pixel wise background model is obtained for each feature in a kernel density framework and a SVM is employed for classification.
 
 %
-Recent years, deep learning starts to flourish in many fields, such as face recognition and natural language processing, significantly improving the state-of-the-art. A novel approach for foreground detection with the use of CNN was proposed by Braham and Droogenbroeck\cite{Braham2016deep}. They employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth, or alternatively, segmentation results from other foreground detection methods. Those patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
+% Ren: 这个CNN是cascade的结构，就是个层次化预测结果的组合。
+Recent years, deep learning starts to flourish in many computer vision fields, significantly improving the state-of-the-art. A novel approach for foreground detection with the use of CNN is proposed by Wang et al.
+They utilize a CNN with a cascade network architecture for segmentation in foreground detection, which perform excellently in dataset2014 with sufficient training data.
 %
-In \cite{wang2016PRL}, Wang et al. tried a CNN architecture combined with a Cascade model for segmentation in foreground detection. Given 200 labelled images as training set, their model performed excellently in dataset2014.
-%
-M. Babaee et al. \cite{Babaee2017deep} present a novel CNN for foreground detection. They also combine the segmentation mask from SuBSENSE\cite{St-Charles2015SuBSENSE} algorithm and the output of Flux Tensor algorithm, which is able to adaptively update the parameters used in the background model based on the motion changes in video stream. They also used spatial-median filtering as the post processing of the network outputs.
+% Ren: 这里我解释一下，为什么看上去这么冗余。这家伙先自己用中值滤波求了个平均背景，然后把平均背景 patches 跟对应的origin image patches 组合作为网络输入，他训练的groundtruth也可以来自其他比如GMM的分类结果图。
+%       所以我这里一连提了四个这篇论文训练要采集的patches。 patches 分别来自 平均背景，原始图像，真实图，或者其他算法算出的真实图。
+Braham and Droogenbroeck\cite{Braham2016deep} employ a scene-specific CNN, which is trained with corresponding image patches from the background image obtained from temporal median filtering, video frames and groundtruth, or alternatively, segmentation results from other foreground detection methods. Those patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
+% Ren: 下面这个家伙做法跟上面太类似了，就是背景图像不用中值滤波，而是用其他牛一点的方法去获取。MD
+A similar approach is presented by M. Babaee et al. \cite{Babaee2017deep}. Their background images combine the segmentation mask from SuBSENSE\cite{St-Charles2015SuBSENSE} algorithm and the output of Flux Tensor algorithm, which is able to adaptively update the parameters used in the background model. They also utilize spatial-median filtering as the post processing of the network predictions.
 %DBMF
 %skip结构就是skip结构啊！！就是说前基层的输出在输进下一层的同时，会跳过下一层，输入到更后面去。
 In \cite{Yang2018DBMF}, a FCN with the skip architecture is proposed for background modeling. 
 The authors also proposed a temporal approach to sample training images from the given video, thus providing the background model with limited temporal information. 
 
 %以上方法的缺点主要在于，他们都是基于静态的图像特征训练的。抛弃了时序相关性。
-Above mentioned deep methods are based on the static images and static saliency characteristics. 
+Methods in this category are generally based on the static images and static saliency characteristics. 
 As we've discussed earlier, their background models are trained with little or no temporal coherence involved.
 %所以他们在处理物体突然运动的时候会存在问题。
-And that cause the problem when target objects are doing sudden movement, for example, starting a car and get it out of the parking lot. 
+Problems will emerge in endlessly when the target object moves in an intermittent motion period, for example, starting a car and get it out of the parking lot. 
 %尽管他们用了很好的结构和技巧，但是仍然不能解决这个问题，如何去检测运动，而不是把潜在的运动物体全标记出来。
-Even though they have made a lot of progress with optimized network architechtures and training tricks, it is still an unsolved problem that how to detect the motion rather than mark out all the possible moving objects.
+Even though they have made a lot of progress with optimized network architechtures, it is still an unsolved problem that how to learn the patterns of motion rather than mark out all the possible moving objects.
 %我们的不同在与输入
 Different with their methods, the input of our DPVTL model is not the origin images or patches. Instead, we regard the pixel variation as a whole for the network training to preseve the temporal coherence between the pixels' historical observations.
 %因为我们的方法是基于时序建模的，所以我们的模型可以学习一段时间内的运动。
