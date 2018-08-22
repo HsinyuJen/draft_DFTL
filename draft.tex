@@ -185,24 +185,38 @@ The details of the variation transformation are presented in \refsec{sec3}. The 
 \label{sec2}
 % XXX 引用文章的方式，Bouwmans2014 在ref.bib文件里,不懂去问曲师兄！！！！
 %\cite{Bouwmans2014}
-Over the last few decades, foreground detection has been well studied. Meanwhile, a huge number of background modeling methods have been proposed. 
-These methods can be broadly categorized into pixels-based, region-based and Learning-based methods.
-\subsection{pixels-based methods}
-Pixel-based techniques assume that the historical observations over time are independent at each pixel. Based on low-level features, such as color and gradients, these methods are computationally efficient and easy to deploy. 
+% Ren:删去了冗余的一句话。
+Over the last few decades, a huge number of background modeling methods have been proposed. 
+These methods can be broadly categorized into pixel-based, region-based and learning-based methods.
+\subsection{pixel-based methods}
+% Ren:重新解释了pixel based methods
+Pixel-based methods assume that pixels are independent to each other and have no consideration of the spatial association with neighboring pixels. 
+Based on low-level features, such as color and gradients, pixel-based methods are computationally efficient and easy to deploy. 
 
-%GMM
-The most famous pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
+%GMM 
+% Ren:这里你说over time 不专业，但是论文里用得挺多的啊，表示随时间推移。还有那一句 pixels are .... to be if there exists ....， 我也是在其他论文里借过来用的。原文是Incoming pixels from video frames are labeled as background if there exists a Gaussian in the GMM, where the distance between its mean and the pixel lies within a certain bound. 
+The most popular pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
 %GMM+
-Zoran Zivkovic\cite{Zivkovic2004} extend the GMM through the use of recursive equations, where the parameters keep constantly updating and the number of components are adaptable to each pixel. 
-%你的ICME那篇里面也用过extend through the use of 这句话的啊。 这里的改进就是用了一些回归方程，我也从别的文章里看过的。
+% Ren: 这里你说看不懂，我的意思是想说，GMM+里面参数会自动更新。并且每一个像素位置的高斯个数也会自适应调整。原文里说的是： Recursive equations are used to constantly update the parameters and but also to simultaneously select the appropriate number of components for each pixel.
+An improved GMM method is introduced by Zivkovic\cite{Zivkovic2004} with the utilization of recursive equations, which can automatically update the parameters and adjust the needed number of components of mixture for each pixel. 
+%
 %codebook
-Some other popular algorithms in pixel based category are based on Codebook. 
-In \cite{Kim2005}, Kim et al present the codebook method to record the sampling background values at each pixel, which can be seemed as a compressed representation of background model. The final foreground is detected by a distance measurement in a cylindrical color model.
+%Another popular algorithm in pixel based category is based on the Codebook. 
+%Ren: 干脆删掉这一句了。。。
+%Ren: 下面也重新写了。
+Kim et al.\cite{Kim2005} present the codebook method, which records the sampling background values to codewords for each pixel position.  
+Then incoming pixels are compared with those of the codewords, to see if their distances lies within a certain bound. 
 %KDE
-A non-parametric background model is proposed in \cite{Elgammal2000Non}. Elgammal et al. assume that each background pixel is drawn from a Probability Distribution Function(PDF). The PDF for each pixel is estimated with Kernel Density Estimation(KDE). 
+% Ren这里确实没写好，因为有点看不太明白KDE.
+A non-parametric background model is proposed in \cite{Elgammal2000Non}. Authors assume that each background pixel is drawn from a probability distribution function, which is estimated with Kernel Density Estimation(KDE). 
 %Vibe
-Another non-parametric method is proposed by O. Barnich, called the Visual Background Extractor (ViBe)\cite{Barnich2011_2011_TIP}. ViBe is a sample based method, which consists of pixel samples from the video stream. Each pixel in the current frame is compared with N pixel samples from the corresponding background model and labeled as the foreground when there exist at least K samples with a distance to itself within a certain range R. 
+% Ren: 关于这个Another我觉得没问题啊，因为之前一句是讲非参数的方法KDE,这里说另一个非参数的方法我觉得没毛病啊。
+% Ren: 还有 when there exists 这个短语确实没毛病啊，搜谷歌学术里这么用的也很多啊。
+Another non-parametric method is proposed by Barnich\cite{Barnich2011_2011_TIP}, called the Visual Background Extractor (ViBe). The background model of ViBe consists of pixel samples from the video stream. Each pixel in the current frame is compared with sampling pixels from the corresponding background model and labelled as the foreground when there exists at least K samples with a distance to itself within a certain range R. 
 %PBAS
+%
+% 这里上下两句话里，我用了一个R，一个R(X)，这两个东西是有关系的，ViBe里面要看距离是不是小于R, 下面这个论文是看距离是不是小于R(X),也就是说每个像素点位置，这个R是不一样的。
+%
 To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
 
 %提出其他方法的问题，指出他们的缺陷
