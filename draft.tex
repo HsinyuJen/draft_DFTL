@@ -215,28 +215,38 @@ A non-parametric background model is proposed in \cite{Elgammal2000Non}. Authors
 Another non-parametric method is proposed by Barnich\cite{Barnich2011_2011_TIP}, called the Visual Background Extractor (ViBe). The background model of ViBe consists of pixel samples from the video stream. Each pixel in the current frame is compared with sampling pixels from the corresponding background model and labelled as the foreground when there exists at least K samples with a distance to itself within a certain range R. 
 %PBAS
 %
-% 这里上下两句话里，我用了一个R，一个R(X)，这两个东西是有关系的，ViBe里面要看距离是不是小于R, 下面这个论文是看距离是不是小于R(X),也就是说每个像素点位置，这个R是不一样的。
+% Ren :这里上下两句话里，我用了一个R，一个R(X)，这两个东西是有关系的，ViBe里面要看距离是不是小于R, 下面这个论文是看距离是不是小于R(X),也就是说每个像素点位置，这个R是不一样的。
 %
 To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
 
 %提出其他方法的问题，指出他们的缺陷
-However, Those assumptions of pixels' independence are incorrect or inapplicable to many real-world scenes. 
-There is, in fact, a strong temporal coherence in image sequences that contains abundant hidden clues for the background model. 
-In most cases, pixels-based methods are only concerned with pixels distribution, and ignore the order information of input frames by default.
+However, The assumption that pixels are independent to their spatical neighbors is untenable in practice. 
+% Ren: 下面这一段，你说不知所云，我的意思是，之前的方法大多只考虑了像素值分布的概率，而不管它们变化过程中的顺序性。
+On the other hand, most pixels-based methods are only concerned with pixels distribution, and ignore the order information of input frames by default.
+But there is, in fact, a strong temporal coherence in image sequences that contains abundant hidden clues for the background model. 
 %提出我们的改进,我们认为像素在时序上是互相依赖的
-To address this shortcoming, we introduce a novel framework of variation transformation learing, which assumpt that there is a tight interdependence in pixel's historical observations.
+% tight interdependence 明明在google scholar里查得到很多用的好不好...
+To address this shortcoming, we introduce a novel framework of variation transformation learing, which assume that there is a tight interdependence in pixel's historical observations.
 %所以我们把像素整合到一起
+% In this case在google scholar里也查得到很多啊
 In this case, pixel's historical observations are embedded in a piece of pixel variation and sorted in chronological order as a whole to enter our DPVTL model.
 %这样的优点在于保留了数据的完整性，保留了数据的时序相关性。
 The benefit of bringing together the observations is to ensure the data integrity and preserve the temporal coherence of our training data. And that guarantee us the ability to take advantage of the temporal coherence. 
 %所以我们方法比基于像素的要好。
 Hence we demonstrate a comparatively better performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 \todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
+%
+%
+%
+%
+%
+%
 \subsection{region-based approach}
-Region-based approaches assume that the neighboring pixels have a similar variation as the pixel itself. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
+% Ren: 好的好的，不乱吹了，我看过有说have similar values的。。。。
+Region-based approaches assume that the neighboring pixels have similar intensities. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
 
 %(Regularized region-based)
-A region-based MoG is proposed by Varadarajan et al.\cite{2015_PR_Varadarajan20153488} Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
+A region-based MoG is proposed by Varadarajan et al.\cite{2015_PR_Varadarajan20153488}. Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
 % Spatiotemporal GMM
 Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cite{2017_TPAMI_GANGWANG}. the authors combine the GMM with constrains of temporal and spatial information from the optical flow and superpixels.
 %(Bayesian Modeling)
