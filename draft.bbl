@@ -102,10 +102,6 @@ B.~Han and L.~Davis, ``Density-based multifeature background subtraction with
 M.~Braham and M.~Droogenbroeck, ``Deep background subtraction with
   scene-specific convolutional neural networks,'' pp. 1--4, 05 2016.
 
-\bibitem{wang2016PRL}
-Y.~Wang, Z.~Luo, and P.-M. Jodoin, ``Interactive deep learning method for
-  segmenting moving objects,'' 09 2016.
-
 \bibitem{Babaee2017deep}
 M.~Babaee, D.~Tung~Dinh, and G.~Rigoll, ``A deep convolutional neural network
   for background subtraction,'' 02 2017.

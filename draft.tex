@@ -186,29 +186,47 @@ The details of the variation transformation are presented in \refsec{sec3}. The 
 % XXX 引用文章的方式，Bouwmans2014 在ref.bib文件里,不懂去问曲师兄！！！！
 %\cite{Bouwmans2014}
 % Ren:删去了冗余的一句话。
-Over the last few decades, a huge number of background modeling methods have been proposed. 
-These methods can be broadly categorized into pixel-based, region-based and learning-based methods.
+Over the last few decades, a huge number of background modeling methods have been proposed,
+which are broadly categorized into pixel-based, region-based and learning-based methods.
 \subsection{pixel-based methods}
 % Ren:重新解释了pixel based methods
-Pixel-based methods assume that pixels are independent to each other and have no consideration of the spatial association with neighboring pixels. 
-Based on low-level features, such as color and gradients, pixel-based methods are computationally efficient and easy to deploy. 
+Pixel-based methods usually assume the independence between neighboring pxiels,
+and utilize the low-level features, such as color or gradients for background subtraction.
+% cqzhao:这两句连接性不强
+% Pixel-based methods assume that pixels are independent to each other and have no consideration of the spatial association with neighboring pixels. 
+% Based on low-level features, such as color and gradients, pixel-based methods are computationally efficient and easy to deploy. 
 
 %GMM 
-% Ren:这里你说over time 不专业，但是论文里用得挺多的啊，表示随时间推移。还有那一句 pixels are .... to be if there exists ....， 我也是在其他论文里借过来用的。原文是Incoming pixels from video frames are labeled as background if there exists a Gaussian in the GMM, where the distance between its mean and the pixel lies within a certain bound. 
-The most popular pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel over time. Pixels are considered to be background if there exists a Gaussian includes their values with sufficient evidence. 
-%GMM+
+% Ren:这里你说over time 不专业，但是论文里用得挺多的啊，表示随时间推移。还有那一句 pixels are .... to be if there exists ....， 我也是在其他论文里借过来用的。i
+% 原文是Incoming pixels from video frames are labeled as background if there exists a Gaussian in the GMM, where the distance between its mean and the pixel lies within a certain bound. 
+% cqzhao: 我没有看到过over time，如果你在trans或者顶会(ICCV,CVPR,ECCV)里找到了论文原话，那你可以用哦。
+In particular, the Gaussian Mixture Model (GMM) proposed by Stauffer et al.\ \cite{Stauffer1999} is the most popular approach among pixels-based methods,
+% 注意英语和汉语的表达习惯
+% The most popular pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, 
+which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel in time sequence.
+%over time. 
+Pixels are considered as background if there exists a Gaussian function includes their values with sufficient evidence. 
+%GMM+i
+Moreover,
+Zivkovic et al.\ \cite{Zivkovic2004} improve the GMM method with the utilization of recursive equation
+to automatically update the parameters and adjust the needed number of components of mixture for each pixel. 
+%
 % Ren: 这里你说看不懂，我的意思是想说，GMM+里面参数会自动更新。并且每一个像素位置的高斯个数也会自适应调整。原文里说的是： Recursive equations are used to constantly update the parameters and but also to simultaneously select the appropriate number of components for each pixel.
-An improved GMM method is introduced by Zivkovic\cite{Zivkovic2004} with the utilization of recursive equations, which can automatically update the parameters and adjust the needed number of components of mixture for each pixel. 
+% An improved GMM method is introduced by Zivkovic\cite{Zivkovic2004} with the utilization of recursive equations, 
+% which can 
+% automatically update the parameters and adjust the needed number of components of mixture for each pixel. 
 %
 %codebook
 %Another popular algorithm in pixel based category is based on the Codebook. 
 %Ren: 干脆删掉这一句了。。。
 %Ren: 下面也重新写了。
-Kim et al.\cite{Kim2005} present the codebook method, which records the sampling background values to codewords for each pixel position.  
-Then incoming pixels are compared with those of the codewords, to see if their distances lies within a certain bound. 
+Hence, Kim et al.\cite{Kim2005} present the codebook method, which records the sampling background values to codewords for each pixel position.  
+Then incoming pixels are compared with these codewords to see if their distances lies within a certain bound. 
+
 %KDE
 % Ren这里确实没写好，因为有点看不太明白KDE.
-A non-parametric background model is proposed in \cite{Elgammal2000Non}. Authors assume that each background pixel is drawn from a probability distribution function, which is estimated with Kernel Density Estimation(KDE). 
+A non-parametric background model is proposed in \cite{Elgammal2000Non}. 
+Authors assume that each background pixel is drawn from a probability distribution function, which is estimated with Kernel Density Estimation(KDE). 
 %Vibe
 % Ren: 关于这个Another我觉得没问题啊，因为之前一句是讲非参数的方法KDE,这里说另一个非参数的方法我觉得没毛病啊。
 % Ren: 还有 when there exists 这个短语确实没毛病啊，搜谷歌学术里这么用的也很多啊。
@@ -220,10 +238,18 @@ Another non-parametric method is proposed by Barnich\cite{Barnich2011_2011_TIP},
 To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} improve the ViBe by presenting an adaptive threshold R(x), which depended on the pixel position and a background dynamics metric.
 
 %提出其他方法的问题，指出他们的缺陷
-However, The assumption that pixels are independent to their spatical neighbors is untenable in practice. 
-% Ren: 下面这一段，你说不知所云，我的意思是，之前的方法大多只考虑了像素值分布的概率，而不管它们变化过程中的顺序性。
-On the other hand, most pixels-based methods are only concerned with pixels distribution, and ignore the order information of input frames by default.
+Unfortunately,
+the pixel-based methods ignore the spatial-temporal information due to their assumption of independence between pixels.
+%
 But there is, in fact, a strong temporal coherence in image sequences that contains abundant hidden clues for the background model. 
+%
+% However, The assumption that pixels are independent to their spatical neighbors is untenable in practice. 
+% Ren: 下面这一段，你说不知所云，我的意思是，之前的方法大多只考虑了像素值分布的概率，而不管它们变化过程中的顺序性。
+% cqzhao: 不能这么说，实际上专注于distribution的方法不多。
+% On the other hand, most pixels-based methods are only concerned with pixels distribution, 
+%
+%and ignore the order information of input frames by default.
+%But there is, in fact, a strong temporal coherence in image sequences that contains abundant hidden clues for the background model. 
 %提出我们的改进,我们认为像素在时序上是互相依赖的
 % tight interdependence 明明在google scholar里查得到很多用的好不好...
 To address this shortcoming, we introduce a novel framework of variation transformation learing, which assume that there is a tight interdependence in pixel's historical observations.
@@ -234,7 +260,7 @@ In this case, pixel's historical observations are embedded in a piece of pixel v
 The benefit of bringing together the observations is to ensure the data integrity and preserve the temporal coherence of our training data. And that guarantee us the ability to take advantage of the temporal coherence. 
 %所以我们方法比基于像素的要好。
 Hence we demonstrate a comparatively better performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
-\todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
+%\todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
 %
 %
 %
@@ -243,22 +269,30 @@ Hence we demonstrate a comparatively better performance in modelling some challe
 %
 \subsection{region-based approach}
 % Ren: 好的好的，不乱吹了，我看过有说have similar values的。。。。
-Region-based approaches assume that the neighboring pixels have similar intensities. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
+Region-based approaches consider the similiary between neighboring pixels, which is utilized to refine the pixel-level classification.
+%
+% Region-based approaches assume that the neighboring pixels have similar intensities. Hence the spatial correlation is taken into consideration to refine the pixel-level classification.
 
 %(Regularized region-based)
-A region-based MoG is proposed by Varadarajan et al.\cite{2015_PR_Varadarajan20153488}. Their model are derived from expectation maximization theory, which takes into consideration neighboring pixels while generating the model of the observed scene.
+Varadarajan et al.\ \cite{2015_PR_Varadarajan20153488} proposed a region-based GMM model,
+which is derived from expectation maximization theory with the consideration of neighboring pixels while generating the model of the observed scene.
 % Spatiotemporal GMM
 %
 % 妈蛋。居然怀疑我没看过，我看过这篇论文啊，用最小生成树组织了层次化的superpixels,用来做spatial constrains我下面不是提了的吗，只是更抽象一点。。。
-Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cite{2017_TPAMI_GANGWANG}. the authors combine the GMM with constrains of temporal and spatial information from the optical flow and hierarchical superpixels.
+In addition, 
+Chen et al. \cite{2017_TPAMI_GANGWANG} combine the GMM with constrains of temporal and spatial information from the optical flow and hierarchical superpixels.
+%Another GMM based method named Spatiotemporal GMM algorithm was proposed in \cite{2017_TPAMI_GANGWANG}. 
+%
+%The authors combine the GMM with constrains of temporal and spatial information from the optical flow and hierarchical superpixels.
 %(Bayesian Modeling)
-In \cite{Sheikh2005Bayesian}, Sheikh et al. introduce a framework based on the Markov Random Field modeling with Maximum A Posteriori 
+Moreover, 
+Sheikh et al.\ \cite{Sheikh2005Bayesian} introduce a framework based on the Markov Random Field modeling with Maximum A Posteriori 
 probability (MAP-MRF) estimation, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
 %(Robust Foreground Object ICPR2010 Vikas Reddy )
 % 这里原文就是用了三层的分类器，不同的方法，一层又一层。
-In \cite{Reddy2010Robust}, origin images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure and a temporal correlation check.
+Similarly, in \cite{Reddy2010Robust}, origin images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure and a temporal correlation check.
 %( Robust Region-Based ICPR)
-Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color respectively. Any foreground region that does not exist in the first foreground map could be recovered from the other one.
+Hence, Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color respectively. Any foreground region that does not exist in the first foreground map could be recovered from the other one.
 
 %讲其他方法的缺点，不能利用时序相关性，只是在pixel-based方法上添加了空间约束
 Unfortunately, most region-based methods are not capable to make use of the temporal coherence, since they are merely adding some spatial constrains to the pixels-based methods. 
@@ -275,9 +309,6 @@ In the proposed approach, by contrast, we present the pixel matrix, which contai
 We also combine the pixel variation with its spatial neighbors to revise our prediction.
 %此外，我们借助神经网络可以更有效地计算和捕捉这种时序相关性。
 Furthermore, the proposed approach are more powerful in capturing the structural background variation and more efficient in computation due to the application of deep learning.
-
-\todo{disccuss the adavantage of proposed work.}
-
 %
 %
 %
@@ -285,8 +316,7 @@ Furthermore, the proposed approach are more powerful in capturing the structural
 %
 % \subsection{learning-based methods}
 \subsection{Machine Learning based Methods}
-\todo{Please cite more papers on this paragraph since our work belongs to this category. This paragraph should be the main part of this section.}
-The last category of foreground detection methods apply traditional machine learning and deep learning on different features for the background modeling.
+The last category of background subtraction methods apply traditional machine learning and deep learning on different features for the background modeling.
 
 %
 %SVM
@@ -308,19 +338,25 @@ In \cite{Yang2018DBMF}, a FCN with the skip architecture is proposed for backgro
 The authors also proposed a temporal approach to sample training images from the given video, thus providing the background model with limited temporal information. 
 
 %以上方法的缺点主要在于，他们都是基于静态的图像特征训练的。抛弃了时序相关性。
+% cqzhao: 瞎说啥？？？SVM那个就是连续的几帧啊！他们的问题在于， 自然界太复杂，variation太多元，直接分析variation分析不出来，我们学到了variation的pattern，然后转换！
 Methods in this category are generally based on the static images and static saliency characteristics. 
 As we've discussed earlier, their background models are trained with little or no temporal coherence involved.
 %所以他们在处理物体突然运动的时候会存在问题。
+% cqzhao: 这句话有证据支持吗？先是他们没有抛弃时许相关性啊，然后抛弃后，为什么intermittent motion就会失败呢？不是要你回到我，是要你给我找到论文支持！一定要有论文支持才能写下判断的话！
 Problems will emerge in endlessly when the target object moves in an intermittent motion period, for example, starting a car and get it out of the parking lot. 
 %尽管他们用了很好的结构和技巧，但是仍然不能解决这个问题，如何去检测运动，而不是把潜在的运动物体全标记出来。
 Even though they have made a lot of progress with optimized network architechtures, it is still an unsolved problem that how to learn the patterns of motion rather than mark out all the possible moving objects.
 %我们的不同在与输入
+% cqzhao: 怎么就是一个输入不同呢？吹的太低的，给我拔高！
 Different with their methods, the input of our DPVTL model is not the origin images or patches. Instead, we regard the pixel variation as a whole for the network training to preseve the temporal coherence between the pixels' historical observations.
 %因为我们的方法是基于时序建模的，所以我们的模型可以学习一段时间内的运动。
+% cqzhao: 我们的方法是variation transformation，只是相比他们时许好点而已，不是说我们就只是个时序，吹的不够，拔高！
 Now, since the proposed approach is based on the time series modeling of each pixel, our model can learn the patterns of motion over a period of time.
 %此外，我们还将pixel variation 与其空间上的近邻连接起来，从而利用空间上下文信息。
+% cqzhao: 这句逻辑有点混乱，我感觉连不上。
 In addition, we also cascade the pixel variation with its spatial neighbors to take advantage of the spatial context. 
 %因为我们的网络结构相对比较简单，所以取得的效果应该归功于Variation Transformation 框架。
+% cqzhao: 你说我们的网络结构简单干嘛》不是不打自招？？？往死里吹，！！！
 Our FCN is implemented with a relative simple structure, hence the reliable performance of our DPVTL should be owing to the framework of variation transformation. 
 
 
