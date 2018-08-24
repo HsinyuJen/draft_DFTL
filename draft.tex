@@ -52,9 +52,8 @@
 
 \begin{abstract}
 %
-% 你这里的说法不对啊，原来的方法关注的是像素值的分布，我们关注的是像素值的变动。这是我们之间的区别啊!
-% 运动检测的已有方法主要关注于像素值的分布。
-Previous approaches to foreground detection generally focus on the distribution of pixel observations.
+% 运动检测的已有方法主要关注于像素值的变化。
+Previous approaches to foreground detection generally analyze the variation of pixel observations.
 % 本文中，我们分析了像素的变动，并提出了DPVTL方法。
 % In this paper, we focus on transforming the variation into a new space where that there is an obvious difference between the patterns of variation produced by the moving objects and the background,
 In this paper, we analyze the variation of pixel observations, and a novel foreground detection method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
@@ -68,8 +67,8 @@ Then, the FCN is trained to learn the pattern of pixel variations for the transf
 %    
 % XXX 这句话还是有点问题
 % 这句话我也没看懂。。。
-Benefied from the ingenious utilization of deep learning network leading by our clear cognition of essence about background subtractoin problem,
-proposed approached adaptively generate superior peroformances in diversly complex scenes.
+Benefied from the ingenious utilization of deep learning network leading by our clear cognition of essence about foreground detection problem,
+the proposed approach adaptively generate superior peroformances in diversly complex scenes.
 %
 Comprehensive experiments in standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
 %
@@ -85,30 +84,30 @@ Comprehensive experiments in standard benchmarks demonstrate the superiority of 
 %背景检测的背景介绍
 Foreground detection as a fundamental problem in computer vision\ \cite{Bouwmans201431} has been discussed over decades with the increasing number of cameras,
 which is widely used as the pre-processing step of video processing \cite{Barnich2011_2011_TIP}.
+% 传统的方法是怎么做的，有什么问题
 Typically, it is recognized as a binary classification task that assigns each pixel in the video stream with a label, 
 for either belonging to the background or foreground scene.
+Traditional foreground detection algorithms focus on anaylsing the pixel variation, establishing background models with statistical methods such as GMM and KDE.
+However, due to the unpredictability and rapidity of the pixels' variation in natural scenes,
+the variation becomes so unordered which is hard to be analyzed for foreground detection.
 % 现有的方法在简单场景中效果很好了
-Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
-However, it still remains a challenging problem in the scenes with high complexity and diversity.
-% 传统的方法是怎么做的，有什么问题
+%Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
 %
 % 8.21 Ren: 你原来讲传统做法的时候是说它们关注与像素的变动，这不对啊，它们明明关注的是像素的分布，我们才更注重于变动。
 % 8.21 Ren: 还有我看有人说，论文里面不用加's 可以直接名词拼接，就像这样 pixel variation.  F. 名词修饰：在学术文章中，很多时候会用到直接用名词做修饰，而不用’s 或 ……of …… 的形式。常见的这类词有：reaction rate；reaction rate constant；reaction temperature；reaction condition  molecular weight distribution……
 %
-Traditionally, foreground detection algorithms focus on anaylsing the pixel distribution, establishing background models with statistical methods such as GMM and KDE.
+
 % 总而言之，foreground detection依然有很多问题
 % 8.21 Ren: 这里有个however,上上句也有个however.......怎么搞啊？
 % 8.21 Ren: 改到这里，不知道怎么改了，先更你确定一下吧，variation 跟 distribution 有没有区别？我的理解是variation就是有时间顺序的，之前的方法没有考虑道时间顺序性，所以就不能叫做variation.只能叫distribution.
 % 8.21 Ren  我觉得我们应该确定的是，传统统计学的方法只关注数据的分布概率，而我们更多考虑的是数据在时序上的变动。
 % 8.21 Ren  因为这一段跟你的理解有冲突，所以先商量后再改吧。
-However, due to the unpredictability and complexity of the pixels' variation in natural scenes,
-the variation becomes so unordered which is hard to be analyzed for foreground detection.
+
 
 % 第二段重点阐述什么是deep variation learning
 % 在多样的自然场景中，前景可能产生和背景相似，甚至相同的像素，而这种像素很难去分析
 In the diversely natural scenes,
-it is possible that the moving objects produce the similar or even the same observations of pixels to that of background,
-and the variation of observations becomes so hard to analyze when it includes such observations.
+it is possible that the moving objects produce the similar or even the same observations of pixels to that of background.
 % similar to their counterparts of background but atually belong to foreground .
 % 如图所示，像素观测值C就和背景的值几乎一模一样，
 As shown in the \reffig{idea},
@@ -116,9 +115,8 @@ the observation C is closely related to the observations belong to the backgroun
 % 大多数情况下，他都会被划分成背景
 However, in most cases, it is highly possible that the observation C will be falsely classified as background by previous work due to the similarity with their counterparts of background.
 % 我们的就是希望把这个variation 转化到更简单的地方去
-In this work, we focus on transforming the variation of pixels' observation into a new variation where the observations are easier to classified,
-as shown in the bottom part of the \reffig{idea},
-with the motivation that the pattern of fragment consist of observations A-D can be learned by the network and transformed into another fragment where these observations are easily and correctly classified as foreground.
+In this work, we focus on learning the pattern of pixels' variation and transforming the variations into a new space where the observations are easier to classified, rather than learning a classifier for individual pixels.
+As shown in the bottom part of the \reffig{idea}, the pattern of fragment consist of observations A-D can be learned by the network and transformed into another fragment where these observations are easily and correctly classified as foreground.
 % transformatin 之后，就很容易分类了，然后这就是我们的方法的核心了
 Based on this motivation, the Deep Variation Transformation model for foreground detection is proposed.
 % 
@@ -241,7 +239,7 @@ To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} 
 Unfortunately,
 the pixel-based methods ignore the spatial-temporal information due to their assumption of independence between pixels.
 %
-But there is, in fact, a strong temporal coherence in image sequences that contains abundant hidden clues for the background model. 
+But there is, in fact, a strong coherence in image sequences that contains abundant hidden clues for the background model. 
 %
 % However, The assumption that pixels are independent to their spatical neighbors is untenable in practice. 
 % Ren: 下面这一段，你说不知所云，我的意思是，之前的方法大多只考虑了像素值分布的概率，而不管它们变化过程中的顺序性。
@@ -257,7 +255,7 @@ To address this shortcoming, we introduce a novel framework of variation transfo
 % In this case在google scholar里也查得到很多啊
 In this case, pixel's historical observations are embedded in a piece of pixel variation and sorted in chronological order as a whole to enter our DPVTL model.
 %这样的优点在于保留了数据的完整性，保留了数据的时序相关性。
-The benefit of bringing together the observations is to ensure the data integrity and preserve the temporal coherence of our training data. And that guarantee us the ability to take advantage of the temporal coherence. 
+The benefit of bringing together the observations is to ensure the data integrity and preserve the temporal coherence of our training data. And that guarantee us the ability to take advantage of the spatial-temporal context. 
 %所以我们方法比基于像素的要好。
 Hence we demonstrate a comparatively better performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 %\todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
@@ -297,7 +295,7 @@ Hence, Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach
 %讲其他方法的缺点，不能利用时序相关性，只是在pixel-based方法上添加了空间约束
 Unfortunately, most region-based methods are not capable to make use of the temporal coherence, since they are merely adding some spatial constrains to the pixels-based methods. 
 %有的方法结合了光流，也算利用了时序相关性
-But we also notice that some methods are involved with optical flow field, which can be viewed as a limited temporal coherence message. 
+But we also notice that some approaches are involved with optical flow field, which can be viewed as a limited temporal coherence message. 
 %但是他们也有几个缺点
 However, optical flow methods have shortcommings like the high computation complexity and the sensitivity to illumination changing. 
 %最重要的是，他们的时序相关性太有限了。所以对与其他方法，并没有明显的优势。
@@ -340,24 +338,23 @@ The authors also proposed a temporal approach to sample training images from the
 %以上方法的缺点主要在于，他们都是基于静态的图像特征训练的。抛弃了时序相关性。
 % cqzhao: 瞎说啥？？？SVM那个就是连续的几帧啊！他们的问题在于， 自然界太复杂，variation太多元，直接分析variation分析不出来，我们学到了variation的pattern，然后转换！
 Methods in this category are generally based on the static images and static saliency characteristics. 
-As we've discussed earlier, their background models are trained with little or no temporal coherence involved.
-%所以他们在处理物体突然运动的时候会存在问题。
-% cqzhao: 这句话有证据支持吗？先是他们没有抛弃时许相关性啊，然后抛弃后，为什么intermittent motion就会失败呢？不是要你回到我，是要你给我找到论文支持！一定要有论文支持才能写下判断的话！
-Problems will emerge in endlessly when the target object moves in an intermittent motion period, for example, starting a car and get it out of the parking lot. 
+However, due to the diversity and complexity of nature scenes, it could be rather difficult to analyze the pixel variations for classification. 
 %尽管他们用了很好的结构和技巧，但是仍然不能解决这个问题，如何去检测运动，而不是把潜在的运动物体全标记出来。
 Even though they have made a lot of progress with optimized network architechtures, it is still an unsolved problem that how to learn the patterns of motion rather than mark out all the possible moving objects.
-%我们的不同在与输入
+%我们的不同在于，我们的网络是训练去学习像素变动，并转换到新的空间去进行分类。
 % cqzhao: 怎么就是一个输入不同呢？吹的太低的，给我拔高！
-Different with their methods, the input of our DPVTL model is not the origin images or patches. Instead, we regard the pixel variation as a whole for the network training to preseve the temporal coherence between the pixels' historical observations.
-%因为我们的方法是基于时序建模的，所以我们的模型可以学习一段时间内的运动。
+Different with their methods, our network is trained to learn the patterns of pixel variations and transform them into a new space for classification.
+% 我们的输入XXX
+The input of our network is not the origin images or patches. Instead, we regard the pixel variation as a whole for the network training to preseve the temporal coherence between the pixels' historical observations.
+%因为我们的方法是基于variation transformation建模的，所以我们的模型在时序建模上有更大的潜力。
 % cqzhao: 我们的方法是variation transformation，只是相比他们时许好点而已，不是说我们就只是个时序，吹的不够，拔高！
-Now, since the proposed approach is based on the time series modeling of each pixel, our model can learn the patterns of motion over a period of time.
+Now, since the proposed approach is based on the variation transformation, our DPVTL model has more potential in time series modeling on each pixel position.
 %此外，我们还将pixel variation 与其空间上的近邻连接起来，从而利用空间上下文信息。
 % cqzhao: 这句逻辑有点混乱，我感觉连不上。
-In addition, we also cascade the pixel variation with its spatial neighbors to take advantage of the spatial context. 
-%因为我们的网络结构相对比较简单，所以取得的效果应该归功于Variation Transformation 框架。
+In addition, we also concatenate the pixel variation with its spatial neighbors to take advantage of the spatial context. 
+%因为我们的网络没有借助于其他传统的背景建模方法，所以取得的效果应该归功于Variation Transformation 框架。
 % cqzhao: 你说我们的网络结构简单干嘛》不是不打自招？？？往死里吹，！！！
-Our FCN is implemented with a relative simple structure, hence the reliable performance of our DPVTL should be owing to the framework of variation transformation. 
+Our DPVTL model is implemented without any assistance from other tradition background modeling methods, hence the reliable performance owing to the framework of variation transformation. 
 
 
 \section{VARIATION TRANSFORMATION}
