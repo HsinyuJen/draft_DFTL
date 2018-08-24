@@ -198,10 +198,10 @@ and utilize the low-level features, such as color or gradients for background su
 % Ren:这里你说over time 不专业，但是论文里用得挺多的啊，表示随时间推移。还有那一句 pixels are .... to be if there exists ....， 我也是在其他论文里借过来用的。i
 % 原文是Incoming pixels from video frames are labeled as background if there exists a Gaussian in the GMM, where the distance between its mean and the pixel lies within a certain bound. 
 % cqzhao: 我没有看到过over time，如果你在trans或者顶会(ICCV,CVPR,ECCV)里找到了论文原话，那你可以用哦。
-In particular, the Gaussian Mixture Model (GMM) proposed by Stauffer et al.\ \cite{Stauffer1999} is the most popular approach among pixels-based methods,
+In particular, the Gaussian Mixture Model (GMM) proposed by Stauffer et al.\ \cite{Stauffer1999} is the most popular approach among pixels-based methods.
 % 注意英语和汉语的表达习惯
 % The most popular pixels-based methods are Gaussian Mixture Model (GMM) methods\cite{Stauffer1999}, 
-which utilize a mixture of weighted Gaussians to model the probability distribution of each pixel in time sequence.
+It utilizes a mixture of weighted Gaussians to model the probability distribution of each pixel in time sequence.
 %over time. 
 Pixels are considered as background if there exists a Gaussian function includes their values with sufficient evidence. 
 %GMM+i
@@ -218,8 +218,8 @@ to automatically update the parameters and adjust the needed number of component
 %Another popular algorithm in pixel based category is based on the Codebook. 
 %Ren: 干脆删掉这一句了。。。
 %Ren: 下面也重新写了。
-Hence, Kim et al.\cite{Kim2005} present the codebook method, which records the sampling background values to codewords for each pixel position.  
-Then incoming pixels are compared with these codewords to see if their distances lies within a certain bound. 
+Hence, Kim et al.\cite{Kim2005} present the codebook method, which records the sampling background values to codewords for each pixel position.
+The incoming pixels are compared with these codewords to see if their distances lies within a certain bound. 
 
 %KDE
 % Ren这里确实没写好，因为有点看不太明白KDE.
