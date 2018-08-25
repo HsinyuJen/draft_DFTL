@@ -98,18 +98,32 @@ B.~Han and L.~Davis, ``Density-based multifeature background subtraction with
   support vector machine,'' \emph{IEEE Trans. on Pattern Anal. and Mach.
   Intell.}, vol.~34, no.~5, pp. 1017--1023, May 2012.
 
+\bibitem{wang2016PRL}
+Y.~Wang, Z.~Luo, and P.-M. Jodoin, ``Interactive deep learning method for
+  segmenting moving objects,'' 09 2016.
+
 \bibitem{Braham2016deep}
 M.~Braham and M.~Droogenbroeck, ``Deep background subtraction with
   scene-specific convolutional neural networks,'' pp. 1--4, 05 2016.
 
 \bibitem{Babaee2017deep}
-M.~Babaee, D.~Tung~Dinh, and G.~Rigoll, ``A deep convolutional neural network
-  for background subtraction,'' 02 2017.
+\BIBentryALTinterwordspacing
+M.~Babaee, D.~T. Dinh, and G.~Rigoll, ``A deep convolutional neural network for
+  video sequence background subtraction,'' \emph{Pattern Recognition}, vol.~76,
+  pp. 635 -- 649, 2018. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/S0031320317303928}
+\BIBentrySTDinterwordspacing
 
 \bibitem{St-Charles2015SuBSENSE}
 P.~L. St-Charles, G.~A. Bilodeau, and R.~Bergevin, ``Subsense: A universal
   change detection method with local adaptive sensitivity,'' \emph{IEEE
   Transactions on Image Processing}, vol.~24, no.~1, pp. 359--373, Jan 2015.
+
+\bibitem{Wang2014FTSG}
+R.~Wang, F.~Bunyak, G.~Seetharaman, and K.~Palaniappan, ``Static and moving
+  object detection using flux tensor with split gaussian models,'' in
+  \emph{2014 IEEE Conference on Computer Vision and Pattern Recognition
+  Workshops}, June 2014, pp. 420--424.
 
 \bibitem{Yang2018DBMF}
 L.~Yang, J.~Li, Y.~Luo, Y.~Zhao, H.~Cheng, and J.~Li, ``Deep background
@@ -156,12 +170,6 @@ G.~Ram¨ªrez-Alonso and M.~I. Chac¨®n-Murgu¨ªa, ``Auto-adaptive parallel
   Available:
   \url{http://www.sciencedirect.com/science/article/pii/S0925231215015842}
 \BIBentrySTDinterwordspacing
-
-\bibitem{Wang2014FTSG}
-R.~Wang, F.~Bunyak, G.~Seetharaman, and K.~Palaniappan, ``Static and moving
-  object detection using flux tensor with split gaussian models,'' in
-  \emph{2014 IEEE Conference on Computer Vision and Pattern Recognition
-  Workshops}, June 2014, pp. 420--424.
 
 \bibitem{Gregorio2014CwisarDH}
 M.~D. Gregorio and M.~Giordano, ``Change detection with weightless neural
