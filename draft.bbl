@@ -31,15 +31,19 @@ O.~Barnich and M.~Van~Droogenbroeck, ``Vibe: A universal background subtraction
   algorithm for video sequences,'' \emph{IEEE Trans. on Image. Process.},
   vol.~20, no.~6, pp. 1709--1724, June 2011.
 
-\bibitem{Shelhamer2017fcn}
-E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
-  semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
-  Machine Intelligence}, vol.~39, no.~4, pp. 640--651, April 2017.
-
 \bibitem{Stauffer1999}
 C.~Stauffer and W.~Grimson, ``Adaptive background mixture models for real-time
   tracking,'' in \emph{Proc. IEEE Conf. on Comput. Vis. and Pattern Recognit.},
   vol.~2, 1999, pp. --252 Vol. 2.
+
+\bibitem{Elgammal2000Non}
+A.~Elgammal, D.~Harwood, and L.~Davis, ``Non-parametric model for background
+  subtraction,'' \emph{Eccv}, vol. 1843, pp. 751--767, 2000.
+
+\bibitem{Shelhamer2017fcn}
+E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
+  semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}, vol.~39, no.~4, pp. 640--651, April 2017.
 
 \bibitem{Zivkovic2004}
 Z.~Zivkovic, ``{Improved adaptive Gaussian mixture model for background
@@ -50,10 +54,6 @@ Z.~Zivkovic, ``{Improved adaptive Gaussian mixture model for background
 K.~Kim, T.~H. Chalidabhongse, D.~Harwood, and L.~Davis, ``{Real-time
   foreground-background segmentation using codebook model},'' \emph{Real-Time
   Imaging}, vol.~11, pp. 172--185, 2005.
-
-\bibitem{Elgammal2000Non}
-A.~Elgammal, D.~Harwood, and L.~Davis, ``Non-parametric model for background
-  subtraction,'' \emph{Eccv}, vol. 1843, pp. 751--767, 2000.
 
 \bibitem{Hofmann2012Background}
 M.~Hofmann, P.~Tiefenbacher, and G.~Rigoll, ``Background segmentation with
@@ -84,19 +84,15 @@ V.~Reddy, C.~Sanderson, and B.~C. Lovell, ``Robust foreground object
 M.~Izadi and P.~Saeedi, ``Robust region-based background subtraction and shadow
   removing using color and gradient information,'' pp. 1--5, 01 2008.
 
-\bibitem{Zhang2014Statis}
-\BIBentryALTinterwordspacing
-X.~Zhang, Z.~Liu, H.~Li, X.~Zhao, and P.~Zhang, ``Statistical background
-  subtraction based on imbalanced learning,'' in \emph{2014 IEEE International
-  Conference on Multimedia and Expo (ICME)}, vol.~00, July 2014, pp. 1--6.
-  [Online]. Available:
-  \url{doi.ieeecomputersociety.org/10.1109/ICME.2014.6890245}
-\BIBentrySTDinterwordspacing
-
 \bibitem{Han2012}
 B.~Han and L.~Davis, ``Density-based multifeature background subtraction with
   support vector machine,'' \emph{IEEE Trans. on Pattern Anal. and Mach.
   Intell.}, vol.~34, no.~5, pp. 1017--1023, May 2012.
+
+\bibitem{Zhang2014Statis}
+X.~Zhang, Z.~Liu, H.~Li, X.~Zhao, and P.~Zhang, ``Statistical background
+  subtraction based on imbalanced learning,'' in \emph{2014 IEEE International
+  Conference on Multimedia and Expo (ICME)}, vol.~00, July 2014, pp. 1--6.
 
 \bibitem{wang2016PRL}
 Y.~Wang, Z.~Luo, and P.-M. Jodoin, ``Interactive deep learning method for
@@ -107,12 +103,8 @@ M.~Braham and M.~Droogenbroeck, ``Deep background subtraction with
   scene-specific convolutional neural networks,'' pp. 1--4, 05 2016.
 
 \bibitem{Babaee2017deep}
-\BIBentryALTinterwordspacing
-M.~Babaee, D.~T. Dinh, and G.~Rigoll, ``A deep convolutional neural network for
-  video sequence background subtraction,'' \emph{Pattern Recognition}, vol.~76,
-  pp. 635 -- 649, 2018. [Online]. Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S0031320317303928}
-\BIBentrySTDinterwordspacing
+``A deep convolutional neural network for video sequence background
+  subtraction,'' \emph{Pattern Recognition}, vol.~76, pp. 635 -- 649, 2018.
 
 \bibitem{St-Charles2015SuBSENSE}
 P.~L. St-Charles, G.~A. Bilodeau, and R.~Bergevin, ``Subsense: A universal
@@ -135,6 +127,11 @@ Y.~Wang, P.~M. Jodoin, F.~Porikli, J.~Konrad, Y.~Benezeth, and P.~Ishwar,
   ``Cdnet 2014: An expanded change detection benchmark dataset,'' in \emph{2014
   IEEE Conference on Computer Vision and Pattern Recognition Workshops}, June
   2014, pp. 393--400.
+
+\bibitem{CAMO}
+S.~Li, D.~Florencio, W.~Li, Y.~Zhao, and C.~Cook, ``A fusion framework for
+  camouflaged moving foreground detection in the wavelet domain,'' \emph{IEEE
+  Transactions on Image Processing}, vol.~27, no.~8, pp. 3918--3930, Aug 2018.
 
 \bibitem{Bianco2017TEC}
 S.~Bianco, G.~Ciocca, and R.~Schettini, ``Combination of video change detection
@@ -163,13 +160,9 @@ M.~Braham, S.~Pierard, and M.~V. Droogenbroeck, ``Semantic background
   Processing (ICIP)}, Sept 2017, pp. 4552--4556.
 
 \bibitem{RAMIREZALONSO2016990}
-\BIBentryALTinterwordspacing
 G.~Ram¨ªrez-Alonso and M.~I. Chac¨®n-Murgu¨ªa, ``Auto-adaptive parallel
   som architecture with a modular analysis for dynamic object segmentation in
-  videos,'' \emph{Neurocomputing}, vol. 175, pp. 990 -- 1000, 2016. [Online].
-  Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S0925231215015842}
-\BIBentrySTDinterwordspacing
+  videos,'' \emph{Neurocomputing}, vol. 175, pp. 990 -- 1000, 2016.
 
 \bibitem{Gregorio2014CwisarDH}
 M.~D. Gregorio and M.~Giordano, ``Change detection with weightless neural
@@ -196,13 +189,9 @@ S.~Varadarajan, P.~Miller, and H.~Zhou, ``{Spatial mixture of Gaussians for
   on Advanced Video and Signal Based Surveillance}, 2013, pp. 63--68.
 
 \bibitem{WU2010739}
-\BIBentryALTinterwordspacing
 M.~Wu and X.~Peng, ``Spatio-temporal context for codebook-based dynamic
   background subtraction,'' \emph{AEU - International Journal of Electronics
-  and Communications}, vol.~64, no.~8, pp. 739 -- 747, 2010. [Online].
-  Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S1434841109001794}
-\BIBentrySTDinterwordspacing
+  and Communications}, vol.~64, no.~8, pp. 739 -- 747, 2010.
 
 \bibitem{Yang2016P2M}
 L.~Yang, H.~Cheng, J.~Su, and X.~Li, ``Pixel-to-model distance for robust
@@ -210,13 +199,9 @@ L.~Yang, H.~Cheng, J.~Su, and X.~Li, ``Pixel-to-model distance for robust
   for Video Technology}, vol.~26, no.~5, pp. 903--916, May 2016.
 
 \bibitem{ZIVKOVIC2006773}
-\BIBentryALTinterwordspacing
 Z.~Zivkovic and F.~van~der Heijden, ``Efficient adaptive density estimation per
   image pixel for the task of background subtraction,'' \emph{Pattern
-  Recognition Letters}, vol.~27, no.~7, pp. 773 -- 780, 2006. [Online].
-  Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S0167865505003521}
-\BIBentrySTDinterwordspacing
+  Recognition Letters}, vol.~27, no.~7, pp. 773 -- 780, 2006.
 
 \bibitem{Baf2008FCI}
 F.~E. Baf, T.~Bouwmans, and B.~Vachon, ``Fuzzy integral for moving object
@@ -240,12 +225,9 @@ X.~Zhou, C.~Yang, and W.~Yu, ``Moving object detection by detecting contiguous
   Analysis and Machine Intelligence}, vol.~35, no.~3, pp. 597--610, March 2013.
 
 \bibitem{SHAKERI201628}
-\BIBentryALTinterwordspacing
 M.~Shakeri and H.~Zhang, ``Corola: A sequential solution to moving object
   detection using low-rank approximation,'' \emph{Computer Vision and Image
-  Understanding}, vol. 146, pp. 27 -- 39, 2016. [Online]. Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S1077314216000540}
-\BIBentrySTDinterwordspacing
+  Understanding}, vol. 146, pp. 27 -- 39, 2016.
 
 \bibitem{Li2018CAMO}
 S.~Li, D.~Florencio, W.~Li, Y.~Zhao, and C.~Cook, ``A fusion framework for

@@ -55,9 +55,9 @@
 Previous approaches to foreground detection generally analyze the variation of pixel observations.
 % 本文中，我们分析了像素的变动，并提出了DPVTL方法。
 % In this paper, we focus on transforming the variation into a new space where that there is an obvious difference between the patterns of variation produced by the moving objects and the background,
-In this paper, we analyze the variation of pixel observations, and a novel foreground detection method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
+In this paper, we focus on transforming the variation into another space where the entry of variation is easily classified, and a novel foreground detection method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
 % 一个FCN被用来寻求一个变换，可以使变换过后的像素值线性可分。
-A fully convolutional network(FCN) is applied to find a transformation of pixel variations, which guarantees the linear separability of transformed pixels.
+A fully convolutional network(FCN) is applied to find a transformation of pixel variations.
 % 具体来说，我们用一段像素观测值表示pixel variation,并用作网络的输入。 
 In particular,
 the pixel variation is represented by the sequence of pixel observations and used as the input of the FCN.
@@ -69,7 +69,7 @@ Then, the FCN is trained to learn the pattern of pixel variations for the transf
 Benefied from the ingenious utilization of deep learning network leading by our clear cognition of essence about foreground detection problem,
 the proposed approach adaptively generate superior peroformances in diversly complex scenes.
 %
-Comprehensive experiments in standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
+Comprehensive experiments in several standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
 %
 \end{abstract}
 
@@ -86,9 +86,10 @@ which is widely used as the pre-processing step of video processing \cite{Barnic
 % 传统的方法是怎么做的，有什么问题
 Typically, it is recognized as a binary classification task that assigns each pixel in the video stream with a label, 
 for either belonging to the background or foreground scene.
-Traditional foreground detection algorithms focus on anaylsing the pixel variation, establishing background models with statistical methods such as GMM and KDE.
+Traditional foreground detection algorithms focus on anaylsing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999} and KDE\cite{Elgammal2000Non}.
 However, due to the unpredictability and rapidity of the pixels' variation in natural scenes,
 the variation becomes so unordered which is hard to be analyzed for foreground detection.
+Therefore, the foreground detection is still a challenging problem in complex natural scenes.
 % 现有的方法在简单场景中效果很好了
 %Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
 %
@@ -110,9 +111,9 @@ it is possible that the moving objects produce the similar or even the same obse
 % similar to their counterparts of background but atually belong to foreground .
 % 如图所示，像素观测值C就和背景的值几乎一模一样，
 As shown in the \reffig{idea},
-the observation C is closely related to the observations belong to the background but it is actually produced by moving objects and should be classified as foreground.
+the observation C is closely related to the observations which belong to the background. However, it is actually produced by moving objects and should be classified as foreground.
 % 大多数情况下，他都会被划分成背景
-However, in most cases, it is highly possible that the observation C will be falsely classified as background by previous work due to the similarity with their counterparts of background.
+Unfortunately, in most cases, it is highly possible that the observation C will be falsely classified due to the similarity with their counterparts of background.
 % 我们的就是希望把这个variation 转化到更简单的地方去
 In this work, we focus on learning the pattern of pixels' variation and transforming the variations into a new space where the observations are easier to classified, rather than learning a classifier for individual pixels.
 As shown in the bottom part of the \reffig{idea}, the pattern of fragment consist of observations A-D can be learned by the network and transformed into another fragment where these observations are easily and correctly classified as foreground.
@@ -129,7 +130,7 @@ Based on this motivation, the Deep Variation Transformation model for foreground
 \centering
     \includegraphics[width=\linewidth]{figure/demo.pdf}
     % 图例里描述一下。
-    \caption{The demonstration of deep variation transformation. Due to the complexity of natural scenes, the original pixels' variation is hard to classify correctly. After transforming by deep learning network, the pixels in variation become easy to be classified as foreground and background correctly.}
+    \caption{The demonstration of deep variation transformation. The pixels in the transformed variation become easier to be classified as foreground and background correctly.}
     \label{idea}
 \end{figure}
 
@@ -145,12 +146,12 @@ In the DVTL model,
 the sequence of pixel observations is used to represent the variation and input into the network for learning,
 which encode both the intensity distribution and sequential information.
 %
-Then, a Fully Convolutional Network (FCN)\ \cite{Shelhamer2017fcn} is applied to learn the patterns of the pixel variation and find a transformation which guarantees the linear separability of transformed pixel variation generated by mapping in a new space.
+Then, a Fully Convolutional Network (FCN)\ \cite{Shelhamer2017fcn} is applied to learn the patterns of the pixel variation and find a transformation which guarantees the linear separability of pixels in the transformed variation.
 %
 In particular,
-we take advantage of the strong learning ability of FCN to learn an end-to-end representation of the pixel variation in a new space where they can be easily classified to background and foreground.
+we take advantage of the strong learning ability of the deep network to learn an end-to-end representation of the pixel variation in a new space where they can be easily classified to background and foreground.
 %
-Benefited from the strong learning ability of FCN,
+Benefited from the noval framework of variation transformation,
 proposed approach works well in diversely complex scenes adaptively.
 %
 %Moreover,
@@ -175,12 +176,12 @@ proposed approach works well in diversely complex scenes adaptively.
 % XXX 不会用引用可以问我或者曲师兄。
 The rest part of this paper is organized as follows: In \refsec{sec2}, we give a brief discussion about the early and recent relevant works. 
 %
-The details of the variation transformation are presented in \refsec{sec3}. The proposed fully convolutional network is illustrated in \refsec{sec4}, followed by experiments and result comparison in \refsec{sec5} and conclude the paper in \refsec{sec6}. 
+The details of the variation transformation are presented in \refsec{sec3}. The architecture of network is introduced in \refsec{sec4}, followed by experiments and result comparison in \refsec{sec5} and conclude the paper in \refsec{sec6}. 
 % \todo{please revise this part by using command refsec}
 
 \section{Related Work}
 \label{sec2}
-Over the last few decades, a huge number of background modeling methods have been proposed,
+Over the last few decades, a huge number of foreground detection methods have been proposed,
 which are broadly categorized into pixel-based, region-based and learning-based methods.
 \subsection{pixel-based methods}
 % Ren:重新解释了pixel based methods
@@ -203,7 +204,7 @@ Hence, Kim et al.\cite{Kim2005} present the codebook method, which records the s
 The incoming pixels are compared with these codewords to see if their distances lies within a certain bound. 
 %KDE
 A non-parametric background model is proposed by Elgammal et al. \cite{Elgammal2000Non}. 
-Authors assume that each background pixel is drawn from a probability distribution function, which is estimated with Kernel Density Estimation(KDE). 
+They assume that each background pixel is drawn from a probability distribution function, which is estimated with Kernel Density Estimation(KDE). 
 %Vibe
 Another non-parametric method is proposed by Barnich et al. \cite{Barnich2011_2011_TIP}, called the Visual Background Extractor (ViBe). The background model of ViBe consists of pixel samples from the video stream. Each pixel in the current frame is compared with sampling pixels from the corresponding background model and labelled as the foreground when there exists sufficient samples with a distance to itself within a certain range. 
 %PBAS
@@ -218,11 +219,11 @@ But there is, in fact, a strong coherence in image sequences that contains abund
 % tight interdependence 明明在google scholar里查得到很多用的好不好...
 % To address this shortcoming, 在一篇2018的CVPR的摘要里有啊
 % “High Quality Estimation of Multiple Intermediate Frames for Video Interpolation”
-To address this shortcoming, we introduce a framework of variation transformation learing, where pixel's historical observations are embedded in a piece of pixel variation and sorted in chronological order as a whole to enter our DPVTL model.
+To address this shortcoming, we introduce a framework of variation transformation learing, where pixel's historical observations are embedded in a piece of pixel patch and sorted in chronological order as a whole to enter our DPVTL model.
 %这样的优点在于保留了数据的完整性，保留了数据的时序相关性。
 Bringing together the historical observations ensures the data integrity and preserves the temporal coherence of our training data. 
 Moreover, 
-the novel framework is more capable of learning the patterns of pixel variation and exploiting the spatial-temporal context, compared to those classifiers for individual observations. 
+the novel framework is capable of learning the patterns of pixel variation and exploiting the spatial-temporal context, compared to those classifiers based on the assumption of pixel independence. 
 %所以我们方法比基于像素的要好。
 %Hence we demonstrate a comparatively better performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 %\todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
@@ -249,49 +250,49 @@ Sheikh et al.\ \cite{Sheikh2005Bayesian} introduce a framework based on the Mark
 probability (MAP-MRF) estimation, which incorporate the pixel location into background and foreground KDEs for the detection based on spatial context.
 %(Robust Foreground Object ICPR2010 Vikas Reddy )
 % 这里原文就是用了三层的分类器，不同的方法，一层又一层。
-Similarly, in \cite{Reddy2010Robust}, origin images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure and a temporal correlation check.
+Similarly, in \cite{Reddy2010Robust}, original images are divided into overlapping blocks. Each block is sequentially processed by an adaptive multi-stage classifier, which consists of a likelihood evaluation, an illumination invariant measure and a temporal correlation check.
 %( Robust Region-Based ICPR)
 Hence, Izadi et al.\cite{Izadi2008Robust} present a robust region-based approach, which generates a pair of foreground maps based on gradient and color respectively. Any foreground region that does not exist in the first foreground map could be recovered from the other one.
 
-In this paper, we accept the assumption that neighboring blocks of background pixels should follow similar variations over time, and combine the pixel variation with its spatial neighbors to revise our prediction. 
+In contrast, we accept the assumption that neighboring blocks of background pixels should follow similar variations over time, and combine the pixel variation with its spatial neighbors to revise our prediction. 
 Due to the application of deep learning, the proposed approach is more powerful in capturing the structural background variation and achieves significant improvement compared to its competitors.
 %
 %
 %
 % \subsection{learning-based methods}
 \subsection{Machine Learning based Methods}
-The last category of background subtraction methods apply traditional machine learning and deep learning for the background modeling.
+The last category of background subtraction methods apply traditional machine learning and deep learning for the foreground detection.
 
 %
 %SVM
-Traditional machine learning methods are commonly involved with support vector machines (SVM) and Bayesian methods\cite{Zhang2014Statis}. For example, Han et al. \cite{Han2012} integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. Their background model is obtained for each feature in a kernel density framework and a SVM is employed for classification.
+Traditional machine learning methods are commonly involved with support vector machines (SVM)\cite{Han2012} and Bayesian methods\cite{Zhang2014Statis}. For example, Han et al. \cite{Han2012} integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. Their background model is obtained for each feature in a kernel density framework and a SVM is employed for classification.
 
 %
-Recent years, deep learning methods start to flourish in many computer vision fields, and significantly improve the state-of-the-art in experiments. A novel approach for foreground detection with the use of CNN is proposed by Wang et al.\cite{wang2016PRL}.
+Recent years, deep learning methods start to flourish in several computer vision fields. A novel approach for foreground detection with the use of the Convolutional Neural Network(CNN) is proposed by Wang et al.\cite{wang2016PRL}.
 They utilize a CNN with a cascade network architecture for segmentation in foreground detection, which perform excellently with sufficient training data.
 %
 % Ren: 这里我解释一下，为什么看上去这么冗余。这家伙先自己用中值滤波求了个平均背景，然后把平均背景 patches 跟对应的origin image patches 组合作为网络输入，他训练的groundtruth也可以来自其他比如GMM的分类结果图。
-Braham et al. \cite{Braham2016deep} employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth. In particular, the background image is obtained by temporal median filtering, and the groundtruth be replaced with segmentation results from other foreground detection methods. Patches are extracted around a pixel, then they are feed into the network and compared with a threshold.
+Braham et al. \cite{Braham2016deep} employ a scene-specific CNN, which is trained with corresponding image patches from the background image, video frames and groundtruth. In particular, the background image is obtained by temporal median filtering, and the groundtruth can be replaced with segmentation results from other foreground detection methods.
 % Ren: 下面这个家伙做法跟上面太类似了，就是背景图像不用中值滤波，而是用其他牛一点的方法去获取。MD
 A similar approach is presented by M. Babaee et al. \cite{Babaee2017deep}. Their background images combine the segmentation mask from SuBSENSE\cite{St-Charles2015SuBSENSE} algorithm and the output of Flux Tensor algorithm \cite{Wang2014FTSG}, which is able to adaptively update the parameters used in the background model. They also utilize spatial-median filtering as the post processing of the network predictions.
 %DBMF
-In \cite{Yang2018DBMF}, a fully convolutional network with the skip architecture is proposed for background modeling. 
+In \cite{Yang2018DBMF}, a fully convolutional network with the skip architecture is proposed for foreground detection. 
 The authors also proposed a temporal approach to sample training images from the given video, thus providing the background model with limited temporal information. 
 
 % cqzhao: 瞎说啥？？？SVM那个就是连续的几帧啊！他们的问题在于， 自然界太复杂，variation太多元，直接分析variation分析不出来，我们学到了variation的pattern，然后转换！
-Methods in this category have made a lot of progress, especially deep learning based approaches with optimized network architechtures. 
+Although some breakthroughs and progress have been made by applying those methods, especially deep learning based approaches with optimized network architechtures. 
 However, due to the diversity and complexity of nature scenes, it is still difficult to analyze the pixel variations for classification. 
 %我们的不同在于，我们的网络是训练去学习像素变动，并转换到新的空间去进行分类。
 Different with their methods, we focus on creating a transformation, which guarantees the linear sparability of pixel variations in the mapping space, rather than building classifiers for individual observations.
 %
 Besides, our network is trained to learn the patterns of pixel variations, which promises a better performance in time series modeling on temporal coherence.
 %
-Moreover, our DPVTL model is implemented without any assistance from other tradition background modeling methods, hence the reliable performance owing to the noval framework of variation transformation. 
+%Moreover, our DPVTL model is implemented without any assistance from other tradition foreground detection methods, hence the reliable performance owing to the noval framework of variation transformation. 
 
 
 \section{VARIATION TRANSFORMATION}
 \label{sec3}
-In this section, we will elaborate on the motivation of the proposed approach and how does the variation transformation work in foreground detection.
+In this section, we will elaborate on the proposed approach and how does the variation transformation work in foreground detection.
 
 %背景检测的难点
 foreground detection is essentially an binary classification in time sequence, where pixels in a video stream are separated into two categories: foreground (cars, people or animals) and background (roads, trees or other backdrops). 
@@ -299,8 +300,6 @@ In most cases, if we print out the historical observations of a single pixel, it
 However, there are some exceptions: historical observations varies regularly when belonging to some dynamic background scenes(e.g. 
 waves, swaying tree leaves). 
 Generally, pixels from the background are sharing some common patterns of variation. 
-
-
 \begin{figure}[!t]	% FIGURE: figure/fig1 
 \centering
     \includegraphics[width=\linewidth]{figure/fig1}
@@ -311,27 +310,25 @@ Generally, pixels from the background are sharing some common patterns of variat
 
 
 %图例解释困难点
-To give an intuitive understanding of the pixel variations, we plot the historical observations and corresponding groundtruth of a single pixel in  \reffig{variation_chart}, with the X axis showing their range of variation and the Y axis representing the time. 
+To give an intuitive understanding of the pixel variation, we plot the historical observations and corresponding groundtruth of a single pixel in  \reffig{variation_chart}, with the X axis showing their range of variation and the Y axis representing the time. 
 As we can see, there are several lines in three colors: blue, red and green. 
-The blue one is called the pixel variation curve, which containing 100 original observations. 
-Accordingly, the red one, the groundtruth curve is made of a piece of groundtruth data corresponding to the observations. 
-The green one, which we call the transformed variation curve, is made of the outputs of the proposed approach. 
-In practice, foreground detection is to produce a prediction curve, which is as near as possible to the groundtruth carve, by given the pixel variation carve. 
+The blue line consist of original observations, representing a piece of pixel variation. 
+Accordingly, the red line is made of the groundtruth data, corresponding to the observations from the blue one.  
+And the green line consist of the outputs of the proposed approach which represent the transformed variation. 
+
+%In practice, foreground detection is to produce a prediction curve, which is as near as possible to the groundtruth carve, by given the pixel variation carve. 
 
 %传统方法的问题
-Under ideal conditions like indoor videos, previous methods perform quite effectively, when distributions of background and foreground observations are remarkably different and the backgrounds are normally keeping static. 
+Previous methods have a good performance when background and foreground observations are remarkably different and the backgrounds are normally keeping static. 
 While in fact, backgrounds can be rather turbulent and dynamic due to the complexity and diversity of nature scenes. 
 Especially when illumination and camouflages are involved, background and foreground observations are easily confused and mixed up. 
 
 %图例说明可能面临的挑战
 For example, in \reffig{variation_chart}, it is noticeable that some foreground observations in blue line share the similarly value with background ones. 
-In that case, those popular solutions will inevitably yield some sticky moments when separating the pixels in the blue line. 
+In that case, those popular methods will inevitably yield some sticky moments when separating the pixels in the blue line. 
 Statistical methods, for instance, are no longer valid, because they only focus on establishing a statistical model for the background, while having little or no concern for the temporal coherence of these observations. 
-Unfortunately, most previous methods, as far as we know, are not capable to take advantage of the temporal coherence of pixel variation. 
-In other words, despite knowing that pixels from the background share some common patterns of variation in a temporal sequence, we still let the order information of sequential images all go to waste. 
-%为了解决这些问题，我们必须利用好时序相关性
-To alleviate this, order information of pixels must be taken in consideration. 
-More concretely, we must find an efficient method to model the patterns of background pixels variations.
+In other words, despite knowing that pixels from the background share some common patterns of variation in a temporal sequence, they still let the order information of sequential images all go to waste. 
+
 
 
 %variation transformation 介绍。
@@ -358,117 +355,106 @@ With the aid of deep learning method, the proposed approach can be effectively i
 %me
 \section{foreground detection VIA DEEP VARIATION TRANSFORMATION}
 \label{sec4}
-In this section, we introduce the proposed approach that consists of a novel FCN network for foreground detection. 
-We explain the details of the procedures of pixel patches, which is a specific form of the pixel variation, and the architecture of our network. 
+In this section, we will introduce the details of proposed approaches. 
+We explain the production of pixel patches, which is a specific form of the pixel variation, and the architecture of our network. 
 
 
-The complete system is illustrated in \reffig{flow_chart}. 
-Firstly, we temporally sample the input and ground truth images to generalize the pixel variations, and reshape them into fixed-size patches and feed them into the network with its spatial neighbors. 
+The the flow chart is illustrated in \reffig{flow_chart}. 
+Firstly, we sample the input and ground truth images to generalize the pixel variations, and reshape them into patches and feed them into the network with its spatial neighbors. 
 After reassembling the patches into the complete output frame, it is post-processed, yielding the final segmentation of the respective video frame.
 \begin{figure*}[!t] % FIGURE: figure/fig1 
 \centering
 \includegraphics[width=\textwidth]{figure/fig2}
 \DeclareGraphicsExtensions.
-    \caption{Fully convolutional network can efficiently learn to make dense predictions for per-pixel tasks like semantic segmentation.}
+    \caption{ Original videos break down into pixel patches for the training of the FCN, which 
+Fully convolutional network produces an efficient machine for end-to-end transformation learning.}
     \label{flow_chart}
 \end{figure*}
 
 
 % 第一步是对原视频进行采样
-Given different videos, the number of frames are generally different. 
-However, the size of our input is fixed, which means a sampling processing is required to keep the length of pixel variations invariant. 
-Therefore, image stacks are sampled form the given videos before the pixel variations are extracted. 
-The given video and image stacks can be defined as follows: 
+Given different videos, their numbers of frames are generally different. 
+In order to keep each piece of variation the same length, image stacks are sampled form the given videos before the pixel variations are extracted. 
+Let denote the frames sequence as $\{ I_1,I_2,I_3,\dots,I_L\}$.
+And image stacks can be defined as follows: 
 \begin{equation}
-	Given \  Video=\{ I_1,I_2,I_3,\dots,I_L\} ,
+Stack_{(x)}=\{I_x,I_{(x+p)},I_{(x+2p)},\dots,I_L \},\quad p\times l=L,\quad 1\leq   x\leq p , 
 \end{equation}
-
-\begin{equation}
-Stack_{(x)}=\{I_x,I_{(x+p)},I_{(x+2p)},\dots,I_L \},\quad p*l=L,\quad 1\leq   x\leq p , 
-\end{equation}
-
 % 解释采样的细节
-Where $I_t$ represent the frame $t$ of the given video. 
+where $I_t$ is the frame $t$ of the given video. 
 And $p$ is an integer number depended on the video frames length. 
 For each video, we can produce multiple image stacks and choose one of them for the training. 
-In addition, thanks to the temporal sampling, we can get compact pixel historical observations containing more temporal information than the continuous pixel sequences. 
-This works well when it comes to some situation where the moving objects keep stationary for a long time. 
+In addition, we can get compact pixel variations, which contain more temporal information than the continuous pixel sequences, by using equal interval sampling. 
 
 % 第二步提取Pixel variation
-In order to make use of the temporal information of pixel historical observations, we regard the sampled observations from a single pixel as a whole, namely the pixel variation. 
-After the temporal sampling, a large number of observation sequences, or pixel variations, are extracted from the chosen stack, which is shown as follows:
+After the sampling process, a large number of observation sequences, or pixel variations, are extracted from the chosen stack at each pixel position, which is shown as follows: 
 \begin{equation}
 Sq_{(m)}=\{P_1^m,P_2^m,P_3^m,\dots,P_n^m\},
 \end{equation}
-
-Where $P_t^m$ denotes the numerical value of pixel $m$ at frame $t$ in the chosen stack. 
+where $P_t^m$ denotes the numerical value of pixel $m$ at frame $t$ in the chosen stack. 
 Each of the pixel variation is a piece of temporal information which containing the changing patterns of background pixels. 
 And each of them is of fixed length $n$. 
 It is notable that observation sequences are extracted from individual pixel positions, which promises that sufficient training data can be obtained with only one image stack.
 
 % 第三步变成矩阵形式，解释为什么要把variation 变形
-Our intention is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
+Our motivation is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
 However, vectors are not appropriate for the network training and learning. 
 Besides, we also hope the pixel observations can be interacted with their further compatriots in temporal sequence. 
 Thus we reshape the variations into pixel patches as the input of our network. 
-A sample of pixel patch $H^m$ is like this:
+A sample of the pixel patch is like this:
 \begin{equation}
-H^m=P^m_{i+j*d}=\begin{bmatrix}
+H^m=P^m_{i+j\times d}=\begin{bmatrix}
  P^m_1& P^m_2  &\dots  &P^m_d \\ 
 \vdots &  &  &\vdots \\ 
  P^m_{1+(d-1)d}& \dots & \dots & P^m_n
-\end{bmatrix},\quad d^2=n,
+\end{bmatrix},\quad d^2=n.
 \end{equation}
-
-Pixel variations are put into the $d\times d$ patch according to the order of top to bottom and left to right. 
-The parameter $i$ and $j$ represent the column and row respectively. 
-And the parameter $n$ is the total frame length of a variation, as the same as the observation sequences. 
-To put it from another way, the pixel patch is just a specific form of the pixel variation. 
-Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
-Since the pixel sequences are extracted from individual pixels, a large number of pixel patches may be extracted from only a single image stack.
+where the pixel patch is denoted as $H^m$, and the parameter $i$ and $j$ is the column and row of the pixel patch. 
+Observations are put into the $d\times d$ patch from top to bottom and left to right.
+To put it another way, the pixel patch is just a specific form of the pixel variation. 
+%Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
+Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
 
 %第四步空间近邻随机采样。
-It is generally accepted that neighboring background pixels share a similar temporal variation.
-In other words, there are some clues hidden in pixels' spatial neighbors. 
-In order to benefit from the spatial context, we concatenate the pixel patch with 2 neighboring pixel patches, denoted as $SM_1$, $SM_2$ and $SM_3$ respectively.
-They are randomly selected in the 8-connected neighborhood of each pixel position. 
-The input patch of our network is defined as:
+It is generally accepted that neighboring background pixels share a similar temporal distribution.
+%In other words, there are some clues hidden in pixels' spatial neighbors. 
+In order to benefit from the spatial context, we concatenate the pixel patch with 2 neighboring pixel patches, which are randomly selected in the 8-connected neighborhood of each pixel position. 
+The input patch $I$ of our network is defined as:
 \begin{equation}
-H = C(H^m, SM_1, SM_2),
+I = C(H^m, SM_1, SM_2),
 \end{equation}
+where the $C$ represents the concatenating process on the third dimension.
+And neighboring patches are denoted as $SM_1$ and $SM_2$ respectively.
 
-Where $C$ represents the concatenating process on the third dimension.
-And $H$ is the input patch of our network, which size is $d\times d\times 3$.
-
-In the previous steps, videos are broken down into pixel patches which contain abundant background information. 
-Next, the groundtruth patches are obtained in the same way, except the concatenating process. 
-Both of them are put into the network for the training. 
-However, the size of the input will decreased in the forward computation. 
-In order to make output the same size as input, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input matribxes before the training. 
-After the forward computing, variations are transformed in a new space where they can be easily classified by thresholding. 
-The transformed pixel variation is defined as:
+%In the previous steps, original videos are broken down into pixel patches which contain abundant background information. 
+Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenating process, as shown in the \reffig{flow_chart}. 
+Both of them are fed into the network for the training to find a end-to-end transformation at each pixel position. 
+However, the size of feature maps will shrink quickly during forward computation. 
+In order to make our prediction the same size as the input patches, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
+After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
+The transformed pixel patch is defined as:
 \begin{equation}
 H_p= \mathcal L (E_x (H)),
 \end{equation}
-
-Where, $H_p$ denotes the output of network, which we call the prediction patch, the forward computation of network is represented by $\mathcal L$, and $E_x$ denotes the symmetric padding of pixel patch where we have lost none of the pixel information to make the output $H_p$ the same size as the pixel patch $H$. 
+where, $H_p$ is the prediction of the network, and the forward computation of network is represented by $\mathcal L$. The symmetric padding process is denoted as $E_x$, where we have lost none of the pixel information to make the output $H_p$ the same size as the pixel patch $H$. 
 Another advantage of symmetric padding is that the order information still remains.
 
 For the loss function, we choose the Sigmoid Cross Entropy (SCE), which are helpful to address the learning slowdown. 
 The formulation is as follows:
 \begin{equation}
     \begin{aligned}
-        & \ell_{H_p, H_{gt}} =  \sum\limits_{x \in X, y \in Y}^{} H_{gt}(x,y) log(Sigmoid(H_p(x,y)))  \\
-        & + (1 - H_{gt}(x,y)) log(1 - Sigmoid(H_p(x,y))) \\
-        & Sigmoid(x) =\frac{1}{1+e^{-x}}\  ,
+        & \ell_{H_p, H_{gt}} =  \sum\limits_{x \in X, y \in Y}^{} H_{gt}(x,y) log(S(H_p(x,y)))  \\
+        & + (1 - H_{gt}(x,y)) log(1 - S(H_p(x,y))) \\
+        & S(x) =\frac{1}{1+e^{-x}}\  ,
     \end{aligned}
 \end{equation}
-
-Where $H_{gt}$ denotes the groundtruth patch which is given by the corresponding GT stack. 
+where $H_{gt}$ denotes the groundtruth patch which is given by the corresponding groundtruth stack, and $S$ represents the sigmoid function. 
 The SCE is calculated between the transformed patches and the corresponding groundtruth patches. 
 Boundaries of moving objects and pixels that out of the region of interest are ignored in the cost function.
 Finally, we get the transformed variation through the FCN, which are easier for classification. 
-We globally threshold the values for each observation in order to map them to $\{0,1\}$ . 
+
+As shown in the \reffig{flow_chart}, the prediction maps can be reconstructed from the prediction patches.
+Then a global threshold $r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
 The threshold function is given by
 \begin{equation}
     \label{piecewise_fg}
@@ -480,32 +466,31 @@ The threshold function is given by
 \end{equation}
 
 \begin{equation}
-M(x,y)=g(H_p,r) ,
+F=g(M,r) ,
 \end{equation}
-
+where $M$ is the prediction map, and the $F$ denotes the final foreground map given by our DPVTL model.
 After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
-And the major contribution is that we demonstrate the effectiveness of temporal information in foreground detection.
 
 Here we make a detailed introduction to the deep learning model we used and explain why we choose it.
 
-Different with CNNs, fully convolution neural network utilize convolutional layers with $1*1$ kernels to take the place of fully connected layers, which largely resolves these above-mentioned problems. 
-First and foremost, the size of outputs are adjustable in FCNs, which allows an end-to-end mapping of pixel observation sequences and network outputs on the time sequence. 
+Different with CNNs, FCNs utilize convolutional layers with $1\times 1$ kernels to take the place of fully connected layers, which provides several benefits. 
+First and foremost, the size of outputs are adjustable in FCNs, which allows an end-to-end mapping of input patches and prediction patches at each pixel position. 
 We hope to determine the label of a pixel through the comparison of its compatriot in time sequence. 
-There is one more point I ought to touch on, that since the feature maps are no longer need to be converted into vectors, spatial information can be retained . 
+There is one more point I ought to touch on, that since the feature maps are no longer need to be converted into vectors, spatial information can be retained. 
 The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won't lost to the traditional ones. 
 Meanwhile, it's also a high efficient computation model. 
 
 
 Based on above-mentioned factors, FCN is designed as the alternative network architecture in this paper. 
-The structure of our FCN for background modeling is shown in \reffig{flow_chart}. 
-The proposed FCN contains 5 convolutional layers and a convolutional layer which have a filter size of $1*1$. 
+The structure of our FCN for foreground detection is shown in \reffig{flow_chart}. 
+The proposed FCN contains 5 convolutional layers and a convolutional layer which has a filter size of $1\times 1$. 
 We use the Rectified Linear Unit (ReLU) as activation function after each convolutional layer and the Sigmoid function after the last fully connected layer. 
 We do not use any other tricks in our network training and the experiment results prove that the proposed approach is feasible and very effective.
 
 
 \section{Experiments}
 \label{sec5}
-In this section, we ran comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark\cite{CDN2014} and CAMO-UOW. 
+In this section, we ran comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark\cite{CDN2014} and CAMO-UOW\cite{CAMO}. 
 The CDnet is the largest dataset for foreground detection so far as we are aware, containing 11 categories with several complexly challenging scenes, such as Dynamic Background, Camera Jitter, Shadow, Night Videos, PTZ and so on. 
 The CAMO-UOW is another challenging benchmark which contains 10 high resolution videos. 
 For each video, one or two persons appear in the scene with the clothes in the similar color as the background.
@@ -526,8 +511,7 @@ Fm= \frac{2\times precision \times recall}{precision + recall} = \frac{2TP}{2TP+
 %     F=\frac{precision \dot recall}{precision - recall}  = \frac{2TP}{2TP+FN+FP},
 % \end{equation}
 %
-
-Where TP, FP, and FN are true positives, false positives, and false negatives respectively, computed in pixels of all test frames for each video. 
+where TP, FP, and FN are true positives, false positives, and false negatives respectively, computed in pixels of all test frames for each video. 
 
 
 The quantitative and qualitative comparisons are shown in \reftab{tab1} and  \reffig{results_chart} respectively. 
@@ -569,7 +553,7 @@ Consequently, our DPVL performed much better than compared algorithms, with the 
 % \begin{table}[tab1]
 \begin{table*}[!t]				% TABLE
 \centering
-\caption{The performance comparison of the proposed approach and some state-of-the-art algorithms on the video sequences from different categories in CDnet 2014.}
+\caption{The performance comparison of the proposed approach and some state-of-the-art algorithms on the video sequences from different categories in CDnet 2014. For each video, 100 frames were taken for the training of our FCN.}
 \label{tab1}
 \begin{tabular}{lllllllllllll}
 \hline
@@ -593,7 +577,7 @@ DPVTL        & \textbf{0.9811}   & 0.9329  & \textbf{0.9014}     & \textbf{0.959
 
 \begin{table*}[!t]
 \centering
-\caption{The performance comparison of the proposed approach and some classical methods and deep-based method DBMF .}
+\caption{The performance comparison of the proposed approach and some classical methods and deep-based method DBMF. For each video, 64 frames were taken for the training of our FCN.}
 \label{tab2}
 \begin{tabular}{llllllll}
 \hline
