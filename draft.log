@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  6 SEP 2018 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  6 SEP 2018 10:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -751,11 +751,11 @@ Package pdftex.def Info: figure/fig1.png used on input line 305.
 <figure/fig2.png, id=130, 749.199pt x 508.7808pt>
 File: figure/fig2.png Graphic file (type png)
  <use figure/fig2.png>
-Package pdftex.def Info: figure/fig2.png used on input line 367.
+Package pdftex.def Info: figure/fig2.png used on input line 368.
 (pdftex.def)             Requested size: 516.0pt x 350.41476pt.
 
 [3 <./figure/fig1.png>]
-Overfull \hbox (24.75824pt too wide) detected at line 382
+Overfull \hbox (24.75824pt too wide) detected at line 383
 []\OML/cmm/m/it/10 Stack[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10
  I[]; I[]; I[]; [] ; I[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ;  p \OMS/cmsy/m/n/1
 0 ^^B \OML/cmm/m/it/10 l \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 L;  \OT1/cmr/m/n/10
@@ -763,22 +763,19 @@ Overfull \hbox (24.75824pt too wide) detected at line 382
 0 p;
  []
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./figure/fig2.png>] <figure/fig3.png, id=192, 790.152pt x 526.1256pt>
+[4 <./figure/fig2.png>] [5] <figure/fig3.png, id=192, 790.152pt x 526.1256pt>
 File: figure/fig3.png Graphic file (type png)
 
 <use figure/fig3.png>
-Package pdftex.def Info: figure/fig3.png used on input line 529.
+Package pdftex.def Info: figure/fig3.png used on input line 530.
 (pdftex.def)             Requested size: 516.0pt x 343.59122pt.
 
-Overfull \hbox (18.62918pt too wide) in paragraph at lines 558--576
+Overfull \hbox (18.62918pt too wide) in paragraph at lines 559--577
  [][] 
  []
 
 
-Overfull \hbox (25.46202pt too wide) in paragraph at lines 600--615
+Overfull \hbox (25.46202pt too wide) in paragraph at lines 601--616
  [][] 
  []
 
@@ -804,17 +801,17 @@ Missing character: There is no Â in font ptmr7t!
 Missing character: There is no ¨ in font ptmr7t!
 Missing character: There is no Â in font ptmr7t!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 706.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 707.
  [9
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 706.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 707.
  (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 706.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 706.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 707.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 707.
 Package rerunfilecheck Info: File `draft.out' has not changed.
 (rerunfilecheck)             Checksum: AD2FA5103B692BA53B92848F63B7413A;1525.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 707.
  ) 
 Here is how much of TeX's memory you used:
  20485 strings out of 492995
@@ -836,7 +833,7 @@ ic/amsfonts/cm/cmsy7.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times
 /utmb8a.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
 <d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Tools/tex
 live2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on draft.pdf (9 pages, 1306652 bytes).
+Output written on draft.pdf (9 pages, 1306820 bytes).
 PDF statistics:
  322 PDF objects out of 1000 (max. 8388607)
  285 compressed objects within 3 object streams
