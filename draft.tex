@@ -149,7 +149,7 @@ which encode both the intensity distribution and sequential information.
 Then, a Fully Convolutional Network (FCN)\ \cite{Shelhamer2017fcn} is applied to learn the patterns of the pixel variation and find a transformation which guarantees the linear separability of pixels in the transformed variation.
 %
 In particular,
-we take advantage of the strong learning ability of the deep network to learn an end-to-end representation of the pixel variation in a new space where they can be easily classified to background and foreground.
+we take advantage of the strong learning ability of the deep neural network to learn an end-to-end representation of the pixel variation in a new space where they can be easily classified to background and foreground.
 %
 Benefited from the noval framework of variation transformation,
 proposed approach works well in diversely complex scenes adaptively.
@@ -295,7 +295,7 @@ Besides, our network is trained to learn the patterns of pixel variations, which
 In this section, we will elaborate on the proposed approach and how does the variation transformation work in foreground detection.
 
 %背景检测的难点
-foreground detection is essentially an binary classification in time sequence, where pixels in a video stream are separated into two categories: foreground (cars, people or animals) and background (roads, trees or other backdrops). 
+foreground detection is essentially an binary classification in time sequence, where pixels in a video stream are classified as two categories: foreground (cars, people or animals) and background (roads, trees or other backdrops). 
 In most cases, if we print out the historical observations of a single pixel, it is not hard to see that they usually keep their stability when belonging to the background. 
 However, there are some exceptions: historical observations varies regularly when belonging to some dynamic background scenes(e.g. 
 waves, swaying tree leaves). 
@@ -310,7 +310,8 @@ Generally, pixels from the background are sharing some common patterns of variat
 
 
 %图例解释困难点
-To give an intuitive understanding of the pixel variation, we plot the historical observations and corresponding groundtruth of a single pixel in  \reffig{variation_chart}, with the X axis showing their range of variation and the Y axis representing the time. 
+To give an intuitive understanding of the pixel variation, we plot the historical observations and corresponding groundtruth of a single pixel in  \reffig{variation_chart}.
+% with the X axis showing their range of variation and the Y axis representing the time. 
 As we can see, there are several lines in three colors: blue, red and green. 
 The blue line consist of original observations, representing a piece of pixel variation. 
 Accordingly, the red line is made of the groundtruth data, corresponding to the observations from the blue one.  
@@ -340,8 +341,11 @@ The transformed variation is presented by the green line in \reffig{variation_ch
 %After thresholding, we can easily get the labels of each observation. 
 %方法的好处是
 The benefits from variation transformation are evident and clearly seen. 
+Benefit from the strong learning ability of the FCN model, we are able to learn the variation patterns of background and foreground over a long period of time.
+And the variation patterns, in turn, contribute to the variation transformation where the value of each observation is adjusted according to its compatriot in time sequence.
 It is hard to distinguish a foreground observation when its value are similar to the background ones. 
-However, classification on the observations in a transformed variation is much convenient and intuitive, benefit from the strong learning ability of the FCN model. 
+Classification on the transformed variation, however, is much more convenient and intuitive. 
+
 %With the aid of deep learning method, the proposed approach can be effectively implemented.
 
 % 公式表达
