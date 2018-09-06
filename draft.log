@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  6 SEP 2018 08:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  6 SEP 2018 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -737,22 +737,24 @@ File: figure/demo.pdf Graphic file (type pdf)
 Package pdftex.def Info: figure/demo.pdf used on input line 131.
 (pdftex.def)             Requested size: 252.0pt x 220.71758pt.
 
-[1{d:/Tools/texlive2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+Underfull \vbox (badness 1490) has occurred while \output is active []
+
+ [1{d:/Tools/texlive2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./figure/demo.pdf>] [2] <figure/fig1.png, id=125, 578.16pt x 433.62pt>
 File: figure/fig1.png Graphic file (type png)
-
-<use figure/fig1.png>
+ <use figure/fig1.png>
 Package pdftex.def Info: figure/fig1.png used on input line 305.
 (pdftex.def)             Requested size: 252.0pt x 189.00032pt.
- <figure/fig2.png, id=130, 749.199pt x 508.7808pt>
-File: figure/fig2.png Graphic file (type png)
 
-<use figure/fig2.png>
+<figure/fig2.png, id=130, 749.199pt x 508.7808pt>
+File: figure/fig2.png Graphic file (type png)
+ <use figure/fig2.png>
 Package pdftex.def Info: figure/fig2.png used on input line 367.
 (pdftex.def)             Requested size: 516.0pt x 350.41476pt.
- [3 <./figure/fig1.png>]
+
+[3 <./figure/fig1.png>]
 Overfull \hbox (24.75824pt too wide) detected at line 382
 []\OML/cmm/m/it/10 Stack[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10
  I[]; I[]; I[]; [] ; I[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ;  p \OMS/cmsy/m/n/1
@@ -780,11 +782,6 @@ Overfull \hbox (25.46202pt too wide) in paragraph at lines 600--615
  [][] 
  []
 
-Missing character: There is no Î in font cmr10!
-Missing character: There is no ± in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no ˆ in font cmr10!
-Missing character: There is no — in font cmr10!
 Missing character: There is no â in font cmr7!
 Missing character: There is no ˆ in font cmr7!
 Missing character: There is no ’ in font cmr7!
@@ -822,7 +819,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
 Here is how much of TeX's memory you used:
  20485 strings out of 492995
  366132 string characters out of 6134077
- 442611 words of memory out of 5000000
+ 441742 words of memory out of 5000000
  23666 multiletter control sequences out of 15000+600000
  40779 words of font info for 77 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
@@ -839,7 +836,7 @@ ic/amsfonts/cm/cmsy7.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times
 /utmb8a.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
 <d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Tools/tex
 live2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on draft.pdf (9 pages, 1306272 bytes).
+Output written on draft.pdf (9 pages, 1306652 bytes).
 PDF statistics:
  322 PDF objects out of 1000 (max. 8388607)
  285 compressed objects within 3 object streams

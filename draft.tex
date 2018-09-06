@@ -35,7 +35,7 @@
 \definecolor{filltext}{RGB}{0,255,255}
 
 \begin{document}
-\title{foreground detection via Deep Variation Transformation}
+\title{Foreground Detection via Deep Variation Transformation}
 
 \author{Yongxin Ge, 
         Xinyu Ren, 
@@ -130,10 +130,10 @@ Based on this motivation, the Deep Variation Transformation model for foreground
 \centering
     \includegraphics[width=\linewidth]{figure/demo.pdf}
     % 图例里描述一下。
-    \caption{The demonstration of deep variation transformation. The pixels in the transformed variation become easier to be classified as foreground and background correctly.}
+    \caption{The demonstration of deep variation transformation. Due to the complexity of natural scenes, the original pixels' variation is hard to classify correctly. After transforming by deep learning network, the pixels in variation become easy to be classified as foreground and background correctly.}
     \label{idea}
 \end{figure}
-
+%The demonstration of deep variation transformation. The pixels in the transformed variation become easier to be classified as foreground and background correctly
 %本文的想法和优势
 % The previous methods have already made great progress in generating some sophisticated background models with given videos. 
 % Unfortunately, some instructive clues have been long put aside and neglected, since there is no efficient way to deal with them. 
@@ -333,15 +333,16 @@ In other words, despite knowing that pixels from the background share some commo
 
 %variation transformation 介绍。
 In this paper, a novel framework of pixel variation transformation are proposed. %用framework代替method?
-Pixel observations are no longer considered independent of each other but regarded as a whole, which we call the pixel variation. 
-Consequently, the classification of pixels can be viewed as a transformation of pixel variations, from the observation sequences to the prediction sequences. 
-In the specific implementation, we trained a FCN to learn a transformation of the pixel variations by mapping them into a new space where it is close to the groundtruth, just like the green line in \reffig{variation_chart}. 
-After thresholding, we can easily get the labels of each observation. 
+The pixel variation is now regarded as a whole to safeguard data integrity.
+Consequently, the classification of pixels can be viewed as a transformation of pixel variations. 
+More specifically, a FCN is trained to learn the patterns of pixel variations and mapping them into a new space where it is close to the groundtruth data.
+The transformed variation is presented by the green line in \reffig{variation_chart}. 
+%After thresholding, we can easily get the labels of each observation. 
 %方法的好处是
 The benefits from variation transformation are evident and clearly seen. 
 It is hard to distinguish a foreground observation when its value are similar to the background ones. 
-However, classification on the transformed variation is much convenient and intuitive, due to the advantage of temporal information. 
-With the aid of deep learning method, the proposed approach can be effectively implemented.
+However, classification on the observations in a transformed variation is much convenient and intuitive, benefit from the strong learning ability of the FCN model. 
+%With the aid of deep learning method, the proposed approach can be effectively implemented.
 
 % 公式表达
 %And the definition of region searching method $G(x,y)$ is shown as follows:
@@ -475,7 +476,7 @@ Here we make a detailed introduction to the deep learning model we used and expl
 
 Different with CNNs, FCNs utilize convolutional layers with $1\times 1$ kernels to take the place of fully connected layers, which provides several benefits. 
 First and foremost, the size of outputs are adjustable in FCNs, which allows an end-to-end mapping of input patches and prediction patches at each pixel position. 
-We hope to determine the label of a pixel through the comparison of its compatriot in time sequence. 
+We hope to determine the label of an observation through the comparison of its compatriot in time sequence. 
 There is one more point I ought to touch on, that since the feature maps are no longer need to be converted into vectors, spatial information can be retained. 
 The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won't lost to the traditional ones. 
 Meanwhile, it's also a high efficient computation model. 
@@ -535,7 +536,7 @@ Based on this insight, the FCN network focuses on learning the patterns of the p
 As for the case of shadow scene, "peopleInShade" is a typical example with prevalent hard and soft shadows. 
 In the traditional approaches, these shadow regions are usually segmented as foreground since it is also moving with the objects. 
 Therefore, traditional methods like the PAWCS, the WeSamBE and the SharedModel falsely segments part of shadows as moving objects. 
-In addition, the foreground provided by the UBSS is incomplete on the part of the pedestrian's body due to the interference of shades, which can be owing to the severe dependency of texture features. 
+In addition, the foreground provided by the IUTIS-5 is incomplete on the part of the pedestrian's body due to the interference of shades, which can be owing to the severe dependency of texture features. 
 Whereas, the DeepBS performs well in this video benefited from the utilization of CNN. 
 However, the shape of pedestrians are slightly deformed as the result of their patch-wise processing of CNN. 
 In contrast, derived from the fact that our DPVL focus on learning the pattern of pixels' variation in the shadow regions, proposed approach successfully segments the shadow part as the background and achieves the highest performance in the category of shadow scene.
@@ -618,15 +619,15 @@ average  & 0.85 & 0.86 & 0.83    & 0.89 & 0.88     & 0.85   & 0.90          & 0.
 
 
 The quantitative evaluation of proposed approach on CDnet 2014 is shown in the \reftab{tab1}. 
-It can be inferred that the proposed approach significantly outperformed all of the compared state-of-the-art algorithms in most of complex scenes and achieved 6\% gain in FM over the second one on the whole dataset. 
-Moreover, in order to compare proposed approach with the DBMF, which is also based on deep learning and only publish their results in several special vides. 
+It can be inferred that the proposed approach significantly outperformed all of the compared state-of-the-art algorithms in most of complex scenes and achieved 11.37\% gain in FM over the second one on the whole dataset. 
+Moreover, in order to compare proposed approach with the DBMF, which is also based on deep learning and only publish their results in  specific videos. 
 The proposed approach has also ran in these video and the results are shown in Table 2. 
 Again, the proposed approach has noticeably better performance than the DBMF and some other classical background approaches.
 
 	As shown in the \reftab{tab1} and \reftab{tab2}, previous deep learning based methods like the DeepBS and the DBMF achieve well performance. 
 From our own perspective, that good performance should attribute to the stronger modeling ability and learning adaptation of CNN and FCN. 
 However, the proposed approach focused on the pixels variation in temporal sequence rather than low-level static features such as color, edges and textures, which gives us the ability to avoid the shortcomings of the background models. 
-Consequently, the proposed approach still get considerably better results, which over 10.46\% in FM metrics compared with the DeepBS and over 6.38\% compared with the DBMF.
+Consequently, the proposed approach still get considerably better results, which over 17.85\% in FM metrics compared with the DeepBS and over 9.50\% compared with the DBMF.
 The evaluation of proposed approach in CAMO-UOW dataset is shown in the \reftab{tab3}. 
 Unlike the CDnet dataset, the videos of CAMO-UOW dataset are specially proposed for the moving objects with camouflage, which is the main challenge of this dataset. 
 As shown in the \reftab{tab3} proposed approach achieves better performance compared to its competitions, with an average F-measure of 0.97, compared to values between 0.77 and 0.94 for the other methods. 
@@ -641,10 +642,10 @@ All these experiments of the proposed method were implemented in matlab and ran 
 For each video in CDnet 2014, 100 training frames are extracted to produce the image patch. 
 It should be noted that the 100 frames only accounts for less than 10\% of total Groundtruth in CDnet 2014. 
 In contrast, 90\% of data were used as training samples in the DBMF, which suggest that the proposed approach achieves well performance with limited training frames. 
-Considering that the videos in CAMO-UOW have fewer frames, we reduce the number of training frames to 49. 
+Considering that the videos in CAMO-UOW have fewer frames, we reduce the number of training frames to 64 for each video. 
 During the experience, the training set and testing set are completely separated. 
 More specifically, our FCN network is random initialized. 
-We train the network with mini-batches of size 200, a learning rate $α = 1 ∗ 10^{−3}$ over 20 epochs. 
+We train the network with mini-batches of size 200, a learning rate $\alpha  = 1 \times 10^{{−3}}$ over 20 epochs. 
 The last threshold $R$ is set to 0.6.
 
 
