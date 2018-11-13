@@ -64,8 +64,8 @@ Then, the FCN is trained to learn the pattern of pixel variations for the transf
 %    
 % XXX 这句话还是有点问题
 % 这句话我也没看懂。。。
-Benefied from the ingenious utilization of deep learning network leading by our clear cognition of essence about foreground detection problem,
-the proposed approach adaptively generate superior peroformances in diversly complex scenes.
+Benefited from the ingenious utilization of deep learning network leading by our clear cognition of essence about foreground detection problem,
+the proposed approach adaptively generates superior performances in diverse nature scenes.
 %
 Comprehensive experiments in several standard benchmarks demonstrate the superiority of proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
 %
@@ -84,7 +84,7 @@ which is widely used in the applications of video processing \cite{Barnich2011_2
 % 传统的方法是怎么做的，有什么问题
 Typically, it is recognized as a binary classification task that assigns each pixel in the video stream with a label, 
 for either belonging to the background or foreground scene.
-Traditional foreground detection algorithms focus on anaylsing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999} and KDE\cite{Elgammal2000Non}.
+Traditional foreground detection algorithms focus on analyzing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999} and KDE\cite{Elgammal2000Non}.
 However, due to the unpredictability and rapidity of the pixels' variation in natural scenes,
 the variation becomes so unordered which is hard to be analyzed for foreground detection.
 Therefore, the foreground detection is still a challenging problem in complex natural scenes.
@@ -106,7 +106,7 @@ Therefore, the foreground detection is still a challenging problem in complex na
 % 在多样的自然场景中，前景可能产生和背景相似，甚至相同的像素，而这种像素很难去分析
 In the diversely natural scenes,
 it is possible that the moving objects produce the similar or even the same observations of pixels to that of background.
-% similar to their counterparts of background but atually belong to foreground .
+% similar to their counterparts of background but actually belong to foreground .
 % 如图所示，像素观测值C就和背景的值几乎一模一样，
 As shown in the \reffig{idea},
 the observation C is closely related to the observations which belong to the background. However, it is actually produced by moving objects and should be classified as foreground.
@@ -149,7 +149,7 @@ Then, a Fully Convolutional Network (FCN)\ \cite{Shelhamer2017fcn} is applied to
 In particular,
 we take advantage of the strong learning ability of the deep neural network to learn an end-to-end representation of the pixel variation in a new space where they can be easily classified to background and foreground.
 %
-Benefited from the noval framework of variation transformation,
+Benefited from the novel framework of variation transformation,
 proposed approach works well in diversely complex scenes adaptively.
 %
 %Moreover,
@@ -183,7 +183,7 @@ Over the last few decades, a huge number of foreground detection methods have be
 which are broadly categorized into pixel-based, region-based and learning-based methods.
 \subsection{pixel-based methods}
 % Ren:重新解释了pixel based methods
-Pixel-based methods usually assume the independence between neighboring pxiels,
+Pixel-based methods usually assume the independence between neighboring pixels,
 and utilize the low-level features, such as color or gradients for background subtraction.
 
 %GMM 
@@ -217,11 +217,11 @@ But there is, in fact, a strong coherence in image sequences that contains abund
 % tight interdependence 明明在google scholar里查得到很多用的好不好...
 % To address this shortcoming, 在一篇2018的CVPR的摘要里有啊
 % “High Quality Estimation of Multiple Intermediate Frames for Video Interpolation”
-To address this shortcoming, we introduce a framework of variation transformation learing, where pixel's historical observations are embedded in a piece of pixel patch and sorted in chronological order as a whole to enter our DPVTL model.
+To address this shortcoming, we introduce a framework of variation transformation learning, where pixel's historical observations are embedded in a piece of pixel patch and sorted in chronological order as a whole for the training of our DPVTL model.
 %这样的优点在于保留了数据的完整性，保留了数据的时序相关性。
 Bringing together the historical observations ensures the data integrity and preserves the temporal coherence of our training data. 
-Moreover, 
-the novel framework is capable of learning the patterns of pixel variation and exploiting the spatial-temporal context, compared to those classifiers based on the assumption of pixel independence. 
+On the other hand, the application of neural network guarantee the strong learning ability of our model.
+Thus, the proposed approach is more capable of learning the patterns of pixel variation and exploiting the spatial-temporal context, compared to those classifiers based on the assumption of pixel independence. 
 %所以我们方法比基于像素的要好。
 %Hence we demonstrate a comparatively better performance in modelling some challenging scenes, like illumination changing and intermittent object motion.
 %\todo{you should discuss the difference between the proposed approach and pixel-based method. What is your advantage compared with these previous work? Why they failed and why our method work?}
@@ -233,7 +233,7 @@ the novel framework is capable of learning the patterns of pixel variation and e
 %
 \subsection{region-based approach}
 % Ren: 好的好的，不乱吹了，我看过有说have similar values的。。。。
-Region-based approaches consider the similiary between neighboring pixels, which is utilized to refine the pixel-level classification.
+Region-based approaches consider the similarity between neighboring pixels, which is utilized to refine the pixel-level classification.
 %
 
 %(Regularized region-based)
@@ -278,14 +278,14 @@ In \cite{Yang2018DBMF}, a fully convolutional network with the skip architecture
 The authors also proposed a temporal approach to sample training images from the given video, thus providing the background model with limited temporal information. 
 
 % cqzhao: 瞎说啥？？？SVM那个就是连续的几帧啊！他们的问题在于， 自然界太复杂，variation太多元，直接分析variation分析不出来，我们学到了variation的pattern，然后转换！
-Although some breakthroughs and progress have been made by applying those methods, especially deep learning based approaches with optimized network architechtures. 
-However, due to the diversity and complexity of nature scenes, it is still difficult to analyze the pixel variations for classification. 
+Some breakthroughs and progress have been achieved by applying those methods, especially deep learning based approaches with optimized network architectures. 
+However, due to the diversity of nature scenes, pixel variations can be very complex, leading to difficulty in analyzing specific pixel variation patterns.
 %我们的不同在于，我们的网络是训练去学习像素变动，并转换到新的空间去进行分类。
-Different with their methods, we focus on creating a transformation, which guarantees the linear sparability of pixel variations in the mapping space, rather than building classifiers for individual observations.
+Unlike existing ones, our method focus on creating a transformation, which guarantees the linear separability of pixel variations in the mapping space, rather than building classifiers for individual observations.
 %
 Besides, our network is trained to learn the patterns of pixel variations, which promises a better performance in time series modeling on temporal coherence.
 %
-%Moreover, our DPVTL model is implemented without any assistance from other tradition foreground detection methods, hence the reliable performance owing to the noval framework of variation transformation. 
+%Moreover, our DPVTL model is implemented without any assistance from other tradition foreground detection methods, hence the reliable performance owing to the novel framework of variation transformation. 
 
 
 \section{VARIATION TRANSFORMATION}
@@ -331,18 +331,20 @@ In other words, despite knowing that pixels from the background share some commo
 
 
 %variation transformation 介绍。
-In this paper, a novel framework of pixel variation transformation are proposed. %用framework代替method?
-The pixel variation is now regarded as a whole to safeguard data integrity.
-Consequently, the classification of pixels can be viewed as a transformation of pixel variations. 
-More specifically, a FCN is trained to learn the patterns of pixel variations and mapping them into a new space where it is close to the groundtruth data.
+In this paper, a novel framework of pixel variation transformation is proposed. %用framework代替method?
+
+Different from existing methods, we decide to shift our attention form single pixel classification to variation transformation.
+%the pixel variation is now regarded as a whole to safeguard the data integrity.
+More specifically, a FCN is employed to learn the patterns of pixel variations and mapping them into a new space where they are close to the groundtruth data.
 The transformed variation is presented by the green line in \reffig{variation_chart}. 
 %After thresholding, we can easily get the labels of each observation. 
 %方法的好处是
-The benefits from variation transformation are evident and clearly seen. 
-Benefit from the strong learning ability of the FCN model, we are able to learn the variation patterns of background and foreground over a long period of time.
-And the variation patterns, in turn, contribute to the variation transformation where the value of each observation is adjusted according to its compatriot in time sequence.
+The benefits are evident and clearly seen. 
 It is hard to distinguish a foreground observation when its value are similar to the background ones. 
 Classification on the transformed variation, however, is much more convenient and intuitive. 
+With the strong learning ability of the FCN, we are able to learn the diverse variation patterns of background and foreground over a long period of time.
+And the variation patterns, in turn, contribute to the variation transformation where the value of each observation is adjusted according to its compatriot in time sequence.
+
 
 %With the aid of deep learning method, the proposed approach can be effectively implemented.
 
@@ -381,7 +383,10 @@ In order to keep each piece of variation the same length, image stacks are sampl
 Let denote the frames sequence as $\{ I_1,I_2,I_3,\dots,I_L\}$.
 And image stacks can be defined as follows: 
 \begin{equation}
-Stack_{(x)}=\{I_x,I_{(x+p)},I_{(x+2p)},\dots,I_L \},\quad p\times l=L,\quad 1\leq   x\leq p , 
+    \begin{aligned}
+&Stack_{(x)}=\{I_x,I_{(x+p)},I_{(x+2p)},\dots,I_L \},\\
+&\quad p\times l=L,\quad 1\leq   x\leq p , 
+    \end{aligned}
 \end{equation}
 % 解释采样的细节
 where $I_t$ is the frame $t$ of the given video. 
@@ -433,7 +438,7 @@ And neighboring patches are denoted as $SM_1$ and $SM_2$ respectively.
 Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenating process, as shown in the \reffig{flow_chart}. 
 Both of them are fed into the network for the training to find a end-to-end transformation at each pixel position. 
 However, the size of feature maps will shrink quickly during forward computation. 
-In order to make our prediction the same size as the input patches, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
+In preprocessing, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
 After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
 The transformed pixel patch is defined as:
 \begin{equation}
@@ -495,7 +500,7 @@ We do not use any other tricks in our network training and the experiment result
 \label{sec5}
 In this section, we ran comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark\cite{CDN2014} and CAMO-UOW\cite{CAMO}. 
 The CDnet is the largest dataset for foreground detection so far as we are aware, containing 11 categories with several complexly challenging scenes, such as Dynamic Background, Camera Jitter, Shadow, Night Videos, PTZ and so on. 
-The CAMO-UOW is another challenging benchmark which contains 10 high resolution videos. 
+The CAMO-UOW is a challenging benchmark for camouflaged foreground detection, which contains 10 high resolution videos. 
 For each video, one or two persons appear in the scene with the clothes in the similar color as the background.
 
 The proposed approach is compared with several existing traditional state-of-the-art foreground detection algorithms, including the IUTIS-5\cite{Bianco2017TEC}, the SuBSENSE\cite{St-Charles2015SuBSENSE}, the WeSamBE\cite{Jiang2017WeSamBE}, sharable GMM the SharedModel\cite{Chen2015SharedModel}, word-dictionaries-based method the PAWCS\cite{Charles2015PAWCS}, the SemanticBGS\cite{Braham2017Semantic}, the AAPSA\cite{RAMIREZALONSO2016990}, etc. 
@@ -574,7 +579,7 @@ WeSamBE\cite{2017_TCSVT_BG_7938679}     & 0.9413   & 0.7440  & 0.7976     & 0.73
 ShareM\cite{2015_ICME_ShareModel}      & 0.9522   & 0.8222  & 0.8141     & 0.6727    & 0.8898 & 0.8319  & 0.8480   & 0.7286     & 0.5419     & 0.3860 & 0.7339  & 0.7474  \\
 GMM\cite{Zivkovic2004}         & 0.8245   & 0.633   & 0.5969     & 0.5207    & 0.7370 & 0.6621  & 0.7380   & 0.5373     & 0.4097     & 0.1522 & 0.4663  & 0.5707  \\
 RMoG\cite{Varadarajan2013}        & 0.7848   & 0.7352  & 0.7010     & 0.5431    & 0.7212 & 0.4788  & 0.6826   & 0.5312     & 0.4265     & 0.2470 & 0.4578  & 0.5735  \\ \hline
-DPVTL        & \textbf{0.9811}   & 0.9329  & \textbf{0.9014}     & \textbf{0.9595}    & \textbf{0.9467} & \textbf{0.9479}  & \textbf{0.8780}   & 0.7818     & \textbf{0.7737}     & \textbf{0.5957} & \textbf{0.9034}  & \textbf{0.8789} \\ \hline
+DPVT        & \textbf{0.9811}   & 0.9329  & \textbf{0.9014}     & \textbf{0.9595}    & \textbf{0.9467} & \textbf{0.9479}  & \textbf{0.8780}   & 0.7818     & \textbf{0.7737}     & \textbf{0.5957} & \textbf{0.9034}  & \textbf{0.8789} \\ \hline
 \end{tabular}
 \end{table*}
 
@@ -591,7 +596,7 @@ ViBe\cite{Barnich2011_2011_TIP}     & 0.7535  & 0.6676 & 0.8367      & 0.6668   
 PBAS\cite{Hofmann2012Background}     & 0.8071  & 0.6839 & 0.7902      & 0.7280   & 0.3420 & 0.5768 & 0.6547  \\
 P2M\cite{Yang2016P2M}      & 0.9160  & 0.3849 & 0.9121      & 0.7322   & 0.5819 & 0.4352 & 0.6604  \\
 DBMF\cite{Yang2018DBMF}     & 0.9412  & 0.9236 & 0.8394      & 0.9059   & 0.8203 & 0.8645 & 0.8824  \\ \hline
-DPVTL     & \textbf{0.9888}  & \textbf{0.9819} & \textbf{0.9728}      & \textbf{0.9808}   & \textbf{0.9394} & \textbf{0.9333} & \textbf{0.9662}  \\ \hline
+DPVT     & \textbf{0.9888}  & \textbf{0.9819} & \textbf{0.9728}      & \textbf{0.9808}   & \textbf{0.9394} & \textbf{0.9333} & \textbf{0.9662}  \\ \hline
 \end{tabular}
 \end{table*}
 
@@ -602,7 +607,7 @@ DPVTL     & \textbf{0.9888}  & \textbf{0.9819} & \textbf{0.9728}      & \textbf{
 \label{tab3}
 \begin{tabular}{lllllllllll}
 \hline
-Methods  & MOG2\cite{ZIVKOVIC2006773} & FCI\cite{Baf2008FCI}  & LBA-SOM\cite{LBA-SOM2008} & PBAS & SuBSENSE & ML-BGS\cite{ML-BGS2007} & DECOLOR\cite{DECOLOR2013}       & COROLA\cite{SHAKERI201628} & FWFC\cite{Li2018CAMO}          & Ours          \\ \hline
+Methods  & MOG2\cite{ZIVKOVIC2006773} & FCI\cite{Baf2008FCI}  & LBA-SOM\cite{LBA-SOM2008} & PBAS & SuBSENSE & ML-BGS\cite{ML-BGS2007} & DECOLOR\cite{DECOLOR2013}       & COROLA\cite{SHAKERI201628} & FWFC\cite{Li2018CAMO}          & DPVT          \\ \hline
 Video 1  & 0.79 & 0.88 & 0.8     & 0.9  & 0.89     & 0.89   & 0.92          & 0.8    & 0.94 & \textbf{0.96} \\
 Video 2  & 0.82 & 0.79 & 0.8     & 0.82 & 0.88     & 0.8    & 0.83          & 0.58   & 0.96          & \textbf{0.98} \\
 Video 3  & 0.88 & 0.86 & 0.85    & 0.91 & 0.9      & 0.8    & 0.9           & 0.82   & 0.94 & \textbf{0.95} \\
@@ -680,7 +685,7 @@ The last threshold $R$ is set to 0.6.
 
 \section{Conclusion}
 \label{sec6}
-In this paper, we proposed a noval foreground detection approach based on deep learning and the variation transformation learning. The DPVTL model include a FCN network and a noval variation transformation learing framework, which allows us to efficiently combine the temporal coherence and distribution information of pixels over a long period of time. Comparison with other traditional and deep learning methods shows that the DPVTL has good properties on several challenging scenes.
+In this paper, we proposed a novel foreground detection approach based on deep learning and the variation transformation learning. The DPVTL model include a FCN network and a novel variation transformation learning framework, which allows us to efficiently combine the temporal coherence and distribution information of pixels over a long period of time. Comparison with other traditional and deep learning methods shows that the DPVTL has good properties on several challenging scenes.
 The future work will be focused on improving the DPVTL in terms of network architecture updating and integration of local spatial coherence.
 
 % \section{Conclusions}
