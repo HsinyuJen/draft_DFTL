@@ -68,7 +68,7 @@ I was expecting an "="---line 2229 of file ref.bib
  : // 
  :    doi = "https://doi.org/10.1016/j.patcog.2017.09.040",
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 2567 of file ref.bib
+I was expecting an "="---line 2598 of file ref.bib
  : // 
  :    publisher="Springer Berlin Heidelberg",
 I'm skipping whatever remains of this entry
@@ -81,45 +81,45 @@ Warning--empty journal in Braham2016deep
 Warning--empty author in Babaee2017deep
 
 Done.
-You've used 43 entries,
+You've used 45 entries,
             4024 wiz_defined-function locations,
-            1091 strings with 14887 characters,
-and the built_in function-call counts, 36266 in all, are:
-= -- 2935
-> -- 814
-< -- 360
-+ -- 464
-- -- 124
-* -- 1765
-:= -- 5246
-add.period$ -- 86
-call.type$ -- 43
-change.case$ -- 43
-chr.to.int$ -- 831
-cite$ -- 47
-duplicate$ -- 2579
-empty$ -- 2875
-format.name$ -- 164
-if$ -- 8505
+            1102 strings with 15174 characters,
+and the built_in function-call counts, 37996 in all, are:
+= -- 3090
+> -- 842
+< -- 381
++ -- 482
+- -- 127
+* -- 1849
+:= -- 5509
+add.period$ -- 90
+call.type$ -- 45
+change.case$ -- 45
+chr.to.int$ -- 876
+cite$ -- 49
+duplicate$ -- 2701
+empty$ -- 2998
+format.name$ -- 168
+if$ -- 8906
 int.to.chr$ -- 0
-int.to.str$ -- 43
-missing$ -- 419
-newline$ -- 152
-num.names$ -- 42
-pop$ -- 914
+int.to.str$ -- 45
+missing$ -- 436
+newline$ -- 158
+num.names$ -- 44
+pop$ -- 938
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2819
+skip$ -- 2956
 stack$ -- 0
-substring$ -- 1971
-swap$ -- 2233
-text.length$ -- 83
+substring$ -- 2078
+swap$ -- 2350
+text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 43
+type$ -- 45
 warning$ -- 4
-while$ -- 164
-width$ -- 45
-write$ -- 445
+while$ -- 173
+width$ -- 47
+write$ -- 467
 (There were 16 error messages)

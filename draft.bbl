@@ -36,6 +36,11 @@ C.~Stauffer and W.~Grimson, ``Adaptive background mixture models for real-time
   tracking,'' in \emph{Proc. IEEE Conf. on Comput. Vis. and Pattern Recognit.},
   vol.~2, 1999, pp. --252 Vol. 2.
 
+\bibitem{lee2005}
+D.-S. Lee, ``Effective gaussian mixture learning for video background
+  subtraction,'' \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, vol.~27, no.~5, pp. 827--832, May 2005.
+
 \bibitem{Elgammal2000Non}
 A.~Elgammal, D.~Harwood, and L.~Davis, ``Non-parametric model for background
   subtraction,'' \emph{Eccv}, vol. 1843, pp. 751--767, 2000.
@@ -44,6 +49,11 @@ A.~Elgammal, D.~Harwood, and L.~Davis, ``Non-parametric model for background
 E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
   semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
   Machine Intelligence}, vol.~39, no.~4, pp. 640--651, April 2017.
+
+\bibitem{Goyal2018}
+K.~Goyal and J.~Singhai, ``Review of background subtraction methods using
+  gaussian mixture model for video surveillance systems,'' \emph{Artificial
+  Intelligence Review}, vol.~50, no.~2, pp. 241--259, Aug 2018.
 
 \bibitem{Zivkovic2004}
 Z.~Zivkovic, ``{Improved adaptive Gaussian mixture model for background

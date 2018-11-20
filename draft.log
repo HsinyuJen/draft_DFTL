@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  20 NOV 2018 20:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.6.13)  20 NOV 2018 21:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -731,7 +731,7 @@ ABD: EveryShipout initializing macros
 
 pdfTeX warning: pdflatex.exe (file ./figure/demo.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
-<figure/demo.pdf, id=53, 693.792pt x 607.67027pt>
+<figure/demo.pdf, id=54, 693.792pt x 607.67027pt>
 File: figure/demo.pdf Graphic file (type pdf)
  <use figure/demo.pdf>
 Package pdftex.def Info: figure/demo.pdf used on input line 129.
@@ -742,34 +742,34 @@ Underfull \vbox (badness 1490) has occurred while \output is active []
  [1{d:/Tools/texlive2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./figure/demo.pdf>] [2] <figure/fig1.png, id=124, 578.16pt x 433.62pt>
+ <./figure/demo.pdf>] [2] <figure/fig1.png, id=128, 578.16pt x 433.62pt>
 File: figure/fig1.png Graphic file (type png)
  <use figure/fig1.png>
-Package pdftex.def Info: figure/fig1.png used on input line 303.
+Package pdftex.def Info: figure/fig1.png used on input line 302.
 (pdftex.def)             Requested size: 252.0pt x 189.00032pt.
 
-<figure/fig2.png, id=129, 749.199pt x 508.7808pt>
+<figure/fig2.png, id=133, 749.199pt x 508.7808pt>
 File: figure/fig2.png Graphic file (type png)
  <use figure/fig2.png>
-Package pdftex.def Info: figure/fig2.png used on input line 372.
+Package pdftex.def Info: figure/fig2.png used on input line 371.
 (pdftex.def)             Requested size: 516.0pt x 350.41476pt.
 
 [3 <./figure/fig1.png>] [4]
 Underfull \vbox (badness 5036) has occurred while \output is active []
 
- [5 <./figure/fig2.png>] <figure/fig3.png, id=195, 790.152pt x 526.1256pt>
+ [5 <./figure/fig2.png>] <figure/fig3.png, id=200, 790.152pt x 526.1256pt>
 File: figure/fig3.png Graphic file (type png)
 
 <use figure/fig3.png>
-Package pdftex.def Info: figure/fig3.png used on input line 535.
+Package pdftex.def Info: figure/fig3.png used on input line 536.
 (pdftex.def)             Requested size: 516.0pt x 343.59122pt.
 
-Overfull \hbox (18.62918pt too wide) in paragraph at lines 564--582
+Overfull \hbox (18.62918pt too wide) in paragraph at lines 565--583
  [][] 
  []
 
 
-Overfull \hbox (30.79803pt too wide) in paragraph at lines 606--621
+Overfull \hbox (30.79803pt too wide) in paragraph at lines 607--622
  [][] 
  []
 
@@ -799,23 +799,23 @@ Missing character: There is no Â in font ptmr7t!
 Missing character: There is no ¨ in font ptmr7t!
 Missing character: There is no Â in font ptmr7t!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 713.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 714.
  [9
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 713.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 714.
  (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 713.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 713.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 714.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 714.
 Package rerunfilecheck Info: File `draft.out' has not changed.
 (rerunfilecheck)             Checksum: AD2FA5103B692BA53B92848F63B7413A;1525.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 713.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 714.
  ) 
 Here is how much of TeX's memory you used:
- 20485 strings out of 492995
- 366132 string characters out of 6134077
- 440807 words of memory out of 5000000
- 23666 multiletter control sequences out of 15000+600000
+ 20490 strings out of 492995
+ 366191 string characters out of 6134077
+ 440869 words of memory out of 5000000
+ 23668 multiletter control sequences out of 15000+600000
  40779 words of font info for 77 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  62i,16n,56p,501b,479s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -834,10 +834,10 @@ fonts/cm/cmsy5.pfb><d:/Tools/texlive2017/texmf-dist/fonts/type1/public/amsfonts
 ><d:/Tools/texlive2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/Tools/t
 exlive2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Tools/texlive2017/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on draft.pdf (9 pages, 1326556 bytes).
+Output written on draft.pdf (9 pages, 1327490 bytes).
 PDF statistics:
- 334 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
+ 339 PDF objects out of 1000 (max. 8388607)
+ 299 compressed objects within 3 object streams
+ 82 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
