@@ -380,45 +380,40 @@ Fully convolutional network produces an efficient machine for end-to-end transfo
 % 第一步是对原视频进行采样
 Given different videos, their numbers of frames are generally different. 
 In order to keep each piece of variation the same length, image stacks are sampled from the given videos before the pixel variations are extracted. 
-Let denote the frames sequence as $\{ I_1,I_2,I_3,\dots,I_L\}$.
+Let denote the frames sequence as:
+\begin{equation}
+    \mathcal{I} = \{I_1, I_2, \cdots, I_T\} \\\\
+\end{equation}
+
 And image stacks can be defined as follows: 
 \begin{equation}
-    \begin{aligned}
-&Stack_{(x)}=\{I_x,I_{(x+p)},I_{(x+2p)},\dots,I_L \},\\
-&\quad p\times l=L,\quad 1\leq   x\leq p , 
-    \end{aligned}
+    \mathcal{I}^d = \mathcal{D}(\mathcal{I})=  \{I_1, I_{[2 \cdot \frac{T}{N}]}, \cdots, I_{[(N - 1) \cdot \frac{T}{N}]} \}
 \end{equation}
 % 解释采样的细节
 where $I_t$ is the frame $t$ of the given video. 
-And $p$ is an integer number depended on the video frames length. 
+$T$ and $N$ represent respectively the totall number of the video frames and the number of image stacks. 
 For each video, we can produce multiple image stacks and choose one of them for the training. 
 In addition, we can get compact pixel variations, which contain more temporal information than the continuous pixel sequences, by using equal interval sampling. 
 
 % 第二步提取Pixel variation
-After the sampling process, a large number of observation sequences, or pixel variations, are extracted from the chosen stack at each pixel position, which is shown as follows: 
-\begin{equation}
-Sq_{(m)}=\{P_1^m,P_2^m,P_3^m,\dots,P_n^m\},
-\end{equation}
-where $P_t^m$ denotes the numerical value of pixel $m$ at frame $t$ in the chosen stack. 
+After the sampling process, a large number of observation sequences, or pixel variations, can be extracted from the chosen stack at each pixel position.
 Each of the pixel variation is a piece of temporal information which containing the changing patterns of background pixels. 
-And each of them is of fixed length $n$. 
+And each of them is of fixed length $\cdot \frac{T}{N}$. 
 It is notable that observation sequences are extracted from individual pixel positions, which promises that sufficient training data can be obtained with only one image stack.
 
 % 第三步变成矩阵形式，解释为什么要把variation 变形
-Our motivation is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
+Our task is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
 However, vectors are not appropriate for the network training and learning. 
 Besides, we also hope pixel observations can be interacted with their further compatriots in temporal sequence. 
 Thus we reshape the variations into pixel patches as the input of our network. 
 A sample of the pixel patch is like this:
 \begin{equation}
-H^m=P^m_{i+j\times d}=\begin{bmatrix}
- P^m_1& P^m_2  &\dots  &P^m_d \\ 
-\vdots &  &  &\vdots \\ 
- P^m_{1+(d-1)d}& \dots & \dots & P^m_n
-\end{bmatrix},\quad d^2=n.
+    S_{x,y}(m,n) = \mathcal{C}(\mathcal{I}^d, R) = \mathcal{I}_{m \times R + n} (x,y)
 \end{equation}
-where the pixel patch is denoted as $H^m$, and the parameter $i$ and $j$ is the column and row of the pixel patch. 
-Observations are put into the $d\times d$ patch from top to bottom and left to right.
+where the pixel patch is denoted as $S_{x,y}(m,n)$, at the pixel positionthe pixel position $(x,y)$. 
+And the parameter $R$ is the column and row of pixel patches. 
+the column and row of the pixel patch. 
+Observations are put into the $R\times R$ patch from top to bottom and left to right.
 To put it another way, the pixel patch is just a specific form of the pixel variation. 
 %Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
 Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
@@ -427,12 +422,12 @@ Since the pixel sequences are extracted from each pixel position, a large number
 It is generally accepted that neighboring background pixels share a similar temporal distribution.
 %In other words, there are some clues hidden in pixels' spatial neighbors. 
 In order to benefit from the spatial context, we concatenate the pixel patch with 2 neighboring pixel patches, which are randomly selected in the 8-connected neighborhood of each pixel position. 
-The input patch $I$ of our network is defined as:
+The input patch of our network is defined as:
 \begin{equation}
-I = C(H^m, SM_1, SM_2),
+    S_{x,y}(m,n) = \mathcal{C}o(S_{x,y}(m,n), S_{x', y'}(m,n), S_{x'', y ''}(m, n))
 \end{equation}
-where the $C$ represents the concatenation process on the third dimension.
-And neighboring patches are denoted as $SM_1$ and $SM_2$ respectively.
+where the $\mathcal{C}o$ represents the concatenation process on the third dimension.
+And neighboring patches are at pixel position $(x',y')$ and $(x'',y'')$ respectively.
 
 %In the previous steps, original videos are broken down into pixel patches which contain abundant background information. 
 Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenation process, as shown in the \reffig{flow_chart}. 
@@ -442,27 +437,30 @@ In preprocessing, we borrow the idea from Image Semantic Segmentation \cite{Shel
 After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
 The transformed pixel patch is defined as:
 \begin{equation}
-H_p= \mathcal L (E_x (H)),
+    \begin{split}
+        S'(m,n) & = f_{\theta_N} ( f_{\theta_{N - 1}} ( \cdots f_{\theta_1} (Pad(S(m,n))) \cdots  ) )  \\
+          & = f_{ \prod_{n=1}^{N}\theta_n   }^n(S(m,n))
+    \end{split}
 \end{equation}
-where, $H_p$ is the prediction of the network, and the forward computation of network is represented by $\mathcal L$. The symmetric padding process is denoted as $E_x$, where we have lost none of the pixel information to make the output $H_p$ the same size as the pixel patch $H$. 
+where, $S'(m,n)$ is the prediction of the network, and the forward computation at each layer of the network is represented by $f_{\theta_N}$. The symmetric padding process is denoted as $Pad$, where we have lost none of the pixel information to make the output $S'(m,n)$ the same size as the pixel patch $S(m,n)$. 
 Another advantage of symmetric padding is that the order information still remains.
 
 For the loss function, we choose the Sigmoid Cross Entropy (SCE), which are helpful to address the learning slowdown. 
 The formulation is as follows:
 \begin{equation}
     \begin{aligned}
-        & \ell_{H_p, H_{gt}} =  \sum\limits_{x \in X, y \in Y}^{} H_{gt}(x,y) log(S(H_p(x,y)))  \\
-        & + (1 - H_{gt}(x,y)) log(1 - S(H_p(x,y))) \\
-        & S(x) =\frac{1}{1+e^{-x}}\  ,
+        & \mathcal{L}(S'(x,y), S^{gt}(x,y))  =  \sum_{x=1}^{m}\sum_{y=1}^{n} S^{gt}(x,y) log(Sig(S'(x,y)))  \\
+        & + (1 - S^{gt}(x,y)) log(1 - Sig(S'(x,y))) \\
+        & Sig(x) =\frac{1}{1+e^{-x}}\  ,
     \end{aligned}
 \end{equation}
-where $H_{gt}$ denotes the groundtruth patch which is given by the corresponding groundtruth stack, and $S$ represents the sigmoid function. 
+where $S^{gt}(x,y)$ denotes the groundtruth patch which is given by the corresponding groundtruth stack, and $Sig$ represents the sigmoid function. 
 The SCE is calculated between the transformed patches and the corresponding groundtruth patches. 
 Boundaries of moving objects and pixels that out of the region of interest are not taken into account in the cost function.
 Finally, we get the transformed variation through the FCN, which are a lot easier for classification. 
 
 As shown in the \reffig{flow_chart}, the prediction maps can be reconstructed from the prediction patches.
-Then a global threshold $r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
+Then a global threshold $T_r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
 The threshold function is given by
 \begin{equation}
     \label{piecewise_fg}
@@ -474,9 +472,9 @@ The threshold function is given by
 \end{equation}
 
 \begin{equation}
-F=g(M,r) ,
+    \mathcal{M}(x,y) = g(T_f, \mathcal{C}^{-1}(S'(x,y), R))
 \end{equation}
-where $M$ is the prediction map, and the $F$ denotes the final foreground map given by our DPVTL model.
+where the $M$ denotes the final foreground map given by our DPVTL model.
 After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
 
 Here we make a detailed introduction to the deep learning model we used and explain why we choose it.
@@ -635,6 +633,7 @@ Again, the proposed approach has noticeably better performance than the DBMF and
 From our own perspective, that good performance should attribute to the stronger modeling ability and learning adaptation of CNN and FCN. 
 However, the proposed approach focused on the pixels variation in temporal sequence rather than low-level static features such as color, edges and textures, which give us the ability to avoid the shortcomings of the background models. 
 Consequently, the proposed approach still gets considerably better results, which over 17.85\% in FM metrics compared with the DeepBS and over 9.50\% compared with the DBMF.
+
 The evaluation of the proposed approach in CAMO-UOW dataset is shown in the \reftab{tab3}. 
 Unlike the CDnet dataset, the videos of CAMO-UOW dataset are specially proposed for moving objects with camouflage, which is the main challenge of this dataset. 
 As shown in the \reftab{tab3} proposed approach achieves better performance compared to its competitions, with an average F-measure of 0.97, compared to values between 0.77 and 0.94 for the other methods. 
@@ -686,7 +685,7 @@ The last threshold $R$ is set to 0.6.
 \section{Conclusion}
 \label{sec6}
 In this paper, we proposed a novel foreground detection approach based on deep learning and the variation transformation learning. The DPVTL model includes a FCN network and a novel variation transformation learning framework, which allows us to efficiently combine the temporal coherence and distribution information of pixels over a long period of time. Comparison with other traditional and deep learning methods shows that the DPVTL has good properties on several challenging scenes.
-The future work will be focused on improving the DPVTL in terms of network architecture updating and integration of local spatial coherence.
+%The future work will be focused on improving the DPVTL in terms of network architecture updating and integration of local spatial coherence.
 
 % \section{Conclusions}
 % In this paper,
