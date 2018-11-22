@@ -84,7 +84,7 @@ which is widely used in the applications of video processing \cite{Barnich2011_2
 % 传统的方法是怎么做的，有什么问题
 Typically, it is recognized as a binary classification task that assigns each pixel in the video stream with a label, 
 for either belonging to the background or foreground scene.
-Traditional foreground detection algorithms focus on analyzing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999}\cite{lee2005} and KDE\cite{Elgammal2000Non}.
+Traditional foreground detection algorithms focus on analyzing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999}\cite{lee2005} and KDE\cite{Elgammal2000Non}\cite{Mittal2004KDE}.
 However, due to the unpredictability and rapidity of the pixels' variation in natural scenes,
 the variation becomes so unordered which is hard to be analyzed for foreground detection.
 Therefore, the foreground detection is still a challenging problem in complex natural scenes.
@@ -262,10 +262,10 @@ The last category of background subtraction methods applies traditional machine 
 
 %
 %SVM
-Traditional machine learning methods are commonly involved with support vector machines (SVM)\cite{Han2012} and Bayesian methods\cite{Zhang2014Statis}. For example, Han et al. \cite{Han2012} integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. Their background model is obtained for each feature in a kernel density framework and a SVM is employed for classification.
+Traditional machine learning methods are commonly involved with support vector machines (SVM)\cite{Chen2011}\cite{Han2012} and Bayesian methods\cite{Sheikh2005Bayesian}\cite{2012_TIP_OP_6099616}\cite{Zhang2014Statis}. For example, Han et al. \cite{Han2012} integrate gradient, color, and Haar-like features to address the spatiotemporal variations for each pixel. Their background model is obtained for each feature in a kernel density framework and a SVM is employed for classification.
 
 %
-Recent years, deep learning methods begin to flourish in several computer vision fields. A novel approach for foreground detection with the use of the Convolutional Neural Network(CNN) is proposed by Wang et al.\cite{wang2016PRL}.
+In recent years, deep learning methods begin to flourish in several computer vision fields, and have demonstrated effective capabilities to handle time-series problems\cite{Mobahi2009}\cite{LANGKVIST201411}. A novel approach for foreground detection with the use of the Convolutional Neural Network(CNN) is proposed by Wang et al.\cite{wang2016PRL}.
 They utilize a CNN with a cascade network architecture for segmentation in foreground detection, which performs excellently with sufficient training data.
 %
 % Ren: 这里我解释一下，为什么看上去这么冗余。这家伙先自己用中值滤波求了个平均背景，然后把平均背景 patches 跟对应的origin image patches 组合作为网络输入，他训练的groundtruth也可以来自其他比如GMM的分类结果图。
@@ -478,17 +478,15 @@ The threshold function is given by
 where the $M$ denotes the final foreground map given by our DPVTL model.
 After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
 
-Here we make a detailed introduction to the deep learning model we used and explain why we choose it.
+%Here we make a detailed introduction to the deep learning model we used and explain why we choose it.
 
-Different with CNNs, FCNs utilize convolutional layers with $1\times 1$ kernels to take the place of fully connected layers, which provide several benefits. 
-First and foremost, the size of output is adjustable in FCNs, which allows an end-to-end mapping of input patches and prediction patches at each pixel position. 
-We hope to determine the label of an observation through the comparison of its compatriot in time sequence. 
-There is one more point I ought to touch on, that since the feature maps are no longer needed to be converted into vectors, spatial information can be retained. 
-The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won't lose to the traditional ones. 
-Meanwhile, it's also a highly efficient computation model. 
+%Different with CNNs, FCNs utilize convolutional layers with $1\times 1$ kernels to take the place of fully connected layers, which provide several benefits. First and foremost, the size of output is adjustable in FCNs, which allows an end-to-end mapping of input patches and prediction patches at each pixel position. 
+%We hope to determine the label of an observation through the comparison of its compatriot in time sequence. 
+%There is one more point I ought to touch on, that since the feature maps are no longer needed to be converted into vectors, spatial information can be retained. 
+%The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won't lose to the traditional ones. 
+%Meanwhile, it's also a highly efficient computation model. 
+%Based on above-mentioned factors, FCN is designed as the alternative network architecture in this paper. 
 
-
-Based on above-mentioned factors, FCN is designed as the alternative network architecture in this paper. 
 The structure of our FCN for foreground detection is shown in \reffig{flow_chart}. 
 The proposed FCN contains 6 convolutional layers, and the last convolutional layer has a filter size of $1\times 1$. 
 We use the Rectified Linear Unit (ReLU) as the activation function after each convolutional layer and the Sigmoid function after the last fully connected layer. 
@@ -520,6 +518,12 @@ Fm= \frac{2\times precision \times recall}{precision + recall} = \frac{2TP}{2TP+
 %
 where TP, FP, and FN are true positives, false positives, and false negatives respectively, computed in pixels of all test frames for each video. 
 
+\begin{figure*}[!t]	\centering
+    \includegraphics[width=\textwidth]{figure/fig3}
+\DeclareGraphicsExtensions.
+    \caption{The qualitative evaluation of the proposed method. All the results is followed in the CDnet 2014.}
+    \label{results_chart}
+\end{figure*}
 
 The quantitative and qualitative comparisons are shown in \reftab{tab1} and  \reffig{results_chart} respectively. 
 Due to the paper length, several typical videos are selected for the qualitative comparisons as well as the discussion. 
@@ -532,12 +536,7 @@ Unfortunately, since the DeepBS ignores the fact that a single background is not
 In contrast, the proposed approach performed superior than others in this scene, since the essence of foreground detection is considered as a binary classification of pixels' observation in time sequence. 
 Based on this insight, the FCN network focuses on learning the patterns of the pixel variation rather than a static background image, and proposed approach achieves promising performance in the canoe video.
 
-\begin{figure*}[!t]	\centering
-    \includegraphics[width=\textwidth]{figure/fig3}
-\DeclareGraphicsExtensions.
-    \caption{The qualitative evaluation of the proposed method. All the results is followed in the CDnet 2014.}
-    \label{results_chart}
-\end{figure*}
+
 
 As for the case of shadow scene, "peopleInShade" is a typical example with prevalent hard and soft shadows. 
 In the traditional approaches, these shadow regions are usually segmented as foreground since it is also moving with the objects. 

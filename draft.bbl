@@ -45,6 +45,12 @@ D.-S. Lee, ``Effective gaussian mixture learning for video background
 A.~Elgammal, D.~Harwood, and L.~Davis, ``Non-parametric model for background
   subtraction,'' \emph{Eccv}, vol. 1843, pp. 751--767, 2000.
 
+\bibitem{Mittal2004KDE}
+A.~Mittal and N.~Paragios, ``Motion-based background subtraction using adaptive
+  kernel density estimation,'' in \emph{Proceedings of the 2004 IEEE Computer
+  Society Conference on Computer Vision and Pattern Recognition, 2004. CVPR
+  2004.}, vol.~2, June 2004, pp. II--II.
+
 \bibitem{Shelhamer2017fcn}
 E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
   semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
@@ -94,15 +100,35 @@ V.~Reddy, C.~Sanderson, and B.~C. Lovell, ``Robust foreground object
 M.~Izadi and P.~Saeedi, ``Robust region-based background subtraction and shadow
   removing using color and gradient information,'' pp. 1--5, 01 2008.
 
+\bibitem{Chen2011}
+L.~Cheng, M.~Gong, D.~Schuurmans, and T.~Caelli, ``Real-time discriminative
+  background subtraction,'' \emph{IEEE Transactions on Image Processing},
+  vol.~20, no.~5, pp. 1401--1414, May 2011.
+
 \bibitem{Han2012}
 B.~Han and L.~Davis, ``Density-based multifeature background subtraction with
   support vector machine,'' \emph{IEEE Trans. on Pattern Anal. and Mach.
   Intell.}, vol.~34, no.~5, pp. 1017--1023, May 2012.
 
+\bibitem{2012_TIP_OP_6099616}
+P.~Heas, C.~Herzet, and E.~Memin, ``Bayesian inference of models and
+  hyperparameters for robust optical-flow estimation,'' \emph{IEEE Trans. on
+  Image. Process.}, vol.~21, no.~4, pp. 1437--1451, April 2012.
+
 \bibitem{Zhang2014Statis}
 X.~Zhang, Z.~Liu, H.~Li, X.~Zhao, and P.~Zhang, ``Statistical background
   subtraction based on imbalanced learning,'' in \emph{2014 IEEE International
   Conference on Multimedia and Expo (ICME)}, vol.~00, July 2014, pp. 1--6.
+
+\bibitem{Mobahi2009}
+H.~Mobahi, R.~Collobert, and J.~Weston, ``Deep learning from temporal coherence
+  in video,'' in \emph{Proceedings of the 26th Annual International Conference
+  on Machine Learning}, ser. ICML '09, 2009, pp. 737--744.
+
+\bibitem{LANGKVIST201411}
+M.~Längkvist, L.~Karlsson, and A.~Loutfi, ``A review of unsupervised feature
+  learning and deep learning for time-series modeling,'' \emph{Pattern
+  Recognition Letters}, vol.~42, pp. 11 -- 24, 2014.
 
 \bibitem{wang2016PRL}
 Y.~Wang, Z.~Luo, and P.-M. Jodoin, ``Interactive deep learning method for

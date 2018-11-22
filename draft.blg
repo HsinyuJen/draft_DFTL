@@ -52,23 +52,27 @@ I was expecting an "="---line 1312 of file ref.bib
  : // 
  :    url = "http://www.sciencedirect.com/science/article/pii/S0031320311004420",
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 1412 of file ref.bib
+I was expecting an "="---line 1343 of file ref.bib
+ : // 
+ :    url = {http://doi.acm.org/10.1145/1553374.1553469},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1430 of file ref.bib
  : // 
  :    url = "http://www.sciencedirect.com/science/article/pii/S1574013714000033",
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 1432 of file ref.bib
+I was expecting an "="---line 1450 of file ref.bib
  : // 
  :    url = "http://www.sciencedirect.com/science/article/pii/S1077314214000113",
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 2107 of file ref.bib
+I was expecting an "="---line 2125 of file ref.bib
  : // 
  :    publisher="Springer Berlin Heidelberg",
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 2229 of file ref.bib
+I was expecting an "="---line 2247 of file ref.bib
  : // 
  :    doi = "https://doi.org/10.1016/j.patcog.2017.09.040",
 I'm skipping whatever remains of this entry
-I was expecting an "="---line 2598 of file ref.bib
+I was expecting an "="---line 2653 of file ref.bib
  : // 
  :    publisher="Springer Berlin Heidelberg",
 I'm skipping whatever remains of this entry
@@ -81,45 +85,45 @@ Warning--empty journal in Braham2016deep
 Warning--empty author in Babaee2017deep
 
 Done.
-You've used 45 entries,
+You've used 50 entries,
             4024 wiz_defined-function locations,
-            1102 strings with 15174 characters,
-and the built_in function-call counts, 37996 in all, are:
-= -- 3090
-> -- 842
-< -- 381
-+ -- 482
-- -- 127
-* -- 1849
-:= -- 5509
-add.period$ -- 90
-call.type$ -- 45
-change.case$ -- 45
-chr.to.int$ -- 876
-cite$ -- 49
-duplicate$ -- 2701
-empty$ -- 2998
-format.name$ -- 168
-if$ -- 8906
+            1132 strings with 16099 characters,
+and the built_in function-call counts, 42628 in all, are:
+= -- 3473
+> -- 945
+< -- 430
++ -- 538
+- -- 142
+* -- 2077
+:= -- 6171
+add.period$ -- 100
+call.type$ -- 50
+change.case$ -- 50
+chr.to.int$ -- 990
+cite$ -- 54
+duplicate$ -- 3023
+empty$ -- 3357
+format.name$ -- 188
+if$ -- 9998
 int.to.chr$ -- 0
-int.to.str$ -- 45
-missing$ -- 436
-newline$ -- 158
-num.names$ -- 44
-pop$ -- 938
+int.to.str$ -- 50
+missing$ -- 488
+newline$ -- 173
+num.names$ -- 49
+pop$ -- 1049
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2956
+skip$ -- 3316
 stack$ -- 0
-substring$ -- 2078
-swap$ -- 2350
-text.length$ -- 89
+substring$ -- 2349
+swap$ -- 2641
+text.length$ -- 100
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 45
+type$ -- 50
 warning$ -- 4
-while$ -- 173
-width$ -- 47
-write$ -- 467
-(There were 16 error messages)
+while$ -- 194
+width$ -- 52
+write$ -- 519
+(There were 17 error messages)
