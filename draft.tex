@@ -357,15 +357,22 @@ And the variation patterns, in turn, contribute to the variation transformation 
 %time index.
 
 %me
-\section{foreground detection VIA DEEP VARIATION TRANSFORMATION}
+\section{Foreground Detection via Deep Variation Transformation}
 \label{sec4}
-In this section, we will introduce the details of proposed approaches. 
-We explain the production of the pixel patch, which is a specific form of the pixel variation, and the architecture of our network. 
+In this section, the details of proposed approach is explained.
+%
+The flow chart of the proposed approach is illustrated in \reffig{flow_chart}.
+%
+We firstly introduce the procedure of generating pixels patch,
+which is feed into the network as well as the description of pixel variation.
+%
+Then,
+the architecture of the network, which is used for variation transformation, is explained.
+%
+%We explain the production of the pixel patch, 
+%which is a specific form of the pixel variation, and the architecture of our network. 
+%
 
-
-The flow chart of the proposed approach is illustrated in \reffig{flow_chart}. 
-Firstly, we sample the input and ground truth images to generalize the pixel variations, and reshape them into patches and feed them into the network with its spatial neighbors. 
-After reassembling the patches into the complete output frame, it is post-processed, yielding the final segmentation of the respective video frame.
 \begin{figure*}[!t] % FIGURE: figure/fig1 
 \centering
 \includegraphics[width=\textwidth]{figure/fig2}
@@ -374,20 +381,44 @@ After reassembling the patches into the complete output frame, it is post-proces
 Fully convolutional network produces an efficient machine for end-to-end transformation learning.}
     \label{flow_chart}
 \end{figure*}
-
+% Firstly, we sample the input and ground truth images to generalize the pixel variations, 
+% and reshape them into patches and feed them into the network with its spatial neighbors. 
+% %
+% After reassembling the patches into the complete output frame, 
+% it is post-processed, yielding the final segmentation of the respective video frame.
 
 % 第一步是对原视频进行采样
-Given different videos, their numbers of frames are generally different. 
-In order to keep each piece of variation the same length, image stacks are sampled from the given videos before the pixel variations are extracted. 
-Let denote the frames sequence as:
-\begin{equation}
-    \mathcal{I} = \{I_1, I_2, \cdots, I_T\}, \\\\
-\end{equation}
-
-And image stacks can be defined as follows: 
+There are usually large numbers of frames in a particular video.
+%
+In order to capture the global representation of pixel's variation,
+the training frames are sampled from the whole frame sequenece uniformly.
+%
+Let us denote the frame sequence as $\mathcal{I} = \{I_1, I_2, \cdots, I_T\}$,
+where $\mathcal{I}$ is denoted as the set of frames and $T$ is the numbers of frames.
+%
+The uniform sampling procedure is shown as follows:
+% 
+% Given different videos, their numbers of frames are generally different. 
+% In order to keep each piece of variation the same length,
+% image stacks are sampled from the given videos before the pixel variations are extracted. 
+% Let denote the frames sequence as:
+% \begin{equation}
+%     \mathcal{I} = \{I_1, I_2, \cdots, I_T\}, \\\\
+% \end{equation}
+% 
+% And image stacks can be defined as follows: 
 \begin{equation}
     \mathcal{I}^d = \mathcal{D}(\mathcal{I})=  \{I_1, I_{[2 \cdot \frac{T}{N}]}, \cdots, I_{[(N - 1) \cdot \frac{T}{N}]}, \}
 \end{equation}
+where $\mathcal{I}^d$ is the set of training frames,
+the $T$ and the $N$ represents the frame number of whole video and the training set respectively,
+and the $\mathcal{D}()$ is denoted as the sampling function.
+
+
+%
+
+
+
 % 解释采样的细节
 where $I_t$ is the frame $t$ of the given video. 
 $T$ and $N$ represent respectively the totall number of the video frames and the number of image stacks. 
