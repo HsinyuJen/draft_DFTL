@@ -388,7 +388,8 @@ Fully convolutional network produces an efficient machine for end-to-end transfo
 % it is post-processed, yielding the final segmentation of the respective video frame.
 
 % 第一步是对原视频进行采样
-There are usually large numbers of frames in a particular video.
+There are usually large numbers of frames in a particular video,
+and the number of frames for different videos are also different.
 %
 In order to capture the global representation of pixel's variation,
 the training frames are sampled from the whole frame sequenece uniformly.
@@ -413,30 +414,36 @@ The uniform sampling procedure is shown as follows:
 where $\mathcal{I}^d$ is the set of training frames,
 the $T$ and the $N$ represents the frame number of whole video and the training set respectively,
 and the $\mathcal{D}()$ is denoted as the sampling function.
+% 
+% 
+% %
+% 
+% 
+% 
+% % 解释采样的细节
+% where $I_t$ is the frame $t$ of the given video. 
+% $T$ and $N$ represent respectively the totall number of the video frames and the number of image stacks. 
+% For each video, we can produce multiple image stacks and choose one of them for the training. 
+% In addition, we can get compact pixel variations, which contain more temporal information than the continuous pixel sequences, by using equal interval sampling. 
 
-
+After sampling the training frames,
+the training patches, which are used as the input of the network, are captured.
 %
-
-
-
-% 解释采样的细节
-where $I_t$ is the frame $t$ of the given video. 
-$T$ and $N$ represent respectively the totall number of the video frames and the number of image stacks. 
-For each video, we can produce multiple image stacks and choose one of them for the training. 
-In addition, we can get compact pixel variations, which contain more temporal information than the continuous pixel sequences, by using equal interval sampling. 
-
-% 第二步提取Pixel variation
-After the sampling process, a large number of observation sequences, or pixel variations, can be extracted from the chosen stack at each pixel position.
-Each of the pixel variation is a piece of temporal information which containing the changing patterns of background pixels. 
-And each of them is of fixed length $\cdot \frac{T}{N}$. 
-It is notable that observation sequences are extracted from individual pixel positions, which promises that sufficient training data can be obtained with only one image stack.
-
-% 第三步变成矩阵形式，解释为什么要把variation 变形
-Our task is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
-However, vectors are not appropriate for the network training and learning. 
-Besides, we also hope pixel observations can be interacted with their further compatriots in temporal sequence. 
-Thus we reshape the variations into pixel patches as the input of our network. 
-A sample of the pixel patch is like this:
+The training patch is the description of the pixels' variation,
+which is captured by reshaping the observations in a particular pixel into a square patch.
+%
+Since the patch can be captured from each pixel, 
+a large number of training patches can be extracted with the training frames
+and each of these patches is of fixed numbers of pixels as $\frac{T}{N}$.
+%
+In addition, for each pixel included in the patch, a label of foreground or background is needed for training.
+%
+Therefore,
+there are labeling patches, which are captured by the similar procedure in the ground truth frames,
+are used as the output for training our network,
+and our network is actually an end-to-end transformation from pixels to labels.
+%
+Mathematically, the generation procedure of training patches is shown as follows:
 \begin{equation}
     S_{x,y}(m,n) = \mathcal{C}(\mathcal{I}^d, R) = \mathcal{I}_{m \times R + n} (x,y),
 \end{equation}
@@ -447,6 +454,47 @@ Observations are put into the $R\times R$ patch from top to bottom and left to r
 To put it another way, the pixel patch is just a specific form of the pixel variation. 
 %Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
 Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
+
+
+% 
+% Mathmatically,
+% 
+% 
+% the labeling patches are also captured by the similar procedure in the groundtruth frames.
+% %
+% 
+% 
+% 
+% the frames of ground truth are 
+% 
+% 
+% which describe the variation of pixels' observations, are captured.
+% %
+% The pathces 
+% 
+% 
+% % 第二步提取Pixel variation
+% After the sampling process, a large number of observation sequences, or pixel variations, can be extracted from the chosen stack at each pixel position.
+% Each of the pixel variation is a piece of temporal information which containing the changing patterns of background pixels. 
+% And each of them is of fixed length $\cdot \frac{T}{N}$. 
+% It is notable that observation sequences are extracted from individual pixel positions, which promises that sufficient training data can be obtained with only one image stack.
+% 
+% % 第三步变成矩阵形式，解释为什么要把variation 变形
+% Our task is to provide an end-to-end transformation of pixel variations, based on the strong learning ability of FCNs. 
+% However, vectors are not appropriate for the network training and learning. 
+% Besides, we also hope pixel observations can be interacted with their further compatriots in temporal sequence. 
+% Thus we reshape the variations into pixel patches as the input of our network. 
+% A sample of the pixel patch is like this:
+% \begin{equation}
+%     S_{x,y}(m,n) = \mathcal{C}(\mathcal{I}^d, R) = \mathcal{I}_{m \times R + n} (x,y),
+% \end{equation}
+% where the pixel patch is denoted as $S_{x,y}(m,n)$, at the pixel positionthe pixel position $(x,y)$. 
+% And the parameter $R$ is the column and row of pixel patches. 
+% the column and row of the pixel patch. 
+% Observations are put into the $R\times R$ patch from top to bottom and left to right.
+% To put it another way, the pixel patch is just a specific form of the pixel variation. 
+% %Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
+% Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
 
 %第四步空间近邻随机采样。
 It is generally accepted that neighboring background pixels share a similar temporal distribution.
