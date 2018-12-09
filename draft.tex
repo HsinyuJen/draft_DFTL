@@ -359,15 +359,20 @@ And the variation patterns, in turn, contribute to the variation transformation 
 %me
 \section{Foreground Detection via Deep Variation Transformation}
 \label{sec4}
-In this section, the details of proposed approach is explained.
+In this section, the details of proposed approach have been explained.
 %
-The flow chart of the proposed approach is illustrated in \reffig{flow_chart}.
+The pipeline of proposed approach is shown in the \reffig{flow_chart},
+which can be divided into three parts.
 %
-We firstly introduce the procedure of generating pixels patch,
-which is feed into the network as well as the description of pixel variation.
+Firstly, the procedure of the generation of pixels patch, 
+which is feed into the network for training as well as the description of pixel variation,
+is introduced.
 %
 Then,
-the architecture of the network, which is used for variation transformation, is explained.
+the architecture of the network, which is devised for transforming the variation of pixels' observations, is demonstrated.
+%
+Next,
+a reverse procedure of the generation of training data is used to reconstruct the foreground image from the transformed results.
 %
 %We explain the production of the pixel patch, 
 %which is a specific form of the pixel variation, and the architecture of our network. 
@@ -387,15 +392,34 @@ Fully convolutional network produces an efficient machine for end-to-end transfo
 % After reassembling the patches into the complete output frame, 
 % it is post-processed, yielding the final segmentation of the respective video frame.
 
+\subsection*{Training Data Generation}
 % 第一步是对原视频进行采样
+%从描述事实开始
+Fundamentally, 
+background subtraction is a classification of pixels' observations in time sequence.
+% 我们的动机
+In this work,
+the deep learning network is utilized to learn the pattern of variations implied in the observations of pixels.
+% 基于这个动机，我们是怎么做的
+Therefore,
+the training data feed into network is one kinds of description of pixels' variation,
+which is actually patches consist of pixels' observations.
+%
+In contrast, the output of the network is the probability of corresponding pixels belong to foreground or background,
+and the network is devised with an end-to-end architecture to transform the intensity of pixels to the probability of category the pixels belong to.
+
+% 用数学化的语言描述具体过程
+Let us denote the frame sequence in a video as $\mathcal{I} = \{I_1, I_2, \cdots, I_T\}$,
+where $\mathcal{I}$ is denoted as the set of frames and $T$ is the numbers of frames.
+%
 There are usually large numbers of frames in a particular video,
 and the number of frames for different videos are also different.
 %
 In order to capture the global representation of pixel's variation,
-the training frames are sampled from the whole frame sequenece uniformly.
+the training frames are sampled from the whole frame sequence uniformly.
 %
-Let us denote the frame sequence as $\mathcal{I} = \{I_1, I_2, \cdots, I_T\}$,
-where $\mathcal{I}$ is denoted as the set of frames and $T$ is the numbers of frames.
+% Let us denote the frame sequence as $\mathcal{I} = \{I_1, I_2, \cdots, I_T\}$,
+% where $\mathcal{I}$ is denoted as the set of frames and $T$ is the numbers of frames.
 %
 The uniform sampling procedure is shown as follows:
 % 
@@ -426,7 +450,7 @@ and the $\mathcal{D}()$ is denoted as the sampling function.
 % For each video, we can produce multiple image stacks and choose one of them for the training. 
 % In addition, we can get compact pixel variations, which contain more temporal information than the continuous pixel sequences, by using equal interval sampling. 
 
-After sampling the training frames,
+After sampling training frames,
 the training patches, which are used as the input of the network, are captured.
 %
 The training patch is the description of the pixels' variation,
@@ -439,7 +463,7 @@ and each of these patches is of fixed numbers of pixels as $\frac{T}{N}$.
 In addition, for each pixel included in the patch, a label of foreground or background is needed for training.
 %
 Therefore,
-there are labeling patches, which are captured by the similar procedure in the ground truth frames,
+the labeling patches, which are captured by the similar procedure in the ground truth frames,
 are used as the output for training our network,
 and our network is actually an end-to-end transformation from pixels to labels.
 %
@@ -447,15 +471,17 @@ Mathematically, the generation procedure of training patches is shown as follows
 \begin{equation}
     S_{x,y}(m,n) = \mathcal{C}(\mathcal{I}^d, R) = \mathcal{I}_{m \times R + n} (x,y),
 \end{equation}
-where the pixel patch is denoted as $S_{x,y}(m,n)$, at the pixel positionthe pixel position $(x,y)$. 
-And the parameter $R$ is the column and row of pixel patches. 
-the column and row of the pixel patch. 
-Observations are put into the $R\times R$ patch from top to bottom and left to right.
-To put it another way, the pixel patch is just a specific form of the pixel variation. 
-%Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
-Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
-
-
+where the $S_{x,y}(m,n)$ is denoted as the training patch extracted from the observations of pixel located at $(x,y)$,
+The $R$ is the user argument to control the radius of training patches
+and $\mathcal{C}(\mathcal{I}^d, R)$ is the function to covert the observations of pixels to training patches.
+% where the pixel patch is denoted as $S_{x,y}(m,n)$, at the pixel positionthe pixel position $(x,y)$. 
+% And the parameter $R$ is the column and row of pixel patches. 
+% the column and row of the pixel patch. 
+% Observations are put into the $R\times R$ patch from top to bottom and left to right.
+% To put it another way, the pixel patch is just a specific form of the pixel variation. 
+% %Although the observation patch and the observation sequence belong to different forms of the pixel variation, they consist of the same components, and share the common temporal information from the pixel variation. 
+% Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
+% 
 % 
 % Mathmatically,
 % 
@@ -497,23 +523,53 @@ Since the pixel sequences are extracted from each pixel position, a large number
 % Since the pixel sequences are extracted from each pixel position, a large number of pixel patches can be extracted from only one single image stack, which promises sufficient training data for our network.
 
 %第四步空间近邻随机采样。
-It is generally accepted that neighboring background pixels share a similar temporal distribution.
-%In other words, there are some clues hidden in pixels' spatial neighbors. 
-In order to benefit from the spatial context, we concatenate the pixel patch with 2 neighboring pixel patches, which are randomly selected in the 8-connected neighborhood of each pixel position. 
-The input patch of our network is defined as:
+It is generally accepted that the pixels are no independent but related to it is neighborhoods,
+and the similarly neighboring pixels share the similar variations.
+%
+Therefore,
+the spatial information should be benefit for learning the pattern of pixels' variation.
+%
+With this motivation,
+several training patches extracted from neighboring pixels are combined to improve the efficiency of proposed approach.
+%
+In the experiment, three training patches are combined which is shown as follows:
 \begin{equation}
     S_{x,y}(m,n) = \mathcal{C}o(S_{x,y}(m,n), S_{x', y'}(m,n), S_{x'', y ''}(m, n)),
 \end{equation}
 where the $\mathcal{C}o$ represents the concatenation process on the third dimension.
 And neighboring patches are at pixel position $(x',y')$ and $(x'',y'')$ respectively.
-
+% Ii is generally accepted that neighboring background pixels share a similar temporal distribution.
+% %In other words, there are some clues hidden in pixels' spatial neighbors. 
+% In order to benefit from the spatial context, we concatenate the pixel patch with 2 neighboring pixel patches, 
+% 
+% which are randomly selected in the 8-connected neighborhood of each pixel position. 
+% The input patch of our network is defined as:
+% \begin{equation}
+%     S_{x,y}(m,n) = \mathcal{C}o(S_{x,y}(m,n), S_{x', y'}(m,n), S_{x'', y ''}(m, n)),
+% \end{equation}
+% where the $\mathcal{C}o$ represents the concatenation process on the third dimension.
+% And neighboring patches are at pixel position $(x',y')$ and $(x'',y'')$ respectively.
+% 
 %In the previous steps, original videos are broken down into pixel patches which contain abundant background information. 
-Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenation process, as shown in the \reffig{flow_chart}. 
-Both of them are fed into the network for training to find a end-to-end transformation at each pixel position. 
-However, the size of feature maps will shrink quickly during forward computation. 
-In preprocessing, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
-After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
-The transformed pixel patch is defined as:
+
+\subsection*{Network Work Architecture and Variation Transformation}
+As shown in the \reffig{flow_chart},
+a end-to-end architecture network is proposed to transform the observations of pixels to a new space which is close to labels.
+%
+The input of network is the training patches $S(m,n)$ extracted from different pixels
+and the output of network is the labeled patches captured from Groundtruth frames.
+%
+The training procedure is the transformation from the training patches to the labelling patches,
+which is shown as follows:
+% 
+% the architecture of network 
+% 
+% Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenation process, as shown in the \reffig{flow_chart}. 
+% Both of them are fed into the network for training to find a end-to-end transformation at each pixel position. 
+% However, the size of feature maps will shrink quickly during forward computation. 
+% In preprocessing, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
+% After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
+% The transformed pixel patch is defined as:
 \begin{equation}
     \begin{split}
         S'(m,n) & = f_{\theta_N} ( f_{\theta_{N - 1}} ( \cdots f_{\theta_1} (Pad(S(m,n))) \cdots  ) )  \\
@@ -523,7 +579,7 @@ The transformed pixel patch is defined as:
 where, $S'(m,n)$ is the prediction of the network, and the forward computation at each layer of the network is represented by $f_{\theta_N}$. The symmetric padding process is denoted as $Pad$, where we have lost none of the pixel information to make the output $S'(m,n)$ the same size as the pixel patch $S(m,n)$. 
 Another advantage of symmetric padding is that the order information still remains.
 
-For the loss function, we choose the Sigmoid Cross Entropy (SCE), which are helpful to address the learning slowdown. 
+For the loss function, the Sigmoid Cross Entropy (SCE) loss is used, which are helpful to address the learning slowdown. 
 The formulation is as follows:
 \begin{equation}
     \begin{split}
@@ -539,8 +595,12 @@ The SCE is calculated between the transformed patches and the corresponding grou
 Boundaries of moving objects and pixels that out of the region of interest are not taken into account in the cost function.
 Finally, we get the transformed variation through the FCN, which are a lot easier for classification. 
 
-As shown in the \reffig{flow_chart}, the prediction maps can be reconstructed from the prediction patches.
+\subsection{Foreground Detection}
+%As shown in the \reffig{flow_chart}, 
+Then, the prediction maps can be reconstructed from the prediction patches.
+%
 Then a global threshold $T_r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
+%
 The threshold function is given by
 \begin{equation}
     \label{piecewise_fg}
