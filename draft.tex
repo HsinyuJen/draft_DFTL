@@ -553,6 +553,17 @@ And neighboring patches are at pixel position $(x',y')$ and $(x'',y'')$ respecti
 %In the previous steps, original videos are broken down into pixel patches which contain abundant background information. 
 
 \subsection*{Network Work Architecture and Variation Transformation}
+% 先描述动机
+As we mentioned above,
+the main purpose of our DPVTL is trying to transform the sequence of pixels' observations 
+into another space where the observations are easier classified.
+% 分析问题，提出解决的方案，要用数学化的形式
+Therefore,
+our network entails learning a mapping from the input observations of pixels $x \in \mathcal{X}$ 
+to the probability of the corresponding pixel belong to foreground or background.
+
+
+
 As shown in the \reffig{flow_chart},
 a end-to-end architecture network is proposed to transform the observations of pixels to a new space which is close to labels.
 %
