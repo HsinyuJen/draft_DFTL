@@ -470,6 +470,7 @@ and our network is actually an end-to-end transformation from pixels to labels.
 Mathematically, the generation procedure of training patches is shown as follows:
 \begin{equation}
     S_{x,y}(m,n) = \mathcal{C}(\mathcal{I}^d, R) = \mathcal{I}_{m \times R + n} (x,y),
+    \label{eq_reshape}
 \end{equation}
 where the $S_{x,y}(m,n)$ is denoted as the training patch extracted from the observations of pixel located at $(x,y)$,
 The $R$ is the user argument to control the radius of training patches
@@ -590,7 +591,13 @@ The SCE is calculated between the transformed patches and the corresponding grou
 Boundaries of moving objects and pixels that out of the region of interest are not taken into account in the cost function.
 Finally, we get the transformed variation through the FCN, which are a lot easier for classification. 
 
-The network used in this work is devised as an end-to-end architecture, 
+% 描述网络结构
+The network used in this work is devised as an end-to-end architecture XXX
+The structure of our FCN for foreground detection is shown in \reffig{flow_chart}. 
+The proposed FCN contains 6 convolutional layers, and the last convolutional layer has a filter size of $1\times 1$. 
+We use the Rectified Linear Unit (ReLU) as the activation function after each convolutional layer and the Sigmoid function after the last fully connected layer. 
+We do not use any other tricks in our network training and the experiment results prove that the proposed approach is feasible and very effective.
+\todo{please improve the English of this paragraph}
 
 
 % 
@@ -620,6 +627,25 @@ The network used in this work is devised as an end-to-end architecture,
 
 \subsection{Foreground Detection}
 %As shown in the \reffig{flow_chart}, 
+After the transformation of observations of pixels,
+pixel patches feed into the network are transformed into the probability patches,
+which are compared with a threshold $T_r$ for classification and then used to reconstruct the foreground for final results.
+%
+The comparison with threshold is mathematically shown as follows:
+\begin{equation}
+    \mathcal{M}(x,y) = g(T_f, \mathcal{C}^{-1}(S'(x,y), R)),
+\end{equation}
+where XXX
+
+Then the reverse procedure of \refeq{eq_reshape}
+
+used to reconstruct the foreground image for the final results.
+%
+
+
+The network devised in proposed approach 
+
+
 Then, the prediction maps can be reconstructed from the prediction patches.
 %
 Then a global threshold $T_r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
@@ -634,9 +660,6 @@ The threshold function is given by
 \end{cases},
 \end{equation}
 
-\begin{equation}
-    \mathcal{M}(x,y) = g(T_f, \mathcal{C}^{-1}(S'(x,y), R)),
-\end{equation}
 where the $M$ denotes the final foreground map given by our DPVTL model.
 After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
 
@@ -648,11 +671,6 @@ After the thresholding calculations, our experiment results show that a random i
 %The last but not the least, FCNs have been used in sematic segmentation and researchers found FCNs have a strong learning ability which won't lose to the traditional ones. 
 %Meanwhile, it's also a highly efficient computation model. 
 %Based on above-mentioned factors, FCN is designed as the alternative network architecture in this paper. 
-
-The structure of our FCN for foreground detection is shown in \reffig{flow_chart}. 
-The proposed FCN contains 6 convolutional layers, and the last convolutional layer has a filter size of $1\times 1$. 
-We use the Rectified Linear Unit (ReLU) as the activation function after each convolutional layer and the Sigmoid function after the last fully connected layer. 
-We do not use any other tricks in our network training and the experiment results prove that the proposed approach is feasible and very effective.
 
 
 \section{Experiments}
