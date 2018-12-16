@@ -403,7 +403,7 @@ the deep learning network is utilized to learn the pattern of variations implied
 % 基于这个动机，我们是怎么做的
 Therefore,
 the training data feed into network is one kinds of description of pixels' variation,
-which is actually patches consist of pixels' observations.
+which is actually patches consist of pixels' temporal observations.
 %
 In contrast, the output of the network is the probability of corresponding pixels belong to foreground or background,
 and the network is devised with an end-to-end architecture to transform the intensity of pixels to the probability of category the pixels belong to.
@@ -559,36 +559,20 @@ the main purpose of our DPVTL is trying to transform the sequence of pixels' obs
 into another space where the observations are easier classified.
 % 分析问题，提出解决的方案，要用数学化的形式
 Therefore,
-our network entails learning a mapping from the input observations of pixels $x \in \mathcal{X}$ 
-to the probability of the corresponding pixel belong to foreground or background.
-
-
-
-As shown in the \reffig{flow_chart},
-a end-to-end architecture network is proposed to transform the observations of pixels to a new space which is close to labels.
+our network entails learning a mapping from the input observations of pixels $s \in \mathcal{S}$ 
+to the probability $p \in \mathcal{P}$ of the corresponding pixel belong to foreground or background,
+and a end-to-end architecture network is proposed to transform the observations of pixels to a new space which is close to labels as shown in the \reffig{flow_chart}.
 %
-The input of network is the training patches $S(m,n)$ extracted from different pixels
-and the output of network is the labeled patches captured from Groundtruth frames.
-%
-The training procedure is the transformation from the training patches to the labelling patches,
-which is shown as follows:
-% 
-% the architecture of network 
-% 
-% Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenation process, as shown in the \reffig{flow_chart}. 
-% Both of them are fed into the network for training to find a end-to-end transformation at each pixel position. 
-% However, the size of feature maps will shrink quickly during forward computation. 
-% In preprocessing, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
-% After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
-% The transformed pixel patch is defined as:
+Mathematically, the training procedure is shown as follows:
 \begin{equation}
     \begin{split}
-        S'(m,n) & = f_{\theta_N} ( f_{\theta_{N - 1}} ( \cdots f_{\theta_1} (Pad(S(m,n))) \cdots  ) )  \\
-          & = f_{ \prod_{n=1}^{N}\theta_n   }^n(S(m,n)),
+        \mathcal{P}(m,n) & = f_{\theta_N} ( f_{\theta_{N - 1}} ( \cdots f_{\theta_1} ( \mathcal{S}(m,n)) \cdots  ) )  \\
+          & = f_{ \prod_{n=1}^{N}\theta_n   }^n(\mathcal{S}(m,n)),
     \end{split}
 \end{equation}
-where, $S'(m,n)$ is the prediction of the network, and the forward computation at each layer of the network is represented by $f_{\theta_N}$. The symmetric padding process is denoted as $Pad$, where we have lost none of the pixel information to make the output $S'(m,n)$ the same size as the pixel patch $S(m,n)$. 
-Another advantage of symmetric padding is that the order information still remains.
+where $\mathcal{P}(x,y)$ is denoted as the probability, $\mathcal{S}(m,n)$ is the input patch of network and $f_{\theta_i}$ is represents different layers of network.
+% where, $S'(m,n)$ is the prediction of the network, and the forward computation at each layer of the network is represented by $f_{\theta_N}$. The symmetric padding process is denoted as $Pad$, where we have lost none of the pixel information to make the output $S'(m,n)$ the same size as the pixel patch $S(m,n)$. 
+% Another advantage of symmetric padding is that the order information still remains.
 
 For the loss function, the Sigmoid Cross Entropy (SCE) loss is used, which are helpful to address the learning slowdown. 
 The formulation is as follows:
@@ -605,6 +589,34 @@ where $S^{gt}(x,y)$ denotes the groundtruth patch which is given by the correspo
 The SCE is calculated between the transformed patches and the corresponding groundtruth patches. 
 Boundaries of moving objects and pixels that out of the region of interest are not taken into account in the cost function.
 Finally, we get the transformed variation through the FCN, which are a lot easier for classification. 
+
+The network used in this work is devised as an end-to-end architecture, 
+
+
+% 
+% 
+% As shown in the \reffig{flow_chart},
+% %
+% The input of network is the training patches $S(m,n)$ extracted from different pixels
+% and the output of network is the labeled patches captured from Groundtruth frames.
+% %
+% The training procedure is the transformation from the training patches to the labelling patches,
+% which is shown as follows:
+% % 
+% % the architecture of network 
+% % 
+% % Correspondingly, the groundtruth patches are obtained in a similar way as the input ones, except the concatenation process, as shown in the \reffig{flow_chart}. 
+% % Both of them are fed into the network for training to find a end-to-end transformation at each pixel position. 
+% % However, the size of feature maps will shrink quickly during forward computation. 
+% % In preprocessing, we borrow the idea from Image Semantic Segmentation \cite{Shelhamer2017fcn}, padding the input patches before the training. 
+% % After the forward computing, observations in input patches are mapped into a new space where they can be easily classified by thresholding. 
+% % The transformed pixel patch is defined as:
+% \begin{equation}
+%     \begin{split}
+%         S'(m,n) & = f_{\theta_N} ( f_{\theta_{N - 1}} ( \cdots f_{\theta_1} (Pad(S(m,n))) \cdots  ) )  \\
+%           & = f_{ \prod_{n=1}^{N}\theta_n   }^n(S(m,n)),
+%     \end{split}
+% \end{equation}
 
 \subsection{Foreground Detection}
 %As shown in the \reffig{flow_chart}, 
