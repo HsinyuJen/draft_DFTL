@@ -556,8 +556,9 @@ And neighboring patches are at pixel position $(x',y')$ and $(x'',y'')$ respecti
 \subsection*{Network Work Architecture and Variation Transformation}
 % 先描述动机
 As we mentioned above,
-the main purpose of our DPVTL is trying to transform the sequence of pixels' observations 
-into another space where the observations are easier classified.
+the main purpose of our DPVTL is the transformation between the sequence of pixels' observations with possibility of pixels belong to foreground or background.
+% the main purpose of our DPVTL is trying to transform the sequence of pixels' observations 
+% into another space where the observations are easier classified.
 % 分析问题，提出解决的方案，要用数学化的形式
 Therefore,
 our network entails learning a mapping from the input observations of pixels $s \in \mathcal{S}$ 
@@ -597,7 +598,8 @@ The structure of our FCN for foreground detection is shown in \reffig{flow_chart
 The proposed FCN contains 6 convolutional layers, and the last convolutional layer has a filter size of $1\times 1$. 
 We use the Rectified Linear Unit (ReLU) as the activation function after each convolutional layer and the Sigmoid function after the last fully connected layer. 
 We do not use any other tricks in our network training and the experiment results prove that the proposed approach is feasible and very effective.
-\todo{please improve the English of this paragraph}
+After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
+\todo{please giving a comprehensive description of the details about the network architecture.}
 
 
 % 
@@ -627,30 +629,37 @@ We do not use any other tricks in our network training and the experiment result
 
 \subsection{Foreground Detection}
 %As shown in the \reffig{flow_chart}, 
-After the transformation of observations of pixels,
-pixel patches feed into the network are transformed into the probability patches,
+After the transformation from observations to the probability belong to foreground or background,
+the foreground is detected from the final binary mask.
+%
+During the transformation,
+the pixel patches are feed into the network and transformed into the probability patches,
 which are compared with a threshold $T_r$ for classification and then used to reconstruct the foreground for final results.
 %
 The comparison with threshold is mathematically shown as follows:
 \begin{equation}
     \mathcal{M}(x,y) = g(T_f, \mathcal{C}^{-1}(S'(x,y), R)),
 \end{equation}
-where XXX
-
-Then the reverse procedure of \refeq{eq_reshape}
-
-used to reconstruct the foreground image for the final results.
+where the $\mathcal{M}(x,y)$ is the final binary mask.
 %
-
-
-The network devised in proposed approach 
-
-
-Then, the prediction maps can be reconstructed from the prediction patches.
+The $S'(x,y)$ is the probability patches output by the network,
+the $\mathcal{C}^{-1}$ is the reversed procedure of the reshape procedure shown in the \refeq{eq_reshape} and $R$ is the parameter for the reversing procedure of reshape.
 %
-Then a global threshold $T_r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
-%
-The threshold function is given by
+The $T_f$ is the threshold given by user and the $g()$ is the thresholding function which is shown as follows:
+% Then the reverse procedure of \refeq{eq_reshape}
+% 
+% used to reconstruct the foreground image for the final results.
+% %
+% 
+% 
+% The network devised in proposed approach 
+% 
+% 
+% Then, the prediction maps can be reconstructed from the prediction patches.
+% %
+% Then a global threshold $T_r$ is set for each transformed observation in order to map them to $\{0,1\}$. 
+% %
+% The threshold function is given by
 \begin{equation}
     \label{piecewise_fg}
     g(x,y) =
@@ -659,9 +668,8 @@ The threshold function is given by
   0,  \quad otherwise   \\
 \end{cases},
 \end{equation}
-
-where the $M$ denotes the final foreground map given by our DPVTL model.
-After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
+%
+%where the $M$ denotes the final foreground map given by our DPVTL model.
 
 %Here we make a detailed introduction to the deep learning model we used and explain why we choose it.
 
