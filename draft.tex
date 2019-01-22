@@ -60,7 +60,7 @@ In this paper, we focus on transforming the variation into another space where t
 % 具体来说，我们用一段像素观测值表示pixel variation,并用作网络的输入。 
 In particular, the pixel variation is represented by the sequence of pixel observations, which is used as the input of fully convolutional network(FCN) to find a transformation of pixels' variation.
 % 接下来，FCN学习像素变动的模式，并接上一个线性分类器给像素打标签。
-Then, the FCN is trained to learn the pattern of pixel variations for the transformation, followed by a liner classifier for labeling the pixels as foreground or background.
+Then, the FCN is trained to learn the pattern of pixel variations for the transformation, followed by a linear classifier for labeling the pixels as foreground or background.
 %    
 % XXX 这句话还是有点问题
 % 这句话我也没看懂。。。
@@ -593,12 +593,12 @@ Boundaries of moving objects and pixels that out of the region of interest are n
 Finally, we get the transformed variation through the FCN, which are a lot easier for classification. 
 
 % 描述网络结构
-The network used in this work is devised as an end-to-end architecture XXX
-The structure of our FCN for foreground detection is shown in \reffig{flow_chart}. 
-The proposed FCN contains 6 convolutional layers, and the last convolutional layer has a filter size of $1\times 1$. 
-We use the Rectified Linear Unit (ReLU) as the activation function after each convolutional layer and the Sigmoid function after the last fully connected layer. 
+%The network used in this work is devised as an end-to-end architecture XXX
+The architecture of our FCN for foreground detection is illustrated in \reffig{flow_chart}. 
+The proposed FCN contains 6 convolutional layers without pooling, and the filter size of the first five layers is set to $3\times 3$, compared to the last convolutional layer which has a filter size of $1\times 1$. 
+We use the Rectified Linear Unit (ReLU) as the activation function after first three convolutional layers. And the Sigmoid Cross Entropy loss function is applied to measures the performance of our network after the last convolutional layer. 
 We do not use any other tricks in our network training and the experiment results prove that the proposed approach is feasible and very effective.
-After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without further machinery. 
+After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without extra optimization mechanism. 
 \todo{please giving a comprehensive description of the details about the network architecture.}
 
 
