@@ -35,7 +35,7 @@
 \definecolor{filltext}{RGB}{0,255,255}
 
 \begin{document}
-\title{Deep Variation Transformation for Foreground Detection}
+\title{Foreground Detection via Deep Variation Transformation}
 
 \author{Yongxin Ge, 
         Xinyu Ren, 
@@ -53,23 +53,22 @@
 \begin{abstract}
 %
 % 运动检测的已有方法主要关注于像素值的变化。
-Previous approaches to foreground detection generally analyzed the variation of pixel observations.
+Previous approaches to foreground detection generally analyze the variation of pixel observations.
 % 本文中，我们分析了像素的变动，并提出了DPVTL方法。
 % In this paper, we focus on transforming the variation into a new space where that there is an obvious difference between the patterns of variation produced by the moving objects and the background,
-In this paper, we focus on transforming the variation into another space where the entry of variation is easily classified, using a novel foreground detection method called Deep Pixel Variation Transformation Learning (DPVTL).
+In this paper, we focus on transforming the variation into another space where the entry of variation is easily classified, and a novel foreground detection method called Deep Pixel Variation Transformation Learning (DPVTL) is proposed.
 % 一个FCN被用来寻求一个变换，可以使变换过后的像素值线性可分。
 % 具体来说，我们用一段像素观测值表示pixel variation,并用作网络的输入。 
-In particular, the pixel variation is represented by the sequence of pixel space, which is used as the input for a fully convolutional network(FCN) to find a transformation of pixels' variation.
+In particular, the pixel variation is represented by the sequence of pixel observations, which is used as the input of fully convolutional network(FCN) to find a transformation of pixels' variation.
 % 接下来，FCN学习像素变动的模式，并接上一个线性分类器给像素打标签。
 Then, the FCN is trained to learn the pattern of pixel variations for the transformation, followed by a linear classifier for labeling the pixels as foreground or background.
 %    
 % XXX 这句话还是有点问题
 % 这句话我也没看懂。。。
-    \textcolor{red}{
 Benefited from the ingenious utilization of deep learning network leading by our clear cognition of essence about foreground detection problem,
-    the proposed approach adaptively generates superior performances in diverse nature scenes.}
+the proposed approach adaptively generates superior performances in diverse nature scenes.
 %
-Comprehensive experiments on several standard benchmark demonstrate the superiority of the proposed approach compared with state-of-the-art deep learning and traditional methods.
+Comprehensive experiments in several standard benchmarks demonstrate the superiority of the proposed approach compared with state-of-the-art methods including both deep learning and traditional methods.
 %
 \end{abstract}
 
@@ -81,15 +80,15 @@ Comprehensive experiments on several standard benchmark demonstrate the superior
 
 \section{Introduction}
 %背景检测的背景介绍
-Foreground detection is a fundamental problem in computer vision\ \cite{Bouwmans201431} that has been approached over decades with an increasing number of cameras.
-It is widely used in applications involving video processing \cite{Barnich2011_2011_TIP}.
+Foreground detection as a fundamental problem in computer vision\ \cite{Bouwmans201431} has been discussed over decades with the increasing number of cameras,
+which is widely used in the applications of video processing \cite{Barnich2011_2011_TIP}.
 % 传统的方法是怎么做的，有什么问题
 Typically, it is recognized as a binary classification task that assigns each pixel in the video stream with a label, 
 for either belonging to the background or foreground scene.
 Traditional foreground detection algorithms focus on analyzing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999}\cite{lee2005} and KDE\cite{Elgammal2000Non}\cite{Mittal2004KDE}.
-However, due to the unpredictability and peed of pixel variations in natural scenes,
-the variation becomes so unordered and is hard to analyze for foreground detection.
-Therefore, foreground detection is still a challenging problem in complex natural scenes.
+However, due to the unpredictability and rapidity of the pixels' variation in natural scenes,
+the variation becomes so unordered which is hard to be analyzed for foreground detection.
+Therefore, the foreground detection is still a challenging problem in complex natural scenes.
 % 现有的方法在简单场景中效果很好了
 %Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
 %
