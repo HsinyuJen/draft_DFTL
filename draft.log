@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.12)  28 JAN 2019 13:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.12)  29 JAN 2019 15:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -731,389 +731,28 @@ Underfull \vbox (badness 1490) has occurred while \output is active []
 <figure/fig1.png, id=143, 433.62pt x 325.215pt>
 File: figure/fig1.png Graphic file (type png)
  <use figure/fig1.png>
-Package pdftex.def Info: figure/fig1.png used on input line 304.
+Package pdftex.def Info: figure/fig1.png used on input line 322.
 (pdftex.def)             Requested size: 252.0pt x 189.00197pt.
- [3 <./figure/fig1.png>] <figure/fig2.png, id=159, 749.199pt x 508.7808pt>
+
+<figure/fig2.png, id=149, 749.199pt x 508.7808pt>
 File: figure/fig2.png Graphic file (type png)
-
-<use figure/fig2.png>
-Package pdftex.def Info: figure/fig2.png used on input line 385.
+ <use figure/fig2.png>
+Package pdftex.def Info: figure/fig2.png used on input line 400.
 (pdftex.def)             Requested size: 516.0pt x 350.41476pt.
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 604.
 
-Overfull \hbox (13.1896pt too wide) in paragraph at lines 604--604
-[][][][]\OT1/ptm/m/n/10 please 
- []
-
-
-Overfull \hbox (4.05984pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 giv- 
- []
-
-
-Overfull \hbox (0.97989pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ing 
- []
-
-
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 com- 
- []
-
-
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 pre- 
- []
-
-
-Overfull \hbox (5.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 hen- 
- []
-
-
-Overfull \hbox (3.90982pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 sive 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (10.96964pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 scrip- 
- []
-
-
-Overfull \hbox (3.75978pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tion 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (4.8695pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tails 
- []
-
-
-Overfull \hbox (10.41983pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 about 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 net- 
- []
-
-
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 work 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 chi- 
- []
-
-
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tec- 
- []
-
-
-Overfull \hbox (6.24979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ture.  
- []
-
-
-Overfull \hbox (13.1896pt too wide) in paragraph at lines 604--604
-[][][][]\OT1/ptm/m/n/10 please 
- []
-
-
-Overfull \hbox (4.05984pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 giv- 
- []
-
-
-Overfull \hbox (0.97989pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ing 
- []
-
-
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 com- 
- []
-
-
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 pre- 
- []
-
-
-Overfull \hbox (5.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 hen- 
- []
-
-
-Overfull \hbox (3.90982pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 sive 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (10.96964pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 scrip- 
- []
-
-
-Overfull \hbox (3.75978pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tion 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (4.8695pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tails 
- []
-
-
-Overfull \hbox (10.41983pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 about 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 net- 
- []
-
-
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 work 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 chi- 
- []
-
-
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tec- 
- []
-
-
-Overfull \hbox (6.24979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ture.  
- []
-
-
-Overfull \hbox (13.1896pt too wide) in paragraph at lines 604--604
-[][][][]\OT1/ptm/m/n/10 please 
- []
-
-
-Overfull \hbox (4.05984pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 giv- 
- []
-
-
-Overfull \hbox (0.97989pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ing 
- []
-
-
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 com- 
- []
-
-
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 pre- 
- []
-
-
-Overfull \hbox (5.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 hen- 
- []
-
-
-Overfull \hbox (3.90982pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 sive 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (10.96964pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 scrip- 
- []
-
-
-Overfull \hbox (3.75978pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tion 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (4.8695pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tails 
- []
-
-
-Overfull \hbox (10.41983pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 about 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 net- 
- []
-
-
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 work 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 chi- 
- []
-
-
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tec- 
- []
-
-
-Overfull \hbox (6.24979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ture.  
- []
-
-
-Overfull \hbox (13.1896pt too wide) in paragraph at lines 604--604
-[][][][]\OT1/ptm/m/n/10 please 
- []
-
-
-Overfull \hbox (4.05984pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 giv- 
- []
-
-
-Overfull \hbox (0.97989pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ing 
- []
-
-
-Overfull \hbox (8.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 com- 
- []
-
-
-Overfull \hbox (4.29985pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 pre- 
- []
-
-
-Overfull \hbox (5.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 hen- 
- []
-
-
-Overfull \hbox (3.90982pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 sive 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (10.96964pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 scrip- 
- []
-
-
-Overfull \hbox (3.75978pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tion 
- []
-
-
-Overfull \hbox (0.9699pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 de- 
- []
-
-
-Overfull \hbox (4.8695pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tails 
- []
-
-
-Overfull \hbox (10.41983pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 about 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 net- 
- []
-
-
-Overfull \hbox (8.64993pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 work 
- []
-
-
-Overfull \hbox (3.74979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 chi- 
- []
-
-
-Overfull \hbox (3.18973pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 tec- 
- []
-
-
-Overfull \hbox (6.24979pt too wide) in paragraph at lines 604--604
-\OT1/ptm/m/n/10 ture.  
- []
-
-[4] [5 <./figure/fig2.png>] <figure/fig3.png, id=214, 790.152pt x 526.1256pt>
+[3 <./figure/fig1.png>] [4 <./figure/fig2.png>] [5]
+<figure/fig3.png, id=215, 790.152pt x 526.1256pt>
 File: figure/fig3.png Graphic file (type png)
-
-<use figure/fig3.png>
-Package pdftex.def Info: figure/fig3.png used on input line 712.
+ <use figure/fig3.png>
+Package pdftex.def Info: figure/fig3.png used on input line 727.
 (pdftex.def)             Requested size: 516.0pt x 343.59122pt.
 
-Overfull \hbox (18.62918pt too wide) in paragraph at lines 754--772
+Overfull \hbox (18.62918pt too wide) in paragraph at lines 769--787
  [][] 
  []
 
 
-Overfull \hbox (30.79803pt too wide) in paragraph at lines 796--811
+Overfull \hbox (30.79803pt too wide) in paragraph at lines 811--826
  [][] 
  []
 
@@ -1140,24 +779,27 @@ Missing character: There is no ® in font ptmr7t!
 Missing character: There is no Â in font ptmr7t!
 Missing character: There is no ¨ in font ptmr7t!
 Missing character: There is no Â in font ptmr7t!
-) [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 903.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 903.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 918.
+ [9
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 918.
  (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 903.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 903.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 918.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 918.
 Package rerunfilecheck Info: File `draft.out' has not changed.
-(rerunfilecheck)             Checksum: F28C5407326298349488FFF193AF6A85;1686.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 903.
+(rerunfilecheck)             Checksum: F09AB0B44C45C83A592F2CD2A85EB81A;1696.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 918.
  ) 
 Here is how much of TeX's memory you used:
- 20522 strings out of 493029
- 366807 string characters out of 6136233
- 442228 words of memory out of 5000000
- 23676 multiletter control sequences out of 15000+600000
+ 20444 strings out of 493029
+ 364996 string characters out of 6136233
+ 439878 words of memory out of 5000000
+ 23599 multiletter control sequences out of 15000+600000
  40779 words of font info for 77 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 62i,16n,76p,521b,694s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,16n,56p,499b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-
@@ -1173,10 +815,10 @@ e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on draft.pdf (9 pages, 1372001 bytes).
+Output written on draft.pdf (9 pages, 1371570 bytes).
 PDF statistics:
  358 PDF objects out of 1000 (max. 8388607)
  316 compressed objects within 4 object streams
- 90 named destinations out of 1000 (max. 500000)
+ 89 named destinations out of 1000 (max. 500000)
  121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
