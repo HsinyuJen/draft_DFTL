@@ -6,7 +6,7 @@
 \usepackage{multirow}
 \usepackage[unicode,pdftex]{hyperref}
 \usepackage{xcolor}
-\usepackage{setspace}
+% \usepackage{setspace}
 
 \ifCLASSINFOpdf
 \usepackage[pdftex]{graphicx}
@@ -55,7 +55,7 @@
 \maketitle
 
 
-\begin{spacing}{2.0}
+% \begin{spacing}{2.0}
 \begin{abstract}
 %
 % 运动检测的已有方法主要关注于像素值的变化。
@@ -65,19 +65,19 @@ Previous approaches to foreground detection generally analyzed the variation of 
 In this paper, we focus on transforming the variation into another space where the entry of variation is easily classified, using a novel foreground detection method called Deep Pixel Variation Transformation Learning (DPVTL).
 % 一个FCN被用来寻求一个变换，可以使变换过后的像素值线性可分。
 % 具体来说，我们用一段像素观测值表示pixel variation,并用作网络的输入。 
-In particular, the pixel variation is represented by the sequence of pixel space, which is used as the input for a fully convolutional network(FCN) to find a transformation of pixels' variation.
+    In particular, the pixel variation is represented by the sequence of pixel space, which is used as the input to a fully convolutional network \textcolor{blue}{space} (FCN) to find a transformation of pixels' variation.
 % 接下来，FCN学习像素变动的模式，并接上一个线性分类器给像素打标签。
 Then, the FCN is trained to learn the pattern of pixel variations for the transformation, followed by a linear classifier for labeling the pixels as foreground or background.
 %    
 % XXX 这句话还是有点问题
 % 这句话我也没看懂。。。
-Due to the global analyse of pixel variations and the strong learning ability of deep learning network,
-the proposed approach adaptively learned a good transformation from pixel variation to labels and generates well performances in diverse natural scenes.
+Resulting from the global analysis of pixel variations and the strong learning ability of deep learning networks,
+the proposed approach adaptively learns a good transformation from pixel variations to label and generate good performance in diverse natural scenes.
 %    \textcolor{red}{
 % Benefited from the ingenious utilization of deep learning network leading by our clear cognition of essence about foreground detection problem,
 %    the proposed approach adaptively generates superior performances in diverse nature scenes.}
 %
-Comprehensive experiments on several standard benchmark demonstrate the superiority of the proposed approach compared with state-of-the-art deep learning and traditional methods.
+Comprehensive experiments on several standard benchmarks demonstrate the superiority of the proposed approach compared to state-of-the-art deep learning and traditional methods.
 %
 \end{abstract}
 
@@ -92,11 +92,11 @@ Comprehensive experiments on several standard benchmark demonstrate the superior
 Foreground detection is a fundamental problem in computer vision\ \cite{Bouwmans201431} that has been approached over decades with an increasing number of cameras.
 It is widely used in applications involving video processing \cite{Barnich2011_2011_TIP}.
 % 传统的方法是怎么做的，有什么问题
-Typically, it is recognized as a binary classification task that assigns each pixel in the video stream with a label, 
+Typically, it is recognized as a binary classification task that assigns a label to each pixel in the video stream,
 for either belonging to the background or foreground scene.
-Traditional foreground detection algorithms focus on analyzing the pixel variation, establishing background models with statistical methods such as GMM\cite{Stauffer1999}\cite{lee2005} and KDE\cite{Elgammal2000Non}\cite{Mittal2004KDE}.
-However, due to the unpredictability and peed of pixel variations in natural scenes,
-the variation becomes so unordered and is hard to analyze for foreground detection.
+Traditional foreground detection algorithms focus on analyzing pixel variations, establishing background models with statistical methods such as GMM\cite{Stauffer1999}\cite{lee2005} and KDE\cite{Elgammal2000Non}\cite{Mittal2004KDE}.
+However, due to the unpredictability and speed of pixel variations in natural scenes,
+the variation becomes unordered and is hard to analyze for foreground detection.
 Therefore, foreground detection is still a challenging problem in complex natural scenes.
 % 现有的方法在简单场景中效果很好了
 %Existed methods have already achieved well performances in the scenes of low diversity or complexity, such as the indoor scenes.
@@ -118,8 +118,8 @@ In diversely natural scenes,
 it is possible that moving objects produce similar or even the same observations of pixels compared to the background.
 % similar to their counterparts of background but actually belong to foreground .
 % 如图所示，像素观测值C就和背景的值几乎一模一样，
-As shown in the \reffig{idea},
-the observation C is closely related to the observations which belong to the background. However, it is actually produced by moving objects and should be classified as foreground.
+As shown in \reffig{idea},
+observation C is closely related to the observations which belong to the background. However, it is actually produced by moving objects and should be classified as foreground.
 % 大多数情况下，他都会被划分成背景
 Unfortunately, in most cases, it is quite possible that C will be falsely classified due to the similarity with counterparts of the background.
 % 我们的就是希望把这个variation 转化到更简单的地方去
@@ -138,7 +138,7 @@ Based on this, the Deep Pixel Variation Transformation Learning model for foregr
 \centering
     \includegraphics[width=\linewidth]{figure/demo.pdf}
     % 图例里描述一下。
-    \caption{The demonstration of deep variation transformation. Due to the complexity of natural scenes, the original pixels' variation is hard to classify correctly. After transforming by deep learning network, the pixels in variation become easy to be classified as foreground and background correctly.}
+    \caption{Demonstration of deep variation transformation. Due to the complexity of natural scenes, the original pixels' variation is hard to classify correctly. After transforming by a deep learning network, the pixels in variation become easy to be correctly classified as foreground and background correctly.}
     \label{idea}
 \end{figure}
 %The demonstration of deep variation transformation. The pixels in the transformed variation become easier to be classified as foreground and background correctly
@@ -151,16 +151,17 @@ Based on this, the Deep Pixel Variation Transformation Learning model for foregr
 % XXX 一句话，换一行！！！
 % In this paper, we propose a novel Deep Variation Transformation Learning (DPVTL) model for foreground detection in diversely natural scenes. 
 In the DPVTL model, 
-the sequence of pixel observations is used to represent the variation and input into the network for learning,
+the sequence of pixel observations is used to represent the variations and input into the network for learning,
 which encodes both the intensity distribution and the sequential information.
 %
-Then, a Fully Convolutional Network (FCN)\ \cite{Shelhamer2017fcn} is applied to learn patterns of the pixel variation and find a transformation which guarantees the linear separability of pixels in the transformed variation.
+Then, a Fully Convolutional Network (FCN)\ \cite{Shelhamer2017fcn} is applied to learn patterns of pixel variations and find a transformation which guarantees the linear separability of pixels in the transformed variation.
 %
 In particular,
 we take advantage of the strong learning ability of deep neural networks to learn an end-to-end representation of the pixel variation in a new space where they can be easily classified as background or foreground.
 %
 Utilizing the innovative framework of variation transformation,
-the proposed approach works well in diverse complex scenes adaptively.
+the proposed approach works well for a diverse range of complex scenes.
+% in diverse complex scenes adaptively.
 %
 %Moreover,
 %since the pixel sequences are extracted from individual pixels, a large number of pixel patches may be extracted from only a single image stack, which promises that sufficient training data can be obtained with limited groundtruth.
@@ -182,19 +183,19 @@ the proposed approach works well in diverse complex scenes adaptively.
 
 %The outline of this paper is as follows: In Section II, we give a brief discussion about the early and recent relevant works. 
 % XXX 不会用引用可以问我或者曲师兄。
-The rest part of this paper is organized as follows: In \refsec{sec2}, we give a brief discussion of both early and recent relevant literature. 
+The rest part of this paper is organized as follows: In \refsec{sec2}, we briefly discuss both early and recent relevant literature. 
 %
-Details on the variation transformation are presented in \refsec{sec3}. The architecture of the network is introduced in \refsec{sec4}, followed by experiments and comparison result in \refsec{sec5}, before concluding the paper in \refsec{sec6}. 
+Details on the variation transformation are presented in \refsec{sec3}. The architecture of the network is introduced in \refsec{sec4}, This is followed by experiments and comparison results in \refsec{sec5}, before concluding the paper in \refsec{sec6}. 
 % \todo{please revise this part by using command refsec}
 
 \section{Related Work}
 \label{sec2}
 Over the last few decades, a large number of foreground detection methods have been proposed,
 which are broadly categorized into pixel-based, region-based and learning-based methods.
-\subsection{pixel-based methods}
+\subsection{Pixel-based methods}
 % Ren:重新解释了pixel based methods
 Pixel-based methods usually assume the independence between neighboring pixels,
-and utilize the low-level features, such as color or gradients for background subtraction.
+and utilize low-level features, such as color or gradients for background subtraction.
 
 %GMM 
 % cqzhao: 我没有看到过over time，如果你在trans或者顶会(ICCV,CVPR,ECCV)里找到了论文原话，那你可以用哦。
@@ -213,13 +214,13 @@ Kim et al.\cite{Kim2005} presented the codebook method, which records the sampli
 The incoming pixels are compared with these codewords to see if their distances lie within a certain bound. 
 %KDE
 In addition, a non-parametric background model is proposed by Elgammal et al. \cite{Elgammal2000Non}. 
-They assume that each background pixel is drawn from a probability distribution function, which is estimated Kernel Density Estimation space (KDE). 
+They assume that each background pixel is drawn from a probability distribution function, which is estimated in the Kernel Density Estimation space (KDE). 
 %Vibe
 Another non-parametric method is proposed by Barnich et al. \cite{Barnich2011_2011_TIP}, called the Visual Background Extractor (ViBe). 
 %
 The background model of ViBe consists of pixel samples from the video stream. 
 %
-Each pixel in the current frame is compared with sampling pixels from the corresponding background model and labelled as the foreground when there exists sufficient samples with a distance to itself within a certain range. 
+Each pixel in the current frame is compared with sample pixels from the corresponding background model and labelled as the foreground when there exists sufficient samples with a distance to itself within a certain range. 
 %PBAS
 To adaptively update the parameters, Hofmann et al.\cite{Hofmann2012Background} improved ViBe by presenting an adaptive threshold, 
 which depends on the pixel position and a background dynamics metric.
@@ -938,7 +939,7 @@ Comparisons with other traditional and deep learning methods shows that DPVTL si
 % A comprehensive experiment to compare our results with the state-of-the-art shows the efficiency of our framework and points to its potential for use in practical applications.
 % 
 
-\end{spacing}
+% \end{spacing}
 
 \ifCLASSOPTIONcaptionsoff
   \newpage
