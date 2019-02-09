@@ -482,16 +482,16 @@ and $\mathcal{D}()$ denotes the sampling function.
 % In addition, we can get compact pixel variations, which contain more temporal information than the continuous pixel sequences, by using equal interval sampling. 
 
 After sampling training frames,
-the training patches, which are used as the input of the network, are captured.
+the training patches, which are used as the input to the network, are captured.
 %
 The training patch is the description of the pixels' variation,
 which is captured by reshaping the observations in a particular pixel into a square patch.
 %
 Since the patch can be captured from each pixel, 
 a large number of training patches can be extracted with the training frames;
-and each of these patches is for $\frac{T}{N}$ pixels.
+and each of these patches has $\frac{T}{N}$ pixels.
 %
-In addition, for each pixel included in the patch, a label of the foreground or background is needed for training.
+In addition, for each pixel included in a patch, a label of the foreground or background is needed for training.
 %
 Therefore,
 the labeling patches, which are captured by a similar procedure in the ground truth frames,
@@ -559,7 +559,7 @@ It is generally accepted that a pixel is not independent but related to its neig
 and similar neighboring pixels share similar variations.
 %
 Therefore,
-the spatial information should benefit from learning the pattern of pixels' variation.
+spatial information should benefit from learning the pattern of pixels' variation.
 %
 With this motivation,
 several training patches extracted from neighboring pixels are combined to improve the efficiency of the proposed approach.
@@ -568,7 +568,7 @@ In the experiments, three training patches are combined as follows:
 \begin{equation}
     S_{x,y}(m,n) = \mathcal{C}o(S_{x,y}(m,n), S_{x', y'}(m,n), S_{x'', y ''}(m, n)),
 \end{equation}
-where the $\mathcal{C}o$ represents the concatenation process on the third dimension.
+where $\mathcal{C}o$ represents the concatenation process on the third dimension.
 And neighboring patches are at pixel position $(x',y')$ and $(x'',y'')$ respectively.
 % Ii is generally accepted that neighboring background pixels share a similar temporal distribution.
 % %In other words, there are some clues hidden in pixels' spatial neighbors. 
@@ -595,7 +595,7 @@ Therefore,
 our network entails learning a mapping from the input observations of pixels $s \in \mathcal{S}$ 
 to the probability $p \in \mathcal{P}$ of the corresponding pixel belonging to foreground or background.
 %
-An end-to-end architecture network is proposed to transform the observations of pixels to a new space which is close to labels, as shown in the \reffig{flow_chart}.
+An end-to-end architecture network is proposed to transform the observations of pixels to a new space which is close to labels, as shown in \reffig{flow_chart}.
 %
 Mathematically, the training procedure is as follows:
 \begin{equation}
@@ -630,8 +630,9 @@ The architecture of our FCN for foreground detection is illustrated in \reffig{f
 The proposed FCN contains 6 convolutional layers without pooling, and the filter size of the first five layers is set to $3\times 3$, compared to the last convolutional layer which has a filter size of $1\times 1$. 
 We use the Rectified Linear Unit (ReLU) as the activation function after first three convolutional layers，
 and the Sigmoid Cross Entropy loss function is applied to measures the performance of our network after the last convolutional layer. 
-We do not use any other tricks in our network training and the experiment results prove that the proposed approach is feasible and very effective.
-After the thresholding calculations, our experiment results show that a random initialized FCNs, trained end-to-end on feature learning can achieve the state-of-the-art without extra optimization mechanism.
+We do not use any other adjustment in our network training and the experimental results prove that the proposed approach is feasible and very effective.
+After the thresholding calculations, our experiments show that a randomly initialized FCNs, 
+trained end-to-end on feature learning can achieve state-of-the-art performance without any extra optimization mechanism.
 
 
 
@@ -669,14 +670,14 @@ During the transformation,
 the pixel patches are fed into the network and transformed into the probability patches,
 which are compared with a threshold $T_r$ for classification and then used to reconstruct the foreground to obtain the final results.
 %
-The comparison with a threshold is mathematically shown as:
+Comparison with a threshold can be mathematically shown as:
 \begin{equation}
     \mathcal{M}(x,y) = g(T_f, \mathcal{C}^{-1}(S'(x,y), R)),
 \end{equation}
 where the $\mathcal{M}(x,y)$ is the final binary mask.
 %
-The $S'(x,y)$ is the probability of patches output by the network,
-the $\mathcal{C}^{-1}$ is the reversed procedure of the reshape procedure shown in the \refeq{eq_reshape} and $R$ is the parameter for the reversing procedure of reshape.
+$S'(x,y)$ is the probability of patches output by the network,
+$\mathcal{C}^{-1}$ is the reverse of the reshape procedure shown in \refeq{eq_reshape} and $R$ is the parameter for the reversing reshape procedure.
 %
 $T_f$ is the threshold given by a user and $g()$ is the thresholding function shown in \refeq{piecewise_fg}.
 % Then the reverse procedure of \refeq{eq_reshape}
@@ -716,18 +717,18 @@ $T_f$ is the threshold given by a user and $g()$ is the thresholding function sh
 
 \section{Experiments}
 \label{sec5}
-In this section, we ran comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark\cite{CDN2014} and CAMO-UOW\cite{CAMO}.
+In this section, we describe comprehensive experiments to evaluate the performance of the proposed approach on the CDnet 2014 benchmark\cite{CDN2014} and CAMO-UOW\cite{CAMO}.
 %
-The CDnet is the largest dataset for foreground detection as far as we are aware, containing 11 categories with several complex challenging scenes, such as Dynamic Background, Camera Jitter, Shadow, Night Videos, PTZ and so on. 
+CDnet is the largest dataset for foreground detection as far as we are kown, containing 11 categories with several complex challenging scenes, such as Dynamic Background, Camera Jitter, Shadow, Night Videos, PTZ and so on. 
 The CAMO-UOW is a challenging benchmark for camouflaged foreground detection, containing 10 high resolution videos. 
-For each video, one or two persons appear in the scene with the clothes having similar color as the background.
+For each video, one or two persons appear in the scene with clothes having color similar to the background.
 
-The proposed approach is compared with several existing traditional state-of-the-art foreground detection algorithms, including IUTIS-5\cite{Bianco2017TEC}, SuBSENSE\cite{St-Charles2015SuBSENSE}, WeSamBE\cite{Jiang2017WeSamBE}, sharable GMM the SharedModel\cite{Chen2015SharedModel}, word-dictionaries-based method like PAWCS\cite{Charles2015PAWCS}, SemanticBGS\cite{Braham2017Semantic}, AAPSA\cite{RAMIREZALONSO2016990}, etc. 
-Moreover, two deep learning based algorithms are also compared with the proposed approach, which including DeepBS\cite{Babaee2017deep}, and DBMF\cite{Yang2018DBMF}. 
-The results of the compared algorithms are captured by the implementation provided by authors.
+The proposed approach is compared with several existing traditional state-of-the-art foreground detection algorithms, including IUTIS-5\cite{Bianco2017TEC}, SuBSENSE\cite{St-Charles2015SuBSENSE}, WeSamBE\cite{Jiang2017WeSamBE}, sharable GMM the SharedModel\cite{Chen2015SharedModel}, word-dictionaries-based method like PAWCS\cite{Charles2015PAWCS}, SemanticBGS\cite{Braham2017Semantic} and AAPSA\cite{RAMIREZALONSO2016990}.
+Moreover, two deep learning based algorithms are also compared with the proposed approach, including DeepBS\cite{Babaee2017deep}, and DBMF\cite{Yang2018DBMF}. 
+The results of the compared algorithms are captured by the implementation provided by the authors.
 % \textcolor{red}{All the results of compared algorithms are provided by authors.}
 
-During the comparison, the F-measure Space (Fm) has been used for evaluation. 
+For comparison, the F-measure Space (Fm) is used for evaluation. 
 Fm is a general international standard in foreground detection which measures the segmentation accuracy by considering both recall and precision. 
 The definition of Fm is as follows:
 \begin{equation}
@@ -739,7 +740,7 @@ Fm= \frac{2\times precision \times recall}{precision + recall} = \frac{2TP}{2TP+
 %     F=\frac{precision \dot recall}{precision - recall}  = \frac{2TP}{2TP+FN+FP},
 % \end{equation}
 %
-where TP, FP, and FN are true positives, false positives, and false negatives respectively, computed in pixels of all test frames for each video. 
+where TP, FP, and FN are true positives, false positives, and false negatives respectively, computed on the pixels of all the test frames for each video. 
 
 \begin{figure*}[!t]	\centering
     \includegraphics[width=\textwidth]{figure/fig3}
@@ -752,40 +753,40 @@ Quantitative and qualitative comparisons are shown in \reftab{tab1} and  \reffig
 To keep the length of this paper reasonable, only several typical videos are selected for the qualitative comparisons and discussion. 
 In the dynamic background scene, the video ``canoe'' is a typical challenging video which includes a large area of rippling water. 
 The main challenge comes from the dynamic background, in which it is hard to describe the background by a single image. 
-For this condition, since traditional foreground detection methods such as the SharedModel and the WeSamBE cannot describe the complex dynamical background, they fail to detect the people on the boat, as shown in the \reffig{results_chart}. 
+For this condition, since traditional foreground detection methods such as the SharedModel and the WeSamBE cannot describe the complex dynamical background, they fail to detect the people on the boat, as shown in \reffig{results_chart}. 
 Besides, the detected moving objects of the SharedModel are not accurate in the boundary due to the utilization of texture features. 
 In contrast, benefiting from the strong learning ability of Deep Learning networks, DeepBS successfully detects the people. 
 Unfortunately, since the DeepBS ignores the fact that a single background is not enough to describe the dynamic background, even this algorithm suffers from poor detection of the boat shape. 
-In contrast, the proposed approach performs superior to others in this scene, since the essence of foreground detection is considered as a binary classification of pixels' observation over a time sequence. 
+In contrast, the proposed approach performs better from others in this scene, since the essence of foreground detection is considered as a binary classification of pixels' observation over a time sequence. 
 Based on this insight, the FCN network focuses on learning the patterns of pixel variation rather than a static background image.
-Thus proposed approach achieves promising performance for the canoe video.
+Thus the proposed approach achieves promising performance for the canoe video.
 
 
 
-As for the case of shadow scene, ``peopleInShade'' is a typical example with prevalent hard and soft shadows. 
+As for the case of the shadow scene, ``peopleInShade'' is a typical example with prevalent hard and soft shadows. 
 For traditional approaches, these shadow regions are usually segmented as foreground since they also movie with the objects. 
 Therefore, traditional methods like PAWCS, WeSamBE and SharedModel falsely segment part of shadows as moving objects. 
 In addition, the foreground provided by IUTIS-5 is incomplete on part of the pedestrian's body due to the interference of shades, 
 because of the severe dependency on texture features. 
-Whereas, DeepBS performs well for this video benefiting from the utilization of CNN. 
+On the other hand, DeepBS performs well for this video benefiting from the utilization of CNN. 
 However, the shape of pedestrians are slightly deformed as a result of the patch-wise processing in CNN. 
 In contrast, since our DPVL focusses on learning the pattern of pixels' variation in the shadow regions, 
 the proposed approach successfully segments the shadow part as the background and achieves the highest performance in the category of shadow scene.
 
 In the video ``corridor'' among the Thermal scene, there is no color information since the videos are obtained through a Thermal camera. 
-Moreover, moving objects in these videos are exceedingly fuzzy and unclean, which is the main challenge for this category. 
+Moreover, moving objects in these videos are exceedingly fuzzy and unclear, which is the main challenge for this category. 
 WeSamBE, SharedModel and PAWCS successfully detect the target objects, because of a stable background in this indoor video. 
 However, they fail to remove the reflections since their modeling ability has already reached a limit under the extreme condition of the thermal map. 
 DeepBS, by contrast, succeeds in eliminating most of the reflections. 
 Meanwhile, moving objects are also clearly divided from the background thanks to the strong modeling ability of CNN. 
 However, due to the dependency of the edge feature, a small object was missed in the detection result. 
 Fortunately, the proposed approach utilizes the pattern of pixels' variation, which is theoretically effective even in observations without color information. 
-Consequently, our DPVL performs much better than other algorithms, with the most parts of the shadow being removed and the segmentation results become more accurate.
+Consequently, our DPVTL performs much better than other algorithms, with most parts of the shadow being removed and the segmentation results become more accurate.
 
 % \begin{table}[tab1]
 \begin{table*}[!t]				% TABLE
 \centering
-\caption{The performance comparison of the proposed approach and some state-of-the-art algorithms on the video sequences from different categories in CDnet 2014. For each video, 100 frames were taken for the training of our FCN.}
+\caption{Performance comparison of the proposed approach and some state-of-the-art algorithms on the video sequences from different categories in CDnet 2014. For each video, 100 frames were taken for training our FCN.}
 \label{tab1}
 \begin{tabular}{lllllllllllll}
 \hline
@@ -809,7 +810,7 @@ DPVT        & \textbf{0.9811}   & 0.9329  & \textbf{0.9014}     & \textbf{0.9595
 
 \begin{table*}[!t]
 \centering
-\caption{The performance comparison of the proposed approach and some classical methods and deep-based method DBMF. For each video, 64 frames were taken for the training of our FCN.}
+\caption{Performance comparison of the proposed approach and some classical methods and deep-based method DBMF. For each video, 64 frames were taken for training our FCN.}
 \label{tab2}
 \begin{tabular}{llllllll}
 \hline
@@ -827,7 +828,7 @@ DPVT     & \textbf{0.9888}  & \textbf{0.9819} & \textbf{0.9728}      & \textbf{0
     
     \begin{table*}[!t]
 \centering
-\caption{The performance comparison of the proposed approach and some state-of-the-art algorithms on the video sequences from different categories in CAMO-UOW.}
+\caption{Performance comparison of the proposed approach and some state-of-the-art algorithms on video sequences from different categories in CAMO-UOW.}
 \label{tab3}
 \begin{tabular}{lllllllllll}
 \hline
@@ -850,19 +851,19 @@ average  & 0.85 & 0.86 & 0.83    & 0.89 & 0.88     & 0.85   & 0.90          & 0.
 
 
 The quantitative evaluation of the proposed approach on CDnet 2014 is shown in \reftab{tab1}. 
-It can be seen that the proposed approach significantly outperforms all of the compared state-of-the-art algorithms in most of complex scenes and achieves 11.37\% gain in FM over the second one on the whole dataset. 
+It can be seen that the proposed approach significantly outperforms all of the compared state-of-the-art algorithms in most of the complex scenes and achieves 11.37\% gain in FM over the second one on the whole dataset. 
 %
 Moreover,
-since the DBMF only publish their results in several specific videos instead of whole dataset,
-the proposed approach has also ran in these videos to compare with the DBMF and the results are shown in Table 2,
-which also demonstrates the superiority of the proposed approach.
+since DBMF only published their results in several specific videos instead of the whole dataset,
+the proposed approach was also ran in these videos to compare with DBMF with the results shown in Table 2.
+This also demonstrates the superiority of the proposed approach.
 % \textcolor{red}{Moreover, in order to compare the proposed approach with the DBMF, which is also based on deep learning and only publish their results in  specific videos. 
 % The proposed approach has also ran in these videos and the results are shown in Table 2. 
 % Again, the proposed approach has noticeably better performance than the DBMF and some other classical background approaches.}
 
 As shown in \reftab{tab1} and \reftab{tab2}, previous deep learning based methods like DeepBS and DBMF achieve good performance. 
 From our perspective, this good performance can be attributed to the stronger modeling ability and learning adaptation of CNN and FCN. 
-However, the proposed approach utilizes the pixel variations in a temporal sequence rather than low-level static features such as color, edges and textures, which give us the ability to avoid the shortcomings of the background models. 
+However, the proposed approach utilizes pixel variations in a temporal sequence rather than low-level static features such as color, edges and textures, which give us the ability to avoid the shortcomings of the background models. 
 Consequently, the proposed approach produces considerably better results, with improvement over 17.85\% in FM metrics compared to DeepBS and over 9.50\% compared to DBMF.
 
 The evaluation of the proposed approach in CAMO-UOW dataset is shown in \reftab{tab3}. 
@@ -872,14 +873,14 @@ with an average F-measure of 0.97, compared to values between 0.77 and 0.94 for 
 Therefore, it is fair to say that the proposed approach performs better compared to the state-of-the-art.
 
 
-In CAMO-UOW dataset, target objects have similar color and textures as the background, which create many difficulties and obstacles for traditional methods. 
+In the CAMO-UOW dataset, target objects have similar color and textures as the background. This creates many difficulties and obstacles for traditional methods. 
 However, our FCN is a powerful Neural Network model which is good at capturing the non-linearities of the manifold of pixel variations. 
 
 
-All of the experiments of the proposed method were implemented in matlab and ran on a computer with Nvidia Tasla K80 GPU with all images kept at their original resolution. 
+All of the experiments of the proposed method were implemented in Matlab and run on a computer with Nvidia Tasla K80 GPU with all images kept at their original resolution. 
 For each video in CDnet 2014, 100 training frames are extracted to produce the image patch. 
 It should be noted that the 100 frames only account for less than 10\% of total Groundtruth in CDnet 2014. 
-In contrast, 90\% of data was used as training samples in DBMF, which suggest that the proposed approach achieves better performance with limited training frames. 
+In contrast, 90\% of data was used as training samples in DBMF, which suggests that the proposed approach achieves better performance with limited training frames. 
 Considering that videos in CAMO-UOW have fewer frames, we reduced the number of training frames to 64 for each video. 
 During the experiments, the training and testing sets are completely separated. 
 More specifically, our FCN network is randomly initialized. 
@@ -916,15 +917,15 @@ The last threshold $R$ is set to 0.6.
 
 \section{Conclusion}
 \label{sec6}
-In this paper, we proposed a novel foreground detection approach based on proposed variation transformation learning.
+In this paper, we proposed a novel foreground detection approach based on our proposed variation transformation learning.
 %
-The transformation learning focus on learning a transformation from pixel variation to the probability of pixels belong to foreground or background.
+Transformation learning focused on learning a transformation from pixel variations to the probability of pixels belonging to foreground or background.
 %
-The global variation pattern of pixel observation is learned for better classification of pixels.
+The global variation patterns of pixel observation is learned for better classification of pixels.
 %
 In particular, a FCN network and a novel variation transformation learning framework is proposed to efficiently combine the temporal coherence and distribution information of pixels over a long period of time. 
 %
-Comparisons with other traditional and deep learning methods shows that DPVTL significantly improves performance on several challenging scenes.
+Comparisons with other traditional and deep learning methods shows that our DPVTL algorithms significantly improves performance on several challenging scenes.
 %The future work will be focused on improving the DPVTL in terms of network architecture updating and integration of local spatial coherence.
 
 % \section{Conclusions}
